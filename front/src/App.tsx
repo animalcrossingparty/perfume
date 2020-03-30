@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
+import { Route } from 'react-router-dom';
+import { Header } from './components';
+import { Home, About } from './pages'
 
 function App() {
+  const user = {name:'Jack', age: 32}
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          일단 빙글빙글 돌아가니까 귀엽다
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/about" component={About} />
+      {JSON.stringify(user)}
+
     </div>
   );
 }
