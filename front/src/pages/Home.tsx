@@ -1,9 +1,11 @@
 import React from 'react';
+import { Slider } from '../components';
 
 function Home() {
   return (
     <div>
-        <h1>하이하이 홈입니다</h1>
+      <Slider />
+      <h1 className="center">대충 카드를 넣고싶은 곳</h1>
     </div>
   );
 }

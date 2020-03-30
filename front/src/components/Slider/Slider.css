@@ -1,0 +1,27 @@
+.slider .slides li img {
+  filter: brightness(70%);
+}
+
+.slider .indicators .indicator-item.active {
+  background-color: white;
+}
+
+.caption > h3 {
+  font-weight: 600;
+}
+
+.slider .indicators {
+  position: relative;
+  margin-top: -40px;
+  z-index: 5;
+}
+.slider .indicators .indicator-item {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  height: 11px;
+  width: 11px;
+  background-color: rgba(255,255,255,0.5);
+  transition: background-color .3s;
+  border-radius: 50%;
+}

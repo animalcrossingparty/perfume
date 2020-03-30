@@ -1,4 +1,31 @@
-.Header {
-  font-size: 5rem;
-  background-color: royalblue;
+@media only screen and (min-width: 601px) {
+    nav,
+    nav .nav-wrapper i,
+    nav a.sidenav-trigger,
+    nav a.sidenav-trigger i {
+        height: 42px;
+        line-height: 42px;
+    }
+}
+
+nav {
+  background-color: white;
+}
+
+nav .brand-logo {
+  color: black;
+  font-weight: 900;
+  margin-left: calc(1vw + 0.2rem);
+  font-size: 1.6rem;
+  letter-spacing: -2px;
+}
+
+nav ul a {
+  transition: background-color .45s;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #4a4a4a;
+  display: block;
+  padding: 0 15px;
+  cursor: pointer;
 }

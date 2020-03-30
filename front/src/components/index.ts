@@ -1,5 +1,7 @@
-import Header from './Header/Header';
+import Header from './Header/Header'
+import Slider from './Slider/Slider'
 
 export {
-    Header
+    Header,
+    Slider
 };
