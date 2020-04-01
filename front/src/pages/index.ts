@@ -1,2 +1,10 @@
-export { default as Home } from './Home';
-export { default as About } from './About';
+import HomePage from './HomePage'
+import AboutPage from './AboutPage'
+import LoginPage from './LoginPage'
+
+
+export {
+  HomePage,
+  AboutPage,
+  LoginPage
+};

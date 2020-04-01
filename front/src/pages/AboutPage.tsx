@@ -1,6 +1,6 @@
 import React from 'react';
 
-function About() {
+function AboutPage() {
   return (
     <div>
         <h1>하이하이 어바웃입니다</h1>
@@ -8,4 +8,4 @@ function About() {
   );
 }
 
-export default About;
+export default AboutPage;
