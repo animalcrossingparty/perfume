@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions', # shell_plus 쓸려고!
     'rest_framework',
+    'drf_yasg',
     'accounts',
 ]
 
