@@ -8,7 +8,7 @@ function HomePage() {
       <Header />
       <Slider />
       <div className="center">
-        <Link to="/login">로그인 페이지로 가기</Link>
+        <Link to="/auth/login">로그인 페이지로 가기</Link>
       </div>
       <h1 className="center">대충 카드를 넣고싶은 곳</h1>
     </div>
