@@ -12,14 +12,18 @@ const Positioner = styled.div`
 
 // 너비, 그림자 설정
 const ShadowedBox = styled.div`
-    width: 500px;
-    box-shadow: 2px 4px 4px gray;
+    width: 650px;
+    box-shadow: 15px 15px rgba(100, 100, 90, 0.5),
+                30px 30px rgba(100, 100, 90, 0.3),
+                45px 45px rgba(100, 100, 90, 0.2),
+                60px 60px rgba(100, 100, 90, 0.1),
+                75px 75px rgba(100, 100, 90, 0.05);
 `;
 
 // 로고
 const LogoWrapper = styled.div`
-    background: royalblue;
-    height: 5rem;
+    background-image: linear-gradient(to right, #e4afcb 0%, #b8cbb8 0%, #b8cbb8 0%, #e2c58b 30%, #c2ce9c 64%, #7edbdc 100%);;
+    height: 7rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,12 +38,12 @@ const Logo = styled(Link)`
 
 // children 이 들어가는 곳
 const Contents = styled.div`
-    background: white;
-    padding: 2rem;
+    background: #ffe;
+    padding: 4rem;
     height: auto;
 `;
 
-const LoginBox = ({children}) => (
+const LoginBox = ({ children }) => (
     <Positioner>
         <ShadowedBox>
             <LogoWrapper>

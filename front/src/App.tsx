@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Route exact path="/" component={HomePage} />
       <Route exact path="/about" component={AboutPage} />
-      <Route exact path="/login" component={LoginPage} />
+      <Route path="/auth" component={LoginPage} />
     </div>
   );
 }
