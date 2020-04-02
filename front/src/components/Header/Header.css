@@ -14,7 +14,9 @@ nav {
 
 nav .brand-logo {
   color: black;
-  font-weight: 900;
+  /* text-decoration: underline; */
+  font-style: italic;
+  font-weight: 200;
   margin-left: calc(1vw + 0.2rem);
   font-size: 1.6rem;
   letter-spacing: -2px;
