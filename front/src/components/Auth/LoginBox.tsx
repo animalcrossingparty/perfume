@@ -22,7 +22,7 @@ const ShadowedBox = styled.div`
 
 // 로고
 const LogoWrapper = styled.div`
-    background-image: linear-gradient(to right, #e4afcb 0%, #b8cbb8 0%, #b8cbb8 0%, #e2c58b 30%, #c2ce9c 64%, #7edbdc 100%);;
+    background: purple;
     height: 7rem;
     display: flex;
     align-items: center;
@@ -38,8 +38,8 @@ const Logo = styled(Link)`
 
 // children 이 들어가는 곳
 const Contents = styled.div`
-    background: #ffe;
-    padding: 4rem;
+    background: #fff;
+    padding: 5rem;
     height: auto;
 `;
 
@@ -47,7 +47,7 @@ const LoginBox = ({ children }) => (
     <Positioner>
         <ShadowedBox>
             <LogoWrapper>
-                <Logo to="/">Laure Richis</Logo>
+                <Logo to="/">LAURE RICHIS</Logo>
             </LogoWrapper>
             <Contents>
                 {children}

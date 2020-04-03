@@ -1,7 +1,8 @@
 {
-  "name": "my-app",
+  "name": "laure-richis",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "@material-ui/core": "^4.9.8",
     "@material-ui/icons": "^4.9.1",
@@ -28,6 +29,7 @@
     "redux-actions": "^2.6.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
+    "redux-pender": "^2.0.12",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1",
     "typescript": "^3.7.5"
