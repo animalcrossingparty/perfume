@@ -7,7 +7,7 @@ import './Header.css'
 export default () => (
 <Navbar
   alignLinks="right"
-  brand={<Link className="brand-logo" to="/"> PAFFEM</Link>}
+  brand={<Link className="brand-logo" to="/">LAURE RICHIS</Link>}
   id="mobile-nav"
   menuIcon={<Icon>menu</Icon>}
   options={{

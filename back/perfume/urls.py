@@ -16,12 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Accounts API",
+      default_version='v1',
+      description="User Info & Similarity Between Users"
+   ),
+)
 
 def home(request):
-    return redirect('api/v1/users/')
+    return redirect('swagger/')
 
 urlpatterns = [
     path('', home),
     path('admin/', admin.site.urls),
-    path('api/v1/', include('accounts.urls')),
+    path('api/v1/accounts/', include('accounts.urls')),
+    # path('redoc/', schema_view.with_ui('redoc'), name="api_docs"),
+    path('swagger/', schema_view.with_ui('swagger'), name="api_swagger"),
 ]

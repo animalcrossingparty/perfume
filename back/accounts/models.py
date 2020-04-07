@@ -3,9 +3,10 @@ from datetime import date
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from django.utils import timezone
 
 class User(AbstractUser):
-    date_of_birth = models.DateField(default=date.today())
+    date_of_birth = models.DateField(default='timezone.now')
     # followers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='followings', blank=True)
     similar_users = models.ManyToManyField('self', related_name='reference_user+', through='Similarity', symmetrical=True, blank=True)
     # related_name은 naming conflict를 없애주기 위함. 그런데 대칭적이므로 쓸 필요가 없어서 + 붙여줌!

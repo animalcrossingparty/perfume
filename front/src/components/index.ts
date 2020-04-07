@@ -3,5 +3,5 @@ import Slider from './Slider/Slider'
 
 export {
     Header,
-    Slider
+    Slider,
 };
