@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from randstr import randstr
+from perfumes.models import Perfume
 
 class User(AbstractUser):
     def profile_image_path(self, instance, filename):
@@ -18,4 +19,4 @@ class User(AbstractUser):
     gender = models.CharField(default="shared/unisex", max_length=30)
     role = models.IntegerField(default=0)
     age = models.IntegerField(default=0)
-    # like_perfume = models.ManyToManyField()
+    like_perfumes = models.ManyToManyField(to=Perfume, related_name='like_users')

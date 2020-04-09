@@ -16,6 +16,6 @@ class Perfume(models.Model):
     thumbnail = models.ImageField()
     gender = models.CharField(max_length=20)
     brand = models.ForeignKey(to=Brand, on_delete=models.PROTECT)
-    note = models.ManyToManyField(to=Note)
-    category = models.ManyToManyField(to=Category)
+    notes = models.ManyToManyField(to=Note)
+    categories = models.ManyToManyField(to=Category)
     availibility = models.BooleanField()
