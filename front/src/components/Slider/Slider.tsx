@@ -9,48 +9,48 @@ export default () => (
 		fullscreen={false}
 		options={{
 			duration: 500,
-			height: 650,
+			height: 450,
 			indicators: true,
 			interval: 6000
 		}}
 	>
-		<Slide image={<img alt="" src="https://images.unsplash.com/photo-1543593822-d283d968aa4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80" />}>
+		<Slide image={<img alt="" src="https://user-images.githubusercontent.com/52684457/78926430-0a25de80-7ad8-11ea-8043-bef5c73d3449.jpg" />}>
 			<Caption placement="center">
 				<h3>
-					대충 향수를 추천하겠다는 뜻
+					로르 리시에 오신 것을 환영합니다.
       </h3>
 				<h5 className="light grey-text text-lighten-3">
-					그것을 어떻게 해야할지는 모르지만
+					어떤 향수를 찾고 계신가요?
       </h5>
 			</Caption>
 		</Slide>
-		<Slide image={<img alt="" src="https://images.unsplash.com/photo-1458538977777-0549b2370168?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80" />}>
+		<Slide image={<img alt="" src="https://user-images.githubusercontent.com/52684457/78929034-9d611300-7adc-11ea-8237-8b95173a22a0.png" />}>
 			<Caption placement="left">
 				<h3>
-					대충 고급스러운 듯한 이미지
+					4월 달, 인기 향수 계열은 플로럴
       </h3>
 				<h5 className="light grey-text text-lighten-3">
-					쇼핑몰 비스무리하게
+					봄이 지나가기 전에 골라야 할 향수가 있다면?
       </h5>
 			</Caption>
 		</Slide>
-		<Slide image={<img alt="" src="https://images.unsplash.com/photo-1554057009-4bb718be3f32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />}>
-			<Caption placement="right">
-				<h3>
-					아무데서나 튀어나오는 문구
-      </h3>
-				<h5 className="light grey-text text-lighten-3">
-					디자인 철학따윈 문과나 생각하는것.
-      </h5>
-			</Caption>
-		</Slide>
-		<Slide image={<img alt="" src="https://images.unsplash.com/photo-1508771400123-e194ad75c0e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1293&q=80" />}>
+		<Slide image={<img alt="" src="https://user-images.githubusercontent.com/52684457/78929383-44de4580-7add-11ea-9719-375df77dd8ba.jpg" />}>
 			<Caption placement="center">
 				<h3>
-					오늘도 난 커피를 마신다.
+					당신이 애타게 찾던 향수는?
       </h3>
 				<h5 className="light grey-text text-lighten-3">
-					그래야 코드가 나오니까.
+					로르 리시에서 향수를 찾을 수 있어요.
+      </h5>
+			</Caption>
+		</Slide>
+		<Slide image={<img alt="" src="https://user-images.githubusercontent.com/52684457/78928424-8b32a500-7adb-11ea-9b99-8263dd84b603.jpg" />}>
+			<Caption placement="left">
+				<h3>
+					여름에는 어떤 향수를 뿌리면 좋을까?
+      </h3>
+				<h5 className="light grey-text text-lighten-3">
+					곧 여름 시즌이 다가오고 있어요!
       </h5>
 			</Caption>
 		</Slide>
