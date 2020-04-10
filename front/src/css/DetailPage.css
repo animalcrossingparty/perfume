@@ -229,7 +229,7 @@
 .note_info {
   margin-top: 2%;
   color: rgb(190, 149, 172);
-  font-family: monospace;
+  font-family: monospace !important;
 }
 
 .note_img {
