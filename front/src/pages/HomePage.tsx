@@ -1,16 +1,26 @@
 import React from 'react'
-import { Header, Slider } from '../components'
+import { Header, Slider, Cards } from '../components'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-materialize';
+import '../css/HomePage.css'
 
 function HomePage() {
   return (
     <div>
       <Header />
       <Slider />
-      <div className="center">
-        <Link to="/auth/login">로그인 페이지로 가기</Link>
+      <div className="center btn_login">
+        <Link to="/auth/login">
+          <Button>LOGIN</Button>
+        </Link>
       </div>
-      <h1 className="center">대충 카드를 넣고싶은 곳</h1>
+      <h3 className="perfume_cards_title center">PERFUME LIST</h3>
+      <div className="row">
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+      </div>
     </div>
   );
 }

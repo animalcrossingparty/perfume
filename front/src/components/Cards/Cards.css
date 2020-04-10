@@ -1,0 +1,15 @@
+.MuiCardActions-root {
+  justify-content: space-around;
+}
+
+.MuiIconButton-root:focus {
+  background-color: rgb(228, 217, 217);
+}
+
+.btn {
+  background-color: rgb(211, 201, 201);
+}
+
+.btn:hover {
+  background-color: rgb(177, 166, 166) !important;
+}

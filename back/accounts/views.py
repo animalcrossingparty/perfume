@@ -1,65 +1,73 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth import get_user_model
 from rest_framework.decorators import api_view
-from .serializers import UserSerializers
 from rest_framework.response import Response
+from django.http import Http404
+from .serializers import JWTSerializers, PayloadSerializers
+from django.contrib.auth import get_user_model, authenticate
+from time import time
+from laure_richis.settings import SECRET_KEY
+import jwt
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg.openapi import Schema
 
 
-@api_view(['GET'])  # http method의 GET요청을 의미
-def index(request):
-    """
-    유저 목록 정보
-    """
-    users = get_user_model().objects.all()
-    serializer = UserSerializers(users, many=True)
-    # 쿼리 셋이라 many=True 안 하면 어트리뷰트가 없다고 에러남 그래서 많이 가지고 있다고 붙여주는 거임(?)
-    return Response(serializer.data)
+@swagger_auto_schema(
+    methods=['post'],
+    request_body=Schema(
+        title="로그인",
+        type='object',
+        description="우왕 로그인",
 
-# @api_view(['GET'])
-# def detail(request, music_pk):
-#     """
-#     음악 상세 정보
-#     """
-#     music = get_object_or_404(Music, pk=music_pk)
-#     serializer = MusicSerializers(music)
-#     # 쿼리셋이 아니라 단일 오브젝트라 매니는트류 필요없ㅇ므
-#     return Response(serializer.data)
+    )
+)
+@api_view(['POST'])
+def login(request):
+	'''
+	로그인을 하고싶나?
+	----
+	username: '이메일주소'
+	password: '패스워드'
+	'''
+	
+	user = authenticate(request=request, username=request.data.get('username'), password=request.data.get('password'))
+	if user is None:
+		return Response(status=401)
+	# now = int(time())
+	payload = PayloadSerializers(user)
+	# payload = {
+	# 	'userId': user.id,
+	# 	'username': user.username,
+	# 	'iat': now,
+	# 	'exp': now + 7200000
+	# }
+	encoded = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+	serializer = JWTSerializers(encoded)
+	return Response(data=serializer.data)
 
-# # 아티스트 목록
-# @api_view(['GET'])
-# def artists_index(request):
-#     """
-#     가수 목록 정보
-#     """
-#     artists = Artist.objects.all()
-#     serializer = ArtistSerializers(artists, many=True)
-#     return Response(serializer.data)
 
-# @api_view(['GET'])
-# def artists_detail(request, artist_pk):
-#     """
-#     가수 상세 정보
-#     """
-#     artist = get_object_or_404(Artist, pk=artist_pk)
-#     serializer = ArtistDetailSerializers(artist)
-#     return Response(serializer.data)
+@swagger_auto_schema(methods=["get"], manual_params=['email'], operation_description='GET /exists/email/{email_address}')
+@api_view(['GET'])
+def check_duplicate_email(request):
+	email = request.GET.get('email')
+	if email is None:
+		return Response(data={'email': 'this field is required'}, status=400)
+	try:
+		get_user_model().objects.get(email=email)
+	except:
+		return Response(data={'email': 'success'}, status=200)
+	return Response(data={'email': 'already existing email address'}, status=400)
 
-# # 리뷰 작성
-# @api_view(['POST'])
-# def review_create(request, music_pk):
-#     serializer = ReviewSerializers(data=request.data)
-#     if serializer.is_valid(raise_exception=True):
-#         serializer.save(music_id=music_pk)
-#     return Response({'message': 'review가 등록되었습니다.'})
 
-# @api_view(['PUT', 'DELETE'])
-# def review_update_delete(request, review_pk):
-#     review = get_object_or_404(Review, pk=review_pk)
-#     if request.method == 'PUT':
-#         serializer = ReviewSerializers(data=request.data, instance=review)
-#         if serializer.is_valid(raise_exception=True):
-#             serializer.save()
-#             return Response(serializer.data)
-#     else:
-#         review.delete()
-#         return Response({'message': '성공적으로 삭제되었습니다.'})
+@api_view(['POST'])
+def signup(request):
+	try:
+		user = get_user_model().objects.create(
+			email=request.data['email'],
+			username=request.data['username'],
+			password=1
+		)
+	except:
+		return Response(status=400)
+	user.set_password(request.data['password'])
+	user.save()
+	return Response(data={'signup': 'success'}, status=200)
