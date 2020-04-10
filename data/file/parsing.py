@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import lxml
 import requests
 start = time.time()
-crawlstart = 26120000 # 가장 마지막에 만들어진 json 파일의
+crawlstart = 26124998 # 가장 마지막에 만들어진 json 파일의
 crawlend = 26160655
 result = []
 for num in range(crawlstart, crawlstart+5000):
