@@ -2,7 +2,7 @@
   "name": "laure-richis",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:4000",
+  "proxy": "http://192.168.0.26:8000",
   "dependencies": {
     "@brainhubeu/react-carousel": "^1.13.26",
     "@material-ui/core": "^4.9.8",
@@ -34,7 +34,8 @@
     "redux-pender": "^2.0.12",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "validator": "^13.0.0"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src react-scripts start",
