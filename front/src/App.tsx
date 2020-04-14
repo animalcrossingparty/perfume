@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { HomePage, AboutPage, LoginPage, TestPage, DetailPage } from './pages'
+import { HomePage, AboutPage, LoginPage, TestPage, DetailPage, PerfumePage } from './pages'
 import storage from 'lib/storage';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActions from 'redux/modules/user';
-
 interface AppProps {
   UserActions: any
 }
@@ -35,6 +34,7 @@ class App extends Component<AppProps> {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/test" component={TestPage} />
+        <Route exact path="/perfume" component={PerfumePage} />
         <Route path="/auth" component={LoginPage} />
         <Route path="/detail" component={DetailPage} />
       </div>

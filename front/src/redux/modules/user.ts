@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 
 import { Map } from 'immutable';
-import * as AuthAPI from 'lib/api/auth';
+import * as API from 'lib/api';
 import { pender } from 'redux-pender';
 
 const SET_LOGGED_INFO = 'user/SET_LOGGED_INFO'; // 로그인 정보 설정
@@ -11,8 +11,8 @@ const CHECK_STATUS = 'user/CHECK_STATUS'; // 현재 로그인상태 확인
 
 export const setLoggedInfo = createAction(SET_LOGGED_INFO); // loggedInfo
 export const setValidated = createAction(SET_VALIDATED); // validated
-export const logout = createAction(LOGOUT, AuthAPI.logout);
-export const checkStatus = createAction(CHECK_STATUS, AuthAPI.checkStatus);
+export const logout = createAction(LOGOUT, API.logout);
+export const checkStatus = createAction(CHECK_STATUS, API.checkStatus);
 
 const initialState = Map({
     loggedInfo: Map({ // 현재 로그인중인 유저의 정보

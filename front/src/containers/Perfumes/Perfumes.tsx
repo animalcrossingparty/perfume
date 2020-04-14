@@ -1,22 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as perfumeActions from 'redux/modules/perfume';
 
-class Perfumes extends Component<{}> {
+interface PerfumeProps {
+  PerfumeActions: any,
+  perfumes: any
+}
+
+class Perfumes extends Component<PerfumeProps> {
+
+  initializePerfumeInfo = async () => {
+    const {PerfumeActions} = this.props
+    await PerfumeActions.getPerfumeInfo();
+  }
+
   componentDidMount() {
-    // 대충 향수를 불러 오겠다는 곳
+    this.initializePerfumeInfo()
   }
   render() {
-    return(
-      <div>와 향수들이다!!</div>
+    const { perfumes } = this.props
+    return (
+    <div>
+    <ul>
+    {perfumes.map((perfume, i) => <ol>{JSON.stringify(perfume)}</ol>)}
+    </ul>
+    </div>
     )
   }
 }
 
 export default connect(
   (state) => ({
-    // 뭔가 스토어에 불러오면 기분이 좋지 않을까?
+    perfumes: state.perfume.get('perfumesList', 'perfumes')
   }),
   (dispatch) => ({
-    // 대충 향수를 디스패치 하겠다는 곳
+    PerfumeActions: bindActionCreators(perfumeActions, dispatch)
   })
 )(Perfumes);

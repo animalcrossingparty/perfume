@@ -23,7 +23,7 @@ export default () => (
   }}
 >
   <NavItem>
-	PERFUME
+    <Link to="/perfume">PERFUME</Link>
   </NavItem>
 	<NavItem>
 	PRODUCTS
