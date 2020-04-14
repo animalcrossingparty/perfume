@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 import jwt
-from laure_richis.settings import SECRET_KEY
+from laure_richis.base import SECRET_KEY
 from time import time
 
 

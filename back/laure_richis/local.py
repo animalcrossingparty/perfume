@@ -1,7 +1,5 @@
 from .base import *
 
-DEBUG = True
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -15,3 +13,6 @@ DATABASES = {
         'PORT': '3307',
     }
 }
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
