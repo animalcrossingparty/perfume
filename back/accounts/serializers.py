@@ -11,13 +11,11 @@ class UserSerializers(serializers.Serializer):
         fields = ['id', 'username', 'email', 'password']
 
 class PayloadSerializers(serializers.Serializer):
-    userId = serializers.CharField()
+    now = int(time())
+    userId = serializers.CharField(source='pk')
     username = serializers.CharField()
-    iat = serializers.DateTimeField()
-    exp = serializers.DateTimeField()
-
-class JWTSerializers(serializers.Serializer):
-    token = serializers.CharField()
+    iat = serializers.IntegerField(default=now)
+    exp = serializers.IntegerField(default=now + 7200000)
 
 
 '''
