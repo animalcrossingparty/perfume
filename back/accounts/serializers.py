@@ -16,11 +16,3 @@ class PayloadSerializers(serializers.Serializer):
     username = serializers.CharField()
     iat = serializers.IntegerField(default=now)
     exp = serializers.IntegerField(default=now + 7200000)
-
-
-'''
-class MusicSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Music
-        fields = ['id', 'title', 'artist_id']
-'''

@@ -32,6 +32,7 @@ def login(request):
 	user = authenticate(request=request, username=request.data.get('username'), password=request.data.get('password'))
 	if user is None:
 		return Response(status=401)
+		
 	payload = PayloadSerializers(user)
 	encoded = {
 		'token': jwt.encode(payload.data, SECRET_KEY, algorithm='HS256')
