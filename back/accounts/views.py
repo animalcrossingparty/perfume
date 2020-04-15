@@ -5,7 +5,7 @@ from django.http import Http404
 from .serializers import PayloadSerializers
 from django.contrib.auth import get_user_model, authenticate
 from time import time
-from laure_richis.settings import SECRET_KEY
+from laure_richis.base import SECRET_KEY
 import jwt
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg.openapi import Schema
@@ -32,6 +32,7 @@ def login(request):
 	user = authenticate(request=request, username=request.data.get('username'), password=request.data.get('password'))
 	if user is None:
 		return Response(status=401)
+		
 	payload = PayloadSerializers(user)
 	encoded = {
 		'token': jwt.encode(payload.data, SECRET_KEY, algorithm='HS256')
