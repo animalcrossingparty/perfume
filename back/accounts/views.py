@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import Http404
-from .serializers import JWTSerializers, PayloadSerializers
+from .serializers import PayloadSerializers
 from django.contrib.auth import get_user_model, authenticate
 from time import time
-from laure_richis.settings import SECRET_KEY
+from laure_richis.base import SECRET_KEY
 import jwt
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg.openapi import Schema
@@ -32,17 +32,12 @@ def login(request):
 	user = authenticate(request=request, username=request.data.get('username'), password=request.data.get('password'))
 	if user is None:
 		return Response(status=401)
-	# now = int(time())
+		
 	payload = PayloadSerializers(user)
-	# payload = {
-	# 	'userId': user.id,
-	# 	'username': user.username,
-	# 	'iat': now,
-	# 	'exp': now + 7200000
-	# }
-	encoded = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
-	serializer = JWTSerializers(encoded)
-	return Response(data=serializer.data)
+	encoded = {
+		'token': jwt.encode(payload.data, SECRET_KEY, algorithm='HS256')
+		}
+	return Response(data=encoded)
 
 
 @swagger_auto_schema(methods=["get"], manual_params=['email'], operation_description='GET /exists/email/{email_address}')

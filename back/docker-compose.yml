@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    volumes:
+      - ./docker/data:/var/lib/mysql/data
+    environment:
+      - MYSQL_ROOT_HOST=172.17.0.3
+      - MYSQL_DATABASE=laure_richis
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=password
+  django:
+    build:
+      context: .
+      dockerfile: ./DockerFile
+    environment:
+      - DJANGO_DEBUG=True
+      - DJANGO_DB_HOST=172.17.0.3
+      - DJANGO_DB_PORT=3306
+      - DJANGO_DB_NAME=laure_richis
+      - DJANGO_DB_USERNAME=root
+      - DJANGO_DB_PASSWORD=password
+      - DJANGO_SECRET_KEY=!1rk8bbc70u81_tjqj1v)&ar=kz%kua-*l!ru851(105*&3ki&
+    ports:
+      - "8000:8000"
+    command:
+      - python manage.py runserver 0:8000 --settings=laure_richis.production
+    volumes:
+      - ./back/

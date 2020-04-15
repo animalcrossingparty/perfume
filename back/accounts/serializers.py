@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 import jwt
-from laure_richis.settings import SECRET_KEY
+from laure_richis.base import SECRET_KEY
 from time import time
 
 
@@ -11,18 +11,8 @@ class UserSerializers(serializers.Serializer):
         fields = ['id', 'username', 'email', 'password']
 
 class PayloadSerializers(serializers.Serializer):
-    userId = serializers.CharField()
+    now = int(time())
+    userId = serializers.CharField(source='pk')
     username = serializers.CharField()
-    iat = serializers.DateTimeField()
-    exp = serializers.DateTimeField()
-
-class JWTSerializers(serializers.Serializer):
-    token = serializers.CharField()
-
-
-'''
-class MusicSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Music
-        fields = ['id', 'title', 'artist_id']
-'''
+    iat = serializers.IntegerField(default=now)
+    exp = serializers.IntegerField(default=now + 7200000)
