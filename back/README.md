@@ -31,13 +31,6 @@
 
 Mac OS 및 Linux의 인스턴스와 다른 플랫폼으로의 비공식 포트가있는 Microsoft Windows용으로 설계된 오픈 소스 터미널 에뮬레이터입니다. 작업 환경 구성을위한 그래픽 사용자 인터페이스(GUI)를 제공하고 대부분의 다른 터미널 작업을 지원하며, 특히 Telnet 및 SSH를 사용하여 다른 서버에 원격으로 접속할 수 있습니다.
 
-172.17.0.3
-```
-docker run -e MYSQL_ROOT_HOST=172.17.0.3 -e MYSQL_DATABASE=laure_richis -e MYSQL_USER=root -e MYSQL_ROOT_PASSWORD=password --name django_laure_richis -it -p 7000-7009:7000-7009 -v "C:\Users\multicampus\Desktop\perfume\back:/perfume/back"  python:3.6.8-stretch /bin/bash
-
-docker run --name django1 -it -p 7000-7009:7000-7009 \ -v "C:\LOCAL_MACHINE_SHARE_DIR\django\src:/usr/django/app" \ python:3.6.6-stretch /bin/bash 
-```
-
 ### Docker
 
 참조: [초보를 위한 도커 안내서 - 설치하고 컨테이너 실행하기](https://subicura.com/2017/01/19/docker-guide-for-beginners-2.html)
@@ -65,7 +58,7 @@ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
 
 cmd를 켜서 다음과 같은 명령어를 입력한다. Docker에 있는 MySQL 최신 버전을 pull한다는 뜻이다.
 
-```cmd
+```powershell
 C:\Users\multicampus>docker pull mysql
 Using default tag: latest
 latest: Pulling from library/mysql
@@ -86,7 +79,7 @@ Status: Downloaded newer image for mysql:latest
 docker.io/library/mysql:latest
 ```
 
-```cmd
+```powershell
 C:\Users\multicampus>docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password --name mysql_laure_richis mysql
 e2da4340b06d07f577cb530e0e362c5aecf4577d773ea10de64d57bf2209f037
 ```
@@ -96,19 +89,19 @@ e2da4340b06d07f577cb530e0e362c5aecf4577d773ea10de64d57bf2209f037
 * `-e` : 환경변수 설정
 * `--name` : 컨테이너 이름 짓기
 
-```
+```powershell
 C:\Users\multicampus>docker exec -it mysql_laure_richis /bin/bash
 ```
 
 라고 치면 MySQL이 실행됨
 
-```
+```dockerfile
 root@e2da4340b06d:/# mysql -ppassword
 ```
 
 위에서 `-p`는 비밀번호를 입력하는 옵션이고, `-p` 뒤에 띄어쓰기 없이 쓴 `password`는 DB의 비밀번호임. 그러면 MySQL이 진짜 실행됨. 아래는 경고문? 안내문?이니까 건너 뛰면 됨.
 
-```
+```mysql
 mysql: [Warning] Using a password on the command line interface can be insecure.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 9
@@ -127,7 +120,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 **도커에서 실행한 MySQL의 HOST가 `localhost`가 아니라서 뭔지 알아보려고 다음과 같이 명령어 작성함**
 
-```
+```powershell
 C:\Users\multicampus>docker inspect mysql_laure_richis
 [
     {
@@ -377,20 +370,20 @@ C:\Users\multicampus>docker inspect mysql_laure_richis
 
 `/bin/bash`는 `bin`이라는 디렉토리에서 바이너리로 실행시키겠다는 뜻(?)
 
-```
+```powershell
 C:\Users\multicampus>docker exec -it mysql_laure_richis /bin/bash
 ```
 
 다시 MySQL이 실행됨
 
-```
+```dockerfile
 root@e2da4340b06d:/# mysql
 ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
 ```
 
 그냥 MySQL 실행시켜보려 했더니 안 된다 함. 일단 비밀번호 입력해줌.
 
-```
+```dockerfile
 root@e2da4340b06d:/# mysql -ppassword
 mysql: [Warning] Using a password on the command line interface can be insecure.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -408,14 +401,14 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 이건 왜 이렇게 한 거지.. 비밀번호가 자동으로 입력되게..?
 
-```
+```mysql
 mysql> alter user 'root'@'%' identified with mysql_native_password by 'password';
 Query OK, 0 rows affected (0.02 sec)
 ```
 
 이름이 `laure_richis`인 DB 하나 만들어줌
 
-```
+```mysql
 mysql> create database laure_richis;
 Query OK, 1 row affected (0.01 sec)
 ```
@@ -488,7 +481,7 @@ MYSQL_ROOT_PASSWORD=password
 
 그 다음, cmd를 켜서 다음과 같이 입력한다.
 
-```
+```powershell
 C:\Users\multicampus>docker run  --env-file="django_env.txt" -it -p 7000-7009:7000-7009 -v "C:\Users\multicampus\Desktop\perfume\back:/perfume/back"  python:3.6.8-stretch /bin/bash
 ```
 
@@ -498,14 +491,14 @@ C:\Users\multicampus>docker run  --env-file="django_env.txt" -it -p 7000-7009:70
 
 `bin/bash` 파일을 실행시켰다. 바이너리...로 실행..? 저장...? 한다는 뜻
 
-```
+```dockerfile
 root@94521561a723:/# cd bin
 root@94521561a723:/bin# bash
 ```
 
 `apt-get`은 리눅스에서 패키지 설치하는(?) 건데 pip는 install할 때 dependencies가 처음부터 어느 정도 깔리지만, 리눅스에서는 처음에 아예 아무것도 없어서 꼭 `apt-get update`를 먼저 해줘야 한다.
 
-```
+```dockerfile
 root@94521561a723:/bin# apt-get update
 Get:1 http://security.debian.org/debian-security stretch/updates InRelease [94.3 kB]
 Ign:2 http://deb.debian.org/debian stretch InRelease
@@ -517,21 +510,36 @@ Do you want to continue? [Y/n] y
 
 `perfume/back`으로 들어가서 리눅스용 `venv` 만든다. 이름은 `docker_env`로 해놨다. 이러면 로컬에서도 `docker_env`가 생긴다. 신기하다. **그러니 git push 전에 꼭 `.gitignore`에 `docker_env/`를 추가해놓아야 한다!**
 
+그런데 python의 `venv` 모듈로 만들려고 했더니 가상환경을 켜면 3.5.3 버전이 깔려 있어서, global에 `virtualenv` 모듈을 설치하고
+
+```dockerfile
+root@94521561a723:/perfume/back# pip install virtualenv
+Collecting virtualenv
+  Downloading https://files.pythonhosted.org/packages/82/34/ae98cb0c3eca73b871d51b8f27af0389c746f0e166cd3b2ab31f41085b82/virtualenv-20.0.17-py2.py3-none-any.whl (4.6MB)
+     |████████████████████████████████| 4.6MB 3.1MB/s
+  ...
 ```
-root@94521561a723:/bin# cd ../perfume/back
-root@94521561a723:/perfume/back# python -m venv docker_env
+
+이 모듈을 이용하여 가상환경을 만들었다.
+
+```dockerfile
+root@94521561a723:/perfume/back# virtualenv docker_env
+created virtual environment CPython3.6.8.final.0-64 in 3625ms
+  creator CPython3Posix(dest=/perfume/back/docker_env, clear=False, global=False)
+  seeder FromAppData(download=False, pip=latest, setuptools=latest, wheel=latest, via=copy, app_data_dir=/root/.local/share/virtualenv/seed-app-data/v1.0.1)
+  ...
 ```
 
 가상환경을 activate한다. 윈도우에서는 `venv/Scripts/activate`였지만, 리눅스에서는 `venv/bin/activate`이다.
 
-```
+```dockerfile
 root@94521561a723:/perfume/back# source docker_env/bin/activate
 ```
 
-pip를 깔고
+Dependencies를 깔고
 
-```
-(docker_env) root@94521561a723:/perfume/back# pip install -r requirements.txt
+```dockerfile
+(docker_env) root@94521561a723:/perfume/back# pip install -r requirements_docker.txt
 Requirement already satisfied: asgiref==3.2.7 in ./docker_env/lib/python3.6/site-packages (from -r requirements.txt (line 1)) (3.2.7)
 Requirement already satisfied: astroid==2.3.3 in ./docker_env/lib/python3.6/site-packages (from -r requirements.txt (line 2)) (2.3.3)
 ...
@@ -539,7 +547,7 @@ Requirement already satisfied: astroid==2.3.3 in ./docker_env/lib/python3.6/site
 
 migrate한다. 아까 위에서 MySQL에 `laure_richis`라는 database를 만들어놔서 에러가 나지 않는다.
 
-```
+```dockerfile
 (docker_env) root@94521561a723:/perfume/back# python manage.py migrate --settings=laure_richis.production
 Operations to perform:
   Apply all migrations: accounts, admin, auth, contenttypes, perfumes, sessions
@@ -552,7 +560,7 @@ Running migrations:
 
 그러면 서버를 켤 수 있다!
 
-```
+```dockerfile
 (docker_env) root@94521561a723:/perfume/back# python manage.py runserver --settings=laure_richis.production
 Performing system checks...
 
@@ -562,6 +570,66 @@ Django version 3.0.5, using settings 'laure_richis.production'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
+
+
+
+
+
+```dockerfile
+(docker_env) root@bded4af9b7a8:/perfume/back# pip install uwsgi
+Collecting uwsgi
+  Downloading uwsgi-2.0.18.tar.gz (801 kB)
+     |████████████████████████████████| 801 kB 232 kB/s
+```
+
+
+
+```dockerfile
+(docker_env) root@bded4af9b7a8:/perfume/back# pip freeze > requirements_docker.txt
+```
+
+
+
+```dockerfile
+(docker_env) root@bded4af9b7a8:/perfume/back# uwsgi --http :8000 --home perfume/back/docker_env --chdir laure_richis -w laure_richis.wsgi
+*** Starting uWSGI 2.0.18 (64bit) on [Wed Apr 15 10:39:22 2020] ***
+compiled with version: 6.3.0 20170516 on 15 April 2020 10:24:51
+os: Linux-4.19.76-linuxkit #1 SMP Thu Oct 17 19:31:58 UTC 2019
+nodename: bded4af9b7a8
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 2
+current working directory: /perfume/back
+detected binary path: /perfume/back/docker_env/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) ***
+chdir() to laure_richis
+*** WARNING: you are running uWSGI without its master process manager ***
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on :8000 fd 4
+spawned uWSGI http 1 (pid: 1165)
+uwsgi socket 0 bound to TCP address 127.0.0.1:34013 (port auto-assigned) fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) ***
+Python version: 3.6.8 (default, Jun 11 2019, 01:16:11)  [GCC 6.3.0 20170516]
+!!! Python Home is not a directory: perfume/back/docker_env !!!
+Set PythonHome to perfume/back/docker_env
+Fatal Python error: Py_Initialize: Unable to get the locale encoding
+ModuleNotFoundError: No module named 'encodings'
+
+Current thread 0x00007fc0a5288180 (most recent call first):
+Aborted
+```
+
+```dockerfile
+(docker_env) root@bded4af9b7a8:/perfume/back# uwsgi --http :8000 --home perfume/back/docker_env --chdir laure_richis -w laure_richis.wsgi
+```
+
+
 
 
 
@@ -608,3 +676,4 @@ ssh 열고 wsgi 수정하고 nginx를 우분투 서버에 깔고
 https://m.blog.naver.com/PostView.nhn?blogId=wideeyed&logNo=221355739161&proxyReferer=https:%2F%2Fwww.google.com%2F
 
 https://www.hanumoka.net/2018/04/29/docker-20180429-docker-install-mysql/
+
