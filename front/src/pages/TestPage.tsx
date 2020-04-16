@@ -1,7 +1,6 @@
 import React from 'react';
 import { Collapsible, CollapsibleItem } from 'react-materialize';
 import { Header } from '../components'
-import Icon from '@material-ui/core/Icon';
 import 'materialize-css';
 import '../css/TestPage.css'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Slider, Cards } from '../components'
+import { Header, Slider } from '../components'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-materialize';
 import '../css/HomePage.css'
@@ -15,12 +15,6 @@ function HomePage() {
         </Link>
       </div>
       <h3 className="perfume_cards_title center">PERFUME LIST</h3>
-      <div className="row">
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-      </div>
     </div>
   );
 }

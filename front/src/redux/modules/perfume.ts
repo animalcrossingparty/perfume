@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import { pender } from 'redux-pender';
-import { Map, List } from 'immutable';
+import { Map } from 'immutable';
 import * as API from 'lib/api';
 
 // 액션 타입 정의
