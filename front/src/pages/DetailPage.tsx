@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Header, Star, Carousel, StarRating } from '../components'
 import { Button } from 'react-materialize';
 import '../css/DetailPage.css'
 import Icon from '@material-ui/core/Icon'
-
 
 
 function DetailPage() {
@@ -12,7 +11,7 @@ return (
 <div className="bg-detail">
   <Header />
 
-  <div className="center">
+  <div className="detail_center">
     <div className="detail_box">
       {/* 향수 div의 왼쪽 (향수 이름, 사진) */}
       <div className="left_box">
@@ -26,7 +25,8 @@ return (
           alt="" />
 
         {/* Favorite */}
-        <div className="like">
+        {/* <div className="like" onClick={ ActionLink } > */}
+        <div className="like" >
           <Icon>favorite</Icon>
           {/* <Icon>favorite_border</Icon> */}
         </div>
@@ -147,10 +147,9 @@ return (
         <div className="StarRating">
           <StarRating />
           <Button
-          color="danger"
             node="button"
             waves="light">
-            <i>SUBMIT</i>
+            SUBMIT
           </Button>
         </div>
       </div>

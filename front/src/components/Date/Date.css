@@ -1,13 +1,18 @@
-.age_ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+/* .age_ input:not([type]), input[type=password]:not(.browser-default) { */
+  .age_ input:not([type]), input[type=text]:not(.browser-default) {
   width: 50%;
   color: gray;
   font-style: italic;
   text-align: center;
 }
 
+/* input[type=password]:not(.browser-default) {
+  text-align: start;
+} */
+
 @media (max-width: 500px) {  
-  .age_ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
-    width: 850%;
+  .age_ input:not([type]), input[type=text]:not(.browser-default) {
+    width: 100%;
   }
 }
 

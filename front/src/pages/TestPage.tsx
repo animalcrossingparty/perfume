@@ -8,18 +8,19 @@ function TestPage() {
 return (
 <div>
   <Header />
-  <div className="center">
+  <div className="center test_center">
+      {/* <SearchBar /> */}
 
     {/* banner */}
-    <div className="banner">
-      <div className="border_box">
+    <div className="test_banner">
+      <div className="test_border_box">
         <div className="test_font">
-          <div className="underlines">
+          <div className="test_underlines">
             <div className="font_start">
               TEST
             </div>
           </div>
-          <div className="context">
+          <div className="test_context">
             " This is TestPage ! <br />
             Have a good time :) "
           </div>
@@ -29,7 +30,7 @@ return (
       {/* content */}
       <div className="content_box">
         <div className="deco_box">
-          <div className="left_box">
+          <div className="left_box_">
             <img src="https://user-images.githubusercontent.com/52684457/78364153-f5d57380-75f7-11ea-8a7b-ec33f2acb971.png" 
             alt=""
             width="140px;"/>
@@ -76,6 +77,5 @@ return (
 </div>
 )
 }
-
 
 export default TestPage;

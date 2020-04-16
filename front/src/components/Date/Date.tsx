@@ -1,5 +1,6 @@
 import React from 'react'
 import { DatePicker } from 'react-materialize';
+// import styled from 'styled-components';
 import './Date.css'
 
 export default () => (
@@ -89,7 +90,7 @@ export default () => (
     showClearBtn: false,
     showDaysInNextAndPreviousMonths: false,
     showMonthAfterYear: false,
-    yearRange: 10
+    yearRange: 100
   }}
 />
 )
