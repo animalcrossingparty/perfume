@@ -1,0 +1,144 @@
+.bg {
+  background-image: url("../assets/detail-bg.png");
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  display: flex;
+  flex-direction: column;
+}
+
+.survey_box {
+  background-color: rgba(255, 255, 255, 1);
+  width: 70%;
+  margin: 5rem auto;
+  box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.4);
+  padding: 2rem 5rem;
+}
+
+.title {
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 200;
+  padding-bottom: .5rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.content {
+  /* text-align: center; */
+}
+
+.titles {
+  text-align: center;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  /* border-bottom: 1px solid; */
+  text-decoration: underline;
+  text-underline-position: under;
+  color: rgba(0, 0, 0, 0.7);
+  margin-top: 8rem;
+}
+
+.sub_title {
+  margin-top: 1rem;
+  /* margin-bottom: 3rem; */
+  color: gray;
+  font-style: italic;
+  font-size: 13px;
+  text-align: center;
+}
+
+
+/* gender */
+/* before */
+.gender_ .switch label input[type=checkbox]:checked+.lever {
+  background-color: lightblue;
+}
+.gender_ .switch label input[type=checkbox]:checked+.lever:after {
+  background-color: rgb(147, 171, 216);
+}
+
+/* after */
+.gender_ .switch label .lever {
+  background-color: lightpink;
+}
+.gender_ .switch label .lever:after {
+  background-color: rgb(240, 157, 154);
+}
+
+
+/* switch click */
+.gender_ .switch label .lever:before {
+  background-color: rgba(128, 128, 128, 0.5);
+}
+
+/* switch label */
+.gender_ label {
+  color: #fff;
+  font-size: 0;
+}
+
+.gender_ {
+  display: flex;
+  color: gray;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+}
+
+/* .gender > img {
+  width: 20px;
+  height: 19.5px;
+} */
+
+.gender_1 {
+  color: lightcoral;
+  font-weight: 600;
+
+}
+.gender_2 {
+  color: rgb(102, 166, 206);
+  font-weight: 600;
+}
+
+.gender_text {
+  margin-top: .3rem;
+  display: flex;
+  /* border-bottom: 1px solid; */
+}
+
+/* season */
+.season {
+  text-align: center;
+  margin-top: 1rem;;
+}
+.season span {
+  margin-left: 1rem;
+  /* border-bottom: 1px solid; */
+  padding-right: 1rem;
+  font-style: italic;
+  font-weight: 500;
+  color: rgb(70, 58, 58);
+}
+
+/* category */
+/* tags */
+.tags {
+  display: flex;
+  justify-content: center;
+}
+
+/* favorite category select */
+.rem {
+  margin-bottom: 5rem;
+}
+
+.submit_survey {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: .5rem;
+}

@@ -1,0 +1,12 @@
+.select-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.select-wrapper .caret {
+  position: relative;
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+  color: rgb(199, 122, 202);
+}

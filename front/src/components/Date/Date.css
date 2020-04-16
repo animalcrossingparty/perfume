@@ -1,0 +1,43 @@
+.age_ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+  width: 50%;
+  color: gray;
+  font-style: italic;
+  text-align: center;
+}
+
+@media (max-width: 500px) {  
+  .age_ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    width: 850%;
+  }
+}
+
+.age_ .input-field {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.age_ .datepicker-table td.is-selected {
+  background-color: rgb(224, 164, 226);
+}
+
+.age_ .datepicker-date-display {
+  background: linear-gradient(to left, rgb(165, 192, 238), rgb(251, 197, 236)) !important;
+}
+
+.age_ .datepicker-table td.is-today {
+  /* color: rgb(224, 164, 226); */
+  color: rgb(199, 122, 202);
+}
+
+.age_ .dropdown-content li>a, .age .dropdown-content li>span {
+  color: rgb(199, 122, 202);
+}
+
+.age_ .datepicker-cancel, .datepicker-clear, .age .datepicker-today, .datepicker-done {
+  color: rgb(199, 122, 202);
+}
+
+.age_ .month-next:active, .age .month-prev:active  {
+  background-color: rgb(202, 179, 233);
+}

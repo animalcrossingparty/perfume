@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { HomePage, AboutPage, LoginPage, TestPage, DetailPage } from './pages'
+import { HomePage, AboutPage, LoginPage, TestPage, DetailPage, SurveyPage } from './pages'
 
 
 
@@ -13,6 +13,7 @@ function App() {
       <Route exact path="/test" component={TestPage} />
       <Route path="/auth" component={LoginPage} />
       <Route path="/detail" component={DetailPage} />
+      <Route path="/survey" component={SurveyPage} />
     </div>
   );
 }
