@@ -6,7 +6,7 @@ class Brand(models.Model):
     #     return 'brand_image' + instance.brand.name + '/' + randstr(5) + '.' + filename.split('.')[-1]
 
     name = models.CharField(max_length=100)
-    logo_image = models.CharField(max_length=200)
+    logo_image = models.CharField(max_length=200, null=True)
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -18,10 +18,10 @@ class Season(models.Model):
     name = models.CharField(max_length=20)
 
 class Perfume(models.Model):
-    name = models.CharField(max_length=100)
-    launch_date = models.DateField()
+    name = models.CharField(max_length=200)
+    launch_date = models.DateField(null=True)
     thumbnail = models.CharField(max_length=200)
-    gender = models.CharField(max_length=20)
+    gender = models.IntegerField(null=True)
     brand = models.ForeignKey(to=Brand, on_delete=models.PROTECT)
     top_notes = models.ManyToManyField(to=Note, related_name="perfumes_top")
     heart_notes = models.ManyToManyField(to=Note, related_name="perfumes_heart")
