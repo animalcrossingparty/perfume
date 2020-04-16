@@ -13,3 +13,4 @@ export const logout = () => axios.post('/logout');
 
 // perfume
 export const getPerfumes = (page:number, limit:number) => axios.get(`/api/perfumes?_page=${page}&_limit=${limit}`);
+export const getPerfumeDetail = (id:number) => axios.get(`api/perfumes?pk=${id}`)

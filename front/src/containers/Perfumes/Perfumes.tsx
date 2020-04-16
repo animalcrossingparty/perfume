@@ -13,6 +13,7 @@ interface PerfumeProps {
 
 
 class Perfumes extends Component<PerfumeProps> {
+
   initializePerfumeInfo = async () => {
     const {PerfumeActions} = this.props
     const page = queryString.parse(window.location.search).page
@@ -45,7 +46,7 @@ class Perfumes extends Component<PerfumeProps> {
         {
           perfumes.map((perfume, i) =>
           <Col s={2} key={perfume.pk}>
-            <Cards field={perfume.fields} />
+            <Cards field={perfume.fields} id={perfume.pk} />
           </Col>
           )
         }
