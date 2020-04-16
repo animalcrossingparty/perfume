@@ -1,5 +1,24 @@
 .btn_login {
   padding: 0 0 10% 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.btns_home {
+  display: flex;
+  justify-content: space-around;
+}
+
+.parti_sur {
+  font-size: 10px;
+  color: gray;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.parti_text {
+  margin-left: 7rem;
 }
 
 .btn_login .btn {
@@ -31,3 +50,4 @@
   font-style: italic;
   font-weight: 200;
 }
+

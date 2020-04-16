@@ -5,7 +5,7 @@
   background-attachment: fixed;
 }
 
-.center {
+.detail_center {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +26,7 @@
   display: flex;
   justify-content: flex-end;
   color: rgb(218, 88, 99);
-  width: 90%;
+  width: 100%;
 }
 
 .detail_box {
@@ -92,7 +92,7 @@
   }
 
   .like {
-    width: 65%;
+    /* width: 65%; */
   }
 
   .carousel_list {
@@ -125,10 +125,12 @@
 }
 
 .left_box {
+  display: flex;
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0);
   justify-content: space-around;
   height: 100%;
+  padding: 1rem 3rem;
 }
 
 .perfume_id {
@@ -158,6 +160,7 @@
 
 .contexts {
   margin-top: 2vh;
+  text-align: center;
 }
 
 .context {
@@ -204,7 +207,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-content: center;
+  text-align: center;
   height: 200px;
   width: 70%;
   margin-left: 20px;
@@ -229,7 +232,7 @@
 .note_info {
   margin-top: 2%;
   color: rgb(190, 149, 172);
-  font-family: monospace !important;
+  /* font-family: monospace !important; */
 }
 
 .note_img {
@@ -257,13 +260,13 @@
 .category {
   margin-top: 5%;
   color: rgb(190, 149, 149);
-  font-family: monospace;
+  /* font-family: monospace; */
 }
 
 .availablity {
   margin-top: 5%;
   color: rgb(190, 149, 149);
-  font-family: monospace;
+  /* font-family: monospace; */
 }
 
 .carousel_br {
@@ -320,7 +323,7 @@
 }
 
 .write_comment {
-  background-color: rgba(45, 42, 46, 0.98);
+  background-color: rgba(90, 80, 80, 0.9);
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
   /* width: 80vh; */
   /* width: 360px; */
@@ -336,17 +339,19 @@
 
 .row_comment > span {
   margin-right: 1rem;
-  color: #fff;
+  color: rgb(199, 180, 178);
 }
 
 .row_comment > textarea {
   width: 70vh;
   height: 70px;
   margin-top: 1rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgb(199, 180, 178);
+  border: 1px solid rgb(199, 180, 178);
   border-radius: 5px;
-  color: white;
+  color: rgb(83, 75, 74);
+  padding: .5rem;
+  font-weight: 500;
 }
 
 .StarRating {
@@ -359,13 +364,11 @@
 }
 
 .StarRating > button {
-  background-color: rgb(197, 139, 192);
+  background-color: rgb(199, 180, 178);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
 }
 
-.btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
-  background-color: rgb(131, 99, 139);
-}
-
-.btn:hover, .btn-large:hover, .btn-small:hover {
-  background-color: rgb(184, 109, 180);
+.StarRating > .btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
+  background-color: rgb(145, 134, 125);
 }

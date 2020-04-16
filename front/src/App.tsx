@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { HomePage, AboutPage, LoginPage, TestPage, DetailPage, PerfumePage } from './pages'
+import { HomePage, AboutPage, LoginPage, TestPage, DetailPage, PerfumePage, SurveyPage } from './pages'
 import storage from 'lib/storage';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

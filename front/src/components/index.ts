@@ -8,6 +8,7 @@ import PerfumesList from './PerfumesList/PerfumesList'
 import Date from './Date/Date'
 import Categories from './Categories/Categories'
 import NoteTags from './Note/NoteTags'
+import SearchBar from './SearchBar/SearchBar'
 
 export {
     Header,
@@ -16,8 +17,9 @@ export {
     StarRating,
     Carousel,
     Cards,
-    PerfumesList
+    PerfumesList,
     Date,
     Categories,
     NoteTags,
+    SearchBar,
 };

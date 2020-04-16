@@ -142,3 +142,8 @@
   justify-content: flex-end;
   margin-bottom: .5rem;
 }
+
+.submit_survey > button:focus {
+  background-color: rgb(105, 85, 85);
+}
+

@@ -13,3 +13,11 @@
 .btn:hover {
   background-color: rgb(177, 166, 166) !important;
 }
+
+.btn > a {
+  color: white;
+}
+
+.MuiIconButton-root {
+  color: rgba(255, 0, 0, 0.54) !important;
+}

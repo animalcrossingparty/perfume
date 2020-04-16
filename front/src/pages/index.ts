@@ -12,6 +12,6 @@ export {
   LoginPage,
   TestPage,
   DetailPage,
-  PerfumePage
+  PerfumePage,
   SurveyPage,
 };

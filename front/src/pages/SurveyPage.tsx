@@ -2,6 +2,7 @@ import React from 'react';
 import { Header, Date, Categories } from '../components'
 import { Switch, Checkbox } from 'react-materialize';
 import { Button } from 'react-materialize';
+import { Link } from 'react-router-dom'
 import '../css/SurveyPage.css'
 
 function SurveyPage () {
@@ -95,7 +96,9 @@ return (
     </div>
 
     <div className="submit_survey">
-      <Button>SUBMIT</Button>
+      <Link to ="/">
+        <Button>SUBMIT</Button>
+      </Link>
     </div>
   </div>
 </div>
