@@ -3,6 +3,7 @@ import AboutPage from './AboutPage'
 import LoginPage from './LoginPage'
 import TestPage from './TestPage'
 import DetailPage from './DetailPage'
+import PerfumePage from './PerfumePage'
 import SurveyPage from './SurveyPage'
 
 export {
@@ -11,5 +12,6 @@ export {
   LoginPage,
   TestPage,
   DetailPage,
+  PerfumePage
   SurveyPage,
 };

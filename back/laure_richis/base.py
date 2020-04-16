@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!1rk8bbc70u81_tjqj1v)&ar=kz%kua-*l!ru851(105*&3ki&'
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [os.environ.get('HOST', '*'), ]
 
 
 # Application definition
