@@ -17,6 +17,9 @@ def perfumes_list(request):
 def perfume_detail(request, perfume_pk):
     pass
 
+def perfume_survey(request):
+    pass
+
 def reviews_list(request, perfume_pk):
     pass
 

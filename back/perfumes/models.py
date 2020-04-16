@@ -14,6 +14,9 @@ class Category(models.Model):
 class Note(models.Model):
     name = models.CharField(max_length=100)
 
+class Season(models.Model):
+    name = models.CharField(max_length=20)
+
 class Perfume(models.Model):
     name = models.CharField(max_length=100)
     launch_date = models.DateField()
@@ -25,6 +28,7 @@ class Perfume(models.Model):
     base_notes = models.ManyToManyField(to=Note, related_name="perfumes_base")
     categories = models.ManyToManyField(to=Category)
     availibility = models.BooleanField()
+    season = models.ManyToManyField(to=Season)
 
 class Review(models.Model):
     user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.PROTECT)

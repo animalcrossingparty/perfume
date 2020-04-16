@@ -15,8 +15,20 @@ with open('reviews_all.json', newline='', encoding='utf-8') as json_file:
     data = json.load(json_file)
 
 reviews = data['reviews']
+'''
+리빙 포인트
+> 배가 고플 땐 밥을 먹으면 좋다.
+> 졸릴땐 이불을 덮으면 좋다.
+> 삼성 서류 마감은 오후 다섯시입니다.
+> 한시에 제출할거에요. 78,100원
 
+'''
 for i in range(len(reviews)):
+    '''
+    객체 지향 해주세요.
+    for문 슬퍼요.*args 따라가기
+    
+    '''
     list = []
     if reviews[i]['perfume_id'] == 26150086:
         content = reviews[i]['content']

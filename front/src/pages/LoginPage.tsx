@@ -6,14 +6,14 @@ import { Route } from 'react-router-dom';
 import { LoginBox } from 'components/Auth';
 import { Login, Register } from 'containers/Auth';
 import styled from 'styled-components';
-import bg from 'assets/login-background.jpg';
+import bg from 'assets/detail-bg2.png';
 
 const LoginPageBackground = styled.div`
   width: 100vw;
   height: 100vh;
   background-image: url(${bg});
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
 `;
 
 class LoginPage extends Component {

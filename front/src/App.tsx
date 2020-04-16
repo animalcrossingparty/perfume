@@ -9,6 +9,7 @@ interface AppProps {
   UserActions: any
 }
 
+
 class App extends Component<AppProps> {
   initializeUserInfo = async () => {
     const loggedInfo = storage.get('loggedInfo'); // 로그인 정보를 로컬스토리지에서 가져옵니다.
@@ -37,6 +38,7 @@ class App extends Component<AppProps> {
         <Route exact path="/perfume" component={PerfumePage} />
         <Route path="/auth" component={LoginPage} />
         <Route path="/detail" component={DetailPage} />
+        <Route path="/survey" component={SurveyPage} />
       </div>
     )
   };

@@ -1,4 +1,4 @@
-> **콘텐츠 기반 필터링(content-based-filtering)**
+> **콘텐츠 기반 필터링(Content-based-filtering)**
 
 - 제품의 상세정보를 분석하여 추천
 - 초기에 사용자의 행동 데이터가 적더라도 추천 가능
@@ -19,5 +19,7 @@ ex1) `Netflix`
 
 - 90년대 영화 x -> 90년 대 코미디, 90년대 블랙 코미디, 여성 주인공 코미디 등등..
 
+1) `Item-Based Collaborative Filtering`
 
-
+- 아이템들 간의 유사도를 계산
+- 1에 가까울수록 유사도가 높음
