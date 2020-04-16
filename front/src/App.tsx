@@ -5,6 +5,8 @@ import storage from 'lib/storage';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActions from 'redux/modules/user';
+
+
 interface AppProps {
   UserActions: any
 }
@@ -35,7 +37,7 @@ class App extends Component<AppProps> {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/test" component={TestPage} />
-        <Route exact path="/perfume" component={PerfumePage} />
+        <Route path="/perfume" component={PerfumePage} />
         <Route path="/auth" component={LoginPage} />
         <Route path="/detail" component={DetailPage} />
         <Route path="/survey" component={SurveyPage} />

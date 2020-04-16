@@ -29,10 +29,7 @@ return (
   </div>
   <h3 className="perfume_cards_title center">PERFUME LIST</h3>
   <div className="row ">
-    <Cards />
-    <Cards />
-    <Cards />
-    <Cards />
+    {/* <Cards></Cards> */}
   </div>
 </div>
 );

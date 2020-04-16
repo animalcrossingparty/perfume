@@ -2,7 +2,7 @@ import React from 'react'
 import Icon from '@material-ui/core/Icon'
 
 // carousel
-import Carousel, { Dots } from '@brainhubeu/react-carousel';
+import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
 
 export default () => (

@@ -10,8 +10,14 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': 'password',
         'HOST': 'localhost',
-        'PORT': '3306',
-    }
+        'PORT': '3307',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4',  # perfume name 중 emoji가 섞여 있는 향수가 있어서 인코딩 바꿨어요 
+            'use_unicode': True,
+        },
+    },
+    
 }
 
 # SECURITY WARNING: don't run with debug turned on in production!
