@@ -2,8 +2,11 @@ from django.db import models
 from django.conf import settings
 
 class Brand(models.Model):
+    # def brand_image_path(self, instance, filename):
+    #     return 'brand_image' + instance.brand.name + '/' + randstr(5) + '.' + filename.split('.')[-1]
+
     name = models.CharField(max_length=100)
-    logo_image = models.ImageField()
+    logo_image = models.CharField(max_length=200)
 
 class Category(models.Model):
     name = models.CharField(max_length=50)

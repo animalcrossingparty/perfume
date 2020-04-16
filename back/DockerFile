@@ -1,0 +1,4 @@
+FROM python:3.6.8
+WORKDIR /back
+ADD    requirements_docker.txt    /back/
+RUN    pip install -r requirements_docker.txt

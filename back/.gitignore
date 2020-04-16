@@ -173,6 +173,7 @@ pyvenv.cfg
 .env
 .venv
 env/
+docker_env/
 venv/
 ENV/
 env.bak/
