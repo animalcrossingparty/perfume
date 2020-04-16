@@ -3,7 +3,6 @@ import { Header } from 'components/'
 import { Detail } from 'containers/Detail'
 import '../css/DetailPage.css'
 
-
 function DetailPage() {
 return (
 <div className="bg-detail">
