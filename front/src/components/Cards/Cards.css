@@ -13,3 +13,17 @@
 .btn:hover {
   background-color: rgb(177, 166, 166) !important;
 }
+
+.btn > a {
+  color: white;
+}
+
+.MuiIconButton-root {
+  color: rgba(255, 0, 0, 0.54) !important;
+}
+
+.card-image {
+  width: 100%;
+  padding-bottom: 70%;
+  height: 0;
+}
