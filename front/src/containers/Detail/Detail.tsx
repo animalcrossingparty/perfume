@@ -7,6 +7,7 @@ import queryString from 'query-string'
 import { Star, Carousel, StarRating } from 'components/'
 import { Button } from 'react-materialize';
 import { withRouter } from 'react-router'
+import '../../css/DetailPage.css'
 
 interface DetailProps {
   history: any,
@@ -60,7 +61,7 @@ class Detail extends Component<DetailProps> {
 
   render() {
     return (
-    <div className="center">
+    <div className="center detail_center">
     <div className="detail_box">
       {/* 향수 div의 왼쪽 (향수 이름, 사진) */}
       <div className="left_box">
@@ -195,10 +196,9 @@ class Detail extends Component<DetailProps> {
         <div className="StarRating">
           <StarRating />
           <Button
-          color="danger"
             node="button"
             waves="light">
-            <i>SUBMIT</i>
+            SUBMIT
           </Button>
         </div>
       </div>
