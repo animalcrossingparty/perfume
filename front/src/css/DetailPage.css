@@ -342,6 +342,11 @@
   color: rgb(199, 180, 178);
 }
 
+.row_comment > i {
+  margin-right: 1rem;
+  color: rgb(199, 180, 178);
+}
+
 .row_comment > textarea {
   width: 70vh;
   height: 70px;
