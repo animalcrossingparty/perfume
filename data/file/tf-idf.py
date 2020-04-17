@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-
+import json
 
 def reviews_fields():
     with open('../json/reviews_all_re-formatted.json', encoding='utf-8', mode='r') as f:
