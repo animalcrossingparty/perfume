@@ -30,11 +30,11 @@ export default function Cards({field = defaultField, id = 1}: EachPerfumeProps) 
       closeIcon={<Icon>close</Icon>}
       header={<CardTitle image={field.thumbnail} reveal waves="light"/>}
       reveal={<p>워드클라우드가 들어갈 자리입니다</p>}
-      revealIcon={<Icon>more_vert</Icon>}
       title={field.name}
+      revealIcon={<Icon></Icon>}
       >
         <p>
-          <p>{field.launch_date || '(출시일 정보 없음)'}</p>
+          <p>{field.launch_date? field.launch_date.substr(0,4) : '(출시일 정보 없음)'}</p>
           <p>For {field.gender}</p>
           <Link to={`/detail/${id}`}>
             {field.name} 더 보기

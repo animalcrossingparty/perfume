@@ -24,6 +24,26 @@
 
 .card-image {
   width: 100%;
-  padding-bottom: 70%;
-  height: 0;
+}
+.card-image > img {
+  height: 20rem;
+}
+
+.card-content {
+  background: lightpink;
+}
+
+.pagenation-container {
+  text-align: center;
+}
+
+.card .card-title {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-title > i {
+  display: inline;
 }
