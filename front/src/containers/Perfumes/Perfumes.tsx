@@ -17,7 +17,7 @@ class Perfumes extends Component<PerfumeProps> {
   initializePerfumeInfo = async () => {
     const { PerfumeActions } = this.props
     const page = queryString.parse(window.location.search).page
-    await PerfumeActions.getPerfumeInfo(page, 12);
+    await PerfumeActions.getPerfumeInfo(page);
   }
 
   componentDidMount() {
@@ -27,7 +27,7 @@ class Perfumes extends Component<PerfumeProps> {
   handlePaging = async (selectedPage) => {
     window.history.pushState('', '', `/perfume?page=${selectedPage}`);
     const { PerfumeActions } = this.props
-    await PerfumeActions.getPerfumeInfo(selectedPage, 12);
+    await PerfumeActions.getPerfumeInfo(selectedPage);
   }
 
   render() {
@@ -64,8 +64,8 @@ class Perfumes extends Component<PerfumeProps> {
             <Row className="wrap">
               {
                 perfumes.map((perfume, i) =>
-                  <Col s={12} m={6} l={4} xl={3} key={perfume.pk}>
-                    <Cards field={perfume.fields} id={perfume.pk} />
+                  <Col s={12} m={6} l={4} xl={3} key={perfume.id}>
+                    <Cards field={perfume} id={perfume.id} />
                   </Col>
                 )
               }
