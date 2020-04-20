@@ -2,6 +2,9 @@
 # Created by https://www.gitignore.io/api/venv,django,python,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=venv,django,python,visualstudiocode
 
+# local 설정 바꾸기 귀찮아서 추가합니당
+laure_richis/local.py
+
 ### Django ###
 *.log
 *.pot

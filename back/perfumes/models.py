@@ -14,6 +14,9 @@ class Category(models.Model):
 class Note(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 class Season(models.Model):
     name = models.CharField(max_length=20)
 
@@ -29,6 +32,15 @@ class Perfume(models.Model):
     categories = models.ManyToManyField(to=Category)
     availibility = models.BooleanField()
     season = models.ManyToManyField(to=Season)
+
+    def t_notes(self):
+        return ",".join([str(i) for i in self.top_notes.all()])
+
+    def h_notes(self):
+        return ",".join([str(i) for i in self.heart_notes.all()])
+
+    def b_notes(self):
+        return ",".join([str(i) for i in self.base_notes.all()])
 
 class Review(models.Model):
     user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
