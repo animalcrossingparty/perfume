@@ -49,8 +49,8 @@ def check_duplicate_email(request, email):
 	try:
 		get_user_model().objects.get(email=email)
 	except:
-		return Response(data={'email': 'success'}, status=200)
-	return Response(data={'email': 'already existing email address'}, status=409)
+		return Response(data={'email': False}, status=200)
+	return Response(data={'exists': True}, status=409)
 
 
 @api_view(['POST'])
