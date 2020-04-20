@@ -5,4 +5,6 @@ urlpatterns = [
     path('login/', views.login),
     path('exists/email/<str:email>/', views.check_duplicate_email),
     path('signup/', views.signup),
+    path('users/', views.users_list),
+    path('user/', views.user_detail),
 ]
