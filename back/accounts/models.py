@@ -20,6 +20,7 @@ class User(AbstractUser):
     role = models.IntegerField(default=0)
     age = models.IntegerField(default=0)
     like_perfumes = models.ManyToManyField(to=Perfume, related_name='like_users')
+    points = models.IntegerField(default=0)
 
 class Survey(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.PROTECT)

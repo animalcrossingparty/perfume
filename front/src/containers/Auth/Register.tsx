@@ -41,14 +41,14 @@ class Register extends Component<RegisterProps> {
         },
         username: (value) => {
             if (!isAlphanumeric(value) || !isLength(value, { min: 4, max: 15 })) {
-                this.setError('아이디는 4~15 글자의 알파벳 혹은 숫자로 이뤄져야 합니다.');
+                this.setError('닉네임은 4~15 글자의 알파벳 혹은 숫자로 이뤄져야 합니다.');
                 return false;
             }
             return true;
         },
         password: (value) => {
-            if (!isLength(value, { min: 60000 })) {
-                this.setError('비밀번호를 60000자 이상 입력하세요.');
+            if (!isLength(value, { min: 6 })) {
+                this.setError('비밀번호를 6자 이상 입력하세요.');
                 return false;
             }
             this.setError(null); // 이메일과 아이디는 에러 null 처리를 중복확인 부분에서 하게 됩니다
@@ -66,7 +66,7 @@ class Register extends Component<RegisterProps> {
     checkEmailExists = debounce(async (email) => {
         const { AuthActions } = this.props;
         try {
-            await AuthActions.checkEmailExists(email);
+            await AuthActions.checkEmailExists(email)
             if (this.props.exists.get('email')) {
                 this.setError('이미 존재하는 이메일입니다.');
             } else {
@@ -137,7 +137,7 @@ class Register extends Component<RegisterProps> {
             storage.set('loggedInfo', loggedInfo);
             UserActions.setLoggedInfo(loggedInfo);
             UserActions.setValidated(true);
-            history.push('/'); // 회원가입 성공시 홈페이지로 이동
+            history.push('/login'); // 회원가입 성공시 로그인페이지로 이동
         } catch(e) {
             // 에러 처리하기
             if(e.response.status === 409) {
@@ -157,25 +157,25 @@ class Register extends Component<RegisterProps> {
                 <LabelInput
                     label="이메일 주소"
                     name="email"
-                    placeholder="ex) perfume@liche.com"
+                    placeholder="ex) example@perfume.com"
                     value={email} onChange={handleChange} />
                 <LabelInput
                     label="별명"
                     name="username"
-                    placeholder="ex) 향수왕"
+                    placeholder="ex) laure23"
                     value={username}
                     onChange={handleChange} />
                 <LabelInput
                     label="비밀번호"
                     name="password"
-                    placeholder="ex) 숫자 + 영문 + 특수문자 + 한자 (250자리 이상)"
+                    placeholder="******"
                     type="password"
                     value={password}
                     onChange={handleChange} />
                 <LabelInput
                     label="비밀번호 확인"
                     name="passwordConfirm"
-                    placeholder="ex) 숫자 + 영문 + 특수문자 + 한자 (250자리 이상)"
+                    placeholder="******"
                     type="password"
                     value={passwordConfirm}
                     onChange={handleChange} />

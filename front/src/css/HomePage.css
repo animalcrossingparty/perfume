@@ -6,6 +6,7 @@
     margin: 0
 }
 
+
 .footer_container {
     width: 100%;
 }
@@ -13,4 +14,38 @@
 .page-footer {
     /* background-color: #ee6e73; */
     background-color: #c78b8d88;
+}
+
+.intro-box {
+    text-align: center;
+    height: 300px;
+    box-shadow: 0 0  5px lightgray;
+}
+
+.intro-box > i {
+    color: #ee6e73;
+    text-shadow: 2px 2px 6px gray;
+}
+
+.intro-box > h4 {
+    margin-top: 0.5rem;
+    font-weight: lighter;
+    border-bottom: 1px dotted #ee6e73;
+    margin: 0 20%;
+    color:  #3f3f3f;
+}
+
+.intro-box > p {
+    padding: 0 10%;
+    text-align: center;
+    color: gray;
+}
+
+.home-section-devider {
+    font-size: 2.5rem;
+    font-weight: lighter;
+    margin: 2rem 0; 
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 4px dotted #ee6e73
 }
