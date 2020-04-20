@@ -1,5 +1,4 @@
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
 import json
 import random
 from pprint import pprint
@@ -16,7 +15,7 @@ for review in data:
         review['fields']['rate'] = random.randrange(6, 10, 1)
 
 
-with open('../json/reviews_all_re-formatted.json', 'w', encoding="utf-8") as outfile:
+with open('../json/reviews_all_re-formatted_sample.json', 'w', encoding="utf-8") as outfile:
     json.dump(data, outfile, indent="\t")
 # dataframe = pd.DataFrame(data=data['reviews'], columns=data['reviews'][0].keys())
 # print(dataframe.describe())
