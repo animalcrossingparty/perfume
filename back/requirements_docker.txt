@@ -103,6 +103,7 @@ setoptconf==0.2.0
 six==1.13.0
 snowballstemmer==2.0.0
 soupsieve==1.9.4
+SQLAlchemy==1.3.16
 sqlparse==0.3.0
 terminado==0.8.2
 testpath==0.4.2
