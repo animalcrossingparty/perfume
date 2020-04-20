@@ -3,161 +3,184 @@
         "pk": 1,
         "model": "perfumes.note",
         "fields": {
-            "name": "absinthe"
+            "name": "absinthe",
+            "kor_name": "압생트"
         }
     },
     {
         "pk": 2,
         "model": "perfumes.note",
         "fields": {
-            "name": "acacia"
+            "name": "acacia",
+            "kor_name": "아카시아"
         }
     },
     {
         "pk": 3,
         "model": "perfumes.note",
         "fields": {
-            "name": "acai berry"
+            "name": "acai berry",
+            "kor_name": "아사이베리"
         }
     },
     {
         "pk": 4,
         "model": "perfumes.note",
         "fields": {
-            "name": "acerola"
+            "name": "acerola",
+            "kor_name": "아세로라"
         }
     },
     {
         "pk": 5,
         "model": "perfumes.note",
         "fields": {
-            "name": "acerola blossom"
+            "name": "acerola blossom",
+            "kor_name": "아세로라 블라썸"
         }
     },
     {
         "pk": 6,
         "model": "perfumes.note",
         "fields": {
-            "name": "acetyl furan"
+            "name": "acetyl furan",
+            "kor_name": "아세틸 푸란"
         }
     },
     {
         "pk": 7,
         "model": "perfumes.note",
         "fields": {
-            "name": "agarwood (oud)"
+            "name": "agarwood (oud)",
+            "kor_name": "아갈우드"
         }
     },
     {
         "pk": 8,
         "model": "perfumes.note",
         "fields": {
-            "name": "agave"
+            "name": "agave",
+            "kor_name": "아게이브"
         }
     },
     {
         "pk": 9,
         "model": "perfumes.note",
         "fields": {
-            "name": "agave nectar"
+            "name": "agave nectar",
+            "kor_name": "아게이브 넥타르"
         }
     },
     {
         "pk": 10,
         "model": "perfumes.note",
         "fields": {
-            "name": "aglaia"
+            "name": "aglaia",
+            "kor_name": "아글라이아"
         }
     },
     {
         "pk": 11,
         "model": "perfumes.note",
         "fields": {
-            "name": "akigalawood"
+            "name": "akigalawood",
+            "kor_name": "아키갈라우드"
         }
     },
     {
         "pk": 12,
         "model": "perfumes.note",
         "fields": {
-            "name": "aldehydes"
+            "name": "aldehydes",
+            "kor_name": "알데하이드"
         }
     },
     {
         "pk": 13,
         "model": "perfumes.note",
         "fields": {
-            "name": "alder"
+            "name": "alder",
+            "kor_name": "알더"
         }
     },
     {
         "pk": 14,
         "model": "perfumes.note",
         "fields": {
-            "name": "algae"
+            "name": "algae",
+            "kor_name": "알게"
         }
     },
     {
         "pk": 15,
         "model": "perfumes.note",
         "fields": {
-            "name": "allspice"
+            "name": "allspice",
+            "kor_name": "올스파이스"
         }
     },
     {
         "pk": 16,
         "model": "perfumes.note",
         "fields": {
-            "name": "almond"
+            "name": "almond",
+            "kor_name": "아몬드"
         }
     },
     {
         "pk": 17,
         "model": "perfumes.note",
         "fields": {
-            "name": "almond blossom"
+            "name": "almond blossom",
+            "kor_name": "아몬드 블라썸"
         }
     },
     {
         "pk": 18,
         "model": "perfumes.note",
         "fields": {
-            "name": "almond tree"
+            "name": "almond tree",
+            "kor_name": "아몬드 트리"
         }
     },
     {
         "pk": 19,
         "model": "perfumes.note",
         "fields": {
-            "name": "aloe vera"
+            "name": "aloe vera",
+            "kor_name": "알로에 베라"
         }
     },
     {
         "pk": 20,
         "model": "perfumes.note",
         "fields": {
-            "name": "aluminum"
+            "name": "aluminum",
+            "kor_name": "알루미늄"
         }
     },
     {
         "pk": 21,
         "model": "perfumes.note",
         "fields": {
-            "name": "alumroot"
+            "name": "alumroot",
+            "kor_name": "앨럼루트"
         }
     },
     {
         "pk": 22,
         "model": "perfumes.note",
         "fields": {
-            "name": "alyssum"
+            "name": "alyssum",
+            "kor_name": "알리섬"
         }
     },
     {
         "pk": 23,
         "model": "perfumes.note",
         "fields": {
-            "name": "amaranth"
+            "name": "amaranth",
+            "kor_name": "아마란스"
         }
     },
     {
