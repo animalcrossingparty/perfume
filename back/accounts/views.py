@@ -29,7 +29,7 @@ def login(request):
 	password: '패스워드'
 	'''
 	
-	user = authenticate(request=request, username=request.data.get('username'), password=request.data.get('password'))
+	user = authenticate(request=request, username=request.data.get('email'), password=request.data.get('password'))
 	if user is None:
 		return Response(status=401)
 		
