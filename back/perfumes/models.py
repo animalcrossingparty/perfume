@@ -49,3 +49,4 @@ class Review(models.Model):
     content = models.TextField()
     rate = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    # 좋아요 누른 유저 칼럼 accounts.user에 만들어 놓았습니당

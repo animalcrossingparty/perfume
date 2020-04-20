@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import Http404
-from .serializers import UserSerializers, PayloadSerializers
+from .serializers import UserBriefSerializers, UserSerializers, PayloadSerializers
 from django.contrib.auth import get_user_model, authenticate
 from time import time
 from django.conf import settings
@@ -64,13 +64,14 @@ def signup(request):
 		return Response(status=400)
 	user.set_password(request.data['password'])
 	user.save()
-	return Response(data={'signup': 'success'}, status=200)
+	return Response(status=200)
 
 
 @api_view(['GET'])
 def users_list(request):
-	pass
-
+	users = get_user_model().objects.order_by('-points')[:20]
+	serializers = UserBriefSerializers(users, many=True)
+	return Response(serializers.data, status=200)
 
 @api_view(['GET', 'PUT'])
 def user_detail(request):
@@ -83,15 +84,15 @@ def user_detail(request):
 	if request.method == 'GET':
 		serializers = UserSerializers(user)
 		return Response(serializers.data, status=200)
-	else:  # PUT
-		# review.content = data.get('content')
-        # review.rate = data.get('rate')
-        # review.save()
-		pass
-
-
-'''
-User CRUD
-회원가입
-User 랭킹 리스트
-'''
+	# PUT
+	data = request.POST
+	user.username = data.get('username')
+	user.profile_image = data.get('profile_image')
+	user.country = data.get('country')
+	user.gender = data.get('gender')
+	user.age = data.get('age')
+	try:
+		user.save()
+	except:  # 글자 수를 넘거나 뭔가 문제가 생겨서 저장이 안 되면
+		return Response(status=400)
+	return Response(status=200)
