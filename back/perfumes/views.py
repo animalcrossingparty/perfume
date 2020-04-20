@@ -135,7 +135,7 @@ def review_detail(request, perfume_pk, review_pk):
     else:  # 존재하면
         if request.method == 'GET':
             serializer = ReviewDetailSerializers(review)
-            return Response(serializer.data)
+            return Response(serializer.data, status=200)
         else:  # PUT / DELETE 일 때
             try:  # 회원인지 verify
                 encoded_jwt = request.headers['Token']
@@ -150,10 +150,9 @@ def review_detail(request, perfume_pk, review_pk):
                         review.content = data.get('content')
                         review.rate = data.get('rate')
                         review.save()
-                        return Response(status=200)
                     else:  # DELETE일 때
                         review.delete()
-                        return Response(status=200)
+                    return Response(status=200)
                 else:
                     return Reponse(status=403)
 
