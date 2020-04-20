@@ -1,23 +1,25 @@
 import pandas as pd
+import json
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-import json
+import warnings
 
-def reviews_fields():
-    with open('../json/reviews_all_re-formatted.json', encoding='utf-8', mode='r') as f:
-        reviews_all = json.load(f)
-    reviews_fields = [i['fields'] for i in reviews_all]
-    return pd.DataFrame(reviews_fields)
-
-
-def perfumes_fields():
-    with open('../json/new_perfumes.json', encoding='utf16', mode='r') as f:
-        perfumes = json.load(f)
-    perfumes_fields = [i['fields'] for i in perfumes]
-    return pd.DataFrame(perfumes_fields)
+warnings.filterwarnings(action='ignore')
 
 
 class Tf_idf():
+
+    def reviews_fields(self):
+        with open('../json/reviews_all_re-formatted.json', encoding='utf-8', mode='r') as f:
+            reviews_all = json.load(f)
+        reviews_fields = [i['fields'] for i in reviews_all]
+        return pd.DataFrame(reviews_fields)
+
+    def perfumes_fields(self):
+        with open('../json/new_perfumes.json', encoding='utf16', mode='r') as f:
+            perfumes = json.load(f)
+        perfumes_fields = [i['fields'] for i in perfumes]
+        return pd.DataFrame(perfumes_fields)
 
     def item(self, id):
         return reviews_fields.loc[reviews_fields['perfume'] == id]['content'].tolist()[0]
@@ -58,10 +60,9 @@ class Tf_idf():
 
 
 if __name__ == '__main__':
-
-    reviews_fields = reviews_fields()
-    perfumes_fields = perfumes_fields()
     tf_idf = Tf_idf()
+    reviews_fields = tf_idf.reviews_fields()
+    perfumes_fields = tf_idf.perfumes_fields()
 
     perfume_num = 26150183
     find_num = 3
