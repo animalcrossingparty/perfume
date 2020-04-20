@@ -126,17 +126,17 @@ def review_create(request, perfume_pk):
         encoded_jwt = request.headers['Token']
         decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
         user = get_user_model().objects.get(pk=decoded['userID'])
-    except:
+    except:  # 회원 아니면
         return Response(status=401)
-    else:
-        data = request.POST
-        review = Review.objects.create(
-            user=user,
-            perfume_id=perfume_pk,
-            content=data.get('content'),
-            rate=data.get('rate')
-        )
-        return Response(data={'review_id': review.pk}, status=200)
+    # 회원이면
+    data = request.POST
+    review = Review.objects.create(
+        user=user,
+        perfume_id=perfume_pk,
+        content=data.get('content'),
+        rate=data.get('rate')
+    )
+    return Response(data={'review_id': review.pk}, status=200)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def review_detail(request, perfume_pk, review_pk):
@@ -144,29 +144,30 @@ def review_detail(request, perfume_pk, review_pk):
         review = Review.objects.get(pk=review_pk)
     except:
         return Response(status=404)
-    else:  # 존재하면
-        if request.method == 'GET':
-            serializer = ReviewDetailSerializers(review)
-            return Response(serializer.data, status=200)
-        else:  # PUT / DELETE 일 때
-            try:  # 회원인지 verify
-                encoded_jwt = request.headers['Token']
-                decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-                user_cur = get_user_model().objects.get(pk=decoded['userID'])
-            except:
-                return Response(status=401)
-            else:  # 회원이면
-                if user_cur == review.user:  # 작성자 맞으면
-                    data = request.POST
-                    if request.method == 'PUT':
-                        review.content = data.get('content')
-                        review.rate = data.get('rate')
-                        review.save()
-                    else:  # DELETE일 때
-                        review.delete()
-                    return Response(status=200)
-                else:
-                    return Response(status=403)
+    # 존재하면
+    if request.method == 'GET':
+        serializer = ReviewDetailSerializers(review)
+        return Response(serializer.data, status=200)
+    # PUT / DELETE 일 때
+    try:  # 회원인지 verify
+        encoded_jwt = request.headers['Token']
+        decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
+        user_cur = get_user_model().objects.get(pk=decoded['userID'])
+    except:  # 회원 아니면
+        return Response(status=401)
+    # 회원이면
+    if user_cur != review.user:  # 작성자 본인 아니면
+        return Response(status=403)
+    # 작성자 본인 맞으면
+    data = request.POST
+    if request.method == 'PUT':
+        review.content = data.get('content')
+        review.rate = data.get('rate')
+        review.save()
+    else:  # DELETE일 때
+        review.delete()
+    return Response(status=200)
+    
 
 
 
