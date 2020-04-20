@@ -10,7 +10,7 @@ DATABASES = {
         'PASSWORD': '1',
     }
 }
-
+STATIC_DIR = os.path.join(BASE_DIR, 'code', 'static')
 DEBUG = True
 
 CORS_ORIGIN_WHITELIST = (
