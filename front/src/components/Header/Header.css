@@ -31,3 +31,13 @@ nav ul a {
   padding: 0 15px;
   cursor: pointer;
 }
+
+nav ul div {
+  transition: background-color .45s;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #4a4a4a;
+  display: block;
+  padding: 0 15px;
+  cursor: pointer;
+}

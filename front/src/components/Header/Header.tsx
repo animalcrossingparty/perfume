@@ -1,10 +1,35 @@
-import React from 'react'
+import React, {Component} from 'react'
+import { connect } from 'react-redux';
+import * as userActions from 'redux/modules/user';
+import { bindActionCreators } from 'redux';
+import storage from 'lib/storage';
 import 'materialize-css';
 import { Link } from 'react-router-dom'
 import { Navbar, Icon } from 'react-materialize';
 import './Header.css'
 
-export default () => (
+interface HeaderProps {
+    UserActions: any,
+		user: any,
+    history: any,
+}
+class Header extends Component<HeaderProps>{
+
+  handleLogout = async () => {
+    const { UserActions, history } = this.props;
+    try {
+        await UserActions.logout();
+				history.push('/')
+    } catch (e) {
+        console.log(e);
+    }
+
+    storage.remove('loggedInfo');
+    window.location.href = '/'; // 홈페이지로 새로고침
+}
+
+ render() {
+   return(
   <Navbar
     alignLinks="right"
     brand={<Link className="brand-logo" to="/">LAURE RICHIS</Link>}
@@ -26,8 +51,25 @@ export default () => (
     <Link to="/">NEWS</Link>
     <Link to="/">ABOUT</Link>
     <Link to="/survey">SURVEY</Link>
-    <Link to="/auth/login">
+		{ this.props.user.get('logged') 
+				? (<div onClick={this.handleLogout}>
+						{this.props.user.getIn(['loggedInfo', 'username'])} <span >(로그아웃)</span>
+				</div> )
+				: <Link to="/auth/login">
       LOGIN
     </Link>
+		}
+
   </Navbar>
 );
+ }
+}
+
+export default connect(
+    (state) => ({
+        user: state.user
+    }),
+    (dispatch) => ({
+        UserActions: bindActionCreators(userActions, dispatch)
+    })
+)(Header);
