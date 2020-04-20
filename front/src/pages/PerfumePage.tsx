@@ -1,20 +1,18 @@
 import React from 'react'
 import { Header } from '../components'
-import {Perfumes} from 'containers/Perfumes'
-import { Link } from 'react-router-dom'
-import { Button } from 'react-materialize';
+import { Perfumes } from 'containers/Perfumes'
 import '../css/HomePage.css'
 
 function HomePage() {
   return (
     <div>
       <Header />
-      <div className="center btn_login">
-        <Link to="/auth/login">
-          <Button>LOGIN</Button>
-        </Link>
+      <div className="container">
+        <div>
+          <h1>드롭다운 // 검색바</h1>
+        </div>
+        <Perfumes />
       </div>
-      <Perfumes/>
     </div>
   );
 }

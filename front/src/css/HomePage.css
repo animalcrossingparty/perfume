@@ -1,53 +1,7 @@
-.btn_login {
-  padding: 0 0 10% 0 !important;
-  display: flex;
-  flex-direction: column;
+.footer-teammates {
+    text-align: center;
 }
 
-.btns_home {
-  display: flex;
-  justify-content: space-around;
+.footer-teammates>p {
+    margin: 0
 }
-
-.parti_sur {
-  font-size: 10px;
-  color: gray;
-  margin-top: 3rem;
-  display: flex;
-  justify-content: space-around;
-}
-
-.parti_text {
-  margin-left: 7rem;
-}
-
-.btn_login .btn {
-  background-color: rgb(211, 201, 201);
-}
-
-.btn_login .btn:focus {
-  background-color: rgb(138, 113, 113);
-}
-
-.btn_login .btn:hover {
-  background-color: rgb(177, 166, 166);
-}
-
-.row {
-  display: flex;
-}
-
-.MuiPaper-root {
-  margin: 0 1rem;
-}
-
-.perfume_cards_title {
-  padding: 0 !important;
-  border-bottom: 1px solid;
-  width: 300px;
-  margin: 0 auto 2rem auto;
-  justify-self: center;
-  font-style: italic;
-  font-weight: 200;
-}
-
