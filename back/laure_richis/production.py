@@ -11,7 +11,7 @@ DATABASES = {
     }
 }
 
-DEBUG = False
+DEBUG = True
 
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000/'
