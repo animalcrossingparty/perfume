@@ -5,7 +5,7 @@ from django.http import Http404
 from .serializers import PayloadSerializers
 from django.contrib.auth import get_user_model, authenticate
 from time import time
-from laure_richis.base import SECRET_KEY
+from django.conf import settings
 import jwt
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg.openapi import Schema
@@ -29,28 +29,28 @@ def login(request):
 	password: '패스워드'
 	'''
 	
-	user = authenticate(request=request, username=request.data.get('username'), password=request.data.get('password'))
+	user = authenticate(request=request, username=request.data.get('email'), password=request.data.get('password'))
 	if user is None:
 		return Response(status=401)
 		
 	payload = PayloadSerializers(user)
 	encoded = {
-		'token': jwt.encode(payload.data, SECRET_KEY, algorithm='HS256')
+		'token': jwt.encode(payload.data, settings.SECRET_KEY, algorithm='HS256')
 		}
 	return Response(data=encoded)
 
 
 @swagger_auto_schema(methods=["get"], manual_params=['email'], operation_description='GET /exists/email/{email_address}')
 @api_view(['GET'])
-def check_duplicate_email(request):
-	email = request.GET.get('email')
+def check_duplicate_email(request, email):
+	print(email)
 	if email is None:
 		return Response(data={'email': 'this field is required'}, status=400)
 	try:
 		get_user_model().objects.get(email=email)
 	except:
-		return Response(data={'email': 'success'}, status=200)
-	return Response(data={'email': 'already existing email address'}, status=400)
+		return Response(data={'exists': False}, status=200)
+	return Response(data={'exists': True}, status=200)
 
 
 @api_view(['POST'])
