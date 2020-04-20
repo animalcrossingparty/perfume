@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .models import Perfume, Review
+from .models import Perfume, Review, Brand
 from .serializers import PerfumeSerializers, PerfumeDetailSerializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core.paginator import Paginator
 from perfumes.utils import survey
-from django.db.models import Q
+from django.db.models import Q, Count, Avg
 
 PAGE_SIZE = 12
 
@@ -23,22 +23,22 @@ def perfumes_list(request):
     # ------------------------------------------------------------
 
     
-    # 피부타입별 점수(내림차순) + 가격(오름차순)으로 정렬
-    products = Perfume.objects.prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').all()
+    products = Perfume.objects.prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')
+    products = products.prefetch_related('brand').prefetch_related('review_set').annotate(review__count=Count('review')).annotate(avg_rate=Avg('review__rate')).all()
+
     # 성별 체크
+    print(gender)
     if gender is not None:
         try:
             products = products.filter(gender=gender)
         except:
-            print(products)
             return 0
-        # perfumes = Perfume.objects.filter(gender=gender)
+
     # 브랜드 체크
     if brand is not None:
         try:
-            products = products.filter(brand=brand)
+            products = products.filter(brand__name=brand)
         except:
-            print(products)
             return 0
 
     # 카테고리 체크
@@ -46,13 +46,14 @@ def perfumes_list(request):
         try:
             products = products.filter(categories=category)
         except:
-            print(products)
             return 0
 
     # 제외 노트 체크
     if exclude is not None:
         try:
-            products = products.exclude(Q(t_notes__in=exclude) | Q(h_notes__in=exclude) | Q(b_notes__in=exclude))
+            exclude_list = exclude.split(',')
+            for exclude in exclude_list:
+                products = products.exclude(Q(top_notes__name=exclude) | Q(heart_notes__name=exclude) | Q(base_notes__name=exclude))
         except:
             print(products)
             return 0
@@ -60,9 +61,10 @@ def perfumes_list(request):
     # 포함 노트 체크
     if include is not None:
         try:
-            products = products.filter(Q(t_notes__in=include) | Q(h_notes__in=include) | Q(b_notes__in=include))
+            include_list = include.split(',')
+            for include in include_list:
+                products = products.filter(Q(top_notes__name=include) | Q(heart_notes__name=include) | Q(base_notes__name=include))
         except:
-            print(products)
             return 0
 
     # 정렬
@@ -70,15 +72,20 @@ def perfumes_list(request):
         if sort == 'alpha':
             products = products.all().order_by('name')
         elif sort == 'reviewcnt':
-            products = products.all().order_by('')
+            products = products.order_by('-review__count')
         elif sort == 'rate':
-            products = products.prefetch_related('')
-    print(products)
+            products = products.order_by('-avg_rate')
+        else:
+            products = products.order_by('name')
+
     # 페이지네이션
+    print(products)
     try:
         paged_products = Paginator(products, PAGE_SIZE).page(page)
+        print(paged_products)
         serializer = PerfumeSerializers(paged_products, many=True).data
     except: 
+        # paged_products = Paginator(products, PAGE_SIZE).page(page)
         invalid_page_message = f'{page} 페이지에는 결과가 없습니다. 해당 요청의 최대 페이지 수: < {Paginator(products, PAGE_SIZE).num_pages} >'
         return Response(invalid_page_message, status=404)
 
