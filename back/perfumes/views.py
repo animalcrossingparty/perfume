@@ -11,6 +11,10 @@ from django.core.paginator import Paginator
 from perfumes.utils import survey
 from django.db.models import Q
 import json
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg.openapi import Schema
+
+
 
 PAGE_SIZE = 12
 
@@ -107,7 +111,15 @@ def perfume_survey(request):
     print(survey.selected_perfumes(survey_by_user, Perfume))
     return 0
 
-
+# @swagger_auto_schema(
+#     methods=['post'],
+#     request_body=Schema(
+#         title="Review Create",
+#         type='타입',
+#         description="리뷰 크리에이트",
+#         title=None, description=None, type=None, format=None, enum=None, pattern=None, properties=None, additional_properties=None, required=None, items=None, default=None
+#     )
+# )
 @api_view(['POST'])
 def review_create(request, perfume_pk):
     try:
@@ -154,12 +166,14 @@ def review_detail(request, perfume_pk, review_pk):
                         review.delete()
                     return Response(status=200)
                 else:
-                    return Reponse(status=403)
+                    return Response(status=403)
 
 
 
 
-
+#  for user in get_user_model().objects.all():
+#     ...:     user.set_password(1)
+#     ...:     user.save()
 
 
 

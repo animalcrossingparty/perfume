@@ -50,7 +50,8 @@ def check_duplicate_email(request):
 		get_user_model().objects.get(email=email)
 	except:
 		return Response(data={'email': 'success'}, status=200)
-	return Response(data={'email': 'already existing email address'}, status=400)
+	else:
+		return Response(data={'email': 'already existing email address'}, status=400)
 
 
 @api_view(['POST'])
@@ -66,3 +67,10 @@ def signup(request):
 	user.set_password(request.data['password'])
 	user.save()
 	return Response(data={'signup': 'success'}, status=200)
+
+
+'''
+User CRUD
+회원가입
+User 랭킹 리스트
+'''
