@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import Http404
-from .serializers import PayloadSerializers
+from .serializers import UserSerializers, PayloadSerializers
 from django.contrib.auth import get_user_model, authenticate
 from time import time
 from django.conf import settings
@@ -17,7 +17,6 @@ from drf_yasg.openapi import Schema
         title="로그인",
         type='object',
         description="우왕 로그인",
-
     )
 )
 @api_view(['POST'])
@@ -29,7 +28,7 @@ def login(request):
 	password: '패스워드'
 	'''
 	
-	user = authenticate(request=request, username=request.data.get('username'), password=request.data.get('password'))
+	user = authenticate(request=request, username=request.data.get('email'), password=request.data.get('password'))
 	if user is None:
 		return Response(status=401)
 		
@@ -42,16 +41,15 @@ def login(request):
 
 @swagger_auto_schema(methods=["get"], manual_params=['email'], operation_description='GET /exists/email/{email_address}')
 @api_view(['GET'])
-def check_duplicate_email(request):
-	email = request.GET.get('email')
+def check_duplicate_email(request, email):
+	print(email)
 	if email is None:
 		return Response(data={'email': 'this field is required'}, status=400)
 	try:
 		get_user_model().objects.get(email=email)
 	except:
-		return Response(data={'email': 'success'}, status=200)
-	else:
-		return Response(data={'email': 'already existing email address'}, status=400)
+		return Response(data={'exists': False}, status=200)
+	return Response(data={'exists': True}, status=200)
 
 
 @api_view(['POST'])
@@ -67,6 +65,29 @@ def signup(request):
 	user.set_password(request.data['password'])
 	user.save()
 	return Response(data={'signup': 'success'}, status=200)
+
+
+@api_view(['GET'])
+def users_list(request):
+	pass
+
+
+@api_view(['GET', 'PUT'])
+def user_detail(request):
+	try:
+		encoded_jwt = request.headers['Token']
+		decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
+		user = get_user_model().objects.get(pk=decoded['userID'])
+	except:  # 회원 아니면
+		return Response(status=401)
+	if request.method == 'GET':
+		serializers = UserSerializers(user)
+		return Response(serializers.data, status=200)
+	else:  # PUT
+		# review.content = data.get('content')
+        # review.rate = data.get('rate')
+        # review.save()
+		pass
 
 
 '''

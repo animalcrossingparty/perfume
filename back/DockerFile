@@ -2,6 +2,7 @@ FROM python:3.6.8
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
+RUN mkdir /static
 ADD requirements_docker.txt /code/
 RUN pip install -r requirements_docker.txt
 ADD . /:/code

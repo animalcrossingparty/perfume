@@ -17,8 +17,11 @@ DATABASES = {
             'use_unicode': True,
         },
     },
-    
 }
+
+INSTALLED_APPS += [
+    'django_extensions'
+]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

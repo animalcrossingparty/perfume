@@ -33,32 +33,32 @@ users_all_re-formatted.json
 """
 reviews_all_re-formatted.json
 """
-with open("json/reviews_all.json", "r", encoding="UTF-8") as json_file:
-    json_data = json.load(json_file)
+# with open("json/reviews_all.json", "r", encoding="UTF-8") as json_file:
+#     json_data = json.load(json_file)
 
-min_pf = 26160162; max_pf = 0
+# min_pf = 26160162; max_pf = 0
 
-new_data = []
-for i in range(len(json_data["reviews"])):
-    tmp = dict()
-    review = json_data["reviews"][i]
-    tmp["pk"] = review["review_id"]
-    tmp["model"] = "perfumes.review"
-    tmp["fields"] = review
-    del tmp["fields"]["review_id"]
-    tmp["fields"]["user"] = tmp["fields"]["user_id"]
-    del tmp["fields"]["user_id"]
-    tmp["fields"]["perfume"] = tmp["fields"]["perfume_id"] # - 26149997
-    # min_pf = min(min_pf, tmp["fields"]["perfume"])
-    # max_pf = max(max_pf, tmp["fields"]["perfume"])
-    del tmp["fields"]["perfume_id"]
-    new_data.append(tmp)
-# print(min_pf, max_pf, max_pf - min_pf)
-# pprint(new_data)
+# new_data = []
+# for i in range(len(json_data["reviews"])):
+#     tmp = dict()
+#     review = json_data["reviews"][i]
+#     tmp["pk"] = review["review_id"]
+#     tmp["model"] = "perfumes.review"
+#     tmp["fields"] = review
+#     del tmp["fields"]["review_id"]
+#     tmp["fields"]["user"] = tmp["fields"]["user_id"]
+#     del tmp["fields"]["user_id"]
+#     tmp["fields"]["perfume"] = tmp["fields"]["perfume_id"] # - 26149997
+#     # min_pf = min(min_pf, tmp["fields"]["perfume"])
+#     # max_pf = max(max_pf, tmp["fields"]["perfume"])
+#     del tmp["fields"]["perfume_id"]
+#     new_data.append(tmp)
+# # print(min_pf, max_pf, max_pf - min_pf)
+# # pprint(new_data)
 
-re_formatted_json = json.dumps(new_data, indent=4)
-with open("json/reviews_all_re-formatted.json", "w", encoding="UTF-8") as re_formatted:
-    re_formatted.write(re_formatted_json)
+# re_formatted_json = json.dumps(new_data, indent=4)
+# with open("json/reviews_all_re-formatted.json", "w", encoding="UTF-8") as re_formatted:
+#     re_formatted.write(re_formatted_json)
 
 """
 notes.csv
@@ -100,9 +100,11 @@ for perfume in json_data:
         fields["heart_notes"] = []
     if not fields["base_notes"]:
         fields["base_notes"] = []
+    perfume["pk"] = perfume["fields"]["perfume_id"]
+    del perfume["fields"]["perfume_id"]
 
 re_formatted_json = json.dumps(json_data, indent=4)
-with open("json/new_perfumes_utf-8.json", "w", encoding="UTF-8") as re_formatted:
+with open("json/new_perfumes_reformatted.json", "w", encoding="UTF-8") as re_formatted:
     re_formatted.write(re_formatted_json)
 
 # with open("json/new_note_utf-8.json", "r") as json_file:
