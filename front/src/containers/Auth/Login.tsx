@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AuthContent, LabelInput, AuthButton, AlignedLink, AuthError } from 'components/Auth';
 import { connect } from 'react-redux';
+import jwt from 'jwt-decode'
 import { bindActionCreators } from 'redux';
 import * as authActions from 'redux/modules/auth';
 import * as userActions from 'redux/modules/user';
@@ -61,15 +62,20 @@ class Login extends Component<LoginProps> {
         const { email, password } = form.toJS();
 
         try {
-            await AuthActions.localLogin({ email, password });
-            const loggedInfo = this.props.result.toJS();
+            await AuthActions.localLogin({ email, password })
+            .then(r => {
+                console.log(r.data.token)
+                const user = jwt(r.data.token); // decode your token here
+                const loggedInfo = user
+                UserActions.setLoggedInfo(loggedInfo);
+                history.push('/');
+                storage.set('loggedInfo', loggedInfo);
+            }
+            )
 
-            UserActions.setLoggedInfo(loggedInfo);
-            history.push('/');
-            storage.set('loggedInfo', loggedInfo);
 
         } catch (e) {
-            console.log('a');
+            console.log(e);
             this.setError('잘못된 계정정보입니다.');
         }
     }

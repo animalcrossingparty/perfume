@@ -16,8 +16,8 @@ export const checkStatus = createAction(CHECK_STATUS, API.checkStatus);
 
 const initialState = Map({
     loggedInfo: Map({ // 현재 로그인중인 유저의 정보
-        thumbnail: null,
-        username: null
+        token: 'no token',
+        user: null
     }),
     logged: false, // 현재 로그인중인지 알려준다
     validated: false // 이 값은 현재 로그인중인지 아닌지 한번 서버측에 검증했음을 의미

@@ -54,7 +54,7 @@ export default handleActions({
     },
     ...pender({
         type: CHECK_EMAIL_EXISTS,
-        onSuccess: (state:Map<any, any>, action) => state.setIn(['register', 'exists', 'email'], action.payload.data.exists)
+        onSuccess: (state = initialState, action) => state.setIn(['register', 'exists', 'email'], action.payload.data.exists)
     }),
     [INITIALIZE_FORM]: (state:Map<any, any>, action) => {
         const initialForm = initialState.get(action.payload);

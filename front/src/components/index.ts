@@ -8,6 +8,7 @@ import Date from './Date/Date'
 import Categories from './Categories/Categories'
 import NoteTags from './Note/NoteTags'
 import SearchBar from './SearchBar/SearchBar'
+import FooterContent from './FooterContent/FooterContent'
 
 export {
     Header,
@@ -21,4 +22,5 @@ export {
     Categories,
     NoteTags,
     SearchBar,
+    FooterContent,
 };

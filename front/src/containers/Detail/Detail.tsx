@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as detailActions from 'redux/modules/detail';
 import { Icon } from 'react-materialize'
-import queryString from 'query-string'
+
 import { Star, Carousel, StarRating } from 'components/'
 import { Button } from 'react-materialize';
 import { withRouter } from 'react-router'
