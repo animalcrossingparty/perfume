@@ -49,7 +49,7 @@ def check_duplicate_email(request, email):
 	try:
 		get_user_model().objects.get(email=email)
 	except:
-		return Response(data={'email': False}, status=200)
+		return Response(data={'exists': False}, status=200)
 	return Response(data={'exists': True}, status=409)
 
 
