@@ -43,6 +43,7 @@ def login(request):
 @swagger_auto_schema(methods=["get"], manual_params=['email'], operation_description='GET /exists/email/{email_address}')
 @api_view(['GET'])
 def check_duplicate_email(request, email):
+	print(email)
 	email = request.GET.get('email')
 	print(email)
 	if email is None:
