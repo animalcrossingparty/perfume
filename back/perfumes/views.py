@@ -1,11 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Perfume, Review
-from .serializers import PerfumeSerializers, PerfumeDetailSerializers
+from .serializers import PerfumeSerializers, PerfumeDetailSerializers, ReviewDetailSerializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.conf import settings
+import jwt
+from time import time
+from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from perfumes.utils import survey
 from django.db.models import Q
+import json
 
 PAGE_SIZE = 12
 
@@ -84,8 +89,11 @@ def perfumes_list(request):
 
     return Response(serializer)
 
+@api_view(['GET'])
 def perfume_detail(request, perfume_pk):
-    pass
+    perfume = Perfume.objects.get(pk=perfume_pk)
+    serializer = PerfumeDetailSerializers(perfume)
+    return Response(serializer.data)
 
 def perfume_survey(request):
     survey_by_user = [{
@@ -99,8 +107,61 @@ def perfume_survey(request):
     print(survey.selected_perfumes(survey_by_user, Perfume))
     return 0
 
-def reviews_list(request, perfume_pk):
-    pass
 
+@api_view(['POST'])
+def review_create(request, perfume_pk):
+    try:
+        encoded_jwt = request.headers['Token']
+        decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
+        user = get_user_model().objects.get(pk=decoded['userID'])
+    except:
+        return Response(status=401)
+    else:
+        data = request.POST
+        review = Review.objects.create(
+            user=user,
+            perfume_id=perfume_pk,
+            content=data.get('content'),
+            rate=data.get('rate')
+        )
+        return Response(data={'review_id': review.pk}, status=200)
+
+@api_view(['GET', 'PUT', 'DELETE'])
 def review_detail(request, perfume_pk, review_pk):
-    pass
+    try:  # 먼저 해당 리뷰 존재하는 지 확인
+        review = Review.objects.get(pk=review_pk)
+    except:
+        return Response(status=404)
+    else:  # 존재하면
+        if request.method == 'GET':
+            serializer = ReviewDetailSerializers(review)
+            return Response(serializer.data, status=200)
+        else:  # PUT / DELETE 일 때
+            try:  # 회원인지 verify
+                encoded_jwt = request.headers['Token']
+                decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
+                user_cur = get_user_model().objects.get(pk=decoded['userID'])
+            except:
+                return Response(status=401)
+            else:  # 회원이면
+                if user_cur == review.user:  # 작성자 맞으면
+                    data = request.POST
+                    if request.method == 'PUT':
+                        review.content = data.get('content')
+                        review.rate = data.get('rate')
+                        review.save()
+                    else:  # DELETE일 때
+                        review.delete()
+                    return Response(status=200)
+                else:
+                    return Reponse(status=403)
+
+
+
+
+
+
+
+
+
+# {'token': b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOjEsInVzZXJuYW1lIjoiYW5vbnltb3VzMUB0ZXN0LmNvbSIsImlhdCI6MTU4NzM1NjI0MSwiZXhwIjoxNTk0NTU2MjQxfQ.NLFscFfepnNGJaPcSfpYBMuj0Ciyt3j89RDOf6J96Xg'}
