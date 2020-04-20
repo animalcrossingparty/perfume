@@ -44,6 +44,7 @@ def login(request):
 @api_view(['GET'])
 def check_duplicate_email(request):
 	email = request.GET.get('email')
+	print(email)
 	if email is None:
 		return Response(data={'email': 'this field is required'}, status=400)
 	try:
