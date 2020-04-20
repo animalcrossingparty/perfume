@@ -4,7 +4,6 @@ attrs==19.1.0
 autopep8==1.4.4
 backcall==0.1.0
 beautifulsoup4==4.8.1
-bleach==3.1.0
 bootstrap4==0.1.0
 branca==0.3.1
 bs4==0.0.1
