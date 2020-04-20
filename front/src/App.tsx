@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { HomePage, AboutPage, LoginPage, TestPage, DetailPage, PerfumePage, SurveyPage } from './pages'
+import { HomePage, AboutPage, LoginPage, TestPage, DetailPage, PerfumePage, SurveyPage, UserRank } from './pages'
 import storage from 'lib/storage';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -41,6 +41,7 @@ class App extends Component<AppProps> {
         <Route path="/auth" component={LoginPage} />
         <Route path="/detail" component={DetailPage} />
         <Route path="/survey" component={SurveyPage} />
+        <Route path="/rank" component={UserRank} />
       </div>
     )
   };

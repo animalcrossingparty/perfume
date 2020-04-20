@@ -10,58 +10,58 @@ import { withRouter } from 'react-router'
 import '../../css/DetailPage.css'
 
 interface DetailProps {
-  history: any,
-  DetailActions: any,
-  info: {
-    pk: number,
-    model: string,
-    fields: any
-  }
+history: any,
+DetailActions: any,
+info: {
+pk: number,
+model: string,
+fields: any
+}
 }
 
 class Detail extends Component<DetailProps> {
 
   static defaultProps ={
-    info: {
-      pk: 1,
-      model: '1',
-      fields: {
-          name: '이름 모를 향수',
-          launch_date: "1949-01-01",
-          thumbnail: "http://www.basenotes.net/images/design2013/bigs.png",
-          gender: 0,
-          availibility: 0,
-          brand_id: 749,
-          top_notes: [
-            480,
-            224
-          ],
-          heart_notes: [
-            259,
-            510,
-            785,
-            224
-          ],
-          base_notes: [
-            28,
-            624
-          ]
-      }
-    }
+  info: {
+  pk: 1,
+  model: '1',
+  fields: {
+  name: '이름 모를 향수',
+  launch_date: "1949-01-01",
+  thumbnail: "http://www.basenotes.net/images/design2013/bigs.png",
+  gender: 0,
+  availibility: 0,
+  brand_id: 749,
+  top_notes: [
+  480,
+  224
+  ],
+  heart_notes: [
+  259,
+  510,
+  785,
+  224
+  ],
+  base_notes: [
+  28,
+  624
+  ]
+  }
+  }
   }
   initializeDetailInfo = async () => {
-    const { DetailActions } = this.props
-    const perfume_id = this.props.history.location.pathname.split('/')[2]
-    await DetailActions.getPerfumeDetail(perfume_id);
+  const { DetailActions } = this.props
+  const perfume_id = this.props.history.location.pathname.split('/')[2]
+  await DetailActions.getPerfumeDetail(perfume_id);
   }
 
   componentWillMount() {
-    this.initializeDetailInfo()
+  this.initializeDetailInfo()
   }
 
   render() {
-    return (
-    <div className="center detail_center">
+  return (
+  <div className="center detail_center">
     <div className="detail_box">
       {/* 향수 div의 왼쪽 (향수 이름, 사진) */}
       <div className="left_box">
@@ -201,6 +201,33 @@ class Detail extends Component<DetailProps> {
             SUBMIT
           </Button>
         </div>
+      </div>
+
+      <div className="comment_list">
+
+        <div className="comment_user">
+          <div className="user_review_name">
+          Angelo Orazio Pregoni
+          </div>
+          <div className="review_text">
+            I imagine Evita Peron drinking mate, in a room with scent traces of asado just eaten, and notes of amber and cinnamon all around the room! Wonderful! <br/> 
+            And Banderas waiting for a tango and for some meat too! <br/> <br/> “Evita! I love your scent of cinnamon steak!” <br/> <br/> 
+            But honestly who cares what perfume she was using? <br/> Below, an article with photos that tells of another fragrance dedicated to her,
+             this time with a hint of rose! <br/> <br/> <a href="http://www.bordighera.net/evitaperon.htm">http://www.bordighera.net/evitaperon.htm</a> <br/> <br/> 
+             The truth is that this perfume had been requested by one of the seven dwarves in Snow White, but she (the Snow young girl) was allergic to cinnamon.  <br/> 
+             So the Creed family kept it hidden for several centuries,  until the smell has moved from a fairy tale to a legend! <br/> <br/> 
+             If you smell this one, it seems a Tyrolean broth for dwarf miners.  This reviewer may have conflicts of interest
+          </div>
+        </div>
+        <div className="review_star">
+          <Star />
+          <div className="review_date">27th May, 2015</div>
+        </div>
+        <div className="btn_comment_list">
+          <Button><Icon>delete</Icon></Button>
+          <Button><Icon>edit</Icon></Button>
+        </div>
+        
       </div>
       
     </div>

@@ -8,7 +8,7 @@ function HomePage() {
     <div>
       <Header />
       <Slider />
-      <div className="container">
+      <div className="container footer_container">
 
         <div className="row ">
         </div>
