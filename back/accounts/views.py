@@ -50,7 +50,7 @@ def check_duplicate_email(request, email):
 		get_user_model().objects.get(email=email)
 	except:
 		return Response(data={'email': 'success'}, status=200)
-	return Response(data={'email': 'already existing email address'}, status=400)
+	return Response(data={'email': 'already existing email address'}, status=409)
 
 
 @api_view(['POST'])
