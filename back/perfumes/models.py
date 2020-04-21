@@ -33,16 +33,7 @@ class Perfume(models.Model):
     categories = models.ManyToManyField(to=Category)
     availibility = models.BooleanField()
     season = models.ManyToManyField(to=Season)
-
-    def t_notes(self):
-        return ",".join([str(i) for i in self.top_notes.all()])
-
-    def h_notes(self):
-        return ",".join([str(i) for i in self.heart_notes.all()])
-
-    def b_notes(self):
-        return ",".join([str(i) for i in self.base_notes.all()])
-
+    
 class Review(models.Model):
     user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     perfume = models.ForeignKey(to=Perfume, on_delete=models.PROTECT)
