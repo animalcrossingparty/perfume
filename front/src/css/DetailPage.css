@@ -103,8 +103,13 @@
     width: 90vw !important;
   }
 
+  .comment_list {
+    width: 90vw;
+  }
+
   .row_comment > textarea {
-    width: 70vw !important;
+    width: 80vw !important;
+    margin: 0 auto;
   }
 
   .StarRating {
@@ -330,6 +335,8 @@
   height: 165px;
   border-radius: 10px;
   padding: 1rem 2rem;
+  width: 70vw;
+  margin: auto;
 }
 
 .row_comment {
@@ -348,7 +355,7 @@
 }
 
 .row_comment > textarea {
-  width: 70vh;
+  width: 130vh;
   height: 70px;
   margin-top: 1rem;
   background-color: rgb(199, 180, 178);
@@ -376,4 +383,86 @@
 
 .StarRating > .btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
   background-color: rgb(145, 134, 125);
+}
+
+.comment_list {
+  background-color: rgba(90, 80, 80, 0.9);
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
+  /* height: 165px; */
+  border-radius: 10px;
+  padding: .3rem 1rem;
+  width: 70vw;
+  margin: 2rem auto;
+}
+
+/* .comment_user {
+  display: flex;
+  flex-direction: column;
+} */
+
+.user_review_name {
+  margin-top: 1rem;
+  font-style: italic;
+  font-size: 20px;
+  color: rgb(235, 221, 221);
+  /* border-bottom: 1px solid; */
+  display: flex;
+  text-align: start;
+  margin-left: 2rem;
+}
+
+.review_text {
+  background-color: rgb(199, 180, 178);
+  border-radius: 5px;
+  color: rgb(83, 75, 74);
+  padding: 1rem;
+  font-weight: 500;
+  width: 95%;
+  margin: .5rem auto;
+  text-align: start;
+}
+
+.review_text > a {
+  color: rgb(156, 121, 121);
+}
+
+.review_text > a:hover {
+  text-decoration: underline;
+}
+
+.btn_comment_list {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.btn_comment_list > button {
+  width: 40px;
+  padding: 0;
+  border-radius: 15px;
+  margin-right: 1rem;
+}
+
+.btn_comment_list > button:focus {
+  background-color: rgb(94, 86, 86);
+}
+
+.review_star {
+  /* margin-left: 1.5rem; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.review_date {
+  /* text-align: start; */
+  margin-top: .5rem;
+  color: rgb(204, 185, 185);
+  font-style: italic;
+}
+
+/* Icon margin */
+.material-icons {
+  margin-right: 0;
 }

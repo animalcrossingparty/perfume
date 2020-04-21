@@ -6,6 +6,16 @@
     margin: 0
 }
 
+
+.footer_container {
+    width: 100%;
+}
+
+.page-footer {
+    /* background-color: #ee6e73; */
+    background-color: #c78b8d88;
+}
+
 .intro-box {
     text-align: center;
     height: 300px;

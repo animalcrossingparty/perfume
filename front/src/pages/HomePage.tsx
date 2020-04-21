@@ -8,7 +8,8 @@ function HomePage() {
     <div>
       <Header />
       <Slider />
-      <div className="container">
+
+      <div className="container footer_container">
         <div className="home-section-devider">SERVICES</div>
         <Row>
           <Col className="intro-box" s={4}>
