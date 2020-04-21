@@ -1,0 +1,35 @@
+.user_r {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.user_r > h1 {
+  font-style: italic;
+  font-weight: 200;
+  border-bottom: 1px solid;
+  padding: 0 2rem;
+  color: rgb(167, 158, 158);
+}
+
+.rank_box {
+  width: 60%;
+  height: 700px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  margin-bottom: 50px;
+  margin-top: 1rem;
+  padding: 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 585px) {
+  .rank_box {
+    /* height: 720px; */
+    padding: .5rem 1rem;
+  }
+}
