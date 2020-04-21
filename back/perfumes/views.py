@@ -1,6 +1,6 @@
 from .models import Perfume, Review, Brand
 from django.shortcuts import render, get_object_or_404
-from .serializers import PerfumeSerializers, PerfumeDetailSerializers, ReviewDetailSerializers
+from .serializers import PerfumeSerializers, PerfumeDetailSerializers, PerfumeSurveySerializers, ReviewDetailSerializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.conf import settings
@@ -106,16 +106,49 @@ def perfume_detail(request, perfume_pk):
     return Response(serializer.data)
 
 def perfume_survey(request):
-    survey_by_user = [{
-        "gender": 0,
-        "age": 23,
-        "season": [0, 1, 2, 3], # 사계절
-        "likes": [480, 224, 510],
-        "hates": [42, 28],
-        "notes": ["citrus", "kimchi", "cat", ""]
-        }]
-    print(survey.selected_perfumes(survey_by_user, Perfume))
-    return 0
+    gender = request.GET.get('gender', None)
+    age = request.GET.get('age', None)
+    age = str(age)
+    seasons = request.GET.get('seasons', None)
+    like_category = request.GET.get('like_category', None)
+    hate_category = request.GET.get('hate_category', None)
+    include_notes = request.GET.get('include_notes', None)
+
+    products = Perfume.objects.prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').all()
+
+    # products = products.prefetch_related('brand').prefetch_related('review_set').annotate(review__count=Count('review')).annotate(avg_rate=Avg('review__rate')).all()
+    if gender is not None:
+        products = products.filter(gender=gender)
+    # products = products.filter(age__startswith=age[0])
+
+    # seasons_list = seasons.split(',')
+    # for season in seasons_list:
+    #     products = products.filter(season__in=season)
+    # like_categories = like_category.split(',')
+    # for like in like_categories:
+    #     products = products.filter(category__name=like)
+
+    # hate_categories = hate_category.split(',')
+    # for hate in hate_categories:
+    #     products = products.exclude(category__name=hate)
+
+    # if include_notes is not None:
+    #     note_list = include_notes.split(',')
+    #     for note in note_list:
+    #         products = products.filter(Q(top_notes__name=note) | Q(heart_notes__name=note) | Q(base_notes__name=note))
+
+    # survey_by_user = [{
+    #     "gender": 0,
+    #     "age": 23,
+    #     "season": [0, 1, 2, 3], # 사계절
+    #     "likes": [480, 224, 510],
+    #     "hates": [42, 28],
+    #     "notes": ["citrus", "kimchi", "cat", ""]
+    #     }]
+    # print(survey.selected_perfumes(survey_by_user, Perfume))
+    # return 0
+    serializer = PerfumeSurveySerializers(products)
+    return Response(serializer.data)
 
 @api_view(['POST'])
 def review_create(request, perfume_pk):
