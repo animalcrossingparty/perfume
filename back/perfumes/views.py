@@ -160,7 +160,10 @@ def review_detail(request, perfume_pk, review_pk):
     if request.method == 'PUT':
         review.content = data.get('content')
         review.rate = data.get('rate')
-        review.save()
+        try:
+            review.save()
+        except:  # 내용을 안 썼을 때..?
+            return Response(status=400)
     else:  # DELETE일 때
         review.delete()
     return Response(status=200)

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from randstr import randstr
-from perfumes.models import Perfume, Note, Season, Category
+from perfumes.models import Perfume, Note, Season, Category, Review
 
 class User(AbstractUser):
     def profile_image_path(self, instance, filename):
@@ -20,7 +20,9 @@ class User(AbstractUser):
     role = models.IntegerField(default=0)
     age = models.IntegerField(default=0)
     like_perfumes = models.ManyToManyField(to=Perfume, related_name='like_users')
+    like_reviews = models.ManyToManyField(to=Review, related_name='like_users')
     points = models.IntegerField(default=0)
+    
 
 class Survey(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.PROTECT)
