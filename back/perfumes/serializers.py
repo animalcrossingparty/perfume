@@ -35,6 +35,9 @@ class ReviewDetailSerializers(serializers.Serializer):
 
 class PerfumeDetailSerializers(serializers.ModelSerializer):
     reviews = ReviewDetailSerializers(many=True, source='review_set')
+    top_notes = NoteSerializers(many=True)
+    heart_notes = NoteSerializers(many=True)
+    base_notes = NoteSerializers(many=True)
     class Meta:
         model = Perfume
         fields = '__all__'
