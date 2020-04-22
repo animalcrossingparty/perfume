@@ -47,7 +47,7 @@ class Header extends Component<HeaderProps>{
       preventScrolling: true
     }}
   >
-    <Link to="/perfume?page=1">PERFUME</Link>
+    <Link to="/perfume?page=1&sort=alpha&brand=all&category=all&include=all&gender=all">PERFUME</Link>
     <Link to="/">NEWS</Link>
     <Link to="/">ABOUT</Link>
     <Link to="/survey">SURVEY</Link>
