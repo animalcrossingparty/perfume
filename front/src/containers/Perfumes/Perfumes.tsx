@@ -3,20 +3,29 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as perfumeActions from "redux/modules/perfume";
 import { Cards } from "components/";
-import { Link } from "react-router-dom";
-import { Row, Col, Pagination, Icon } from "react-materialize";
+import { NavLink } from "react-router-dom";
+import {
+  Row,
+  Col,
+  Pagination,
+  Icon,
+  Preloader,
+  RadioGroup,
+} from "react-materialize";
 import queryString from "query-string";
 
 interface PerfumeProps {
   PerfumeActions: any;
+  num_pages: number,
   perfumes: any;
+  history: any;
+  pender: any;
 }
 
 class Perfumes extends Component<PerfumeProps> {
   initializePerfumeInfo = async () => {
-    const { PerfumeActions } = this.props;
-    const queryParams = queryString.parse(window.location.search);
-    console.log(queryParams)
+    const { PerfumeActions, history } = this.props;
+    const queryParams = queryString.parse(history.location.search);
     await PerfumeActions.getPerfumeInfo(queryParams);
   };
 
@@ -24,35 +33,30 @@ class Perfumes extends Component<PerfumeProps> {
     this.initializePerfumeInfo();
   }
 
+  componentDidUpdate(prevProps) {
+    let oldId = prevProps.history.location.search;
+    let newId = this.props.history.location.search;
+    if (newId !== oldId) {
+      this.initializePerfumeInfo();
+    }
+  }
 
-  handlePage = async (selectedPage) => {
-    const {
-      sort,
-      brand,
-      category,
-      exclude,
-      include,
-      gender,
-    } = queryString.parse(window.location.search);
-    window.history.pushState(
-      "",
-      "",
-      `/perfume?page=${selectedPage}&sort=${sort}&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`
-    );
-    const { PerfumeActions } = this.props;
-    await PerfumeActions.getPerfumeInfo(
-      brand,
-      category,
-      exclude,
-      gender,
-      include,
-      selectedPage,
-      sort
-    );
+  handlePage = (selectedPage) => {
+    const { history, PerfumeActions } = this.props;
+    const queryParams = queryString.parse(history.location.search);
+    queryParams.page = selectedPage;
+    PerfumeActions.getPerfumeInfo(queryParams);
   };
-
+  handleGender = (selectedGender) => {
+    const { history, PerfumeActions } = this.props;
+    const queryParams = queryString.parse(history.location.search);
+    queryParams.gender = selectedGender;
+    window.history.pushState('', '', `/perfume?${queryString.stringify(queryParams)}`)
+    PerfumeActions.getPerfumeInfo(queryParams);
+  };
   render() {
     const { perfumes } = this.props;
+    const { GET_PERFUME_INFO } = this.props.pender;
     const {
       page,
       sort,
@@ -66,35 +70,95 @@ class Perfumes extends Component<PerfumeProps> {
       <div>
         <Row>
           <Col>
-            <Link
-              to={`/perfume?page=${page}&sort=alpha&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-            >
-              ALPHA
-            </Link>
+            <RadioGroup
+              label="T-Shirt Size"
+              name="size"
+              options={[
+                {
+                  label: "모두",
+                  value: "all",
+                },
+                {
+                  label: "남성용",
+                  value: "0",
+                },
+                {
+                  label: "여성용",
+                  value: "1",
+                },
+                {
+                  label: "공용",
+                  value: "2",
+                },
+              ]}
+              value={gender}
+              onChange={({ target: { value } }) => this.handleGender(value)}
+              withGap
+            />
+          </Col>
+        </Row>
+        <Row className="perfume_sort_row">
+          <Col>
+            {sort !== "alpha" ? (
+              <NavLink
+                to={`/perfume?page=1&sort=alpha&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+              >
+                사전순
+              </NavLink>
+            ) : (
+              <NavLink to="#" className="disabled-link">
+                사전순
+              </NavLink>
+            )}
           </Col>
           <Col>
-            <Link
-              to={`/perfume?page=${page}&sort=rate&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-            >
-              RATE
-            </Link>
+            {sort !== "rate" ? (
+              <NavLink
+                to={`/perfume?page=1&sort=rate&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+              >
+                평점순
+              </NavLink>
+            ) : (
+              <NavLink to="#" className="disabled-link">
+                평점순
+              </NavLink>
+            )}
+          </Col>
+          <Col>
+            {sort !== "reviewcnt" ? (
+              <NavLink
+                to={`/perfume?page=1&sort=reviewcnt&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+              >
+                리뷰순
+              </NavLink>
+            ) : (
+              <NavLink to="#" className="disabled-link">
+                리뷰순
+              </NavLink>
+            )}
           </Col>
         </Row>
         <div className="pagenation-container">
           <Pagination
             activePage={Number(page)}
-            items={20}
+            items={this.props.num_pages < 20 ? this.props.num_pages : 20}
             leftBtn={<Icon>chevron_left</Icon>}
             rightBtn={<Icon>chevron_right</Icon>}
             onSelect={this.handlePage}
           />
         </div>
         <Row className="wrap">
-          {perfumes.map((perfume, i) => (
-            <Col s={12} m={6} l={4} xl={3} key={perfume.id}>
-              <Cards field={perfume} id={perfume.id} />
+          {GET_PERFUME_INFO !== true ? (
+            perfumes.map((perfume) => (
+              <Col s={12} m={6} l={4} xl={3} key={perfume.id}>
+                <Cards field={perfume} />
+              </Col>
+            ))
+          ) : (
+            <Col s={12} className="center">
+              <Preloader active color="blue" flashing={false} size="big" />
             </Col>
-          ))}
+          )}
         </Row>
       </div>
     );
@@ -104,6 +168,8 @@ class Perfumes extends Component<PerfumeProps> {
 export default connect(
   (state) => ({
     perfumes: state.perfume.get("perfumesList"),
+    num_pages: state.perfume.get("num_pages"),
+    pender: state.pender.pending,
   }),
   (dispatch) => ({
     PerfumeActions: bindActionCreators(perfumeActions, dispatch),

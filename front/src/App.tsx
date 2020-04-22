@@ -37,7 +37,7 @@ class App extends Component<AppProps> {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/test" component={TestPage} />
-        <Route path="/perfume" component={PerfumePage} />
+        <Route path="/perfume/" component={PerfumePage} />
         <Route path="/auth" component={LoginPage} />
         <Route path="/detail" component={DetailPage} />
         <Route path="/survey" component={SurveyPage} />

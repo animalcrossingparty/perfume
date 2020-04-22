@@ -6,6 +6,11 @@ body {
   min-height: 100vh;
 }
 
+.container {
+  width: 85% !important;
+  max-width: 1600px !important;
+}
+
 @keyframes fadein {
     from { opacity: 0; width: 50vw;}
     to   { opacity: 1; width: 35vw;}
@@ -16,6 +21,25 @@ body {
   to {height: 7rem}
 }
 
+.disabled-link {
+  color: gray;
+  pointer-events: none;
+}
+.hidden {
+  display: none !important;
+}
+.perfume_sort_row {
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+  height: 4rem;
+}
+.perfume_sort_row > .col {
+  font-size: 1.2rem;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px gray;
+  margin: 0 3px
+}
 .wrap {
   flex-wrap: wrap
 }
