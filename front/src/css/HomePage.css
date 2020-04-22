@@ -19,20 +19,32 @@
 .intro-box {
     text-align: center;
     height: 300px;
-    box-shadow: 0 0  5px lightgray;
+    /* box-shadow: 0 0  5px lightgray; */
+    /* border: .1px solid #ebcccd; */
+    border: 1px solid #ffffff;
+    /* background-color: rgba(255, 255, 255, 0.4); */
+    background-color: rgba(250, 248, 248, 1);
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    margin-bottom: 5rem;
 }
 
+
 .intro-box > i {
-    color: #ee6e73;
-    text-shadow: 2px 2px 6px gray;
+    /* color: #f7cbcc; */
+    color: #f3d9d9;;
+    text-shadow: 1px 1px 2px #d89698;
+    margin-top: 1vw;
 }
 
 .intro-box > h4 {
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
     font-weight: lighter;
-    border-bottom: 1px dotted #ee6e73;
+    /* border-bottom: 1px dotted #ee6e73; */
     margin: 0 20%;
-    color:  #3f3f3f;
+    color:  #977373;
+    font-style: italic;
 }
 
 .intro-box > p {
@@ -41,11 +53,56 @@
     color: gray;
 }
 
+@media (max-width: 880px) {
+    .intro-box > h4 {
+        font-size: 20px;
+        margin: 0;
+    }
+    .intro-box > p {
+        font-size: 12px;
+    }
+}
+
 .home-section-devider {
     font-size: 2.5rem;
     font-weight: lighter;
-    margin: 2rem 0; 
-    padding: 1rem 0;
+    /* margin: 2rem 0;  */
+    /* padding: 1rem 0; */
     text-align: center;
-    border-bottom: 4px dotted #ee6e73
+    /* border-bottom: 4px dotted #ee6e73; */
+
+    background-color: #f3d9d9;
+    border-bottom: 0px dashed #e9979a;
+    border: 1px;
+    /* width: 300px; */
+    margin: 5rem auto 0 auto;
+    padding-bottom: .5rem;
+    padding-top: 1rem;
+    border-radius: 8px 8px 0 0;
+    /* box-shadow: 0px -1px 4px 1px rgba(0, 0, 0, 0.15); */
+    /* color: #e9979a; */
+    color: white;
+}
+
+
+/* Perfumes List */
+.cards_box {
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 5rem 0;
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
+}
+
+
+/* 임시 css */
+.user_page_link > button {
+    background-color: rgb(231, 208, 208);
+    box-shadow: 1px 1px 2px .5px #3f3f3f80;
+}
+.user_page_link > button:hover {
+    background-color: rgb(226, 186, 186);
+}
+.user_page_link >button > span > a {
+    color: white;
 }

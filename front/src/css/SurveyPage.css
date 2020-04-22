@@ -2,8 +2,8 @@
   background-image: url("../assets/detail-bg.png");
   height: 100%;
   background-size: cover;
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
+  /* background-repeat: no-repeat; */
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
 }
@@ -84,10 +84,28 @@
 
 .gender_ {
   display: flex;
+  flex-direction: column;
   color: gray;
   font-style: italic;
+  justify-content: center;
+}
+.male_fe {
   display: flex;
   justify-content: center;
+}
+
+.gender_ label {
+  color: gray;
+  font-weight: 500;
+}
+
+.none_gender {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+[type="checkbox"]+span:not(.lever) {
+  padding-left: 1.6rem;
 }
 
 /* .gender > img {
@@ -119,7 +137,7 @@
 .season span {
   margin-left: 1rem;
   /* border-bottom: 1px solid; */
-  padding-right: 1rem;
+  padding-right: .5rem;
   font-style: italic;
   font-weight: 500;
   color: rgb(70, 58, 58);
@@ -130,6 +148,10 @@
 .tags {
   display: flex;
   justify-content: center;
+}
+
+.hate_cate {
+  text-align: center;
 }
 
 /* favorite category select */

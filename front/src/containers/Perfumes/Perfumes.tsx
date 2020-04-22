@@ -67,7 +67,7 @@ class Perfumes extends Component<PerfumeProps> {
       gender,
     } = queryString.parse(window.location.search);
     return (
-      <div>
+      <div className="cards_box">
         <Row>
           <Col>
             <RadioGroup

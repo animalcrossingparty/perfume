@@ -9,13 +9,87 @@
   font-style: italic;
   font-weight: 200;
   border-bottom: 1px solid;
-  padding: 0 2rem;
-  color: rgb(167, 158, 158);
+  padding: 1rem 2rem;
+  color: rgb(136, 125, 125);
+}
+
+.bedge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bedge > img {
+  margin-right: .3rem;
+  width: 35px;
+}
+
+.admin_bedge {
+  /* border: 3px solid rgb(243, 184, 144); */
+  background-color: rgb(243, 184, 144);
+  color: rgb(255, 244, 224);
+  padding: .1rem .5rem;
+  border-radius: 15px;
+}
+.staff_bedge {
+  /* border: 3px solid rgb(253, 230, 181); */
+  background-color: rgb(253, 230, 181);
+  color: rgb(177, 94, 84);
+  padding: .1rem .5rem;
+  border-radius: 15px;
+}
+.top_bedge {
+  background-color: rgb(190, 176, 240);
+  color: rgb(255, 255, 255);
+  padding: .1rem .5rem;
+  border-radius: 15px;
+}
+.flower_bedge {
+  background-color: rgb(248, 184, 179);
+  color: rgb(255, 255, 255);
+  padding: .1rem .5rem;
+  border-radius: 15px;
+}
+.flowerBud_bedge {
+  background-color: rgb(248, 195, 179);
+  color: rgb(255, 255, 255);
+  padding: .1rem .5rem;
+  border-radius: 15px;
+}
+.bud_bedge {
+  background-color: rgb(201, 223, 150);
+  color: rgb(255, 255, 255);
+  padding: .1rem .5rem;
+  border-radius: 15px;
+}
+.sprout_bedge {
+  background-color: rgb(148, 180, 147);
+  color: rgb(255, 255, 255);
+  padding: .1rem .5rem;
+  border-radius: 15px;
+}
+
+.pagination li.active {
+  background-color: rgb(216, 193, 230);
 }
 
 .rank_box {
   width: 60%;
-  height: 700px;
+  /* height: 700px; */
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  margin-bottom: 50px;
+  margin-top: 1rem;
+  padding: 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.admin_box {
+  width: 60%;
+  /* height: 700px; */
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
   border-radius: 5px;

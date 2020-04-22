@@ -207,7 +207,14 @@ class Detail extends Component<DetailProps> {
 
         <div className="comment_user">
           <div className="user_review_name">
-          Angelo Orazio Pregoni
+          <div className="bedge">
+            <img
+              src="https://user-images.githubusercontent.com/52684457/79992607-adbaba00-84ee-11ea-98c4-5f844400a294.png"
+              alt="" />
+            <div className="top_bedge">
+            Angelo Orazio Pregoni
+            </div>
+          </div>
           </div>
           <div className="review_text">
             I imagine Evita Peron drinking mate, in a room with scent traces of asado just eaten, and notes of amber and cinnamon all around the room! Wonderful! <br/> 
