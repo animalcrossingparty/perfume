@@ -328,7 +328,8 @@
 }
 
 .write_comment {
-  background-color: rgba(90, 80, 80, 0.9);
+  /* background-color: rgba(90, 80, 80, 0.9); */
+  background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
   /* width: 80vh; */
   /* width: 360px; */
@@ -351,14 +352,17 @@
 
 .row_comment > i {
   margin-right: 1rem;
-  color: rgb(199, 180, 178);
+  /* color: rgb(199, 180, 178); */
+  color: rgb(179, 161, 159);
 }
 
 .row_comment > textarea {
   width: 130vh;
   height: 70px;
   margin-top: 1rem;
-  background-color: rgb(199, 180, 178);
+  /* background-color: rgb(199, 180, 178); */
+  /* background-color: rgba(255, 255, 255, 0); */
+  background-color: rgba(255, 255, 255, 0.3);
   border: 1px solid rgb(199, 180, 178);
   border-radius: 5px;
   color: rgb(83, 75, 74);
@@ -386,7 +390,8 @@
 }
 
 .comment_list {
-  background-color: rgba(90, 80, 80, 0.9);
+  /* background-color: rgba(90, 80, 80, 0.9); */
+  background-color: rgba(248, 238, 238, 0.5);
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
   /* height: 165px; */
   border-radius: 10px;
@@ -395,31 +400,44 @@
   margin: 2rem auto;
 }
 
+.comment_user {
+  display: flex;
+  flex-direction: column;
+}
+
 /* .comment_user {
   display: flex;
   flex-direction: column;
 } */
 
 .user_review_name {
-  margin-top: 1rem;
-  font-style: italic;
-  font-size: 20px;
+  /* font-style: italic; */
+  font-size: 16px;
+  /* color: rgb(235, 221, 221); */
   color: rgb(235, 221, 221);
   /* border-bottom: 1px solid; */
   display: flex;
   text-align: start;
-  margin-left: 2rem;
+  margin: 1rem auto 1rem 1rem;
 }
 
 .review_text {
-  background-color: rgb(199, 180, 178);
+  /* background-color: rgb(199, 180, 178); */
+  /* background: linear-gradient(to right, rgb(222, 234, 232), rgb(251, 236, 232)); */
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
+
   border-radius: 5px;
   color: rgb(83, 75, 74);
   padding: 1rem;
   font-weight: 500;
-  width: 95%;
-  margin: .5rem auto;
+  width: 85%;
+  /* margin: .5rem auto; */
+  margin-right: .5rem;
   text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
 }
 
 .review_text > a {
@@ -458,7 +476,8 @@
 .review_date {
   /* text-align: start; */
   margin-top: .5rem;
-  color: rgb(204, 185, 185);
+  /* color: rgb(204, 185, 185); */
+  color: rgb(156, 134, 134);
   font-style: italic;
 }
 

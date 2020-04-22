@@ -5,7 +5,7 @@ import '../css/HomePage.css'
 
 function PerfumePage(history) {
   return (
-    <div>
+    <div className="bg">
       <Header />
       <div className="container">
         <Perfumes history={history} />
