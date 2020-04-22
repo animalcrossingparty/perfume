@@ -32,20 +32,20 @@ class ListUsers(APIView):
     # """
     # authentication_classes = [authentication.TokenAuthentication]
     # permission_classes = [permissions.IsAdminUser]
+    @swagger_auto_schema(
+        operation_summary='Points로 회원 정렬 후 20위까지 조회'
+        )
     def get(self, request):
-        """
-        Points로 회원 정렬 후 20위까지 조회
-        """
         users = get_user_model().objects.order_by('-points')[:20]
         serializers = UserBriefSerializers(users, many=True)
         return Response(serializers.data, status=200)
 
 
 class SingleUser(APIView):
+    @swagger_auto_schema(
+        operation_summary='회원 본인 정보 조회'
+        )
     def get(self, request):
-        """
-        회원 본인 정보 조회
-        """
         try:
             user = is_logged_in(request)
         except:
@@ -54,12 +54,11 @@ class SingleUser(APIView):
         return Response(serializers.data, status=200)
 
     @swagger_auto_schema(
-        request_body=SignUpserializers
+        request_body=SignUpserializers,
+        operation_summary='회원가입'
         )
     def post(self, request):
         """
-        회원 가입
-        ----
         email과 username은 unique.
         둘 중 하나가 존재한다면 status 400과 {'message': 'already existing email or username'}를 반환합니다.
         사용자가 이미 로그인한 상태이면 status 400과 {'message': 'already logged in'}를 반환합니다.
@@ -78,6 +77,7 @@ class SingleUser(APIView):
         return Response({'message': 'already logged in'}, status=400)
 
     @swagger_auto_schema(
+        operation_summary='회원 정보 수정',
         request_body=UserSerializers,
         manual_parameters=[
             openapi.Parameter(
@@ -90,9 +90,6 @@ class SingleUser(APIView):
             ]
         )
     def put(self, request):
-        """
-        회원 정보 수정
-        """
         try:
             user = is_logged_in(request)
         except:
@@ -104,6 +101,7 @@ class SingleUser(APIView):
         return Response({'message': 'Wrong format'}, status=400)
 
     @swagger_auto_schema(
+        operation_summary='회원 탈퇴',
         manual_parameters=[
             openapi.Parameter(
                 'Token',
@@ -115,9 +113,6 @@ class SingleUser(APIView):
             ]
         )
     def delete(self, request):
-        """
-        회원 탈퇴
-        """
         try:
             user = is_logged_in(request)
         except:
@@ -126,6 +121,7 @@ class SingleUser(APIView):
         return Response(status=200)
 
 @swagger_auto_schema(
+    operation_summary='로그인',
     method='post',
     request_body=openapi.Schema(
         type=openapi.TYPE_OBJECT,
@@ -147,7 +143,10 @@ def login(request):
         }
     return Response(data=encoded)
 
-
+@swagger_auto_schema(
+    operation_summary='이메일 중복 체크',
+    method='get'
+    )
 @api_view(['GET'])
 def check_duplicate_email(request, email):
 	if email is None:
