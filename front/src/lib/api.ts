@@ -18,5 +18,5 @@ export const checkStatus = () => 0;
 export const logout = () => 0;
 
 // perfume
-export const getPerfumes = (q) => axios.get(`${BASE_URL}/perfumes/`,{params:{page:q.page,sort:q.sort,category:q.category,gender:q.gender,include:q.include,exclude:q.exclude, brand:q.brand}});
+export const getPerfumes = (q) => axios.get(`${BASE_URL}/perfumes/`, {params:{page:q.page,sort:q.sort,category:q.category,gender:q.gender,include:q.include,exclude:q.exclude, brand:q.brand}});
 export const getPerfumeDetail = (id:number) => axios.get(`api/perfumes?pk=${id}`)
