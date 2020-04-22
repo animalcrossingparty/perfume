@@ -45,6 +45,15 @@ class SurveySerializers(serializers.ModelSerializer):
         model = Survey
         fields = ['id', 'age', 'gender', 'season', 'hate_notes', 'like_notes', 'like_category']
 
+class LeftNoteSerializers(serializers.ModelSerializer):
+    # notes = NoteSerializers(read_only=True, many=True)
+    # top_notes = NoteSerializers(read_only=True, many=True)
+    # heart_notes = NoteSerializers(read_only=True, many=True)
+    # base_notes = NoteSerializers(read_only=True, many=True)
+    class Meta:
+        model=Note
+        fields = '__all__'
+
 class ReviewDetailSerializers(serializers.Serializer):
     user = serializers.IntegerField(source='user.pk')
     perfume = serializers.IntegerField(source='perfume.pk')
