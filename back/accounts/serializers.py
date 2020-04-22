@@ -5,12 +5,25 @@ from laure_richis.base import SECRET_KEY
 from time import time
 from perfumes.models import Perfume
 
+
 class PerfumeBriefSerializers(serializers.ModelSerializer):
     class Meta:
         model = Perfume
         fields = ['name', 'thumbnail', 'brand']
 
+
+class SignUpserializers(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = [
+            'username', 'email', 'password'
+            ]
+
+
 class UserBriefSerializers(serializers.ModelSerializer):
+    """
+    사용자 랭킹 리스트에서 쓰임
+    """
     reviews_cnt = serializers.IntegerField(source='review_set.count')
     thumbs_up_cnt = serializers.SerializerMethodField(read_only=True)
     class Meta:
@@ -28,13 +41,15 @@ class UserBriefSerializers(serializers.ModelSerializer):
             
 
 class UserSerializers(serializers.ModelSerializer):
-    like_perfumes = PerfumeBriefSerializers(many=True)
+    like_perfumes = PerfumeBriefSerializers(read_only=True, many=True)
     class Meta:
         model = get_user_model()
         fields = [
             'username', 'date_joined', 'email', 'profile_image',
-            'country', 'gender', 'age', 'points', 'like_perfumes'
+            'country', 'gender', 'age', 'date_joined', 'email', 'like_perfumes'
             ]
+        read_only_fields = ['date_joined', 'email', 'date_joined', 'email']
+
 
 class PayloadSerializers(serializers.Serializer):
     now = int(time())

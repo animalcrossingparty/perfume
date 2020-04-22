@@ -19,7 +19,7 @@ schema_view = get_schema_view(
         contact=openapi.Contact(
             name="Linus Lee", email="lkh151515@gmail.com", url="https://"),
     ),
-    authentication_classes=(EmailAuthBackend,),
+    # authentication_classes=(EmailAuthBackend,),
     # validators=['ssv'],
     public=True,
     permission_classes=(permissions.AllowAny,),
