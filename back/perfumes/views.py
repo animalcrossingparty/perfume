@@ -1,7 +1,7 @@
-from .models import Perfume, Review, Brand
+from .models import Perfume, Review, Brand, Note
 from accounts.models import Survey
 from django.shortcuts import render, get_object_or_404
-from .serializers import PerfumeSerializers, PerfumeDetailSerializers, PerfumeSurveySerializers, ReviewDetailSerializers, SurveySerializers
+from .serializers import PerfumeSerializers, PerfumeDetailSerializers, PerfumeSurveySerializers, ReviewDetailSerializers, SurveySerializers, LeftNoteSerializers
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.conf import settings
@@ -105,29 +105,55 @@ def perfume_detail(request, perfume_pk):
     return Response(serializer.data)
 
 # 성별, 나이, 계절을 받았을 때 남아있는 향수들의 노트를 알려준다 -> include, exclude 카테고리를 받는다. -> note를 리턴
-
 @api_view(['GET'])
 def left_notes(request):
     # 로그인 유무
-    try:
-        encoded_jwt = request.headers['Token']
-        decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-        user = get_user_model().objects.get(pk=decoded['userID'])
-    except:  # 회원 아니면
-        return Response(status=401)
+    # try:
+    #     encoded_jwt = request.headers['Token']
+    #     decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
+    #     user = get_user_model().objects.get(pk=decoded['userID'])
+    # except:  # 회원 아니면
+    #     return Response(status=401)
+
     gender = request.GET.get('gender', None)
+    age = request.GET.get('age', None)
+    age = str(age)
+    season = request.GET.get('season', None)
+    include = request.GET.get('include', None)
+    exclude = request.GET.get('exclude', None)
 
+    products = Perfume.objects.all().prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availibility=True)
+    products = products.filter(gender=gender)
 
+    if include is not None:
+        include_list = include.split(',')
+        for category in include_list:
+            products = products.filter(categories__name=category)
+    
+    if exclude is not None:
+        exclude_list = exclude.split(',')
+        for category in exclude_list:
+            products = products.exclude(categories__name=category)
+    
+    products = products[:10]
 
-"""
-survey 모델
-
-
-"""
+    total_notes = Note.objects.none()
+    for product in products:
+        top = product.top_notes.values()
+        heart = product.heart_notes.values()
+        base = product.base_notes.values()
+        total_notes = top | heart | base
+    # total_notes = top | heart | base
+    total_notes = total_notes.distinct()
+    # products = products.distinct()
+    print(total_notes)
+    # print(left_notes)
+    serialize = LeftNoteSerializers(total_notes, many=True)
+    return Response(serialize.data)
+    
 # 서베이에 처음 들어왔을때 api요청
 # 로그인 했을 때만..
 # 이전에 서베이 기록 있으면 이전 서비스 정보 리턴 없으면 오류 메세지
-
 @api_view(['GET'])
 def nth_survey_or_not(request):
     try:
@@ -191,7 +217,7 @@ def perfume_survey(request):
         #     products = products.exclude(category__name=hate)
 
         # 좋아하는 향료
-        if include_notes is not 'all':
+        if include_notes != 'all':
             try:
                 note_list = include_notes.split(',')
                 for i, note in enumerate(note_list):
