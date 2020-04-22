@@ -34,7 +34,13 @@ def perfumes_list(request):
     products = Perfume.objects.filter(availibility=True).prefetch_related('brand').prefetch_related('review_set').annotate(review__count=Count('review')).annotate(avg_rate=Avg('review__rate')).all()
 
     # 성별 체크
-    print(gender)
+    print('sort', sort, '\n',
+            'brand', brand, '\n',
+            'category', category, '\n',
+            'page', page, '\n',
+            'exclude', exclude, '\n',
+            'include', include, '\n',
+            'gender', gender, '\n')
     if gender is not 'all':
         try:
             products = products.filter(gender=gender)
