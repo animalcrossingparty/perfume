@@ -1,22 +1,23 @@
 from rest_framework import serializers
 from .models import Perfume, Review, Note
+from accounts.models import Survey
 from accounts.serializers import UserSerializers
 
-class NoteSerializers(serializers.Serializer):
+class NoteSerializers(serializers.ModelSerializer):
     class Meta:
         model = Note
-        fields = '__all__'
+        fields = ['id', 'name', 'kor_name']
 
 class PerfumeSerializers(serializers.ModelSerializer):
-    total_review = serializers.SerializerMethodField(read_only=True)
     avg_rate = serializers.SerializerMethodField(read_only=True)
-    top_notes = NoteSerializers(many=True)
-    heart_notes = NoteSerializers(many=True)
-    base_notes = NoteSerializers(many=True)
+    top_notes = NoteSerializers(read_only=True, many=True)
+    heart_notes = NoteSerializers(read_only=True, many=True)
+    base_notes = NoteSerializers(read_only=True, many=True)
+    total_review = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Perfume
-        fields = ['id','name','launch_date','thumbnail','gender','categories','availibility','season', 'brand', 'top_notes', 'heart_notes', 'base_notes', 'total_review', 'avg_rate']
+        fields = ['id','name','launch_date','thumbnail','gender','categories','availibility','season', 'brand', 'top_notes', 'heart_notes', 'base_notes', 'avg_rate', 'total_review'] 
 
     def get_total_review(self, review):
         return review.review_set.count()
@@ -25,15 +26,25 @@ class PerfumeSerializers(serializers.ModelSerializer):
         try:
             result = sum(review.review_set.values_list('rate', flat=True))/review.review_set.count()
         except:
-            result = 1
+            result = 0
         return result
+
 class PerfumeSurveySerializers(serializers.ModelSerializer):
+    top_notes = NoteSerializers(read_only=True, many=True)
+    heart_notes = NoteSerializers(read_only=True, many=True)
+    base_notes = NoteSerializers(read_only=True, many=True)
     class Meta:
         model = Perfume
-        # fields = ['id','name','launch_date','thumbnail','gender','categories','availibility','season', 'brand', 't_notes', 'h_notes', 'b_notes', 'total_review', 'avg_rate']
-        # fields = '__all__'
-        fields = ['id','name', 'kor_name','launch_date','thumbnail','gender','brand', 'categories','availibility','season', 't_notes', 'h_notes', 'b_notes']
- 
+        fields = ['id','name','launch_date','thumbnail','gender','categories','availibility','season', 'brand', 'top_notes', 'heart_notes', 'base_notes'] 
+
+class SurveySerializers(serializers.ModelSerializer):
+    gender = UserSerializers(source='user.gender', read_only=True)
+    age = UserSerializers(source='user.age',read_only=True)
+
+    class Meta:
+        model = Survey
+        fields = ['id', 'age', 'gender', 'season', 'hate_notes', 'like_notes', 'like_category']
+
 class ReviewDetailSerializers(serializers.Serializer):
     user = serializers.IntegerField(source='user.pk')
     perfume = serializers.IntegerField(source='perfume.pk')
