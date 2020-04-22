@@ -36,11 +36,12 @@ def perfumes_list(request):
     # 성별 체크
     print('sort', sort, '\n',
             'brand', brand, '\n',
-            'category', category, '\n',
+            'category', category, category=='all' '\n',
             'page', page, '\n',
-            'exclude', exclude, '\n',
-            'include', include, '\n',
-            'gender', gender, '\n')
+            'exclude', exclude, exclude==None '\n',
+            'include', include, include=='all' '\n',
+            'gender', gender, gender='all' '\n')
+
     if gender is not 'all':
         try:
             products = products.filter(gender=gender)
