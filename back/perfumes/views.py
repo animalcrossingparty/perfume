@@ -34,36 +34,29 @@ def perfumes_list(request):
     products = Perfume.objects.filter(availibility=True).prefetch_related('brand').prefetch_related('review_set').annotate(review__count=Count('review')).annotate(avg_rate=Avg('review__rate')).all()
 
     # 성별 체크
-    print('sort', sort, '\n',
-            'brand', brand, '\n',
-            'category', category, category=='all' '\n',
-            'page', page, '\n',
-            'exclude', exclude, exclude==None '\n',
-            'include', include, include=='all' '\n',
-            'gender', gender, gender='all' '\n')
-
-    if gender is not 'all':
+    print(gender)
+    if gender != 'all':
         try:
             products = products.filter(gender=gender)
         except:
             return 0
 
     # 브랜드 체크
-    if brand is not 'all':
+    if brand != 'all':
         try:
             products = products.filter(brand__name=brand)
         except:
             return 0
 
     # 카테고리 체크
-    if category is not 'all':
+    if category != 'all':
         try:
             products = products.filter(categories=category)
         except:
             return 0
 
     # 제외 노트 체크
-    if exclude is not None:
+    if exclude != None:
         try:
             exclude_list = exclude.split(',')
             for exclude in exclude_list:
@@ -73,7 +66,7 @@ def perfumes_list(request):
             return 0
 
     # 포함 노트 체크
-    if include is not 'all':
+    if include != 'all':
         try:
             include_list = include.split(',')
             for include in include_list:
@@ -263,11 +256,11 @@ def perfume_survey(request):
 
 
 
-# def make_wordcloud(request, perfume_pk):
-#     reviews = Review.objects.filter(perfume=perfume_pk)
-#     wordcloud.tokenizing(reviews)
+def make_wordcloud(request, perfume_pk):
+    reviews = Review.objects.filter(perfume=perfume_pk)
+    wordcloud.tokenizing(reviews)
 
-#     serializer = PerfumeSerializers()
+    serializer = PerfumeSerializers()
     
 
 
