@@ -18,6 +18,7 @@ class SignUpserializers(serializers.ModelSerializer):
         fields = [
             'username', 'email', 'password'
             ]
+        required = ['username', 'email', 'password']
 
 
 class UserBriefSerializers(serializers.ModelSerializer):

@@ -15,7 +15,7 @@ schema_view = get_schema_view(
     openapi.Info(
         title="Laure Richis API Server",
         default_version='v1',
-        description="로르리시 백엔드",
+        description="로르리시 백엔드\nSuccess했을 때 status code는 모두 200으로 반환합니다!",
         contact=openapi.Contact(
             name="Linus Lee", email="lkh151515@gmail.com", url="https://"),
     ),

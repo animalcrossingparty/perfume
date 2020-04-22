@@ -26,13 +26,16 @@ def is_logged_in(request):
 
 
 class ListUsers(APIView):
-    """GET: 회원 랭킹
-    * Requires token authentication.
-    * Only admin users are able to access this view.
-    """
+    # """
+    # * Requires token authentication.
+    # * Only admin users are able to access this view.
+    # """
     # authentication_classes = [authentication.TokenAuthentication]
     # permission_classes = [permissions.IsAdminUser]
     def get(self, request):
+        """
+        Points로 회원 정렬 후 20위까지 조회
+        """
         users = get_user_model().objects.order_by('-points')[:20]
         serializers = UserBriefSerializers(users, many=True)
         return Response(serializers.data, status=200)
@@ -50,10 +53,16 @@ class SingleUser(APIView):
         serializers = UserSerializers(user)
         return Response(serializers.data, status=200)
 
-    @swagger_auto_schema(request_body=SignUpserializers)
+    @swagger_auto_schema(
+        request_body=SignUpserializers
+        )
     def post(self, request):
         """
-        회원 가입 (email, username은 unique)
+        회원 가입
+        ----
+        email과 username은 unique.
+        둘 중 하나가 존재한다면 status 400과 {'message': 'already existing email or username'}를 반환합니다.
+        사용자가 이미 로그인한 상태이면 status 400과 {'message': 'already logged in'}를 반환합니다.
         """
         try:
             is_logged_in(request)
@@ -75,7 +84,8 @@ class SingleUser(APIView):
                 'Token',
                 openapi.IN_HEADER,
                 description='JWT',
-                type=openapi.TYPE_STRING
+                type=openapi.TYPE_STRING,
+                required=True
                 )
             ]
         )
@@ -93,6 +103,17 @@ class SingleUser(APIView):
             return Response(status=200)
         return Response({'message': 'Wrong format'}, status=400)
 
+    @swagger_auto_schema(
+        manual_parameters=[
+            openapi.Parameter(
+                'Token',
+                openapi.IN_HEADER,
+                description='JWT',
+                type=openapi.TYPE_STRING,
+                required=True
+                )
+            ]
+        )
     def delete(self, request):
         """
         회원 탈퇴
@@ -111,12 +132,12 @@ class SingleUser(APIView):
         properties={
             "email": openapi.Schema(type=openapi.TYPE_STRING),
             "password": openapi.Schema(type=openapi.TYPE_STRING)
-            }
+            },
+        required=["email", "password"]
         )
     )
 @api_view(['POST'])
 def login(request):	
-    print(request.data)
     user = authenticate(request=request, username=request.data.get('email'), password=request.data.get('password'))
     if user is None:
         return Response(status=401)
@@ -127,10 +148,8 @@ def login(request):
     return Response(data=encoded)
 
 
-# @swagger_auto_schema(methods=["get"], manual_params=['email'], operation_description='GET /exists/email/{email_address}')
 @api_view(['GET'])
 def check_duplicate_email(request, email):
-	print(email)
 	if email is None:
 		return Response(data={'email': 'this field is required'}, status=400)
 	try:
