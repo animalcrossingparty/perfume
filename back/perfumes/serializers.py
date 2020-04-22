@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Perfume, Review, Note
+from .models import Perfume, Review, Note, Brand
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
 
@@ -8,12 +8,18 @@ class NoteSerializers(serializers.ModelSerializer):
         model = Note
         fields = ['id', 'name', 'kor_name']
 
+class BrandSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = ['id', 'name']
+
 class PerfumeSerializers(serializers.ModelSerializer):
     avg_rate = serializers.SerializerMethodField(read_only=True)
     top_notes = NoteSerializers(read_only=True, many=True)
     heart_notes = NoteSerializers(read_only=True, many=True)
     base_notes = NoteSerializers(read_only=True, many=True)
     total_review = serializers.SerializerMethodField(read_only=True)
+    brand = BrandSerializers(read_only=True)
 
     class Meta:
         model = Perfume
