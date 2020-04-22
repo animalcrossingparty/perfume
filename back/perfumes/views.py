@@ -98,7 +98,7 @@ def perfumes_list(request):
         invalid_page_message = f'{page} 페이지에는 결과가 없습니다. 해당 요청의 최대 페이지 수: < {Paginator(products, PAGE_SIZE).num_pages} >'
         return Response(invalid_page_message, status=404)
 
-    return Response(serializer, headers={'num_pages': num_pages})
+    return Response(serializer, headers={'num_pages': num_pages, 'Access-Control-Allow-Headers': 'num_pages'})
 
 
 @api_view(['GET'])
