@@ -23,7 +23,7 @@ class Season(models.Model):
 
 class Perfume(models.Model):
     name = models.CharField(max_length=200)
-    launch_date = models.DateField(null=True)
+    launch_date = models.DateField(null=True, blank=True)
     thumbnail = models.CharField(max_length=200)
     gender = models.IntegerField(null=True)
     brand = models.ForeignKey(to=Brand, on_delete=models.PROTECT)
@@ -32,7 +32,7 @@ class Perfume(models.Model):
     base_notes = models.ManyToManyField(to=Note, related_name="perfumes_base")
     categories = models.ManyToManyField(to=Category)
     availibility = models.BooleanField()
-    season = models.ManyToManyField(to=Season)
+    seasons = models.ManyToManyField(to=Season)
     
 class Review(models.Model):
     user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.PROTECT)

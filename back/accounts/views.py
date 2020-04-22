@@ -60,24 +60,27 @@ class SingleUser(APIView):
     def post(self, request):
         """
         email과 username은 unique.
-        둘 중 하나가 존재한다면 status 400과 {'message': 'already existing email or username'}를 반환합니다.
-        사용자가 이미 로그인한 상태이면 status 400과 {'message': 'already logged in'}를 반환합니다.
+        입력 형식이 올바르지 않으면 {"입력 필드명": ["에러메시지 1", "에러메시지 2", ...]} 형식의 object와 status 400을 반환합니다.
+        둘 중 하나가 존재하면 'Already existing email or username'라는 message와 status 400을 반환합니다.
+        사용자가 이미 로그인한 상태이면 status 403을 반환합니다.
         """
         try:
             is_logged_in(request)
         except:  # 로그인 되어있지 않으면 회원가입 진행
             serializers = SignUpserializers(data=request.data)
-            if serializers.is_valid():
+            serializers.is_valid(raise_exception=True)
+            try:
                 user = serializers.save()
-            else:
-                return Response({'message': 'already existing email or username'}, status=400)
+            except:
+                return Response({'message': 'Already existing email or username'}, status=400)
             user.set_password(serializers.data['password'])
             user.save()
             return Response(status=200)
-        return Response({'message': 'already logged in'}, status=400)
+        return Response(status=403)
 
     @swagger_auto_schema(
         operation_summary='회원 정보 수정',
+        operation_description='gender: 0 or 1',
         request_body=UserSerializers,
         manual_parameters=[
             openapi.Parameter(
@@ -95,10 +98,9 @@ class SingleUser(APIView):
         except:
             return Response(status=400)
         serializers = UserSerializers(data=request.data, instance=user)
-        if serializers.is_valid():
-            serializers.save()
-            return Response(status=200)
-        return Response({'message': 'Wrong format'}, status=400)
+        serializers.is_valid(raise_exception=True)
+        serializers.save()
+        return Response(status=200)
 
     @swagger_auto_schema(
         operation_summary='회원 탈퇴',
