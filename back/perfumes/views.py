@@ -102,6 +102,7 @@ def perfumes_list(request):
         print(paged_products)
         num_pages = Paginator(products, PAGE_SIZE).num_pages
         print('페이지 수',num_pages)
+        print(paged_products[0])
         serializer = PerfumeSerializers(paged_products, many=True).data
     except: 
         invalid_page_message = f'{page} 페이지에는 결과가 없습니다. 해당 요청의 최대 페이지 수: < {Paginator(products, PAGE_SIZE).num_pages} >'
