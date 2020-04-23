@@ -60,15 +60,25 @@ class LeftNoteSerializers(serializers.ModelSerializer):
         model=Note
         fields = '__all__'
 
-class ReviewDetailSerializers(serializers.Serializer):
-    user = serializers.IntegerField(source='user.pk')
-    perfume = serializers.IntegerField(source='perfume.pk')
+class ReviewSerializers(serializers.Serializer):
+    user = serializers.CharField(source='user.username', read_only=True)
+    perfume = serializers.IntegerField(source='perfume.pk', read_only=True)
     content = serializers.CharField()
     rate = serializers.IntegerField(min_value=0, max_value=10)
-    created_at = serializers.DateTimeField()
+    created_at = serializers.DateTimeField(read_only=True)
+    like_cnt = serializers.IntegerField(source='like_users.count',read_only=True)
+
+    def create(self, validated_data):
+        return Review.objects.create(**validated_data)
+
+    # def update(self, instance, validated_data):
+    #     instance.user = validated_data.get('email', instance.user)
+    #     instance.perfume = validated_data.get('content', instance.perfume)
+    #     return instance
+
 
 class PerfumeDetailSerializers(serializers.ModelSerializer):
-    reviews = ReviewDetailSerializers(many=True, source='review_set')
+    reviews = ReviewSerializers(many=True, source='review_set')
     top_notes = NoteSerializers(many=True)
     heart_notes = NoteSerializers(many=True)
     base_notes = NoteSerializers(many=True)

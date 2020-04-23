@@ -43,13 +43,14 @@ class UserBriefSerializers(serializers.ModelSerializer):
 
 class UserSerializers(serializers.ModelSerializer):
     like_perfumes = PerfumeBriefSerializers(read_only=True, many=True)
+    gender = serializers.IntegerField(min_value=0, max_value=1)
     class Meta:
         model = get_user_model()
         fields = [
             'username', 'date_joined', 'email', 'profile_image',
-            'country', 'gender', 'age', 'date_joined', 'email', 'like_perfumes'
+            'country', 'gender', 'age', 'like_perfumes'
             ]
-        read_only_fields = ['date_joined', 'email', 'date_joined', 'email']
+        read_only_fields = ['date_joined', 'email']
 
 
 class PayloadSerializers(serializers.Serializer):
