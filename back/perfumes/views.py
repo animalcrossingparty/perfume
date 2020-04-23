@@ -16,6 +16,7 @@ import json
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from time import time
+from django.http import Http404
 # from perfumes.utils import wordcloud
 
 PAGE_SIZE = 12
@@ -298,14 +299,30 @@ def make_wordcloud(request, perfume_pk):
 
 
 class ListReviews(APIView):
+    @swagger_auto_schema(
+        operation_summary='특정 향수의 모든 리뷰 조회'
+        )
     def get(self, request, perfume_pk):
         try:
-            perfume = Perfume.objects.get(pk=perfume_pk)
+            reviews = Perfume.objects.get(pk=perfume_pk).review_set
         except:
             return Response(status=404)
-        serializers = ReviewSerializers(many=True)
-        return Response(serializers.data or {'message': 'Empty'}, status=200)
+        serializers = ReviewSerializers(reviews, many=True)
+        return Response(serializers.data or {'detail': 'Empty'}, status=200)
 
+    @swagger_auto_schema(
+        request_body=ReviewSerializers,
+        operation_summary='특정 향수에 대한 리뷰 작성',
+        manual_parameters=[
+            openapi.Parameter(
+                'Token',
+                openapi.IN_HEADER,
+                description='JWT',
+                type=openapi.TYPE_STRING,
+                required=True
+                )
+            ]
+        )
     def post(self, request, perfume_pk):
         try:
             user = is_logged_in(request)
@@ -325,31 +342,39 @@ class ListReviews(APIView):
 
 
 class SingleReview(APIView):
-    """
-    RUD
-    """
-    @swagger_auto_schema(
-        operation_summary='리뷰 조회',
-
-        )
-    def get(self, request, perfume_pk, review_pk):
+    def get_object(self, review_pk):
         try:
-            review = Review.objects.get(pk=review_pk)
+            return Review.objects.get(pk=review_pk)
         except:
-            return Response(status=404)
+            raise Http404
+
+    @swagger_auto_schema(
+        operation_summary='특정 리뷰 조회',
+        )
+    def get(self, request, review_pk):
+        review = self.get_object(review_pk)
         serializers = ReviewSerializers(review)
         return Response(serializers.data, status=200)
 
-    
-    def put(self, request, perfume_pk, review_pk):
+    @swagger_auto_schema(
+        operation_summary='특정 리뷰 수정',
+        request_body=ReviewSerializers,
+        manual_parameters=[
+            openapi.Parameter(
+                'Token',
+                openapi.IN_HEADER,
+                description='JWT',
+                type=openapi.TYPE_STRING,
+                required=True
+                )
+            ]
+        )
+    def put(self, request, review_pk):
         try:
             user = is_logged_in(request)
         except:
             return Response(status=401)
-        try:
-            review = Review.objects.get(pk=review_pk)
-        except:
-            return Response(status=404)
+        review = self.get_object(review_pk)
         if user != review.user:
             return Response(status=403)
         serializers = ReviewSerializers(instance=review, data=request.data)
@@ -357,146 +382,26 @@ class SingleReview(APIView):
         serializers.save()
         return Response(status=200)
 
-    def delete(self, request, perfume_pk, review_pk, format=None):
-        print('asfasfdas')
+    @swagger_auto_schema(
+        operation_summary='특정 리뷰 삭제',
+        manual_parameters=[
+            openapi.Parameter(
+                'Token',
+                openapi.IN_HEADER,
+                description='JWT',
+                type=openapi.TYPE_STRING,
+                required=True
+                )
+            ]
+        )
+    def delete(self, request, review_pk):
         try:
             user = is_logged_in(request)
         except:
             return Response(status=401)
-        try:
-            review = Review.objects.get(pk=review_pk)
-            
-            print(review)
-        except:
-            return Response(status=404)
+        review = self.get_object(review_pk)
         if user != review.user:
             return Response(status=403)
         else:
-            print('safsda')
-            print(review)
             review.delete()
             return Response(status=200)
-        
-
-# class SingleUser(APIView):
-#     @swagger_auto_schema(
-#         request_body=SignUpserializers,
-#         operation_summary='회원가입'
-#         )
-#     def post(self, request):
-#         """
-#         email과 username은 unique.
-#         둘 중 하나가 존재한다면 status 400과 {'message': 'already existing email or username'}를 반환합니다.
-#         사용자가 이미 로그인한 상태이면 status 400과 {'message': 'already logged in'}를 반환합니다.
-#         """
-#         try:
-#             is_logged_in(request)
-#         except:  # 로그인 되어있지 않으면 회원가입 진행
-#             serializers = SignUpserializers(data=request.data)
-#             if serializers.is_valid():
-#                 user = serializers.save()
-#             else:
-#                 return Response({'message': 'already existing email or username'}, status=400)
-#             user.set_password(serializers.data['password'])
-#             user.save()
-#             return Response(status=200)
-#         return Response({'message': 'already logged in'}, status=400)
-
-#     @swagger_auto_schema(
-#         operation_summary='회원 정보 수정',
-#         request_body=UserSerializers,
-#         manual_parameters=[
-#             openapi.Parameter(
-#                 'Token',
-#                 openapi.IN_HEADER,
-#                 description='JWT',
-#                 type=openapi.TYPE_STRING,
-#                 required=True
-#                 )
-#             ]
-#         )
-#     def put(self, request):
-#         try:
-#             user = is_logged_in(request)
-#         except:
-#             return Response(status=400)
-#         serializers = UserSerializers(data=request.data, instance=user)
-#         if serializers.is_valid():
-#             serializers.save()
-#             return Response(status=200)
-#         return Response({'message': 'Wrong format'}, status=400)
-
-#     @swagger_auto_schema(
-#         operation_summary='회원 탈퇴',
-#         manual_parameters=[
-#             openapi.Parameter(
-#                 'Token',
-#                 openapi.IN_HEADER,
-#                 description='JWT',
-#                 type=openapi.TYPE_STRING,
-#                 required=True
-#                 )
-#             ]
-#         )
-#     def delete(self, request):
-#         try:
-#             user = is_logged_in(request)
-#         except:
-#             return Response(status=400)
-#         user.delete()
-#         return Response(status=200)
-
-@api_view(['POST'])
-def review_create(request, perfume_pk):
-    try:
-        encoded_jwt = request.headers['Token']
-        decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-        user = get_user_model().objects.get(pk=decoded['userID'])
-    except:  # 회원 아니면
-        return Response(status=401)
-    # 회원이면
-    data = request.POST
-    review = Review.objects.create(
-        user=user,
-        perfume_id=perfume_pk,
-        content=data.get('content'),
-        rate=data.get('rate')
-    )
-    return Response(data={'review_id': review.pk}, status=200)
-
-@api_view(['GET', 'PUT', 'DELETE'])
-def review_detail(request, perfume_pk, review_pk):
-    try:  # 먼저 해당 리뷰 존재하는 지 확인
-        review = Review.objects.get(pk=review_pk)
-    except:
-        return Response(status=404)
-    # 존재하면
-    if request.method == 'GET':
-        serializer = ReviewDetailSerializers(review)
-        return Response(serializer.data, status=200)
-    # PUT / DELETE 일 때
-    try:  # 회원인지 verify
-        encoded_jwt = request.headers['Token']
-        decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-        user_cur = get_user_model().objects.get(pk=decoded['userID'])
-    except:  # 회원 아니면
-        return Response(status=401)
-    # 회원이면
-    if user_cur != review.user:  # 작성자 본인 아니면
-        return Response(status=403)
-    # 작성자 본인 맞으면
-    data = request.POST
-    if request.method == 'PUT':
-        review.content = data.get('content')
-        review.rate = data.get('rate')
-        try:
-            review.save()
-        except:  # 내용을 안 썼을 때..?
-            return Response(status=400)
-    else:  # DELETE일 때
-        review.delete()
-    return Response(status=200)
-
-
-
-
