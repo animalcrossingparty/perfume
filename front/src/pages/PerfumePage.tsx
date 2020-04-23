@@ -3,18 +3,15 @@ import { Header } from '../components'
 import { Perfumes } from 'containers/Perfumes'
 import '../css/HomePage.css'
 
-function HomePage() {
+function PerfumePage(history) {
   return (
-    <div>
+    <div className="bg">
       <Header />
       <div className="container">
-        <div>
-          <h1>드롭다운 // 검색바</h1>
-        </div>
-        <Perfumes />
+        <Perfumes history={history} />
       </div>
     </div>
   );
 }
 
-export default HomePage;
+export default PerfumePage;

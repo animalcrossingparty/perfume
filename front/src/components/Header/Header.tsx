@@ -4,7 +4,7 @@ import * as userActions from 'redux/modules/user';
 import { bindActionCreators } from 'redux';
 import storage from 'lib/storage';
 import 'materialize-css';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { Navbar, Icon } from 'react-materialize';
 import './Header.css'
 
@@ -47,7 +47,7 @@ class Header extends Component<HeaderProps>{
       preventScrolling: true
     }}
   >
-    <Link to="/perfume?page=1&sort=alpha&brand=all&category=all&include=all&gender=all">PERFUME</Link>
+    <NavLink to={`/perfume?page=1&sort=alpha&category=all&gender=all&include=all&exclude=None&brand=all`}>PERFUME</NavLink>
     <Link to="/">NEWS</Link>
     <Link to="/">ABOUT</Link>
     <Link to="/survey">SURVEY</Link>

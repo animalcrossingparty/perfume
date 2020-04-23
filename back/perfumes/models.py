@@ -20,6 +20,7 @@ class Note(models.Model):
 
 class Season(models.Model):
     name = models.CharField(max_length=20)
+    kor_name = models.CharField(max_length=20)
 
 class Perfume(models.Model):
     name = models.CharField(max_length=200)
@@ -31,7 +32,7 @@ class Perfume(models.Model):
     heart_notes = models.ManyToManyField(to=Note, related_name="perfumes_heart")
     base_notes = models.ManyToManyField(to=Note, related_name="perfumes_base")
     categories = models.ManyToManyField(to=Category)
-    availibility = models.BooleanField()
+    availability = models.BooleanField()
     seasons = models.ManyToManyField(to=Season)
     
 class Review(models.Model):

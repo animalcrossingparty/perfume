@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Header, Date, Categories } from '../components'
-import { Switch, Checkbox } from 'react-materialize';
+import { Switch, Checkbox, Chip, Icon } from 'react-materialize';
 import { Button } from 'react-materialize';
 import { Link } from 'react-router-dom'
 import '../css/SurveyPage.css'
@@ -11,7 +11,8 @@ return (
   <Header />
 
   <div className="survey_box">
-    <div className="title">Survey</div>
+    <div className="title">Survey
+    </div>
     <div className="content">
       {/* age */}
       <div className="titles">
@@ -26,12 +27,17 @@ return (
         GENDER
       </div>
       <div className="gender_">
-        <div className="gender_text">
-          <div className="gender_1">M</div>ale
+        <div className="male_fe">
+          <div className="gender_text">
+            <div className="gender_1">M</div>ale
+          </div>
+          <Switch id="Switch-11" offLabel="Off" onChange={function noRefCheck(){}} onLabel="On" />
+          <div className="gender_text">
+            <div className="gender_2">Fe</div>male
+          </div>
         </div>
-        <Switch id="Switch-11" offLabel="Off" onChange={function noRefCheck(){}} onLabel="On" />
-        <div className="gender_text">
-          <div className="gender_2">Fe</div>male
+        <div className="none_gender">
+          <Checkbox id="None" label="None" value="None" />
         </div>
       </div>
 
@@ -68,6 +74,7 @@ return (
       <div className="sub_title">
         * 선택한 카테고리 내에 마음에드는 노트를 3가지 이상 선택해주세요.
       </div>
+      {/* 상당히 많은 수의 노트가 있을 경우, overflow scroll을 이용해도 될 것 같다. */}
       <div className="season">
         <Checkbox filledIn id="Acacia" label="Acacia" value="Acacia" />
         <Checkbox filledIn id="Rose" label="Rose" value="Rose" />
@@ -91,13 +98,25 @@ return (
         * 기피하고 싶은 카테고리를 선택해주세요. (0~2개)
       </div>
       <Categories />
+      <div className="hate_cate">
+        <Chip close closeIcon={<Icon className="close">close</Icon>}
+          options={null}
+          >
+          Animalic
+        </Chip>
+        <Chip close closeIcon={<Icon className="close">close</Icon>}
+          options={null}
+          >
+          Beverages
+        </Chip>
+      </div>
       <div className="rem"></div>
 
     </div>
 
     <div className="submit_survey">
-      <Link to ="/">
-        <Button>SUBMIT</Button>
+      <Link to="/">
+      <Button>SUBMIT</Button>
       </Link>
     </div>
   </div>

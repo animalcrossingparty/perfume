@@ -31,15 +31,15 @@ def perfumes_list(request):
     # QUERY STRINGS ----------------------------------------------
     # 필수값은 무엇인지, 기본값은 무엇인지
     sort = request.GET.get('sort', 'alpha')
-    brand = request.GET.get('brand', 'all')
     category = request.GET.get('category', 'all')
     page = int(request.GET.get('page', 1))
+    brand_name = request.GET.get('brand_name', 'all')
     exclude = request.GET.get('exclude', None)
     include = request.GET.get('include', 'all')
     gender = request.GET.get('gender', 'all')
     # ------------------------------------------------------------
 
-    products = Perfume.objects.filter(availability=True).prefetch_related('brand').prefetch_related('review_set').annotate(review__count=Count('review')).annotate(avg_rate=Avg('review__rate')).all()
+    products = Perfume.objects.filter(availibility=True).prefetch_related('review_set').annotate(review__count=Count('review')).annotate(avg_rate=Avg('review__rate')).all()
 
     # 성별 체크
     print(gender)
@@ -49,10 +49,11 @@ def perfumes_list(request):
         except:
             return 0
 
+# 브랜드 이름이랑 아이디, 총 페이지 숫자
     # 브랜드 체크
-    if brand != 'all':
+    if brand_name != 'all':
         try:
-            products = products.filter(brand__name=brand)
+            products = products.filter(brand_name__name=brand_name)
         except:
             return 0
 
@@ -98,12 +99,14 @@ def perfumes_list(request):
     try:
         paged_products = Paginator(products, PAGE_SIZE).page(page)
         print(paged_products)
+        num_pages = Paginator(products, PAGE_SIZE).num_pages
+        print('페이지 수',num_pages)
         serializer = PerfumeSerializers(paged_products, many=True).data
     except: 
         invalid_page_message = f'{page} 페이지에는 결과가 없습니다. 해당 요청의 최대 페이지 수: < {Paginator(products, PAGE_SIZE).num_pages} >'
         return Response(invalid_page_message, status=404)
 
-    return Response(serializer)
+    return Response(serializer, headers={'num_pages': num_pages, 'Access-Control-Expose-Headers': 'num_pages'})
 
 
 @api_view(['GET'])
@@ -144,16 +147,13 @@ def left_notes(request):
             products = products.exclude(categories__name=category)
     
     products = products[:10]
-
-    total_notes = Note.objects.none()
+    notes = Note.objects.all()
     for product in products:
         top = product.top_notes.values()
         heart = product.heart_notes.values()
         base = product.base_notes.values()
-        total_notes = top | heart | base
-    # total_notes = top | heart | base
-    total_notes = total_notes.distinct()
-    # products = products.distinct()
+        notes = notes.filter(Q(pk__in=top) | Q(pk__in=heart) | Q(pk__in=base))
+
     print(total_notes)
     # print(left_notes)
     serialize = LeftNoteSerializers(total_notes, many=True)
@@ -298,6 +298,14 @@ def make_wordcloud(request, perfume_pk):
 
 
 class ListReviews(APIView):
+    def get(self, request, perfume_pk):
+        try:
+            perfume = Perfume.objects.get(pk=perfume_pk)
+        except:
+            return Response(status=404)
+        serializers = ReviewSerializers(many=True)
+        return Response(serializers.data or {'message': 'Empty'}, status=200)
+
     def post(self, request, perfume_pk):
         try:
             user = is_logged_in(request)
@@ -349,22 +357,25 @@ class SingleReview(APIView):
         serializers.save()
         return Response(status=200)
 
-    def delete(self, request, perfume_pk, review_pk):
+    def delete(self, request, perfume_pk, review_pk, format=None):
+        print('asfasfdas')
         try:
             user = is_logged_in(request)
         except:
             return Response(status=401)
         try:
             review = Review.objects.get(pk=review_pk)
+            
             print(review)
         except:
             return Response(status=404)
         if user != review.user:
             return Response(status=403)
-        
-        print(review)
-        review.delete()
-        return Response(status=200)
+        else:
+            print('safsda')
+            print(review)
+            review.delete()
+            return Response(status=200)
         
 
 # class SingleUser(APIView):
