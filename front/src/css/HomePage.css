@@ -125,7 +125,7 @@
 
 .sort_btn {
     /* background-color: rgb(223, 194, 235); */
-    background: linear-gradient(to left, rgb(229, 206, 235), rgb(199, 189, 228));
+    background: linear-gradient(to left, rgb(231, 217, 235), rgb(220, 214, 236));
     padding: 1rem;
 }
 
@@ -137,7 +137,8 @@
 
 
 .sort_btn > a {
-    color: white;
+    color: rgb(90, 81, 81);
+    font-weight: bold;
 }
 
 .perfume-topheader {
