@@ -15,18 +15,16 @@ class BrandSerializers(serializers.ModelSerializer):
 
 class PerfumeSerializers(serializers.ModelSerializer):
     avg_rate = serializers.SerializerMethodField(read_only=True)
-    top_notes = NoteSerializers(read_only=True, many=True)
-    heart_notes = NoteSerializers(read_only=True, many=True)
-    base_notes = NoteSerializers(read_only=True, many=True)
-    total_review = serializers.SerializerMethodField(read_only=True)
-    brand = BrandSerializers(read_only=True)
+    top_notes = NoteSerializers(many=True)
+    heart_notes = NoteSerializers(many=True)
+    base_notes = NoteSerializers(many=True)
+    total_review = serializers.IntegerField(source='review_set.count', read_only=True)
+    brand = BrandSerializers()
 
     class Meta:
         model = Perfume
-        fields = ['id','name','launch_date','thumbnail','gender','categories','availibility','season', 'brand', 'top_notes', 'heart_notes', 'base_notes', 'avg_rate', 'total_review'] 
-
-    def get_total_review(self, review):
-        return review.review_set.count()
+        fields = '__all__'
+        include = ['avg_rate', 'total_review']
 
     def get_avg_rate(self, review):
         try:
@@ -34,6 +32,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
         except:
             result = 0
         return result
+
 
 class PerfumeSurveySerializers(serializers.ModelSerializer):
     top_notes = NoteSerializers(read_only=True, many=True)

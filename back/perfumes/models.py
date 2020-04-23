@@ -20,7 +20,7 @@ class Note(models.Model):
 
 class Season(models.Model):
     name = models.CharField(max_length=20)
-    kor_name = models.CharField(max_length=20)
+    kor_name = models.CharField(max_length=20, blank=True)
 
 class Perfume(models.Model):
     name = models.CharField(max_length=200)
