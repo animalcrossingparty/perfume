@@ -19,7 +19,6 @@ class User(AbstractUser):
     gender = models.IntegerField(default=0)
     role = models.IntegerField(default=0)
     age = models.IntegerField(default=0)
-    like_perfumes = models.ManyToManyField(to=Perfume, related_name='like_users')
     like_reviews = models.ManyToManyField(to=Review, related_name='like_users')
     points = models.IntegerField(default=0)
     
