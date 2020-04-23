@@ -18,7 +18,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
     top_notes = NoteSerializers(many=True)
     heart_notes = NoteSerializers(many=True)
     base_notes = NoteSerializers(many=True)
-    total_review = serializers.IntegerField(source='review_set.count', read_only=True)
+    total_review = serializers.IntegerField(source='review.review_set.count', read_only=True)
     brand = BrandSerializers()
 
     class Meta:
