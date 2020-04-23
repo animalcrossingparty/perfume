@@ -40,7 +40,7 @@ def perfumes_list(request):
     gender = request.GET.get('gender', 'all')
     # ------------------------------------------------------------
 
-    products = Perfume.objects.filter(availibility=True).prefetch_related('review_set').annotate(review__count=Count('review')).annotate(avg_rate=Avg('review__rate')).all()
+    products = Perfume.objects.filter(availability=True).prefetch_related('review_set').annotate(review__count=Count('review')).annotate(avg_rate=Avg('review__rate')).all()
 
     # 성별 체크
     print(gender)
@@ -134,7 +134,7 @@ def left_notes(request):
     include = request.GET.get('include', None)
     exclude = request.GET.get('exclude', None)
 
-    products = Perfume.objects.all().prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availibility=True)
+    products = Perfume.objects.all().prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availability=True)
     products = products.filter(gender=gender)
 
     if include is not None:
@@ -201,7 +201,7 @@ def perfume_survey(request):
         include_notes = request.POST.get('include_notes', 'all')
 
         # users = get_user_model().objects.all()
-        products = Perfume.objects.all().prefetch_related('brand').filter(availibility=True)
+        products = Perfume.objects.all().prefetch_related('brand').filter(availability=True)
 
         # 성별
         if gender is not None:
