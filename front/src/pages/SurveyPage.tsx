@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Header, Date, Categories } from '../components'
 import { Switch, Checkbox, Chip, Icon } from 'react-materialize';
 import { Button } from 'react-materialize';

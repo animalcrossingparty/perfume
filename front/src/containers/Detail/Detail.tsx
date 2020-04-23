@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as detailActions from 'redux/modules/detail';
 import { Icon } from 'react-materialize'
 
-import { Star, Carousel, StarRating } from 'components/'
+import { Carousel, ReviewTextBox } from 'components/'
 import { Button } from 'react-materialize';
 import { withRouter } from 'react-router'
 import '../../css/DetailPage.css'
@@ -102,7 +102,6 @@ class Detail extends Component<DetailProps> {
 
         {/* star rating */}
         <div className="star_rating">
-          <Star />
           <div className="average">4.0</div>
         </div>
 
@@ -186,22 +185,8 @@ class Detail extends Component<DetailProps> {
       <div className="review_title">
         Reviews
       </div>
-
-      <div className="write_comment">
-        <div className="row_comment">
-          <Icon>chat</Icon>
-          {/* <Icon>person</Icon> */}
-          <textarea name="review" id="review" />
-          </div>
-        <div className="StarRating">
-          <StarRating />
-          <Button
-            node="button"
-            waves="light">
-            SUBMIT
-          </Button>
-        </div>
-      </div>
+      <ReviewTextBox id={26148987} />
+      
 
       <div className="comment_list">
 
@@ -227,7 +212,6 @@ class Detail extends Component<DetailProps> {
           </div>
         </div>
         <div className="review_star">
-          <Star />
           <div className="review_date">27th May, 2015</div>
         </div>
         <div className="btn_comment_list">

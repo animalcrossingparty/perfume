@@ -24,7 +24,7 @@ const initialState = Map({
 });
 
 export default handleActions({
-    [SET_LOGGED_INFO]: (state:Map<any, any>, action) => state.set('loggedInfo', Map(action.payload)).set('logged', true),
+    [SET_LOGGED_INFO]: (state = initialState, action) => state.set('loggedInfo', Map(action.payload)).set('logged', true),
     [SET_VALIDATED]: (state:Map<any, any>, action) => state.set('validated', action.payload),
     ...pender({
         type: CHECK_STATUS,

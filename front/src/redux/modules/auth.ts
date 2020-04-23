@@ -70,10 +70,10 @@ export default handleActions({
     },
     ...pender({
         type: LOCAL_LOGIN,
-        onSuccess: (state:Map<any, any>, action) => state.set('result', Map(action.payload.data))
+        onSuccess: (state = initialState, action) => state.set('result', Map(action.payload.data))
     }),
     ...pender({
         type: LOCAL_REGISTER,
-        onSuccess: (state:Map<any, any>, action) => state.set('result', Map(action.payload.data))
+        onSuccess: (state = initialState, action) => state.set('result', Map(action.payload.data))
     }),
 }, initialState);
