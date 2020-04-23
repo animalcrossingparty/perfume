@@ -31,34 +31,36 @@
 }
 
 
-.intro-box > i {
+.intro-box>i {
     /* color: #f7cbcc; */
-    color: #f3d9d9;;
+    color: #f3d9d9;
+    ;
     text-shadow: 1px 1px 2px #d89698;
     margin-top: 1vw;
 }
 
-.intro-box > h4 {
+.intro-box>h4 {
     /* margin-top: 0.5rem; */
     font-weight: lighter;
     /* border-bottom: 1px dotted #ee6e73; */
     margin: 0 20%;
-    color:  #977373;
+    color: #977373;
     font-style: italic;
 }
 
-.intro-box > p {
+.intro-box>p {
     padding: 0 10%;
     text-align: center;
     color: gray;
 }
 
 @media (max-width: 880px) {
-    .intro-box > h4 {
+    .intro-box>h4 {
         font-size: 20px;
         margin: 0;
     }
-    .intro-box > p {
+
+    .intro-box>p {
         font-size: 12px;
     }
 }
@@ -87,22 +89,113 @@
 
 /* Perfumes List */
 .cards_box {
-    background-color: rgba(255, 255, 255, 0.8);
+    /* background-color: rgba(255, 255, 255, 0.5); */
     margin: 5rem 0;
     padding: 3rem 2rem;
-    border-radius: 8px;
-    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
+    /* border-radius: 0 0 8px 8px;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3); */
+}
+
+[type="radio"]:not(:checked)+span,
+[type="radio"]:checked+span {
+    padding-left: 1.6rem;
+    margin-right: .6rem;
+    margin-top: .5rem;
+}
+
+.perfume_sort_row {
+    border: 0;
+    padding: 1rem;
+    border-radius: 5px;
+    /* background: linear-gradient(to left, rgb(226, 231, 238), rgb(228, 214, 224)); */
+
+    /* background-image: url(/static/media/detail-bg.a052fc88.png);
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed; */
+    margin: 0;
+}
+
+.perfume_sort_row > .col {
+    box-shadow: 1px 1px 2px rgb(138, 80, 116);
+    /* font-weight: bold; */
+    padding: .3rem 1rem !important;
+    font-size: 15px;
+}
+
+.sort_btn {
+    /* background-color: rgb(223, 194, 235); */
+    background: linear-gradient(to left, rgb(229, 206, 235), rgb(199, 189, 228));
+    padding: 1rem;
+}
+
+.sort_btn:hover {
+    /* background-color: rgb(226, 182, 211); */
+    background: linear-gradient(to right, rgb(209, 183, 187), rgb(206, 175, 193));
+    font-weight: bold;
+}
+
+
+.sort_btn > a {
+    color: white;
+}
+
+.perfume-topheader {
+    /* background: rgb(247, 227, 227); */
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    /* border-radius: 0 0 10px 10px; */
+    border-radius: 5px;
+    padding: .1rem;
+    margin-bottom: 2rem;
+    border: .4px solid rgba(0, 0, 0, 0.2);
+}
+
+.row-margin {
+    margin-bottom: 0;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid rgb(195, 160, 209);
+}
+
+.radio-search {
+    /* background: rgb(248, 232, 232); */
+    /* box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    border: .4px solid rgba(0, 0, 0, 0.2); */
+    padding: 1rem 2rem;
+    border-radius: 10px 10px 0 0;
+}
+
+.radio-search-box {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    border: .4px solid rgba(0, 0, 0, 0.2);
+}
+
+/* radio */
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:after {
+    background-color: rgb(171, 158, 228);
+}
+
+[type="radio"]:checked+span:after,
+[type="radio"].with-gap:checked+span:before,
+[type="radio"].with-gap:checked+span:after {
+    border: 2px solid rgb(194, 121, 170);
 }
 
 
 /* 임시 css */
-.user_page_link > button {
+.user_page_link>button {
     background-color: rgb(231, 208, 208);
     box-shadow: 1px 1px 2px .5px #3f3f3f80;
 }
-.user_page_link > button:hover {
+
+.user_page_link>button:hover {
     background-color: rgb(226, 186, 186);
 }
-.user_page_link >button > span > a {
+
+.user_page_link>button>span>a {
     color: white;
 }
