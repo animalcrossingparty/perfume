@@ -21,7 +21,7 @@ defusedxml==0.6.0
 dj-database-url==0.5.0
 Django==3.0.5
 django-allauth==0.40.0
-django-appconf==1.0.3
+django-appconf==1.0.4
 django-bootstrap4==1.0.1
 django-cors-headers==3.2.1
 django-heroku==0.3.1
@@ -29,6 +29,7 @@ django-imagekit==4.0.2
 djangorestframework==3.11.0
 dodgy==0.1.9
 drf-yasg==1.17.1
+drf-yasg-examples==0.1.1
 entrypoints==0.3
 Faker==2.0.3
 folium==0.10.1
@@ -62,6 +63,7 @@ nbformat==4.4.0
 notebook==6.0.0
 numpy==1.17.3
 oauthlib==3.1.0
+openapi-codec==1.3.2
 packaging==20.0
 pandas==0.25.3
 pandocfilters==1.4.2
@@ -111,6 +113,7 @@ snowballstemmer==2.0.0
 soupsieve==1.9.4
 SQLAlchemy==1.3.16
 sqlparse==0.3.0
+swagger-spec-validator==2.5.0
 terminado==0.8.2
 testpath==0.4.2
 text-unidecode==1.3

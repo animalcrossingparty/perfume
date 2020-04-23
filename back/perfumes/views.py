@@ -113,7 +113,7 @@ def perfumes_list(request):
 @api_view(['GET'])
 def perfume_detail(request, perfume_pk):
     perfume = Perfume.objects.get(pk=perfume_pk)
-    serializer = PerfumeDetailSerializers(perfume)
+    serializer = PerfumeSerializers(perfume)
     return Response(serializer.data)
 
 # 성별, 나이, 계절을 받았을 때 남아있는 향수들의 노트를 알려준다 -> include, exclude 카테고리를 받는다. -> note를 리턴
