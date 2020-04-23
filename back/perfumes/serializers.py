@@ -40,7 +40,7 @@ class PerfumeSurveySerializers(serializers.ModelSerializer):
     base_notes = NoteSerializers(read_only=True, many=True)
     class Meta:
         model = Perfume
-        fields = ['id','name','launch_date','thumbnail','gender','categories','availibility','season', 'brand', 'top_notes', 'heart_notes', 'base_notes'] 
+        fields = ['id','name','launch_date','thumbnail','gender','categories','availability','season', 'brand', 'top_notes', 'heart_notes', 'base_notes'] 
 
 class SurveySerializers(serializers.ModelSerializer):
     gender = UserSerializers(source='user.gender', read_only=True)
