@@ -9,5 +9,5 @@ urlpatterns = [
     path('survey/notes/', views.left_notes),
     # path('<int:perfume_pk>/wordcloud/', views.make_wordcloud),
     path('<int:perfume_pk>/reviews/', views.ListReviews.as_view()),
-    path('<int:perfume_pk>/reviews/<int:review_pk>/', views.SingleReview.as_view()),
+    path('reviews/<int:review_pk>/', views.SingleReview.as_view()),
 ]

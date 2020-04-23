@@ -60,8 +60,8 @@ class SingleUser(APIView):
     def post(self, request):
         """
         email과 username은 unique.
-        입력 형식이 올바르지 않으면 {"입력 필드명": ["에러메시지 1", "에러메시지 2", ...]} 형식의 object와 status 400을 반환합니다.
-        둘 중 하나가 존재하면 'Already existing email or username'라는 message와 status 400을 반환합니다.
+        가입 성공하면 status 200과 {'token': '~~~~~'} 형식으로 JWT를 반환합니다.
+        이미 존재하거나 입력 형식 올바르지 않으면 {"입력 필드명": ["에러메시지 1", "에러메시지 2", ...]} 형식의 object와 status 400을 반환합니다.
         사용자가 이미 로그인한 상태이면 status 403을 반환합니다.
         """
         try:
@@ -69,13 +69,12 @@ class SingleUser(APIView):
         except:  # 로그인 되어있지 않으면 회원가입 진행
             serializers = SignUpserializers(data=request.data)
             serializers.is_valid(raise_exception=True)
-            try:
-                user = serializers.save()
-            except:
-                return Response({'message': 'Already existing email or username'}, status=400)
+            user = serializers.save()
             user.set_password(serializers.data['password'])
-            user.save()
-            return Response(status=200)
+            user = user.save()
+            payload = PayloadSerializers(user)
+            encoded = jwt.encode(payload.data, settings.SECRET_KEY, algorithm='HS256')
+            return Response({'token': encoded}, status=200)
         return Response(status=403)
 
     @swagger_auto_schema(
@@ -140,10 +139,8 @@ def login(request):
     if user is None:
         return Response(status=401)
     payload = PayloadSerializers(user)
-    encoded = {
-        'token': jwt.encode(payload.data, settings.SECRET_KEY, algorithm='HS256')
-        }
-    return Response(data=encoded)
+    encoded = jwt.encode(payload.data, settings.SECRET_KEY, algorithm='HS256')
+    return Response({'token': encoded})
 
 @swagger_auto_schema(
     operation_summary='이메일 중복 체크',
