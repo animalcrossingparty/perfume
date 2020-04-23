@@ -20,3 +20,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.2:3000",
     "http://i02b208.p.ssafy.io:3000"
 ]
+
+CORS_ALLOW_HEADERS = [
+    'token'
+]
