@@ -6,6 +6,10 @@ body {
   min-height: 100vh;
 }
 
+.perfume-page-background {
+  background: ivory
+}
+
 .container {
   width: 85% !important;
   max-width: 1600px !important;
