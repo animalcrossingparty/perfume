@@ -5,7 +5,6 @@ import * as detailActions from "redux/modules/detail";
 import { Icon } from "react-materialize";
 
 import { Carousel, ReviewTextBox } from "components/";
-import { Button } from "react-materialize";
 import { withRouter } from "react-router";
 import "../../css/DetailPage.css";
 
@@ -146,52 +145,6 @@ class Detail extends Component<DetailProps> {
           <div className="review_title">Reviews</div>
           <ReviewTextBox id={26148987} />
 
-          <div className="comment_list">
-            <div className="comment_user">
-              <div className="user_review_name">
-                <div className="bedge">
-                  <img
-                    src="https://user-images.githubusercontent.com/52684457/79992607-adbaba00-84ee-11ea-98c4-5f844400a294.png"
-                    alt=""
-                  />
-                  <div className="top_bedge">Angelo Orazio Pregoni</div>
-                </div>
-              </div>
-              <div className="review_text">
-                I imagine Evita Peron drinking mate, in a room with scent traces
-                of asado just eaten, and notes of amber and cinnamon all around
-                the room! Wonderful! <br />
-                And Banderas waiting for a tango and for some meat too! <br />{" "}
-                <br /> “Evita! I love your scent of cinnamon steak!” <br />{" "}
-                <br />
-                But honestly who cares what perfume she was using? <br /> Below,
-                an article with photos that tells of another fragrance dedicated
-                to her, this time with a hint of rose! <br /> <br />{" "}
-                <a href="http://www.bordighera.net/evitaperon.htm">
-                  http://www.bordighera.net/evitaperon.htm
-                </a>{" "}
-                <br /> <br />
-                The truth is that this perfume had been requested by one of the
-                seven dwarves in Snow White, but she (the Snow young girl) was
-                allergic to cinnamon. <br />
-                So the Creed family kept it hidden for several centuries, until
-                the smell has moved from a fairy tale to a legend! <br /> <br />
-                If you smell this one, it seems a Tyrolean broth for dwarf
-                miners. This reviewer may have conflicts of interest
-              </div>
-            </div>
-            <div className="review_star">
-              <div className="review_date">27th May, 2015</div>
-            </div>
-            <div className="btn_comment_list">
-              <Button>
-                <Icon>delete</Icon>
-              </Button>
-              <Button>
-                <Icon>edit</Icon>
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     );
