@@ -1,20 +1,24 @@
 import React from 'react'
 import 'materialize-css';
-// import { Link } from 'react-router-dom'
 import { Slider, Caption, Slide } from 'react-materialize';
 import './Slider.css'
+import s1 from 'assets/s1-min.jpg'
+import s2 from 'assets/s2-min.jpg'
+import s3 from 'assets/s3-min.jpg'
+import s4 from 'assets/s4-min.jpg'
+
 
 export default () => (
 	<Slider
 		fullscreen={false}
 		options={{
 			duration: 500,
-			height: 450,
+			height: 600,
 			indicators: true,
 			interval: 6000
 		}}
 	>
-		<Slide image={<img alt="" src="https://user-images.githubusercontent.com/52684457/78926430-0a25de80-7ad8-11ea-8043-bef5c73d3449.jpg" />}>
+		<Slide image={<img alt="" src={s1} />}>
 			<Caption placement="center">
 				<h3>
 					로르 리시에 오신 것을 환영합니다.
@@ -24,7 +28,7 @@ export default () => (
       </h5>
 			</Caption>
 		</Slide>
-		<Slide image={<img alt="" src="https://user-images.githubusercontent.com/52684457/78929034-9d611300-7adc-11ea-8237-8b95173a22a0.png" />}>
+		<Slide image={<img alt="" src={s2} />}>
 			<Caption placement="left">
 				<h3>
 					4월 달, 인기 향수 계열은 플로럴
@@ -34,7 +38,7 @@ export default () => (
       </h5>
 			</Caption>
 		</Slide>
-		<Slide image={<img alt="" src="https://user-images.githubusercontent.com/52684457/78929383-44de4580-7add-11ea-9719-375df77dd8ba.jpg" />}>
+		<Slide image={<img alt="" src={s3} />}>
 			<Caption placement="center">
 				<h3>
 					당신이 애타게 찾던 향수는?
@@ -44,7 +48,7 @@ export default () => (
       </h5>
 			</Caption>
 		</Slide>
-		<Slide image={<img alt="" src="https://user-images.githubusercontent.com/52684457/78928424-8b32a500-7adb-11ea-9b99-8263dd84b603.jpg" />}>
+		<Slide image={<img alt="" src={s4} />}>
 			<Caption placement="left">
 				<h3>
 					여름에는 어떤 향수를 뿌리면 좋을까?
