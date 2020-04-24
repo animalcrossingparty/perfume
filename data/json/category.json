@@ -1,0 +1,85 @@
+[{
+    "pk": 1,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "citrus_smells"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "fruits_vegetables_and_nuts"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "flowers"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "white_flowers"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "greens_herbs_and_fougeres"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "spices"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "sweets_and_gourmand_smells"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "woods_and_mosses"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "resins_and_balsams"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "musk_amber_animalic_smells"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "beverages"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "perfumes.category",
+    "fields": {
+      "name": "netural_and_synthetic_popular_and_weird"
+    }
+  }
+]
