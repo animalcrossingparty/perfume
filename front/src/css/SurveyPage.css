@@ -132,15 +132,19 @@
 /* season */
 .season {
   text-align: center;
-  margin-top: 1rem;;
+  margin: 1rem auto;
 }
 .season span {
   margin-left: 1rem;
   /* border-bottom: 1px solid; */
-  padding-right: .5rem;
   font-style: italic;
   font-weight: 500;
   color: rgb(70, 58, 58);
+  width: 120px;
+  text-align: start;
+}
+[type="checkbox"]+span:not(.lever) {
+  padding-left: 2rem;
 }
 
 /* category */

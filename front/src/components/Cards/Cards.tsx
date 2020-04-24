@@ -56,12 +56,13 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
     <Card
       closeIcon={<Icon>close</Icon>}
       header={
-        <CardTitle image={field.thumbnail || "no-image"} reveal waves="light" />
+        <CardTitle height="260" image={field.thumbnail || "no-image"} reveal waves="light" />
       }
       reveal={<p>워드클라우드가 들어갈 자리입니다</p>}
       revealIcon={<Icon className="hidden">home</Icon>}
     >
       <div>
+        <div className="title-gender-tags">
         <Row>
           <Col s={9}>
             <p className="card-title">{field.name}</p>
@@ -70,7 +71,7 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
             <p className="rate-box right"><Icon className="rate-box-star">star</Icon>{field.avg_rate.toFixed(2)}</p>
           </Col>
         </Row>
-        <Row className="mx-2">
+        <Row className="mx-2 gender-year">
           <Col className="gender-indicator">
             <Icon>wc</Icon>
             <span>{gender_dict[field.gender]}</span>
@@ -78,11 +79,11 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
           <Badge className="perfume-card-badge right">
             {field.launch_date
               ? field.launch_date.substr(0, 4)
-              : "(출시일 정보 없음)"}
+              : "(None)"}
             년 출시
           </Badge>
         </Row>
-        <Row className="ml-3">
+        <Row className="note-tags">
           {field.top_notes.length > 0 ? (
             field.top_notes.slice(0, 3).map((note, note_id) => (
               <Chip
@@ -98,7 +99,7 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
             <Chip close={false}>노트정보없음</Chip>
           )}
         </Row>
-
+        </div>
         <Link to={`/detail/${field.id}`}>
           <Row className="goto-detail-row">
             <p>보러가기</p>
