@@ -34,6 +34,7 @@ services:
       - |
         /wait-for-it.sh db:3306 -t 20
         python manage.py migrate --settings=laure_richis.production
+        python manage.py crobtab add --settings=laure_richis.base
         python manage.py runserver 0:8000 --settings=laure_richis.production
     volumes:
       - ./:/code
