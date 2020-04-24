@@ -38,7 +38,7 @@ export const getPerfumes = (q) =>
     },
   });
 export const getPerfumeDetail = (id: number) =>
-  axios.get(`api/perfumes?pk=${id}`);
+  axios.get(`${BASE_URL}/perfumes/${id}`);
 
 // review
 export const postReview = (content: string, rate: number, id: number, token:string) =>
