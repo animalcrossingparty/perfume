@@ -1,5 +1,6 @@
 .slider .slides li img {
   filter: brightness(70%);
+  animation: maxToSix 2s;
 }
 
 .slider .indicators .indicator-item.active {
@@ -15,6 +16,7 @@
   margin-top: -40px;
   z-index: 5;
 }
+
 .slider .indicators .indicator-item {
   display: inline-block;
   position: relative;
