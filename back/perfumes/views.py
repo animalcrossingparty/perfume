@@ -1,4 +1,4 @@
-from .models import Perfume, Review, Brand, Note
+from .models import Perfume, Review, Brand, Note, Season
 from accounts.models import Survey
 from django.shortcuts import render, get_object_or_404
 from .serializers import *
@@ -17,7 +17,6 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from time import time
 from django.http import Http404
-# from perfumes.utils import wordcloud
 
 PAGE_SIZE = 12
 
@@ -34,7 +33,7 @@ def perfumes_list(request):
     sort = request.GET.get('sort', 'alpha')
     category = request.GET.get('category', 'all')
     page = int(request.GET.get('page', 1))
-    brand_name = request.GET.get('brand_name', 'all')
+    brand = request.GET.get('brand', 'all')
     exclude = request.GET.get('exclude', None)
     include = request.GET.get('include', 'all')
     gender = request.GET.get('gender', 'all')
@@ -52,9 +51,9 @@ def perfumes_list(request):
 
 # 브랜드 이름이랑 아이디, 총 페이지 숫자
     # 브랜드 체크
-    if brand_name != 'all':
+    if brand != 'all':
         try:
-            products = products.filter(brand_name__name=brand_name)
+            products = products.filter(brand__name=brand)
         except:
             return 0
 
@@ -72,7 +71,6 @@ def perfumes_list(request):
             for exclude in exclude_list:
                 products = products.exclude(Q(top_notes__name=exclude) | Q(heart_notes__name=exclude) | Q(base_notes__name=exclude))
         except:
-            print(products)
             return 0
 
     # 포함 노트 체크
@@ -96,7 +94,6 @@ def perfumes_list(request):
         products = products.order_by('name')
 
     # 페이지네이션
-    print(products)
     try:
         paged_products = Paginator(products, PAGE_SIZE).page(page)
         print(paged_products)
@@ -121,22 +118,27 @@ def perfume_detail(request, perfume_pk):
 @api_view(['GET'])
 def left_notes(request):
     # 로그인 유무
-    # try:
-    #     encoded_jwt = request.headers['Token']
-    #     decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-    #     user = get_user_model().objects.get(pk=decoded['userID'])
-    # except:  # 회원 아니면
-    #     return Response(status=401)
+    try:
+        encoded_jwt = request.headers['Token']
+        decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
+        user = get_user_model().objects.get(pk=decoded['userID'])
+    except:  # 회원 아니면
+        return Response(status=401)
 
     gender = request.GET.get('gender', None)
     age = request.GET.get('age', None)
     age = str(age)
-    season = request.GET.get('season', None)
+    seasons = request.GET.get('season', None)
     include = request.GET.get('include', None)
     exclude = request.GET.get('exclude', None)
 
-    products = Perfume.objects.all().prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availability=True)
+    products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availability=True)
     products = products.filter(gender=gender)
+
+    if seasons is not None:
+        season_list = seasons.split(',')
+        products = products.filter(seasons__in=season_list)
+        # for season in season_list:
 
     if include is not None:
         include_list = include.split(',')
@@ -148,17 +150,16 @@ def left_notes(request):
         for category in exclude_list:
             products = products.exclude(categories__name=category)
     
-    products = products[:10]
     notes = Note.objects.all()
-    for product in products:
-        top = product.top_notes.values()
-        heart = product.heart_notes.values()
-        base = product.base_notes.values()
-        notes = notes.filter(Q(pk__in=top) | Q(pk__in=heart) | Q(pk__in=base))
+    tops = products.values_list('top_notes',flat=True)
+    hearts = products.values_list('heart_notes',flat=True)
+    base = products.values_list('base_notes',flat=True)
+    total_list = tops.union(hearts, base)
+    
+    notes = notes.filter(id__in=list(total_list))
 
-    print(total_notes)
-    # print(left_notes)
-    serialize = LeftNoteSerializers(total_notes, many=True)
+    print(notes)
+    serialize = NoteSerializers(notes, many=True)
     return Response(serialize.data)
     
 # 서베이에 처음 들어왔을때 api요청
@@ -182,7 +183,7 @@ def nth_survey_or_not(request):
     else:
         return Response(status=404)
 
-@api_view(['GET', 'POST'])
+@api_view(['GET','POST'])
 def perfume_survey(request):
     try:
         encoded_jwt = request.headers['Token']
@@ -193,28 +194,29 @@ def perfume_survey(request):
     # surveyresult -> user_id key로 묶인다
 
     if request.method == 'POST':
-        gender = request.POST.get('gender', None)
+        gender = request.POST.get('gender', 'all')
         age = request.POST.get('age', None)
         # age = str(age)
         seasons = request.POST.get('seasons', None)
         like_category = request.POST.get('like_category', None)
         hate_category = request.POST.get('hate_category', None)
-        include_notes = request.POST.get('include_notes', 'all')
-
+        include_notes = request.POST.get('include_notes', None)
+        page = int(request.GET.get('page', 1))
         # users = get_user_model().objects.all()
-        products = Perfume.objects.all().prefetch_related('brand').filter(availability=True)
+        products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand').filter(availability=True)
 
         # 성별
-        if gender is not None:
+        if gender != 'all':
             products = products.filter(gender=gender)
-
+        # products = products[:10]
         # 나이
         # products = products.filter(age__startswith=age[0])
 
         # 계절
-        # seasons_list = seasons.split(',')
-        # for season in seasons_list:
-        #     products = products.filter(season__in=season)
+        if seasons is not None:
+            seasons_list = seasons.split(',')
+            for season in seasons_list:
+                products = products.filter(seasons__in=season)
 
         # 좋아하는 카테고리
         # like_categories = like_category.split(',')
@@ -227,19 +229,34 @@ def perfume_survey(request):
         #     products = products.exclude(category__name=hate)
 
         # 좋아하는 향료
-        if include_notes != 'all':
+        # print(products)
+        # print(include_notes)
+        if include_notes is not None:
             try:
                 note_list = include_notes.split(',')
-                for i, note in enumerate(note_list):
-                    products = products.filter(Q(top_notes__name=note) | Q(heart_notes__name=note) | Q(base_notes__name=note))
-                # products = products.distinct()
-                # products = products[:10]
+                # products = Perfume.objects.raw('SELECT * FROM perfumes.Perfume WHERE top_notes or heart_notes or base_notes IN note_list')
+                # products = products.filter(Q(top_notes__name__in=note_list) | Q(heart_notes__name__in=note_list) | Q(base_notes__name__in=note_list)).distinct()
+                for note in note_list:
+                    products = products.filter(Q(top_notes__name=note) | Q(heart_notes__name=note) | Q(base_notes__name=note)).distinct()
             except:
-                print(products)
                 return 0
+        # 페이지네이션
+        try:
+            paged_products = Paginator(products, PAGE_SIZE).page(page)
+            print(paged_products)
+            num_pages = Paginator(products, PAGE_SIZE).num_pages
+            print('페이지 수',num_pages)
+            print(paged_products[0])
+            serializer = PerfumeSurveySerializers(paged_products, many=True).data
+        except: 
+            invalid_page_message = f'{page} 페이지에는 결과가 없습니다. 해당 요청의 최대 페이지 수: < {Paginator(products, PAGE_SIZE).num_pages} >'
+            return Response(invalid_page_message, status=404)
 
-        serializer = PerfumeSurveySerializers(products, many=True)
-        return Response(serializer.data)
+        return Response(serializer, headers={'num_pages': num_pages, 'Access-Control-Expose-Headers': 'num_pages'})
+
+
+        # serializer = PerfumeSurveySerializers(products, many=True)
+        # return Response(serializer.data)
     else:
         gender = request.POST.get('gender', None)
         age = request.POST.get('age', None)
@@ -288,15 +305,6 @@ def perfume_survey(request):
 #     survey.save()
 
 #     return Response(survey, status=200)
-
-
-
-
-def make_wordcloud(request, perfume_pk):
-    reviews = Review.objects.filter(perfume=perfume_pk)
-    wordcloud.tokenizing(reviews)
-
-    serializer = PerfumeSerializers()
 
 
 class ListReviews(APIView):

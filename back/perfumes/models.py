@@ -14,7 +14,7 @@ class Category(models.Model):
 class Note(models.Model):
     name = models.CharField(max_length=100)
     kor_name = models.CharField(max_length=100, blank=True)
-
+    
     def __str__(self):
         return self.name
 
@@ -41,4 +41,3 @@ class Review(models.Model):
     content = models.TextField()
     rate = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
-    # 좋아요 누른 유저 칼럼 accounts.user에 만들어 놓았습니당
