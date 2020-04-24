@@ -3,6 +3,7 @@ from .models import Perfume, Review, Note, Brand
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
 
+
 class NoteSerializers(serializers.ModelSerializer):
     class Meta:
         model = Note
@@ -40,7 +41,7 @@ class PerfumeSurveySerializers(serializers.ModelSerializer):
     base_notes = NoteSerializers(read_only=True, many=True)
     class Meta:
         model = Perfume
-        fields = ['id','name','launch_date','thumbnail','gender','categories','availability','season', 'brand', 'top_notes', 'heart_notes', 'base_notes'] 
+        fields = ['id','name','launch_date','thumbnail','gender','categories','availability','seasons', 'brand', 'top_notes', 'heart_notes', 'base_notes'] 
 
 class SurveySerializers(serializers.ModelSerializer):
     gender = UserSerializers(source='user.gender', read_only=True)
@@ -51,13 +52,13 @@ class SurveySerializers(serializers.ModelSerializer):
         fields = ['id', 'age', 'gender', 'season', 'hate_notes', 'like_notes', 'like_category']
 
 class LeftNoteSerializers(serializers.ModelSerializer):
-    # notes = NoteSerializers(read_only=True, many=True)
+    # note = NoteSerializers(read_only=True, many=True)
     # top_notes = NoteSerializers(read_only=True, many=True)
     # heart_notes = NoteSerializers(read_only=True, many=True)
     # base_notes = NoteSerializers(read_only=True, many=True)
     class Meta:
         model=Note
-        fields = '__all__'
+        fields = ['id', 'name', 'kor_name']
 
 class ReviewSerializers(serializers.Serializer):
     user = serializers.CharField(source='user.username', read_only=True)
@@ -81,6 +82,28 @@ class PerfumeDetailSerializers(serializers.ModelSerializer):
     top_notes = NoteSerializers(many=True)
     heart_notes = NoteSerializers(many=True)
     base_notes = NoteSerializers(many=True)
+    total_review = serializers.IntegerField(source='review_set.count', read_only=True)
+    avg_rate = serializers.SerializerMethodField(read_only=True)
+    
     class Meta:
         model = Perfume
         fields = '__all__'
+        include = ['avg_rate', 'total_review']
+
+    def get_avg_rate(self, review):
+        try:
+            result = sum(review.review_set.values_list('rate', flat=True))/review.review_set.count()
+        except:
+            result = 0
+        return result
+# class WordcloudSerializers(serializers.ModelSerializer):
+#     image = Base64ImageField()
+
+#     class Meta:
+#         model=MyImageModel
+#         fields= ('data','image')
+
+#     def create(self, validated_data):
+#         image=validated_data.pop('image')
+#         data=validated_data.pop('data')
+#         return MyImageModel.objects.create(data=data,image=image)
