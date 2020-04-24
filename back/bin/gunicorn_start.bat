@@ -1,10 +1,10 @@
-NAME="test_app"
+NAME="laure_richis_gUnicorn"
 DJANGODIR=/perfume/back
 SOCKFILE=/perfume/back/run/gunicorn.sock
 USER=root
 NUM_WORKERS=3
-DJANGO_SETTINGS_MODULE=test.settings
-DJANGO_WSGI_MODULE=test.wsgi
+DJANGO_SETTINGS_MODULE=laure_richis.production
+DJANGO_WSGI_MODULE=laure_richis.wsgi
 
 echo "Starting $NAME as `whoami`"
 
