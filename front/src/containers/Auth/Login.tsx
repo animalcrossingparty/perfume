@@ -64,9 +64,10 @@ class Login extends Component<LoginProps> {
         try {
             await AuthActions.localLogin({ email, password })
             .then(r => {
-                console.log(r.data.token)
-                const user = jwt(r.data.token); // decode your token here
+                const token = r.data.token
+                const user = jwt(token); // decode your token here
                 const loggedInfo = user
+                loggedInfo.token = token
                 UserActions.setLoggedInfo(loggedInfo);
                 history.push('/');
                 storage.set('loggedInfo', loggedInfo);
