@@ -13,8 +13,6 @@
 }
 
 .perfume_brand {
-  /* margin-top: 50px; */
-  font-style: italic;
   font-size: 25px;
   font-weight: 100;
   display: flex;
@@ -46,7 +44,6 @@
   height: 100%;
   width: 90vw;
   border-radius: 0 10px 10px 0;
-  /* border-left: 1px rgb(230, 208, 208) dotted; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,7 +89,6 @@
   }
 
   .like {
-    /* width: 65%; */
   }
 
   .carousel_list {
@@ -160,7 +156,6 @@
 .average {
   margin-left: 10px;
   color: gray;
-  /* font-weight: 500; */
 }
 
 .contexts {
@@ -175,18 +170,13 @@
 .notes_box {
   margin-top: 10vh;
   background-color: rgba(255, 255, 255, 0.2);
-  /* background-color: rgba(175, 89, 122, 0.05); */
-  /* border: 1px solid white; */
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  /* width: 500px; */
   width: 60%;
   height: 300px;
-  /* padding: 1.5rem; */
 }
 
 .note_title {
-  font-style: italic;
   font-size: 25px;
   font-weight: 100;
   display: flex;
@@ -221,17 +211,14 @@
 .top > b {
   color: rgba(0, 0, 0, 0.6);
   border-bottom: 1px solid black;
-  font-style: italic;
 }
 .heart > b {
   color: rgba(0, 0, 0, 0.6);
   border-bottom: 1px solid black;
-  font-style: italic;
 }
 .base > b {
   color: rgba(0, 0, 0, 0.6);
   border-bottom: 1px solid black;
-  font-style: italic;
 }
 
 .note_info {
@@ -278,21 +265,6 @@
   margin-top: 10rem;
 }
 
-/* .carousel_img {
-  width: 100px;
-} */
-
-/* Carousel */
-/* .BrainhubCarousel {
-  width: 400px;
-  height: 400px;
-}
-
-.BrainhubCarousel > img {
-  width: 400px;
-  height: 400px;
-} */
-
 .carousel_list {
   width: 800px;
   height: 280px;
@@ -307,7 +279,6 @@
 }
 
 .recommend_list {
-  font-style: italic;
   font-size: 23px;
   border-bottom: 1px solid;
   padding: 0 1rem;
@@ -319,7 +290,6 @@
 }
 
 .review_title {
-  font-style: italic;
   font-size: 23px;
   border-bottom: 1px solid;
   padding: 0 1rem;
@@ -328,11 +298,8 @@
 }
 
 .write_comment {
-  /* background-color: rgba(90, 80, 80, 0.9); */
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
-  /* width: 80vh; */
-  /* width: 360px; */
   height: 165px;
   border-radius: 10px;
   padding: 1rem 2rem;
@@ -352,7 +319,6 @@
 
 .row_comment > i {
   margin-right: 1rem;
-  /* color: rgb(199, 180, 178); */
   color: rgb(179, 161, 159);
 }
 
@@ -360,8 +326,6 @@
   width: 130vh;
   height: 70px;
   margin-top: 1rem;
-  /* background-color: rgb(199, 180, 178); */
-  /* background-color: rgba(255, 255, 255, 0); */
   background-color: rgba(255, 255, 255, 0.3);
   border: 1px solid rgb(199, 180, 178);
   border-radius: 5px;
@@ -370,24 +334,8 @@
   font-weight: 500;
 }
 
-.StarRating {
-  display: flex;
-  /* flex-direction: row; */
-  justify-content: space-between;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-left: 3rem;
-}
 
-.StarRating > button {
-  background-color: rgb(199, 180, 178);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 15px;
-}
 
-.StarRating > .btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
-  background-color: rgb(145, 134, 125);
-}
 
 .comment_list {
   /* background-color: rgba(90, 80, 80, 0.9); */
@@ -405,25 +353,15 @@
   flex-direction: column;
 }
 
-/* .comment_user {
-  display: flex;
-  flex-direction: column;
-} */
-
 .user_review_name {
-  /* font-style: italic; */
   font-size: 16px;
-  /* color: rgb(235, 221, 221); */
   color: rgb(235, 221, 221);
-  /* border-bottom: 1px solid; */
   display: flex;
   text-align: start;
   margin: 1rem auto 1rem 1rem;
 }
 
 .review_text {
-  /* background-color: rgb(199, 180, 178); */
-  /* background: linear-gradient(to right, rgb(222, 234, 232), rgb(251, 236, 232)); */
   background: rgba(255, 255, 255, 0.3);
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
 
@@ -432,7 +370,6 @@
   padding: 1rem;
   font-weight: 500;
   width: 85%;
-  /* margin: .5rem auto; */
   margin-right: .5rem;
   text-align: start;
   display: flex;
@@ -466,7 +403,6 @@
 }
 
 .review_star {
-  /* margin-left: 1.5rem; */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -474,14 +410,10 @@
 }
 
 .review_date {
-  /* text-align: start; */
   margin-top: .5rem;
-  /* color: rgb(204, 185, 185); */
   color: rgb(156, 134, 134);
-  font-style: italic;
 }
 
-/* Icon margin */
 .material-icons {
   margin-right: 0;
 }

@@ -1,13 +1,18 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,400,700);
+body,
+table,
+div,
+p {
+  font-family: "Nanum Gothic", "Roboto", "Sans-serif";
+}
 body {
   margin: 0;
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 }
 
 .perfume-page-background {
-  background: ivory
+  background: ivory;
 }
 
 .container {
@@ -16,13 +21,23 @@ body {
 }
 
 @keyframes fadein {
-    from { opacity: 0; width: 50vw;}
-    to   { opacity: 1; width: 35vw;}
+  from {
+    opacity: 0;
+    width: 50vw;
+  }
+  to {
+    opacity: 1;
+    width: 35vw;
+  }
 }
 
 @keyframes tallToShort {
-  from {height: 50vh}
-  to {height: 7rem}
+  from {
+    height: 50vh;
+  }
+  to {
+    height: 7rem;
+  }
 }
 
 .disabled-link {
@@ -42,17 +57,57 @@ body {
   font-size: 1.2rem;
   border-radius: 4px;
   box-shadow: 2px 2px 5px gray;
-  margin: 0 3px
+  margin: 0 3px;
 }
 .wrap {
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+  
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes maxToSix {
+  from {
+    opacity: 0.6;
+    height: 100vh !important;
+  }
+  to {
+    opacity: 1;
+    height: 60vh !important;
+  }
+}
+.maxToSix {
+  animation-name: maxToSix;
+}
+
+.fadeInDown {
+  animation-name: fadeInDown;
+}
 .m-0 {
   margin: 0 !important;
 }
