@@ -18,7 +18,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://127.0.0.2:3000",
-    "http://i02b208.p.ssafy.io:3000"
+    "http://i02b208.p.ssafy.io"
 ]
 
 CORS_ALLOW_HEADERS = [
