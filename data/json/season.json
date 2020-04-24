@@ -1,0 +1,33 @@
+[{
+    "pk": 1,
+    "model": "perfumes.season",
+    "fields": {
+      "name": "spring",
+      "kor_name": "봄"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "perfumes.season",
+    "fields": {
+      "name": "summer",
+      "kor_name": "여름"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "perfumes.season",
+    "fields": {
+      "name": "autumn",
+      "kor_name": "가을"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "perfumes.season",
+    "fields": {
+      "name": "winter",
+      "kor_name": "겨울"
+    }
+  }
+]
