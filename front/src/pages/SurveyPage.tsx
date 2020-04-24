@@ -1,119 +1,23 @@
 import React from 'react';
-import { Header, Date, Categories } from '../components'
-import { Switch, Checkbox, Chip, Icon } from 'react-materialize';
+import { Header } from '../components'
+import {Survey} from '../containers/Survey'
 import { Button } from 'react-materialize';
 import { Link } from 'react-router-dom'
 import '../css/SurveyPage.css'
 
 function SurveyPage () {
 return (
-<div className="bg">
+<div>
   <Header />
 
   <div className="survey_box">
     <div className="title">Survey
     </div>
-    <div className="content">
-      {/* age */}
-      <div className="titles">
-        AGE
-      </div>
-      <div className="age_">
-        <Date />
-      </div>
-
-      {/* gender */}
-      <div className="titles">
-        GENDER
-      </div>
-      <div className="gender_">
-        <div className="male_fe">
-          <div className="gender_text">
-            <div className="gender_1">M</div>ale
-          </div>
-          <Switch id="Switch-11" offLabel="Off" onChange={function noRefCheck(){}} onLabel="On" />
-          <div className="gender_text">
-            <div className="gender_2">Fe</div>male
-          </div>
-        </div>
-        <div className="none_gender">
-          <Checkbox id="None" label="None" value="None" />
-        </div>
-      </div>
-
-      {/* season */}
-      <div className="titles">
-        SEASON
-      </div>
-      <div className="sub_title">
-        * 향수를 사용 할 계절을 선택해주세요.
-      </div>
-      <div className="season">
-        <Checkbox id="Spring" label="Spring" value="Spring" />
-        <Checkbox id="Summer" label="Summer" value="Summer" />
-        <Checkbox id="Fall" label="Fall" value="Fall" />
-        <Checkbox id="Winter" label="Winter" value="Winter" />
-      </div>
-
-
-      {/* catecory */}
-      <div className="titles">
-        CATECORY
-      </div>
-
-      {/* favorite category */}
-      <div className="sub_title">
-        * 가장 선호하는 카테고리를 선택해주세요.
-      </div>
-      {/* search bar 같은 기능으로 데이터 검색이 되면 편리할 것 같다. */}
-      {/* 잘 모르는 사람들을 위해 인기 많은 카테고리들을 나열해도 될 것 같다. */}
-      <Categories />
-      <div className="rem"></div>
-
-      {/* 3 Note in selected category */}
-      <div className="sub_title">
-        * 선택한 카테고리 내에 마음에드는 노트를 3가지 이상 선택해주세요.
-      </div>
-      {/* 상당히 많은 수의 노트가 있을 경우, overflow scroll을 이용해도 될 것 같다. */}
-      <div className="season">
-        <Checkbox filledIn id="Acacia" label="Acacia" value="Acacia" />
-        <Checkbox filledIn id="Rose" label="Rose" value="Rose" />
-        <Checkbox filledIn id="Blossom" label="Blossom" value="Blossom" />
-        <Checkbox filledIn id="Chamomile" label="Chamomile" value="Chamomile" />
-        <Checkbox filledIn id="Cotton" label="Cotton" value="Cotton" />
-        <Checkbox filledIn id="Freesia" label="Freesia" value="Freesia" />
-        <Checkbox filledIn id="Hyssop" label="Hyssop" value="Hyssop" />
-        <Checkbox filledIn id="Iris" label="Iris" value="Iris" />
-        <Checkbox filledIn id="Lilac" label="Lilac" value="Lilac" />
-      </div>
-      <div className="tags">
-        {/*
-        <NoteTags /> */}
-      </div>
-      <div className="rem"></div>
-      <div className="rem"></div>
-
-      {/* Dislike category */}
-      <div className="sub_title">
-        * 기피하고 싶은 카테고리를 선택해주세요. (0~2개)
-      </div>
-      <Categories />
-      <div className="hate_cate">
-        <Chip close closeIcon={<Icon className="close">close</Icon>}
-          options={null}
-          >
-          Animalic
-        </Chip>
-        <Chip close closeIcon={<Icon className="close">close</Icon>}
-          options={null}
-          >
-          Beverages
-        </Chip>
-      </div>
-      <div className="rem"></div>
-
+    <p>로르 리시가 여러분에게 어울리는 향수를 더 잘 찾기위해 몇 가지만 물어볼게요.</p>
+    <div className="survey_inner_container">
+      <Survey />
     </div>
-
+    
     <div className="submit_survey">
       <Link to="/">
       <Button>SUBMIT</Button>
