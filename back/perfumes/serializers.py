@@ -3,10 +3,10 @@ from .models import *
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
 
-class Base64ImageSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Base64Image
-        fields = ['data']
+class Base64ImageSerializers(serializers.Serializer):
+    data = serializers.SerializerMethodField()
+    def get_data(self, img):
+        return img.data.decode('ascii')
 
 class NoteSerializers(serializers.ModelSerializer):
     class Meta:

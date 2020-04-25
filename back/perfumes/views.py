@@ -359,7 +359,7 @@ class ListReviews(APIView):
         try:
             for img_file in dict((request.data).lists())['images']:
                 base64img = base64.b64encode(img_file.read())
-                img = Base64Image.objects.create(data=base64img.decode('ascii'))
+                img = Base64Image.objects.create(data=base64img)
                 review.images.add(img)
         finally:
             return Response({'review_id': review.pk}, status=200)
@@ -378,6 +378,7 @@ class SingleReview(APIView):
     def get(self, request, review_pk):
         review = self.get_object(review_pk)
         serializers = ReviewSerializers(review)
+        
         return Response(serializers.data, status=200)
 
     @swagger_auto_schema(
@@ -412,7 +413,7 @@ class SingleReview(APIView):
         try:  # 업로드 이미지가 있다면 추가
             for img_file in dict((request.data).lists())['images']:
                 base64img = base64.b64encode(img_file.read())
-                img = Base64Image.objects.create(data=base64img.decode('ascii'))
+                img = Base64Image.objects.create(data=base64img)
                 review.images.add(img)
         finally:
             return Response(status=200, headers={'Access-Control-Allow-Headers': 'token'})
