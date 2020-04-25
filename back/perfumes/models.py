@@ -35,6 +35,7 @@ class Perfume(models.Model):
     categories = models.ManyToManyField(to=Category)
     availability = models.BooleanField()
     seasons = models.ManyToManyField(to=Season)
+    price = models.FloatField()
     
     
 class Review(models.Model):
