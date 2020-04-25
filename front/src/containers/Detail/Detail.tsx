@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as detailActions from "redux/modules/detail";
-import { Icon } from "react-materialize";
+import { Row, Col, Chip } from "react-materialize";
+import { Circle } from "rc-progress";
+import springPIC from "assets/images/spring.jpg";
+import summerPIC from "assets/images/summer.jpg";
+import autumnPIC from "assets/images/autumn.jpg";
+import winterPIC from "assets/images/winter.jpg";
 
-import { Carousel, ReviewTextBox } from "components/";
+import { ReviewTextBox } from "components/";
 import { withRouter } from "react-router";
 import "../../css/DetailPage.css";
-
 interface DetailProps {
   history: any;
   DetailActions: any;
@@ -15,136 +19,186 @@ interface DetailProps {
 }
 
 class Detail extends Component<DetailProps> {
+  state = {
+    progress: 0,
+    accel: 50,
+    interval: setInterval(() => 1, 5000),
+  };
+  addOne = () => {
+    if (this.state.progress < this.props.detail.avg_rate.toFixed(1) * 10) {
+      this.state.accel > 1
+        ? this.setState({ accel: this.state.accel - 5 })
+        : this.setState({ accel: 10 });
+      this.setState({ progress: this.state.progress + 1 });
+    } else {
+      clearInterval(this.state.interval);
+    }
+  };
   initializeDetailInfo = async () => {
     const { DetailActions, history } = this.props;
     const perfume_id = history.location.pathname.split("/")[2];
     await DetailActions.getPerfumeDetail(perfume_id);
   };
 
-  componentWillMount() {
+  componentDidMount() {
+    const interval = setInterval(this.addOne, this.state.accel);
     this.initializeDetailInfo();
+    this.setState({ interval: interval });
+  }
+  componentWillUnmount() {
+    clearInterval(this.state.interval);
   }
 
   render() {
-    const { detail } = this.props
+    const { detail } = this.props;
     return (
-      <div className="center detail_center">
-        <div className="detail_box">
-          {/* 향수 div의 왼쪽 (향수 이름, 사진) */}
-          <div className="left_box">
-            {/* Name */}
-    <div className="perfume_brand">{detail.brand.name}</div>
-            {/* Thumbnail */}
-            <img
-              src={detail.thumbnail}
-              alt=""
-            />
+      <div className="container mt-5">
+        <section className="perfume-info-section">
+          <Row>
+            <Col s={6} className="perfume-info-image center" width="70%">
+              <Row>
+                <img src={detail.thumbnail} alt="" />
+              </Row>
+              <Row className="season-row">
+                <Col
+                  s={3}
+                  style={{ backgroundImage: `url(${springPIC})` }}
+                  className={
+                    detail.seasons.some((elem) => elem === 1)
+                      ? ""
+                      : "disabled-season"
+                  }
+                >
+                  봄
+                </Col>
+                <Col
+                  s={3}
+                  style={{ backgroundImage: `url(${summerPIC})` }}
+                  className={
+                    detail.seasons.some((elem) => elem === 2)
+                      ? ""
+                      : "disabled-season"
+                  }
+                >
+                  여름
+                </Col>
+                <Col
+                  s={3}
+                  style={{ backgroundImage: `url(${autumnPIC})` }}
+                  className={
+                    detail.seasons.some((elem) => elem === 3)
+                      ? ""
+                      : "disabled-season"
+                  }
+                >
+                  가을
+                </Col>
+                <Col
+                  s={3}
+                  style={{ backgroundImage: `url(${winterPIC})` }}
+                  className={
+                    detail.seasons.some((elem) => elem === 4)
+                      ? ""
+                      : "disabled-season"
+                  }
+                >
+                  겨울
+                </Col>
+              </Row>
+            </Col>
+            <Col s={6} className="perfume-info-text">
+              <p>{detail.launch_date.substr(0, 4)}년 출시</p>
+              <small className="right">{detail.id}</small>
+              <h4 className="mt-1"> {detail.name} </h4>
+              <h5 className="perfume_brand">
+                <small className="mr-3">made by</small>
+                {detail.brand.name}{" "}
+              </h5>
+              <Row>
+                <Col s={6}>
+                  <h6>탑 노트</h6>
+                  <small>뿌린 직후에서부터 알코올이 날아간 10분전후의 첫 번째 인상의 향</small>
+                  <Row className="note-tags">
+                    {detail.top_notes.length > 0 ? (
+                      detail.top_notes.slice(0, 3).map((note, note_id) => (
+                        <Chip
+                          close={false}
+                          options={null}
+                          key={note_id}
+                          className={`chip-color-${note_id % 10}`}
+                        >
+                          {note.kor_name || note.name}
+                        </Chip>
+                      ))
+                    ) : (
+                      <Chip close={false}>노트정보없음</Chip>
+                    )}
+                  </Row>
+                  <h6>하트 노트</h6>
+                  <small>향수를 뿌린 후, 30-60분후의 안정된 상태,향수의 구성 요소들이 조화롭게 배합을 이룬 향의 중간 단계이다.</small>
+                  <Row className="note-tags">
+                    {detail.heart_notes.length > 0 ? (
+                      detail.heart_notes.slice(0, 3).map((note, note_id) => (
+                        <Chip
+                          close={false}
+                          options={null}
+                          key={note_id}
+                          className={`chip-color-${note_id % 10}`}
+                        >
+                          {note.kor_name || note.name}
+                        </Chip>
+                      ))
+                    ) : (
+                      <Chip close={false}>노트정보없음</Chip>
+                    )}
+                  </Row>
+                  <h6>베이스 노트</h6>
+                  <small>2-3시간 후부터 모두 날아가기까지의 향, 향수를 뿌렸을 때 가장 많이 느낄 수 있는 향</small>
+                  <Row className="note-tags">
+                    {detail.base_notes.length > 0 ? (
+                      detail.base_notes.slice(0, 3).map((note, note_id) => (
+                        <Chip
+                          close={false}
+                          options={null}
+                          key={note_id}
+                          className={`chip-color-${note_id % 10}`}
+                        >
+                          {note.kor_name || note.name}
+                        </Chip>
+                      ))
+                    ) : (
+                      <Chip close={false}>노트정보없음</Chip>
+                    )}
+                  </Row>
+                </Col>
+                <Col s={6}>
+                  <div className="rate-wrapper mt-5">
+                    <div className="rate-inside-circle">
+                      <h5>{detail.avg_rate.toFixed(1)}</h5>
+                      <h5
+                        style={{ fontSize: "1rem", lineHeight: "12rem" }}
+                        className="mt-0"
+                      >
+                        리뷰 평균 평점
+                      </h5>
+                    </div>
+                    <Circle
+                      className="rate-circle"
+                      percent={this.state.progress}
+                      strokeWidth={4}
+                      strokeColor={"pink"}
+                      trailColor={"lightgray"}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </section>
 
-            {/* Favorite */}
-            <div className="like">
-              <Icon>favorite</Icon>
-              {/* <Icon>favorite_border</Icon> */}
-            </div>
-          </div>
-
-          {/* 향수 정보 */}
-          <div className="perfume_info">
-            {/* PerfumeId & Year */}
-            <div className="perfume_id">
-              {detail.id} / {detail.launch_date}
-            </div>
-            <div className="perfume_name">
-              {detail.name}
-              {/* <div className="gender">
-            <img
-              src="https://user-images.githubusercontent.com/52684457/78762652-18cca280-79bf-11ea-963b-9e152f6224a2.png"
-              alt="" />
-            <img
-              src="https://user-images.githubusercontent.com/52684457/78762655-19fdcf80-79bf-11ea-8162-fdd887cfd192.png"
-              alt="" />
-          </div> */}
-            </div>
-
-            {/* star rating */}
-            <div className="star_rating">
-              <div className="average">4.0</div>
-            </div>
-
-            {/* 향수 정보 */}
-            <div className="contexts">
-              <div className="context gender">
-                <i>Preferred Gender</i>
-                <br />
-                <img
-                  src="https://user-images.githubusercontent.com/52684457/78762652-18cca280-79bf-11ea-963b-9e152f6224a2.png"
-                  alt=""
-                />
-                <img
-                  src="https://user-images.githubusercontent.com/52684457/78762655-19fdcf80-79bf-11ea-8162-fdd887cfd192.png"
-                  alt=""
-                />
-              </div>
-              <div className="context">
-                <i>Category</i>
-                <div className="category">
-                  Woody <br />
-                  Floral
-                </div>
-              </div>
-              <div className="context">
-                <i>Availablity</i>
-                <div className="availablity">Available</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* notes */}
-        <div className="notes_box">
-          <div className="title_box">
-            <div className="note_title">NOTES</div>
-          </div>
-
-          <div className="notes">
-            <div className="note">
-              <div className="top">
-                <b>TOP</b>
-                <br />
-                <div className="note_info">juiper, ciamo leaf</div>
-              </div>
-              <div className="heart">
-                <b>HEART</b>
-                <br />
-                <div className="note_info">coriader, laurel, rose, ciamo</div>
-              </div>
-              <div className="base">
-                <b>BASE</b>
-                <br />
-                <div className="note_info">ambergris, musk</div>
-              </div>
-            </div>
-
-            <div className="note_img">
-              <img
-                src="https://user-images.githubusercontent.com/52684457/78767269-559b9800-79c5-11ea-9726-ce3d009afc30.png"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Carousel */}
-        <div className="carousel_br"></div>
-        <div className="recommend_list">The Other Perfumes</div>
-        <div className="carousel_list">
-          <Carousel />
-        </div>
-
-        {/* Reviews */}
         <div className="review_box">
           <div className="review_title">Reviews</div>
-          <ReviewTextBox id={26148987} />
-
+          <ReviewTextBox id={detail.id} />
         </div>
       </div>
     );
@@ -153,7 +207,7 @@ class Detail extends Component<DetailProps> {
 export default withRouter(
   connect(
     (state) => ({
-      detail: state.detail.get('detail')
+      detail: state.detail.get("detail"),
     }),
     (dispatch) => ({
       DetailActions: bindActionCreators(detailActions, dispatch),

@@ -157,3 +157,34 @@
 .user_page_link > button > span > a {
   color: white;
 }
+
+.homegrid {
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(10px);
+  color: white;
+  font-family: "Roboto";
+  line-height: 2rem;
+  line-height-step: 10px;
+  transition: 1s;
+}
+
+.homegrid:hover{
+  cursor: pointer;
+  color: black;
+  border: initial;
+  display: block;
+  background: white !important;
+}
+
+.homegrid > hr {
+  border: 1px solid white;
+}
+.homegrid:hover > p{
+  background: white;
+  color: black
+}
+.homegrid > p {
+  background: rgba(0, 0, 0, 0.3);
+  color: white
+}
