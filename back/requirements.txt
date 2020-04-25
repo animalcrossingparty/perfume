@@ -86,6 +86,7 @@ seaborn==0.9.0
 Send2Trash==1.5.0
 simplejson==3.17.0
 six==1.14.0
+sklearn==0.0
 SQLAlchemy==1.3.16
 sqlparse==0.3.1
 swagger-spec-validator==2.5.0
