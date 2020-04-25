@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as detailActions from "redux/modules/detail";
-import { Icon } from "react-materialize";
+import { Icon, Row, Col } from "react-materialize";
+import { Circle } from "rc-progress";
 
 import { Carousel, ReviewTextBox } from "components/";
 import { withRouter } from "react-router";
@@ -15,62 +16,88 @@ interface DetailProps {
 }
 
 class Detail extends Component<DetailProps> {
+
+  state = {
+    progress: 0,
+    accel: 50,
+    interval: setInterval(()=>1, 5000)
+  };
+  addOne = () => {
+    if (this.state.progress < this.props.detail.avg_rate.toFixed(1) * 10) {
+      this.state.accel > 1 ? this.setState({ accel: this.state.accel - 5 }) : this.setState({ accel: 10 })
+      this.setState({ progress: this.state.progress + 1 });
+    } else {
+      clearInterval(this.state.interval)
+    }
+  }
   initializeDetailInfo = async () => {
     const { DetailActions, history } = this.props;
     const perfume_id = history.location.pathname.split("/")[2];
     await DetailActions.getPerfumeDetail(perfume_id);
   };
 
-  componentWillMount() {
+  componentDidMount() {
+    const interval = setInterval(this.addOne, this.state.accel);
     this.initializeDetailInfo();
+    this.setState({ interval: interval });
+    
+  }
+  componentWillUnmount() {
+    clearInterval(this.state.interval);
   }
 
   render() {
-    const { detail } = this.props
+    const { detail } = this.props;
     return (
-      <div className="center detail_center">
+      <div className="container mt-5">
+        <section className="perfume-info-section">
+          <Row>
+            <Col s={6} className="perfume-info-image center" width="70%">
+              <img src={detail.thumbnail} alt="" />
+            </Col>
+            <Col s={6} className="perfume-info-text">
+              <p>
+                <Icon className="mr-1">today</Icon>
+                {detail.launch_date.substr(0, 4)}년 출시
+              </p>
+              <small className="right">{detail.id}</small>
+              <h4 className="mt-1"> {detail.name} </h4>
+              <h5 className="perfume_brand">
+                <Icon>store_mall_directory</Icon>{" "}
+                <small className="mr-3">made by</small>
+                {detail.brand.name}{" "}
+              </h5>
+              <Row>
+                <Col s={6}>
+                  <h6>탑 노트</h6>
+                  <h6>하트 노트</h6>
+                  <h6>베이스 노트</h6>
+                </Col>
+                <Col s={6}>
+                  <div className="wrapper">
+                    <div className="rate-inside-circle">{detail.avg_rate.toFixed(1)}</div>
+                    <Circle
+                      className="rate-circle"
+                      percent={this.state.progress}
+                      strokeWidth={9}
+                      strokeColor={"lightblue"}
+                      trailColor={"gray"}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </section>
         <div className="detail_box">
-          {/* 향수 div의 왼쪽 (향수 이름, 사진) */}
-          <div className="left_box">
-            {/* Name */}
-    <div className="perfume_brand">{detail.brand.name}</div>
-            {/* Thumbnail */}
-            <img
-              src={detail.thumbnail}
-              alt=""
-            />
-
-            {/* Favorite */}
-            <div className="like">
-              <Icon>favorite</Icon>
-              {/* <Icon>favorite_border</Icon> */}
-            </div>
-          </div>
-
-          {/* 향수 정보 */}
           <div className="perfume_info">
-            {/* PerfumeId & Year */}
-            <div className="perfume_id">
-              {detail.id} / {detail.launch_date}
-            </div>
             <div className="perfume_name">
-              {detail.name}
-              {/* <div className="gender">
-            <img
-              src="https://user-images.githubusercontent.com/52684457/78762652-18cca280-79bf-11ea-963b-9e152f6224a2.png"
-              alt="" />
-            <img
-              src="https://user-images.githubusercontent.com/52684457/78762655-19fdcf80-79bf-11ea-8162-fdd887cfd192.png"
-              alt="" />
-          </div> */}
             </div>
 
-            {/* star rating */}
             <div className="star_rating">
               <div className="average">4.0</div>
             </div>
 
-            {/* 향수 정보 */}
             <div className="contexts">
               <div className="context gender">
                 <i>Preferred Gender</i>
@@ -99,52 +126,16 @@ class Detail extends Component<DetailProps> {
           </div>
         </div>
 
-        {/* notes */}
-        <div className="notes_box">
-          <div className="title_box">
-            <div className="note_title">NOTES</div>
-          </div>
 
-          <div className="notes">
-            <div className="note">
-              <div className="top">
-                <b>TOP</b>
-                <br />
-                <div className="note_info">juiper, ciamo leaf</div>
-              </div>
-              <div className="heart">
-                <b>HEART</b>
-                <br />
-                <div className="note_info">coriader, laurel, rose, ciamo</div>
-              </div>
-              <div className="base">
-                <b>BASE</b>
-                <br />
-                <div className="note_info">ambergris, musk</div>
-              </div>
-            </div>
-
-            <div className="note_img">
-              <img
-                src="https://user-images.githubusercontent.com/52684457/78767269-559b9800-79c5-11ea-9726-ce3d009afc30.png"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Carousel */}
         <div className="carousel_br"></div>
         <div className="recommend_list">The Other Perfumes</div>
         <div className="carousel_list">
           <Carousel />
         </div>
 
-        {/* Reviews */}
         <div className="review_box">
           <div className="review_title">Reviews</div>
-          <ReviewTextBox id={26148987} />
-
+          <ReviewTextBox id={detail.id} />
         </div>
       </div>
     );
@@ -153,7 +144,7 @@ class Detail extends Component<DetailProps> {
 export default withRouter(
   connect(
     (state) => ({
-      detail: state.detail.get('detail')
+      detail: state.detail.get("detail"),
     }),
     (dispatch) => ({
       DetailActions: bindActionCreators(detailActions, dispatch),

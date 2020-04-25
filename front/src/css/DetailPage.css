@@ -1,8 +1,47 @@
-.bg-detail {
-  background-image: url("../assets/detail-bg.png");
-  height: 100%;
-  background-size: cover;
-  background-attachment: fixed;
+.perfume-info-section {
+  padding-top: 5rem;
+}
+
+.perfume-info-image {
+  height: 40rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.perfume-info-image > img {
+  margin: auto;
+  height: 75%;
+}
+
+.perfume-info-text {
+  height: 40rem;
+  background-color: rosybrown;
+}
+
+.rate-wrapper {
+  position: relative;
+  height: 30rem;
+  width: 30rem;
+}
+
+.perfume-info-text p {
+  margin: 0 0.3rem;
+  padding-right: 5rem;
+  font-size: 1rem;
+  font-family: "Roboto";
+  font-weight: 700;
+  color: gray;
+  display: flex;
+}
+
+.rate-inside-circle {
+  position: absolute;
+  font-size: 8rem;
+}
+.rate-circle {
+  position: relative;
 }
 
 .detail_center {

@@ -25,6 +25,7 @@
     "materialize-css": "^1.0.0-rc.2",
     "prettier": "^2.0.4",
     "query-string": "^6.12.1",
+    "rc-progress": "^2.5.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-materialize": "^3.7.1",
