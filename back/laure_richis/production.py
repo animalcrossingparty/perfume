@@ -11,6 +11,7 @@ DATABASES = {
     }
 }
 DEBUG = False
+STATIC_ROOT = os.path.join(ROOT_DIR, '/code/static_root')
 STATIC_DIR = os.path.join(BASE_DIR, 'code', 'static')
 CORS_ORIGIN_WHITELIST = [
     # 배포 주소 추가 예정
