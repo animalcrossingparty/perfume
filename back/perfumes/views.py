@@ -106,7 +106,10 @@ def perfumes_list(request):
 
     return Response(serializer, headers={'num_pages': num_pages, 'Access-Control-Expose-Headers': 'num_pages'})
 
-
+@swagger_auto_schema(
+    operation_summary='특정 향수 정보 및 리뷰 조회',
+    method='get'
+    )
 @api_view(['GET'])
 def perfume_detail(request, perfume_pk):
     perfume = Perfume.objects.get(pk=perfume_pk)
@@ -324,10 +327,7 @@ class ListReviews(APIView):
         """
         이미지는 multipart/form-data로 보내주세요! Key 값은 "images" 입니다.
         """
-        try:
-            user = is_logged_in(request)
-        except:
-            return Response(status=401)
+        user = is_logged_in(request)
         try:
             perfume = Perfume.objects.get(pk=perfume_pk)
         except:
@@ -338,10 +338,12 @@ class ListReviews(APIView):
             user=user,
             perfume=perfume,
         )
-        for img_file in dict((request.data).lists())['images']:
-            img = Base64Image.objects.create(data=base64.b64encode(img_file.read()))
-            review.images.add(img)
-        return Response({'review_id': review.pk}, status=200)
+        try:
+            for img_file in dict((request.data).lists())['images']:
+                img = Base64Image.objects.create(data=base64.b64encode(img_file.read()))
+                review.images.add(img)
+        finally:
+            return Response({'review_id': review.pk}, status=200)
 
 
 class SingleReview(APIView):
@@ -376,10 +378,7 @@ class SingleReview(APIView):
         """
         이미지는 multipart/form-data로 보내주세요! Key 값은 "images" 입니다.
         """
-        try:
-            user = is_logged_in(request)
-        except:
-            return Response(status=401)
+        user = is_logged_in(request)
         review = self.get_object(review_pk)
         if user != review.user:
             return Response(status=403)
@@ -411,13 +410,41 @@ class SingleReview(APIView):
             ]
         )
     def delete(self, request, review_pk):
-        try:
-            user = is_logged_in(request)
-        except:
-            return Response(status=401)
+        user = is_logged_in(request)
         review = self.get_object(review_pk)
         if user != review.user:
             return Response(status=403)
         else:
             review.delete()
             return Response(status=200, headers={'Access-Control-Allow-Headers': 'token'})
+
+@swagger_auto_schema(
+    operation_summary="특정 리뷰 '좋아요' / '좋아요 취소' 실행",
+    manual_parameters=[
+            openapi.Parameter(
+                'Token',
+                openapi.IN_HEADER,
+                description='JWT',
+                type=openapi.TYPE_STRING,
+                required=True
+                )
+            ],
+    method='get'
+    )
+@api_view(['GET'])
+def like_review(request, review_pk):
+    """
+    Reponse는 좋아요 버튼을 누른 결과입니다.
+    {"userLikesThisReview": Boolean}
+    """
+    user = is_logged_in(request)
+    try:
+        review = Review.objects.get(pk=review_pk)
+    except:
+        raise Http404
+    if review in user.like_reviews.all():
+        user.like_reviews.remove(review)
+        return Response({'userLikesThisReview': False}, status=200)
+    else:
+        user.like_reviews.add(review)
+        return Response({'userLikesThisReview': True}, status=200)
