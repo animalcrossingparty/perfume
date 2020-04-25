@@ -1,12 +1,13 @@
 from django.db import models
 from django.conf import settings
 
-class Brand(models.Model):
-    # def brand_image_path(self, instance, filename):
-    #     return 'brand_image' + instance.brand.name + '/' + randstr(5) + '.' + filename.split('.')[-1]
+class Base64Image(models.Model):
+    data = models.BinaryField()
 
+class Brand(models.Model):
     name = models.CharField(max_length=100)
     logo_image = models.CharField(max_length=200, null=True)
+    image = models.BinaryField(null=True)
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -25,7 +26,7 @@ class Season(models.Model):
 class Perfume(models.Model):
     name = models.CharField(max_length=200)
     launch_date = models.DateField(null=True, blank=True)
-    thumbnail = models.CharField(max_length=200)
+    thumbnail = models.BinaryField(null=True)
     gender = models.IntegerField(null=True)
     brand = models.ForeignKey(to=Brand, on_delete=models.PROTECT)
     top_notes = models.ManyToManyField(to=Note, related_name="perfumes_top")
@@ -36,9 +37,11 @@ class Perfume(models.Model):
     seasons = models.ManyToManyField(to=Season)
     price = models.FloatField()
     
+    
 class Review(models.Model):
     user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     perfume = models.ForeignKey(to=Perfume, on_delete=models.PROTECT)
     content = models.TextField()
     rate = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    images = models.ManyToManyField(to=Base64Image)

@@ -30,7 +30,7 @@ const initialState = Map({
     gender: 0,
     availability: true,
     categories: [],
-    seasons: [],
+    seasons: [1,2,3,4],
   },
 });
 

@@ -8,6 +8,7 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.exceptions import AuthenticationFailed
 
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
@@ -19,10 +20,14 @@ from .serializers import *
 
 
 def is_logged_in(request):
-    encoded_jwt = request.headers['Token']
-    decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-    user = get_user_model().objects.get(pk=decoded['userId'])
+    try:
+        encoded_jwt = request.headers['Token']
+        decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
+        user = get_user_model().objects.get(pk=decoded['userId'])
+    except:
+        raise AuthenticationFailed
     return user
+
 
 
 class ListUsers(APIView):
@@ -46,10 +51,7 @@ class SingleUser(APIView):
         operation_summary='회원 본인 정보 조회'
         )
     def get(self, request):
-        try:
-            user = is_logged_in(request)
-        except:
-            return Response(status=401)
+        user = is_logged_in(request)
         serializers = UserSerializers(user)
         return Response(serializers.data, status=200)
 
@@ -92,10 +94,7 @@ class SingleUser(APIView):
             ]
         )
     def put(self, request):
-        try:
-            user = is_logged_in(request)
-        except:
-            return Response(status=400)
+        user = is_logged_in(request)
         serializers = UserSerializers(data=request.data, instance=user)
         serializers.is_valid(raise_exception=True)
         serializers.save()
@@ -114,10 +113,7 @@ class SingleUser(APIView):
             ]
         )
     def delete(self, request):
-        try:
-            user = is_logged_in(request)
-        except:
-            return Response(status=400)
+        user = is_logged_in(request)
         user.delete()
         return Response(status=200)
 

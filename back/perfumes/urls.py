@@ -10,4 +10,5 @@ urlpatterns = [
     # path('<int:perfume_pk>/wordcloud/', views.make_wordcloud),
     path('<int:perfume_pk>/reviews/', views.ListReviews.as_view()),
     path('reviews/<int:review_pk>/', views.SingleReview.as_view()),
+    path('reviews/<int:review_pk>/like/', views.like_review),
 ]
