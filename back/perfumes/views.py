@@ -321,6 +321,9 @@ class ListReviews(APIView):
             ]
         )
     def post(self, request, perfume_pk):
+        """
+        이미지는 multipart/form-data로 보내주세요! Key 값은 "images" 입니다.
+        """
         try:
             user = is_logged_in(request)
         except:
@@ -370,6 +373,9 @@ class SingleReview(APIView):
             ]
         )
     def put(self, request, review_pk):
+        """
+        이미지는 multipart/form-data로 보내주세요! Key 값은 "images" 입니다.
+        """
         try:
             user = is_logged_in(request)
         except:
