@@ -2,27 +2,35 @@ import React from 'react'
 import { Header, Slider, FooterContent } from '../components'
 import '../css/HomePage.css'
 import { Footer, Icon, Row, Col } from 'react-materialize'
-import { Button } from '@material-ui/core';
-
-import { Link } from 'react-router-dom'
-
+import a from 'assets/images/homegrid/a.webp'
+import b from 'assets/images/homegrid/b.webp'
+import c from 'assets/images/homegrid/c.webp'
+import d from 'assets/images/homegrid/d.webp'
+import e from 'assets/images/homegrid/e.webp'
 function HomePage() {
 return (
 <div>
   <Header />
   <Slider />
-
-{/* 임시 btn */}
-  <div className="center user_page_link">
-    <Button>
-      <Link to="/rank">User Page</Link>
-    </Button>
-  </div>
-  <div className="container blue">
-    <Row>
-      <Col style={{height:'650px'}} className="teal" s={4}>
+  <div className="container">
+    <h1 className="center">STORIES</h1>
+    <Row className="px-5 m-0">
+      <Col style={{backgroundImage: `url(${a})`, height: '700px'}} className="homegrid p-5" s={4}>
+        <h1 className="pt-5">조 말론</h1>
+        <h4 className="center">넥타린블로썸 앤 허니 코롱</h4>
+        <hr />
+        <p>유쾌하고 활발한 느낌의 달콤한 향수.</p>
+        <p>이른 아침 런천 코벤트 가든의 시장에서 온 넥타린 블로썸 앤 허니는 유쾌한 상큼함을 더해 줄 수 있습니다. 아카시아 꿀 향기 속에 과즙이 풍부한 천도 복숭아, 복숭아, 카씨스, 여린 봄 꽃이 녹아 있습니다. 유쾌하고 활발한 느낌의 달콤한 향수입니다.</p>
       </Col>
-      <Col className="teal" s={8}>
+      <Col style={{backgroundImage: `url(${b})`, height: '700px'}} className="homegrid" s={8}>
+      </Col>
+    </Row>
+    <Row className="px-5">
+      <Col style={{backgroundImage: `url(${c})`, height: '1200px'}} className="homegrid" s={7}>
+      </Col>
+      <Col className="p-0"  s={5}>
+        <div style={{backgroundImage: `url(${d})`, height: '500px'}} className="homegrid"></div>
+        <div style={{backgroundImage: `url(${e})`, height: '700px'}} className="homegrid"></div>
       </Col>
     </Row>
   </div>

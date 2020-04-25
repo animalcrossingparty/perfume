@@ -1,23 +1,20 @@
 .perfume-info-section {
   padding-top: 5rem;
+  
 }
 
 .perfume-info-image {
   height: 40rem;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  animation: fadeIn 2s;
 }
-.perfume-info-image > img {
+.perfume-info-image img {
   margin: auto;
-  height: 75%;
+  height: 25rem;
 }
 
 .perfume-info-text {
   height: 40rem;
-  background-color: rosybrown;
+  animation: fadeIn 4s ease 0s !important;
 }
 
 .rate-wrapper {
@@ -38,19 +35,41 @@
 
 .rate-inside-circle {
   position: absolute;
-  font-size: 8rem;
+  font-family: "Roboto";
+  height: 20rem;
+
+  
+}
+.rate-inside-circle > h5 {
+  position: absolute;
+  width: 20rem;
+  line-height: 22rem;
+  text-align: center;
+  font-size: 6rem;
+  margin: 0;
 }
 .rate-circle {
   position: relative;
+  display: block;
+  width: 20rem;
 }
 
-.detail_center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10vh 0;
+.season-row {
+  padding: 0 20%;
 }
-
+.season-row > .col {
+  user-select: none;
+  height: 8rem;
+  line-height: 8rem;
+  font-size: 1.3rem;
+  text-align: center;
+  letter-spacing: 2px;
+  color: white;
+  text-shadow: 0 0 15px black;
+  font-weight: 100;
+  backdrop-filter: brightness(0.5);
+  background-position: center;
+}
 .perfume_brand {
   font-size: 25px;
   font-weight: 100;
@@ -59,125 +78,8 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-.like {
-  display: flex;
-  justify-content: flex-end;
-  color: rgb(218, 88, 99);
-  width: 100%;
-}
-
-.detail_box {
-  margin-top: 3vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 70vw;
-  height: 400px;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.3);
-}
-
-.perfume_info {
-  background-color: #fff;
-  height: 100%;
-  width: 90vw;
-  border-radius: 0 10px 10px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-@media (max-width: 700px) {
-  .detail_box {
-    flex-direction: column;
-    padding-top: 1vh;
-    height: 750px;
-  }
-
-  .perfume_info {
-    margin-top: 10px;
-    width: 100%;
-    border-radius: 0 0 5px 5px;
-    height: 100%;
-    padding-bottom: 7%;
-  }
-
-  .perfume_brand {
-    margin-bottom: 10px;
-    font-size: 20px;
-  }
-
-  .notes_box {
-    height: 100% !important;
-  }
-
-  .notes {
-    flex-direction: column-reverse;
-    height: 500px;
-  }
-
-  .note {
-    margin-left: 0 !important;
-  }
-
-  .note_img {
-    display: flex;
-    justify-content: center;
-  }
-
-  .like {
-  }
-
-  .carousel_list {
-    width: 80% !important;
-  }
-
-  .write_comment {
-    width: 90vw !important;
-  }
-
-  .comment_list {
-    width: 90vw;
-  }
-
-  .row_comment > textarea {
-    width: 80vw !important;
-    margin: 0 auto;
-  }
-
-  .StarRating {
-    margin-left: 0 !important;
-  }
-
-}
-
-@media (min-width: 980px) {
-  .notes_box {
-    width: 580px !important;
-  }
-}
-
-.left_box > img {
-  height: 200px;
-  margin-bottom: 5vh;
-}
-
-.left_box {
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(255, 255, 255, 0);
-  justify-content: space-around;
-  height: 100%;
-  padding: 1rem 3rem;
-}
-
-.perfume_id {
-  color: gray;
-  font-size: 12px;
-  padding-right: 70px;
-  margin-top: 10px;
+.disabled-season {
+  filter: brightness(0.3)
 }
 
 .perfume_name {
@@ -186,141 +88,6 @@
   margin-bottom: 1.5vh;
   border-bottom: 1px dotted gray;
   padding: 0 5% 0.8% 2%;
-}
-
-.star_rating {
-  display: flex;
-}
-
-.average {
-  margin-left: 10px;
-  color: gray;
-}
-
-.contexts {
-  margin-top: 2vh;
-  text-align: center;
-}
-
-.context {
-  color: black;
-}
-
-.notes_box {
-  margin-top: 10vh;
-  background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  width: 60%;
-  height: 300px;
-}
-
-.note_title {
-  font-size: 25px;
-  font-weight: 100;
-  display: flex;
-  flex-direction: row-reverse;
-  border-bottom: 1px solid;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.title_box {
-  background-color: #fff;
-  border-radius: 5px 5px 0 0;
-  padding: 0.5rem 1.5rem 1.5rem 1.5rem;
-}
-
-.notes {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 1rem;
-}
-
-.note {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  text-align: center;
-  height: 200px;
-  width: 70%;
-  margin-left: 20px;
-}
-
-.top > b {
-  color: rgba(0, 0, 0, 0.6);
-  border-bottom: 1px solid black;
-}
-.heart > b {
-  color: rgba(0, 0, 0, 0.6);
-  border-bottom: 1px solid black;
-}
-.base > b {
-  color: rgba(0, 0, 0, 0.6);
-  border-bottom: 1px solid black;
-}
-
-.note_info {
-  margin-top: 2%;
-  color: rgb(190, 149, 172);
-  /* font-family: monospace !important; */
-}
-
-.note_img {
-  width: 70%;
-}
-
-.note_img > img {
-  /* width: 200px; */
-  height: 200px;
-  opacity: 0.5;
-}
-
-.context > i {
-  border-bottom: 1px black dotted;
-  padding-bottom: 2%;
-  font-size: 15px;
-}
-
-.gender > img {
-  width: 20px;
-  height: 25px;
-  margin-top: 0.5rem;
-}
-
-.category {
-  margin-top: 5%;
-  color: rgb(190, 149, 149);
-  /* font-family: monospace; */
-}
-
-.availablity {
-  margin-top: 5%;
-  color: rgb(190, 149, 149);
-  /* font-family: monospace; */
-}
-
-.carousel_br {
-  margin-top: 10rem;
-}
-
-.carousel_list {
-  width: 800px;
-  height: 280px;
-  /* background-color: rgba(255, 255, 255, 0.4); */
-  padding: 30px ;
-  margin-top: 1rem;
-}
-
-.BrainhubCarouselItem > img {
-  width: 130px;
-  height: 200px;
-}
-
-.recommend_list {
-  font-size: 23px;
-  border-bottom: 1px solid;
-  padding: 0 1rem;
 }
 
 /* Reviews */
