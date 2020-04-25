@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import *
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
+from perfumes.utils import exchange_rate
 
 class Base64ImageSerializers(serializers.ModelSerializer):
     class Meta:
@@ -30,6 +31,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
     base_notes = NoteSerializers(many=True)
     total_review = serializers.IntegerField(source='review_set.count', read_only=True)
     brand = BrandSerializers()
+    price = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Perfume
@@ -43,6 +45,9 @@ class PerfumeSerializers(serializers.ModelSerializer):
             result = 0
         return result
 
+    def get_price(self, perfume):
+        exchanged = perfume.price * exchange_rate.korean_won()
+        return exchanged
 
 class PerfumeSurveySerializers(serializers.ModelSerializer):
     top_notes = NoteSerializers(read_only=True, many=True)
@@ -88,7 +93,8 @@ class PerfumeDetailSerializers(serializers.ModelSerializer):
     base_notes = NoteSerializers(many=True)
     total_review = serializers.IntegerField(source='review_set.count', read_only=True)
     avg_rate = serializers.SerializerMethodField(read_only=True)
-    
+    price = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = Perfume
         fields = '__all__'
@@ -100,6 +106,10 @@ class PerfumeDetailSerializers(serializers.ModelSerializer):
         except:
             result = 0
         return result
+
+    def get_price(self, perfume):
+        exchanged = perfume.price * exchange_rate.korean_won()
+        return exchanged
 # class WordcloudSerializers(serializers.ModelSerializer):
 #     image = Base64ImageField()
 
