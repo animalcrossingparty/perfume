@@ -1,8 +1,12 @@
 from rest_framework import serializers
-from .models import Perfume, Review, Note, Brand
+from .models import Perfume, Review, Note, Brand, Base64Image
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
 
+class Base64ImageSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Base64Image
+        fields = ['data']
 
 class NoteSerializers(serializers.ModelSerializer):
     class Meta:
@@ -67,14 +71,15 @@ class ReviewSerializers(serializers.Serializer):
     rate = serializers.IntegerField(min_value=0, max_value=10)
     created_at = serializers.DateTimeField(read_only=True)
     like_cnt = serializers.IntegerField(source='like_users.count',read_only=True)
+    images = Base64ImageSerializers(read_only=True, many=True)
 
     def create(self, validated_data):
         return Review.objects.create(**validated_data)
 
-    # def update(self, instance, validated_data):
-    #     instance.user = validated_data.get('email', instance.user)
-    #     instance.perfume = validated_data.get('content', instance.perfume)
-    #     return instance
+    def update(self, instance, validated_data):
+        # instance.user = validated_data.get('user', instance.user)
+        # instance.perfume = validated_data.get('perfume', instance.perfume)
+        return instance
 
 
 class PerfumeDetailSerializers(serializers.ModelSerializer):
