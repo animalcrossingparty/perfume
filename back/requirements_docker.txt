@@ -71,7 +71,6 @@ pandocfilters==1.4.2
 parso==0.5.1
 pep8-naming==0.4.1
 pickleshare==0.7.5
-pilkit==2.0
 Pillow==7.1.1
 ply==3.11
 prometheus-client==0.7.1
