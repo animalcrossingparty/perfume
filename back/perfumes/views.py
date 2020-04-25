@@ -10,7 +10,7 @@ import jwt
 from time import time
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
-from perfumes.utils import knn, tf_idf
+from perfumes.utils import knn, tf_idf, exchange_rate
 from django.db.models import Q, Count, Avg
 import json
 from drf_yasg.utils import swagger_auto_schema
@@ -20,11 +20,59 @@ from django.http import Http404
 
 PAGE_SIZE = 12
 
-def is_logged_in(request):
-    encoded_jwt = request.headers['Token']
-    decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-    user = get_user_model().objects.get(pk=decoded['userId'])
-    return user
+famous_notes = [   
+                96, 155, 227, 388, 515, 522, 530, 562, 660, 
+                16, 45, 51, 75, 118, 207, 245, 272, 281, 390, 416, 491, 541, 565, 593, 694, 765, 858, 911,
+                2, 161, 201, 208, 353, 358, 426, 444, 461, 512, 785, 
+                472, 527, 
+                19, 48, 82, 194, 197, 323, 379, 392, 395, 604, 688, 692, 793, 
+                224, 247, 376, 668, 708, 846, 908, 920, 
+                100, 129, 137, 146, 168, 176, 268, 283, 289, 300, 433, 571, 
+                74, 270, 336, 428, 647, 808, 
+                73,778, 889, 
+                26, 71, 205, 599, 624, 
+                88, 124, 173, 203, 274, 
+                113, 539, 747
+            ]
+
+@api_view(['GET'])
+def filtering(request):
+    gender = request.GET.get('gender', None)
+    age = request.GET.get('age', None)
+    age = str(age)
+    seasons = request.GET.get('season', None)
+    include = request.GET.get('include', None)
+
+    famous_brands =[
+                    1241, 1238, 1624, 2153, 864, 1708, 1713, 1724, 1816, 2023, 1934, 
+                    2097, 2626, 528, 527, 390, 391, 647, 648, 260, 40, 215, 936, 1504, 
+                    1543, 1517, 555, 687, 678, 1418, 1525, 2706, 2446, 16, 2326, 3046, 
+                    614, 653, 1122, 293, 749, 532, 855, 1733, 3130, 2495, 3227, 3032, 
+                    1315, 1191, 2326, 1240, 1200, 2036, 3140, 2104
+                    ]
+
+    products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availability=True)
+    
+    products = products.filter(gender=gender)
+
+    if seasons is not None:
+        season_list = seasons.split(',')
+        products = products.filter(seasons__in=season_list)
+
+    if include is not None:
+        include_list = include.split(',')
+        for category in include_list:
+            products = products.filter(categories__in=category)
+
+    # 유명 노트 포함 향수 필터링
+    tops = products.values_list('top_notes',flat=True)
+    hearts = products.values_list('heart_notes',flat=True)
+    base = products.values_list('base_notes',flat=True)
+    products = products.filter(Q(top_notes__in=famous_notes) | Q(heart_notes__in=famous_notes) | Q(base_notes__in=famous_notes))
+    products = products.filter(brand__in=famous_brands)
+
+    return products
+
 
 @api_view(['GET'])
 def perfumes_list(request):
@@ -112,11 +160,6 @@ def perfumes_list(request):
     return Response(serializer, headers={'num_pages': num_pages, 'Access-Control-Expose-Headers': 'num_pages'})
 
 
-@api_view(['GET'])
-def perfume_detail(request, perfume_pk):
-    perfume = Perfume.objects.get(pk=perfume_pk)
-    serializer = PerfumeSerializers(perfume)
-    return Response(serializer.data)
 
 # 성별, 나이, 계절을 받았을 때 남아있는 향수들의 노트를 알려준다 -> include, exclude 카테고리를 받는다. -> note를 리턴
 @api_view(['GET'])
@@ -127,65 +170,18 @@ def left_notes(request):
     except:
         return Response(status=401)
 
-    gender = request.GET.get('gender', None)
-    age = request.GET.get('age', None)
-    age = str(age)
-    seasons = request.GET.get('season', None)
-    include = request.GET.get('include', None)
-    exclude = request.GET.get('exclude', None)
+    products = filtering(request)
 
-    famous_notes = [
-                    96, 155, 227, 388, 515, 522, 530, 562, 660, 
-                    16, 45, 51, 75, 118, 207, 245, 272, 281, 390, 416, 491, 541, 565, 593, 694, 765, 858, 911,
-                    2, 161, 201, 208, 353, 358, 426, 444, 461, 512, 785, 
-                    472, 527, 
-                    19, 48, 82, 194, 197, 323, 379, 392, 395, 604, 688, 692, 793, 
-                    224, 247, 376, 668, 708, 846, 908, 920, 
-                    100, 129, 137, 146, 168, 176, 268, 283, 289, 300, 433, 571, 
-                    74, 270, 336, 428, 647, 808, 
-                    73,778, 889, 
-                    26, 71, 205, 599, 624, 
-                    88, 124, 173, 203, 274, 
-                    113, 539, 747
-                    ]
-    famous_brands =[
-                    1241, 1238, 1624, 2153, 864, 1708, 1713, 1724, 1816, 2023, 1934, 
-                    2097, 2626, 528, 527, 390, 391, 647, 648, 260, 40, 215, 936, 1504, 
-                    1543, 1517, 555, 687, 678, 1418, 1525, 2706, 2446, 16, 2326, 3046, 
-                    614, 653, 1122, 293, 749, 532, 855, 1733, 3130, 2495, 3227, 3032, 
-                    1315, 1191, 2326, 1240, 1200, 2036, 3140, 2104
-                    ]
-
-    products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availability=True)
-    products = products.filter(gender=gender)
-
-    if seasons is not None:
-        season_list = seasons.split(',')
-        products = products.filter(seasons__in=season_list)
-
-
-    # 유명 노트 포함 향수 필터링
+    notes = Note.objects.all()
     tops = products.values_list('top_notes',flat=True)
     hearts = products.values_list('heart_notes',flat=True)
     base = products.values_list('base_notes',flat=True)
-    products = products.filter(Q(top_notes__in=famous_notes) | Q(heart_notes__in=famous_notes) | Q(base_notes__in=famous_notes))
-    products = products.filter(brand__in=famous_brands)
-    if include is not None:
-        include_list = include.split(',')
-        for category in include_list:
-            products = products.filter(categories__name=category)
-    
-    # 일단...대표 노트들은 카테고리로 필터링해서 기본적으로 보여주고 
-    # 골라진 향수 안에서 노트들 랜덤으로 2-3개 정도 뽑기?
+    total_list = tops.union(hearts, base)
+    # total_list = total_list.filter(id__in=famous_notes)
+    notes = notes.filter(id__in=list(total_list & famous_notes))
 
-    
-    # notes = Note.objects.all()
-    # tops = products.values_list('top_notes',flat=True)
-    # hearts = products.values_list('heart_notes',flat=True)
-    # base = products.values_list('base_notes',flat=True)
-    # total_list = tops.union(hearts, base)
-    
-    # notes = notes.filter(id__in=list(total_list))
+    if len(notes) > 8:
+        notes = notes[:8]
 
     print(notes)
     serialize = NoteSerializers(notes, many=True)
@@ -283,16 +279,16 @@ def perfume_survey(request):
         # serializer = PerfumeSurveySerializers(products, many=True)
         # return Response(serializer.data)
     else:
-        gender = request.POST.get('gender', None)
-        age = request.POST.get('age', None)
-        seasons = request.POST.get('seasons', None)
-        like_category = request.POST.get('like_category', None)
-        hate_category = request.POST.get('hate_category', None)
-        include_notes = request.POST.get('include_notes', None)
+        gender = request.GET.get('gender', None)
+        age = request.GET.get('age', None)
+        seasons = request.GET.get('seasons', None)
+        like_category = request.GET.get('like_category', None)
+        hate_category = request.GET.get('hate_category', None)
+        include_notes = request.GET.get('include_notes', None)
 
         # 조사 결과 db에 저장
         survey = Survey.objects.create(
-            user=user.id,
+            user=user,
             seasons=seasons,
             like_category=like_category,
             hate_category=hate_category,
@@ -335,6 +331,12 @@ def call_tf_idf(request, perfume_pk):
     reviews = Review.get(perfume=perfume_pk)
 
     return 1
+
+@api_view(['GET'])
+def perfume_detail(request, perfume_pk):
+    perfume = Perfume.objects.get(pk=perfume_pk)
+    serializer = PerfumeSerializers(perfume)
+    return Response(serializer.data)
 
 class ListReviews(APIView):
     @swagger_auto_schema(

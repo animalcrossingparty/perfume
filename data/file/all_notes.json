@@ -1,0 +1,4868 @@
+[
+  {
+  "note": "absinthe",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, 
+{
+  "note": "acacia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "acai berry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "acerola",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "acerola blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "acetyl furan",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "agarwood (oud)",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "agave",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "agave nectar",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "aglaia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "akigalawood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "aldehydes",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "alder",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "algae",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "allspice",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "almond",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "almond blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "almond tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "aloe vera",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "aluminum",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "alumroot",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "alyssum",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "amaranth",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "amaretto",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "amarillys",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "amber",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "amber xtreme",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "ambergris",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "ambertonic (iff)",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "amberwood",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "ambrarome",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "ambretone",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "ambrette (musk mallow)",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "ambrettolide",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "ambrocenide (symrise)",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "ambroxan",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "ammophila (beach grass)",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "amyl salicylate",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "amyris",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "anemone",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "angel's trumpet",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "angelica",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "animal notes",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "anise",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "apple",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "apple blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "apple juice",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "apple mint",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "apple pulp",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "apple tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "apricot",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "apricot blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "aquozone",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "araucaria",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "arbutus (madrona, bearberry tree)",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "arctic bramble",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "argan",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "argan tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "arnica",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "artemisia",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "arum lily",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "asafoetida",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "ash",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "ashoka flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "asparagus",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "aspen",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "asphalt",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "aspic",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "avocado",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "azolla (water fern)",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "bacon",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "baileys irish cream",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "balsamic vinegar",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "bamboo",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "banana",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "banana flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "banana leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "baobab",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "barberry",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "bark",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "barley",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "basil",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "bay essence",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "bay leaf",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "bbq",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "bearberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "beech",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "beerale",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "beeswax",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "beetroot",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "belambra tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "belladona",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "bellflower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "bellini",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "benzoin",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "bergamot",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "bergamot blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "birch",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "birch tar",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "biscuit",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "bitter orange",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "black currant",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "black currant blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "black currant leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "black hemlock or tsuga",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "black locust",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "black spruce",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "blackberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "blackberry blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "blackberry leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "blackthorn",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "blackwood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "blood",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "blood orange",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "blue lilies",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "blue margarita",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "blue poppy",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "blueberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "boisiris",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "borage",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "borneol",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "boronia",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "bougainvillea",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "bourbon whiskey",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "boysenberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "bran",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "brazil nut",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "brazilian rosewood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "bread",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "bread flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "breu-branco",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "brick",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "brioche",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "bromelia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "brown scotch tape",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "brown sugar",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "bubble gum",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "buchu or agathosma",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "buddha wood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "buddleia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "bulrush",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "burdock",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "burnt match",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "bushman candle",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "butomus umbellatus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "butter",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "buttercup",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "butterscotch",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "buxus",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "cabreuva",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "cacao pod",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "cactus",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "cade oil",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "caipirinha",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "calamansi",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "calamus",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "calone",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "calycanthus",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "calypsone",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cambodian oud",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "camellia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "campari",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "camphor",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "canadian balsam",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "candied fruits",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "candied ginger",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "candied orange",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "candies",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "canele",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "cannabis",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "cannonball flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "caoutchouc",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cappuccino",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "carambola (star fruit)",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "carambola blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "caramel",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "caraway",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "cardamom",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "carissa",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "carnation",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "carnation leaves",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "carob tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "carrot",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "carrot seeds",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "cascalone",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cashew",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "cashmeran",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cashmir wood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "cassia",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "cassowary fruit",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "castoreum",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "caviar",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "cedar",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "celery",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "celery seeds",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "celosia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "centella asiatica",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "cepes",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "cetalox",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "chalood bark",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "chamomile",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "champaca",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "champagne",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "chayote",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "cheese",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "cherimoya",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "cherry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "cherry blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "chestnut",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "chimonanthus or wintersweet",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "china rose",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "chinotto",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "chinotto",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "chinotto blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "chive",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "chocolate flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "choya loban",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "choya nakh",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "choya ral",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "christmas tree or flame tree",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "chrysanthemum",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "chutney",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "cilantro",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "cinnamon",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "cinnamon leaf",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "citron",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "citruses",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "civet",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "clary sage",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "clay",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "clearwood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "clematis",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "clementine",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "cloudberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "clove leaf",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "clover",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cloves",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "co2 extracts",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "coal",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "coal tar",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "cobblestone",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "coca",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "coca-cola",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cocobolo",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "coconut",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "coconut pie",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "coffee",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "coffee blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "coffee tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "cognac",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cognac",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "concrete",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cookie",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "copahu balm",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "copaiba balm",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "copal",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "coral reef",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "coranol",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "coriander",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "cork",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "cork",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "corn silk",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "cornflower, sultan seeds",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cosmone",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cosmopolitan cocktail",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cosmos flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "costus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cotton candy",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "cotton flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cottonwood (poplar)",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "coumarin",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cranberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "cream",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "cream soda",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "creme brulee",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "creosote bush",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "crinum lily",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "crithmum",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "croissant",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "cubeb or tailed pepper",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "cucumber",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "cumin",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "cupcake",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "cupuacu, cupuassu, copoasu",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "curacao",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "curcuma (turmeric)",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "currant leaf and bud",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "curry tree",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "custard",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "cyclamen",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "cyperus scariosus",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "cypress",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "cypriol oil or nagarmotha",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "dahlia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "daim",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "daiquiri",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "daisy",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "dandelion",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "daphne",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "dark chocolate",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "dates",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "datura",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "davana",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "deadnettle",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "delonix",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "desert rose",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "dew drop",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "dewberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "dianthus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "dill",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "dodecanal",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "dove tree",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "dragon blood resin",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "dried apple crisp",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "dried apricot",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "dried fallen leaves",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "dried fruits",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "dried rose",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "driftwood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "dry wood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "dulce de leche",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "dyer's greenweed",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "earl grey tea",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "earth tincture",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "earthy notes",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "eau de vie",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "ebony tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "edelweiss",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "eglantine rose",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "elderflower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "elemi",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "ember",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "encian",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "english marigold",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "ethyl maltol",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "eucalyptus",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "eugenol",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "fabric",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "fennel",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "fenugreek",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "fern",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "field scabious",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "fig",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "fig leaf",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "fig tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "finger lime",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "fir",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "fire",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "fish",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "flamingo flower (anthurium)",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "flax",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "flint",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "floral notes",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "forest fruits",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "forget me not",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "fragonia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "frangipani",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "freesia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "french pastries",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "frosted berries",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "frosting [glace]",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "fruity notes",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "fuchsia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "galanga",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "galaxolide",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "galbanum",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "gardenia",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "gasoline",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "genet",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "genmaicha",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "geosmin",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "geranium",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "gerbera",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "gianduia",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "gin",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "ginger",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "gingerbread",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "ginkgo",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "ginseng",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "gladiolus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "goat hair",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "goji berries",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "goldenrod",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "gooseberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "gorse",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "grape leaves",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "grape seed",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "grapefruit",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "grapefruit blossom",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "grapes",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "graphite",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "grass",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "grass tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "green nard",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "green notes",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "green pepper",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "green sap",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "green tea flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "greengage",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "grenadine",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "gromwell",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "ground cherry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "guaiac wood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "guao or maiden plum",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "guarana",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "guava",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "guava blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "gunpowder",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "gurjun balsam",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "halva",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "hassaku",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "hatkora lemon",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "hawthorn",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hay",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "hazel blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hazelnut",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "hazelnut cocoa spread",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "head space waterfall",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "heather",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hedione",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "heliotrope",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hellabore flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hemlock",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "henna",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "hi-fi",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hibiscus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hina",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hinoki wood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "ho wood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "hoary stock",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "holly flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hollyhock",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "honey",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "honeybush or cyclopia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "honeycomb",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "honeydew blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "honeysuckle",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "hops",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "horchata",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "horseweed",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "hortensia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hot iron",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hoya carnosa, wax plant",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hyacinth",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "hyraceum",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "hyssop",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "ice",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "ice cream",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "icing pink",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "immortelle",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "impatiens",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "incense",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "incienso",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "indian oud",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "indian spices",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "indian woods",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "indole",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "industrial glue",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "ink",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "instant film accord",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "iris",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "ishpink, ocotea quixos",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "iso e super",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "isobutyl quinoline",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "ivy",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "jabuticaba",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "jacaranda",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "jackfruit",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "jade flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "japanese loquat",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "japanese pepper",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "jasmine",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "jasmine orchid",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "jasmine tea",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "jatamansi or spikenard",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "javanol",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "jeans",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "jobs tears (yi yi ren)",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "jujube blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "juniper",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "juniper berries",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "kadam",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "kaffir lime",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "kanuka",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "karo-karounde",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "katrafay",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "katsura leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "kephalis",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "khella",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "kir royal",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "kiwi",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "kiwi blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "kowhai",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "kudzu",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "kulfi",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "kumbaru",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "kumquat",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "labdanum",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "laburnum",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lady of the night flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lady slipper orchid",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lamduan flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "laminaria",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "lamprocapnos",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lantana",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lantana leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "laotian oud",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "larch",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "larkspur",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "laurel blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lava",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lavender",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "leather",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "leatherwood",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lemon",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "lemon balm",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "lemon blossom",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "lemon tree",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "lemon verbena",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "lemon zest",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "lemonade",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lemongrass",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "liatris",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lichen",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "licorice",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "lilac",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lily",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "lily of the valley leaves",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "lily-of-the-valley",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lime",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "lime (linden) blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "limetta",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "limnophila aromatica",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "limoncello",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "linaloe berry",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "linen",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lingonberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "lip gloss",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lipstick",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "liquor",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "litchi",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "litsea cubeba",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "longan berries",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "lorenox",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lotus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "loukhoum",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "lovage root",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "lupin",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "lydia broom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "macadamia",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "macarons",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "mace",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "madeira",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "magnolan",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "magnolia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mahogany",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "mahonia",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "mahonial",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mai tai cocktail",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "malt",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "malva",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mandarin orange",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "mandarin orange blossom",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "mandora",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "mango",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "mango blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mangosteen",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "maninka",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "manuka",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "maple",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "maple syrup",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "maraschino cherry",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "marian plum",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "marigold",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "mariposa lily",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "marjoram",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "marmalade",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "marron glace",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "marshmallow",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "martini",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "marzipan",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "masala chai",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "massoia",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "mastic or lentisque",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "matcha tea",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "mate",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "mayflower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "meadowsweet",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "meat",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "melati",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "melilot or sweet clover",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "melilotus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "melon",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "meringues",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "mesquite wood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "metallic notes",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "methyl pamplemousse",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "mignonette",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "milk",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "milk mousse",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "mimosa",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mimusops elengi",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mineral notes",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mint",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "mirabelle",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "mirabilis",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mistletoe",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "mitti attar",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mock orange",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "moepel accord",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "mojito",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "molasses",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "molasses",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "monarda",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "monoi oil",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mopane",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "morning glory flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "motor oil",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mountain air",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "mugane",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "muhuhu",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "mulberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "mushroom",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "musk",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "mustard seed",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "myrica",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "myrrh",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "myrtle",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "nag champa",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "narcissus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "nashi pear",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "nasturcia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "naturalcalm",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "nectarine",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "nectarine blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "neem",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "neoprene",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "nerium oleander",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "neroli",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "nettle",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "nigella",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "night blooming cereus",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "night blooming jasmine",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "nootka",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "nougat",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "nutmeg",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "oak",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "oak leaves",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "oakmoss",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "oat",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "oily notes",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "olibanum (frankincense)",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "olive",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "olive flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "olive leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "olive tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "oolong tea",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "opium",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "opoponax",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "orange",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "orange blossom",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "orange cassia tree",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "orchard blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "orchid",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "orchid cactus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "orchid leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "oregano",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "oriental notes",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "orris root",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "osmanthus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "oysters",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "ozonic notes",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "palisander rosewood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "palm leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "palmarosa",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "palo santo",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "pandanus",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "panna cotta",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "pansy",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "papaya",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "papaya blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "paper",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "paperbark",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "papyrus",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "para-cresyl phenyl acetate",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "paradisone",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "paramela",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "parsley",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "passion flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "passionfruit",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "pataqueira",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "patchouli",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "pea",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "peach",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "peach blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "peach leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "peanut",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "pear",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "pear blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pear ice cream",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "pear leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "pear tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "peat",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pebbles",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pecan",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "pelargonium",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "peony",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pepper",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "peppertree",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "pepperwood or hercules club",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "periwinkle",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "persimmon",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "peru balsam",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "petalia",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "petitgrain",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "petunia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "phlox",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pimento",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "pimento leaf",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "pimento seeds",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "pina colada",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pine tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "pineapple",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "pineapple blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pink pepper",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "pinot noir grapes",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "pistachio",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "pitahaya",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "pitanga",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "pittosporum",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "plastic",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "plum",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "plum blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "plum tree",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "poinsettia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pollen",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "polygonum",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "pomarose",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pomegranate",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "pomegranate blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pomelo",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "popcorn",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "poplar (populus) buds",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "poppy",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "port wine",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "portulaca or pigweed",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "powdery notes",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "praline",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "primrose",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "princess tree (paulownia)",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "priprioca",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "privet",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "profiterole",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "prosecco",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "prunella",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "pua keni keni (pua-lulu)",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "pumpkin",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "punch",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "quince",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "rain notes",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "rainbow sorbet",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "raki",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "rambutan",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "rangoon creeper",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "raspberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "raspberry blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "ravenala",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "ravensara",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "red algae",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "red apple",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "red berries",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "red currant",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "red fruits",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "red willow",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "red wine",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "reed",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "reseda",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "resins",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "rhododendron",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "rhubarb",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "rice",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "rice pudding",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "rooibos red tea",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "rosa rubiginosa",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "rose",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "rose hip",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "rose jam",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "rose japanese (hamanasu)",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "rose leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "rose mallow",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "rose thorn",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "rosebay willowherb",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "rosemary",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "rubber",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "rue",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "rum",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "rumex",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "rye",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "safflower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "saffron",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "safraleine",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "sage",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "sainfoins",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "sake",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "salt",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "saman",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "sand",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "sandalwood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "sangria",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "santolina",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "sapodilla",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "satin",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "satinwood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "satureja",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "saw palmetto",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "sea buckthorn",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "sea shells",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "sea water",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "seaweed",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "sequoia",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "sesame",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "shiso",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "siam",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "sichuan pepper",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "sideritis, mountain tea",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "silk",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "silk tree blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "silk vine or milk broom",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "skin",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "skunk cabbage",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "slate",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "smoke",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "snake plant",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "snow",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "snowberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "snowdrops",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "sodium silicate",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "solar notes",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "solomon`s seal",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "sorbet",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "sour cherry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "sour cherry blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "soursop",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "soybean",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "spanish broom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "spicy notes",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "spinach",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "spiraea",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "spray paint",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "spruce",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "spun sugar",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "squash",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "st. john's wort",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "star anise",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "star apple",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "starfish",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "stephanotis",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "strawberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "strawberry leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "strawberry syrup",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "strelitzia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "strobilanthes callosus",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "styrax",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "suede",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "sugar",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "sumac",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "sundew",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "sunflower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "suntan lotion",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "surf wax",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "sweet grass",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "sweet pea",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "sycamore",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "sylkolide",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "syringa",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "syrup",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "taif rose",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "takamaka",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "talc",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "tamarind",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "tamarisk",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "tangelo",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "tangerine",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "tangerine blossom",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "tansy",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "tarragon",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "tayberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "tea",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "tea tree oil",
+  "category_idx": 9,
+  "category_name": "resins_and_balsams",
+  "season": [2, 3]
+}, {
+  "note": "teak wood",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "tennis ball",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "tequila",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "thailand oud",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "thistle",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "thuja",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "thyme",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "ti leaf (cordilyne)",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "tiare flower",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "tiramisu",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "tobacco",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "tobacco blossom",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "toffee",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "tokaji wine",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "tolu balsam",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "tomato",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "tomato leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "tonic water",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "tonka bean",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "toscanol",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "trillium",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "tropical fruits",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "truffle",
+  "category_idx": 10,
+  "category_name": "musk_amber_animalic_smells",
+  "season": [2, 3]
+}, {
+  "note": "tuberose",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "tulip",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "tulle accord",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "tulsi",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "turnera diffusa (damiana)",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "umbu-caja | tapereba",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "valerian",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "vanilla",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "varnish accord",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "velvet",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "vermouth",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "vetiver",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "vine",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "vinyl",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "violet",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "violet leaf",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "violet woodsorrel",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "vodka",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "wallflower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "walnut",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "wan sao lhong",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "wasabi",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "water",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "water fruit",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "water hyacinth",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "water lily",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "water pepper",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "watermelon",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "west indian bay",
+  "category_idx": 6,
+  "category_name": "spices",
+  "season": [2, 3]
+}, {
+  "note": "wet plaster",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "wheat",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "whiskey",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "white chocolate",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "white currant",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "white flowers",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "white ginger lily",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "white oud",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "white tobacco",
+  "category_idx": 4,
+  "category_name": "white_flowers",
+  "season": [0, 2, 3]
+}, {
+  "note": "white willow",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "white wine",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "wild strawberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "wildflowers",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "wine lees",
+  "category_idx": 11,
+  "category_name": "beverages",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "winterberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "wisteria",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "wolfberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "woody notes",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "woody zion",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "wool",
+  "category_idx": 12,
+  "category_name": "netural_and_synthetic_popular_and_weird",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "wormwood",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "wrightia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "yarrow",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "yellow cherry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "ylang-ylang",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "yogurt",
+  "category_idx": 7,
+  "category_name": "sweets_and_gourmand_smells",
+  "season": [3]
+}, {
+  "note": "yohimbe",
+  "category_idx": 8,
+  "category_name": "woods_and_mosses",
+  "season": [2, 3]
+}, {
+  "note": "yumberry",
+  "category_idx": 2,
+  "category_name": "fruits_vegetables_and_nuts",
+  "season": [0, 2]
+}, {
+  "note": "yunnan red tea",
+  "category_idx": 5,
+  "category_name": "greens_herbs_and_fougeres",
+  "season": [1, 2]
+}, {
+  "note": "yuzu",
+  "category_idx": 1,
+  "category_name": "citrus_smells",
+  "season": [0, 1]
+}, {
+  "note": "yuzu flower",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}, {
+  "note": "zinnia",
+  "category_idx": 3,
+  "category_name": "flowers",
+  "season": [0, 1, 2, 3]
+}]
