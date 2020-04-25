@@ -358,7 +358,8 @@ class ListReviews(APIView):
         )
         try:
             for img_file in dict((request.data).lists())['images']:
-                img = Base64Image.objects.create(data=base64.b64encode(img_file.read()))
+                base64img = base64.b64encode(img_file.read())
+                img = Base64Image.objects.create(data=base64img.decode('ascii'))
                 review.images.add(img)
         finally:
             return Response({'review_id': review.pk}, status=200)
@@ -410,7 +411,8 @@ class SingleReview(APIView):
             image.delete()
         try:  # 업로드 이미지가 있다면 추가
             for img_file in dict((request.data).lists())['images']:
-                img = Base64Image.objects.create(data=base64.b64encode(img_file.read()))
+                base64img = base64.b64encode(img_file.read())
+                img = Base64Image.objects.create(data=base64img.decode('ascii'))
                 review.images.add(img)
         finally:
             return Response(status=200, headers={'Access-Control-Allow-Headers': 'token'})
