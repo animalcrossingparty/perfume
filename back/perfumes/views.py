@@ -58,7 +58,7 @@ def filtering(request):
     products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availability=True)
     
     products = products.filter(gender=gender)
-
+  
     if seasons is not None:
         season_list = seasons.split(',')
         products = products.filter(seasons__in=season_list)
