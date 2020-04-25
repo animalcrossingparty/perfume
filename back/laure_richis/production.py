@@ -32,3 +32,5 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
     'token'
 ]
+
+STATIC_ROOT = "/home/ubuntu/perfume/back/static"
