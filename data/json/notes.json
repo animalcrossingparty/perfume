@@ -4148,7 +4148,7 @@
     "model": "perfumes.note",
     "fields": {
       "name": "lemon verbena",
-      "kor_name": ""
+      "kor_name": "레몬 버베나"
     }
   },
   {
@@ -4196,7 +4196,7 @@
     "model": "perfumes.note",
     "fields": {
       "name": "licorice",
-      "kor_name": ""
+      "kor_name": "리커리시"
     }
   },
   {
@@ -4204,7 +4204,7 @@
     "model": "perfumes.note",
     "fields": {
       "name": "lilac",
-      "kor_name": "리커리쉬"
+      "kor_name": "라일락"
     }
   },
   {
@@ -4892,7 +4892,7 @@
     "model": "perfumes.note",
     "fields": {
       "name": "molasses",
-      "kor_name": ""
+      "kor_name": "몰레시즈"
     }
   },
   {
@@ -5820,7 +5820,7 @@
     "model": "perfumes.note",
     "fields": {
       "name": "pitahaya",
-      "kor_name": ""
+      "kor_name": "피타야"
     }
   },
   {
@@ -5828,7 +5828,7 @@
     "model": "perfumes.note",
     "fields": {
       "name": "pitanga",
-      "kor_name": "피타야"
+      "kor_name": "피탄가"
     }
   },
   {
@@ -6356,7 +6356,7 @@
     "model": "perfumes.note",
     "fields": {
       "name": "rue",
-      "kor_name": ""
+      "kor_name": "루"
     }
   },
   {
@@ -6724,7 +6724,7 @@
     "model": "perfumes.note",
     "fields": {
       "name": "sour cherry",
-      "kor_name": ""
+      "kor_name": "사워 체리"
     }
   },
   {
@@ -7220,7 +7220,7 @@
     "model": "perfumes.note",
     "fields": {
       "name": "tokaji wine",
-      "kor_name": ""
+      "kor_name": "토카지 와인"
     }
   },
   {
@@ -7228,7 +7228,7 @@
     "model": "perfumes.note",
     "fields": {
       "name": "tolu leaf",
-      "kor_name": " 발삼"
+      "kor_name": "토루 리프"
     }
   },
   {
