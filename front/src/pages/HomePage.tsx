@@ -18,9 +18,16 @@ return (
       <Link to="/rank">User Page</Link>
     </Button>
   </div>
-
+  <div className="container blue">
+    <Row>
+      <Col style={{height:'650px'}} className="teal" s={4}>
+      </Col>
+      <Col className="teal" s={8}>
+      </Col>
+    </Row>
+  </div>
   <div className="container footer_container">
-    <div className="home-section-devider"><i>SERVICES</i></div>
+    <div className="home-section-devider"><p className="my-0">SERVICES</p></div>
     <Row>
       <Col className="intro-box" s={4}>
       <Icon large>pie_chart</Icon>
@@ -42,11 +49,11 @@ return (
     </Row>
   </div>
 
-  <Footer copyrights="2020 SSAFY DJ02-08" links={<ul>
-    <li><a className="grey-text text-lighten-3" href="#!">Github</a></li>
-    <li><a className="grey-text text-lighten-3" href="#!">SSAFY</a></li>
-    <li><a className="grey-text text-lighten-3" href="#!">SSAFY Instagram</a></li>
-    <li><a className="grey-text text-lighten-3" href="#!">Buy us a coffee</a></li>
+  <Footer copyrights="2020 SSAFY DJ02-08" links={<ul className="text-gray">
+    <li><a href="#!">Github</a></li>
+    <li><a href="#!">SSAFY</a></li>
+    <li><a href="#!">SSAFY Instagram</a></li>
+    <li><a href="#!">Buy us a coffee</a></li>
     </ul>}
     moreLinks={<a className="grey-text text-lighten-4 right"
       href="https://www.notion.so/Laure-Richis-e89e794cf439444994ab31f82d06f37a">

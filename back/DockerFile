@@ -1,4 +1,6 @@
 FROM python:3.6.8
+RUN apt-get install -y cron
+RUN apt-get install -y wait-for-it.sh
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code

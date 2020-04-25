@@ -10,9 +10,9 @@ DATABASES = {
         'PASSWORD': '1',
     }
 }
-STATIC_DIR = os.path.join(BASE_DIR, 'code', 'static')
-DEBUG = True
-
+DEBUG = False
+STATIC_URL = '/staticfiles/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 CORS_ORIGIN_WHITELIST = [
     # 배포 주소 추가 예정
     "http://localhost:3000",
@@ -20,7 +20,18 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.2:3000",
     "http://i02b208.p.ssafy.io"
 ]
-
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',

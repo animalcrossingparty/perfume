@@ -109,11 +109,10 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
-STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
-# MEDIA_ROOT : 실제 미디어 파일이 (물리적으로) 저장되는 경로
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 라는 폴더를 통해서 관리
-# MEDIA_URL : 업로드된 image의 url 주소(물리적인 주소가 아님..????)
-MEDIA_URL = '/media/' # 라는 url로 보여줄 수 있도록 할 거임
+
+STATIC_ROOT = os.path.join(ROOT_DIR, '/code/static_root')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'accounts.User'
 

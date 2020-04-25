@@ -1,43 +1,39 @@
-@media only screen and (min-width: 601px) {
-    nav,
-    nav .nav-wrapper i,
-    nav a.sidenav-trigger,
-    nav a.sidenav-trigger i {
-        height: 42px;
-        line-height: 42px;
-    }
-}
-
-nav {
-  background-color: white;
+.header-box {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  box-shadow: none;
+  background-color: transparent;
+  animation: fadeInUp 1.2s;
 }
 
 nav .brand-logo {
   color: black;
-  /* text-decoration: underline; */
-  font-style: italic;
-  font-weight: 200;
+  font-weight: 100;
   margin-left: calc(1vw + 0.2rem);
   font-size: 1.6rem;
   letter-spacing: -2px;
 }
 
-nav ul a {
-  transition: background-color .45s;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #4a4a4a;
-  display: block;
-  padding: 0 15px;
-  cursor: pointer;
+.brand-logo > small {
+  margin-left: 17px;
+  font-size: 0.8rem;
+  transform: rotate(0.001deg);
+  font-weight: 400;
+  letter-spacing: 0px;
 }
 
-nav ul div {
-  transition: background-color .45s;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #4a4a4a;
+nav ul a , nav ul div {
+  font-size: 1rem;
+  background-color: rgba(255,255,255,0.8);
+  font-weight: 400;
+  color: black;
   display: block;
-  padding: 0 15px;
+  padding: 0 10px;
   cursor: pointer;
+  letter-spacing: 5px;
+}
+nav ul a:hover {
+  color: white;
+  text-shadow: 1px 1px black;
 }
