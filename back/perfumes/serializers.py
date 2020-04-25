@@ -2,12 +2,12 @@ from rest_framework import serializers
 from .models import *
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
-from perfumes.utils import exchange_rate
+from perfumes.utils.exchange_rate import korean_won
 
 class Base64ImageSerializers(serializers.Serializer):
     data = serializers.SerializerMethodField()
-    def get_data(self, img):
-        return img.data.decode('ascii')
+    def get_data(self, instance):
+        return instance.data.decode('ascii')
 
 class NoteSerializers(serializers.ModelSerializer):
     class Meta:
@@ -38,16 +38,15 @@ class PerfumeSerializers(serializers.ModelSerializer):
         fields = '__all__'
         include = ['avg_rate', 'total_review']
 
-    def get_avg_rate(self, review):
+    def get_avg_rate(self, instance):
         try:
-            result = sum(review.review_set.values_list('rate', flat=True))/review.review_set.count()
+            result = sum(instance.review_set.values_list('rate', flat=True))/instance.review_set.count()
         except:
             result = 0
         return result
 
-    def get_price(self, perfume):
-        exchanged = perfume.price * exchange_rate.korean_won()
-        return exchanged
+    def get_price(self, instance):
+        return instance.price * korean_won()
 
 class PerfumeSurveySerializers(serializers.ModelSerializer):
     top_notes = NoteSerializers(read_only=True, many=True)
@@ -100,16 +99,15 @@ class PerfumeDetailSerializers(serializers.ModelSerializer):
         fields = '__all__'
         include = ['avg_rate', 'total_review']
 
-    def get_avg_rate(self, review):
+    def get_avg_rate(self, instance):
         try:
-            result = sum(review.review_set.values_list('rate', flat=True))/review.review_set.count()
+            result = sum(instance.review_set.values_list('rate', flat=True))/instance.review_set.count()
         except:
             result = 0
         return result
 
-    def get_price(self, perfume):
-        exchanged = perfume.price * exchange_rate.korean_won()
-        return exchanged
+    def get_price(self, instance):
+        return instance.price * korean_won()
 # class WordcloudSerializers(serializers.ModelSerializer):
 #     image = Base64ImageField()
 
