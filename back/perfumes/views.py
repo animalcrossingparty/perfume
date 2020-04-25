@@ -10,7 +10,7 @@ import jwt
 from time import time
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
-from perfumes.utils import survey
+from perfumes.utils import knn, tf_idf
 from django.db.models import Q, Count, Avg
 import json
 from drf_yasg.utils import swagger_auto_schema
@@ -90,6 +90,10 @@ def perfumes_list(request):
         products = products.order_by('-review__count')
     elif sort == 'rate':
         products = products.order_by('-avg_rate')
+    elif sort == 'price_cheap':
+        products = products.order_by('price')
+    elif sort == 'price_expensive':
+        products = products.order_by('-price')
     else:
         products = products.order_by('name')
 
@@ -119,10 +123,8 @@ def perfume_detail(request, perfume_pk):
 def left_notes(request):
     # 로그인 유무
     try:
-        encoded_jwt = request.headers['Token']
-        decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-        user = get_user_model().objects.get(pk=decoded['userID'])
-    except:  # 회원 아니면
+        user = is_logged_in(request)
+    except:
         return Response(status=401)
 
     gender = request.GET.get('gender', None)
@@ -132,31 +134,58 @@ def left_notes(request):
     include = request.GET.get('include', None)
     exclude = request.GET.get('exclude', None)
 
+    famous_notes = [
+                    96, 155, 227, 388, 515, 522, 530, 562, 660, 
+                    16, 45, 51, 75, 118, 207, 245, 272, 281, 390, 416, 491, 541, 565, 593, 694, 765, 858, 911,
+                    2, 161, 201, 208, 353, 358, 426, 444, 461, 512, 785, 
+                    472, 527, 
+                    19, 48, 82, 194, 197, 323, 379, 392, 395, 604, 688, 692, 793, 
+                    224, 247, 376, 668, 708, 846, 908, 920, 
+                    100, 129, 137, 146, 168, 176, 268, 283, 289, 300, 433, 571, 
+                    74, 270, 336, 428, 647, 808, 
+                    73,778, 889, 
+                    26, 71, 205, 599, 624, 
+                    88, 124, 173, 203, 274, 
+                    113, 539, 747
+                    ]
+    famous_brands =[
+                    1241, 1238, 1624, 2153, 864, 1708, 1713, 1724, 1816, 2023, 1934, 
+                    2097, 2626, 528, 527, 390, 391, 647, 648, 260, 40, 215, 936, 1504, 
+                    1543, 1517, 555, 687, 678, 1418, 1525, 2706, 2446, 16, 2326, 3046, 
+                    614, 653, 1122, 293, 749, 532, 855, 1733, 3130, 2495, 3227, 3032, 
+                    1315, 1191, 2326, 1240, 1200, 2036, 3140, 2104
+                    ]
+
     products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availability=True)
     products = products.filter(gender=gender)
 
     if seasons is not None:
         season_list = seasons.split(',')
         products = products.filter(seasons__in=season_list)
-        # for season in season_list:
 
+
+    # 유명 노트 포함 향수 필터링
+    tops = products.values_list('top_notes',flat=True)
+    hearts = products.values_list('heart_notes',flat=True)
+    base = products.values_list('base_notes',flat=True)
+    products = products.filter(Q(top_notes__in=famous_notes) | Q(heart_notes__in=famous_notes) | Q(base_notes__in=famous_notes))
+    products = products.filter(brand__in=famous_brands)
     if include is not None:
         include_list = include.split(',')
         for category in include_list:
             products = products.filter(categories__name=category)
     
-    if exclude is not None:
-        exclude_list = exclude.split(',')
-        for category in exclude_list:
-            products = products.exclude(categories__name=category)
+    # 일단...대표 노트들은 카테고리로 필터링해서 기본적으로 보여주고 
+    # 골라진 향수 안에서 노트들 랜덤으로 2-3개 정도 뽑기?
+
     
-    notes = Note.objects.all()
-    tops = products.values_list('top_notes',flat=True)
-    hearts = products.values_list('heart_notes',flat=True)
-    base = products.values_list('base_notes',flat=True)
-    total_list = tops.union(hearts, base)
+    # notes = Note.objects.all()
+    # tops = products.values_list('top_notes',flat=True)
+    # hearts = products.values_list('heart_notes',flat=True)
+    # base = products.values_list('base_notes',flat=True)
+    # total_list = tops.union(hearts, base)
     
-    notes = notes.filter(id__in=list(total_list))
+    # notes = notes.filter(id__in=list(total_list))
 
     print(notes)
     serialize = NoteSerializers(notes, many=True)
@@ -168,10 +197,8 @@ def left_notes(request):
 @api_view(['GET'])
 def nth_survey_or_not(request):
     try:
-        encoded_jwt = request.headers['Token']
-        decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-        user = get_user_model().objects.get(pk=decoded['userID'])
-    except:  # 회원 아니면
+        user = is_logged_in(request)
+    except:
         return Response(status=401)
 
     survey = Survey.objects.get(user=user)
@@ -186,10 +213,8 @@ def nth_survey_or_not(request):
 @api_view(['GET','POST'])
 def perfume_survey(request):
     try:
-        encoded_jwt = request.headers['Token']
-        decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-        user = get_user_model().objects.get(pk=decoded['userID'])
-    except:  # 회원 아니면
+        user = is_logged_in(request)
+    except:
         return Response(status=401)
     # surveyresult -> user_id key로 묶인다
 
@@ -306,6 +331,10 @@ def perfume_survey(request):
 
 #     return Response(survey, status=200)
 
+def call_tf_idf(request, perfume_pk):
+    reviews = Review.get(perfume=perfume_pk)
+
+    return 1
 
 class ListReviews(APIView):
     @swagger_auto_schema(
