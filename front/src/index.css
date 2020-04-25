@@ -1,10 +1,9 @@
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,400,700);
 body,
 table,
 div,
 p {
-  font-family: "Nanum Gothic", "Roboto", "Sans-serif";
+  font-family: "Roboto", "Sans-serif";
 }
 body {
   margin: 0;
@@ -20,15 +19,17 @@ body {
   max-width: 1600px !important;
 }
 
-@keyframes fadein {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    width: 50vw;
   }
   to {
     opacity: 1;
-    width: 35vw;
   }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
 }
 
 @keyframes tallToShort {

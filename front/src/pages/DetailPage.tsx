@@ -5,7 +5,7 @@ import '../css/DetailPage.css'
 
 function DetailPage() {
 return (
-<div className="bg-detail">
+<div>
   <Header />
   <Detail />
 </div>

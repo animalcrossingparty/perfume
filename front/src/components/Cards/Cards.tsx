@@ -90,7 +90,7 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
                 close={false}
                 options={null}
                 key={note_id}
-                className="chip-color"
+                className={`chip-color-${note_id % 10}`}
               >
                 {note.kor_name || note.name}
               </Chip>
