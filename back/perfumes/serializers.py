@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Perfume, Review, Note, Brand, Base64Image
+from .models import *
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
 
@@ -17,6 +17,11 @@ class BrandSerializers(serializers.ModelSerializer):
     class Meta:
         model = Brand
         fields = ['id', 'name']
+
+class CategorySericalizers(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
 
 class PerfumeSerializers(serializers.ModelSerializer):
     avg_rate = serializers.SerializerMethodField(read_only=True)
@@ -50,19 +55,13 @@ class PerfumeSurveySerializers(serializers.ModelSerializer):
 class SurveySerializers(serializers.ModelSerializer):
     gender = UserSerializers(source='user.gender', read_only=True)
     age = UserSerializers(source='user.age',read_only=True)
+    hate_notes = NoteSerializers(many=True)
+    like_notes = NoteSerializers(many=True)
+    like_category = CategorySericalizers(many=True)
 
     class Meta:
         model = Survey
         fields = ['id', 'age', 'gender', 'season', 'hate_notes', 'like_notes', 'like_category']
-
-class LeftNoteSerializers(serializers.ModelSerializer):
-    # note = NoteSerializers(read_only=True, many=True)
-    # top_notes = NoteSerializers(read_only=True, many=True)
-    # heart_notes = NoteSerializers(read_only=True, many=True)
-    # base_notes = NoteSerializers(read_only=True, many=True)
-    class Meta:
-        model=Note
-        fields = ['id', 'name', 'kor_name']
 
 class ReviewSerializers(serializers.Serializer):
     user = serializers.CharField(source='user.username', read_only=True)

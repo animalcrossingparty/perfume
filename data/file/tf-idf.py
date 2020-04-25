@@ -10,13 +10,13 @@ warnings.filterwarnings(action='ignore')
 class Tf_idf():
 
     def reviews_fields(self):
-        with open('../json/reviews_all_re-formatted.json', encoding='utf-8', mode='r') as f:
+        with open('../json/reviews.json', encoding='utf-8', mode='r') as f:
             reviews_all = json.load(f)
         reviews_fields = [i['fields'] for i in reviews_all]
         return pd.DataFrame(reviews_fields)
 
     def perfumes_fields(self):
-        with open('../json/new_perfumes.json', encoding='utf16', mode='r') as f:
+        with open('../json/perfumes.json', encoding='utf-8', mode='r') as f:
             perfumes = json.load(f)
         perfumes_fields = [i['fields'] for i in perfumes]
         return pd.DataFrame(perfumes_fields)
@@ -25,6 +25,7 @@ class Tf_idf():
         return reviews_fields.loc[reviews_fields['perfume'] == id]['content'].tolist()[0]
 
     def item_name(self, id):
+        # 이제 perfume_id 없으니까 pk로 불러와야하는 거지?
         return perfumes_fields.loc[perfumes_fields['perfume_id'] == str(id)]['name'].tolist()[0]
 
     def make(self):
