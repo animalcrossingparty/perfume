@@ -24,9 +24,9 @@ def is_logged_in(request):
         encoded_jwt = request.headers['Token']
         decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
         user = get_user_model().objects.get(pk=decoded['userId'])
-        return user
     except:
         raise AuthenticationFailed
+    return user
 
 
 
