@@ -52,6 +52,16 @@
   font-style: italic;
 }
 
+.chip {
+  border-radius: 0 !important;
+  user-select: none;
+}
+
+.chip:hover {
+  cursor: pointer;
+  animation: tada 1s ease;
+}
+
 .chip-color {
   background-color: rgb(231, 238, 232);
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
