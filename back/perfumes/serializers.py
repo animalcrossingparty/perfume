@@ -6,10 +6,11 @@ from perfumes.utils.exchange_rate import korean_won
 
 rate = korean_won()
 
-class ImageSerializers(serializers.Serializer):
-    data = serializers.SerializerMethodField()
-    def get_data(self, instance):
-        return instance.data.decode('ascii')
+class ImageSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = '__all__'
+
 
 class NoteSerializers(serializers.ModelSerializer):
     class Meta:
@@ -21,7 +22,7 @@ class BrandSerializers(serializers.ModelSerializer):
         model = Brand
         fields = ['id', 'name']
 
-class CategorySericalizers(serializers.ModelSerializer):
+class CategorySerializers(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
@@ -35,7 +36,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
     brand = BrandSerializers()
     price = serializers.SerializerMethodField(read_only=True)
     thumbnail = serializers.SerializerMethodField(read_only=True)
-    categories = CategorySericalizers(many=True)
+    categories = CategorySerializers(many=True)
 
     
     class Meta:
@@ -72,7 +73,7 @@ class SurveySerializers(serializers.ModelSerializer):
     age = UserSerializers(source='user.age',read_only=True)
     hate_notes = NoteSerializers(many=True)
     like_notes = NoteSerializers(many=True)
-    like_category = CategorySericalizers(many=True)
+    like_category = CategorySerializers(many=True)
 
     class Meta:
         model = Survey
@@ -98,8 +99,11 @@ class ReviewSerializers(serializers.Serializer):
 
 
 class PerfumeDetailSerializers(PerfumeSerializers):
-    reviews = ReviewSerializers(many=True, source='review_set')
-    
+    reviews = serializers.SerializerMethodField()
+
+    def get_reviews(self, instance):
+        ordered = instance.review_set.order_by('-created_at')
+        return ReviewSerializers(ordered, many=True).data
 
 # class WordcloudSerializers(serializers.ModelSerializer):
 #     image = ImageField()

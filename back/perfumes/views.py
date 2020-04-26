@@ -253,7 +253,7 @@ class ListReviews(APIView):
         )
     def get(self, request, perfume_pk):
         try:
-            reviews = Perfume.objects.get(pk=perfume_pk).review_set
+            reviews = Perfume.objects.get(pk=perfume_pk).review_set.order_by('-created_at')
         except:
             return Response(status=404)
         serializers = ReviewSerializers(reviews, many=True)
@@ -293,8 +293,11 @@ class ListReviews(APIView):
             with PILImage.open(img_file) as im:
                 im.save('1.webp', 'webp')
             with open('1.webp', 'rb') as img:
-                webp_file = Image.objects.create(original=img)
-            review.images.add(img)
+                data = img.read()
+            image = Image()
+
+            image = Image.objects.create(original=data)
+            review.images.add(image)
     
         return Response({'review_id': review.pk}, status=200)
 
