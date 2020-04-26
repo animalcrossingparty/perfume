@@ -2,22 +2,12 @@ from rest_framework import serializers
 from .models import *
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
-<<<<<<< HEAD
-from perfumes.utils import exchange_rate
-   
-rate = exchange_rate.korean_won()
-class Base64ImageSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Base64Image
-        fields = ['data']
-=======
 from perfumes.utils.exchange_rate import korean_won
 
 class ImageSerializers(serializers.Serializer):
     data = serializers.SerializerMethodField()
     def get_data(self, instance):
         return instance.data.decode('ascii')
->>>>>>> f4db4026efbb5ef997a9f9ca33f19f5fcf9eb686
 
 class NoteSerializers(serializers.ModelSerializer):
     class Meta:
@@ -42,11 +32,8 @@ class PerfumeSerializers(serializers.ModelSerializer):
     total_review = serializers.IntegerField(source='review_set.count', read_only=True)
     brand = BrandSerializers()
     price = serializers.SerializerMethodField(read_only=True)
-<<<<<<< HEAD
     thumbnail = serializers.SerializerMethodField(read_only=True)
-=======
     categories = CategorySericalizers(many=True)
->>>>>>> f4db4026efbb5ef997a9f9ca33f19f5fcf9eb686
 
     
     class Meta:
@@ -61,14 +48,9 @@ class PerfumeSerializers(serializers.ModelSerializer):
             result = 0
         return result
 
-<<<<<<< HEAD
     def get_price(self, perfume):
         exchanged = perfume.price * rate
         return exchanged
-=======
-    def get_price(self, instance):
-        return instance.price * korean_won()
->>>>>>> f4db4026efbb5ef997a9f9ca33f19f5fcf9eb686
 
     def get_thumbnail(self, perfume):
         name = str(perfume.id)
