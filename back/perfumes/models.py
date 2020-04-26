@@ -9,7 +9,7 @@ class Image(models.Model):
 
 class Brand(models.Model):
     name = models.CharField(max_length=100)
-    image = models.CharField(max_length=100)
+    image = models.CharField(null=True, max_length=100)
 
 
 class Category(models.Model):
