@@ -1,13 +1,5 @@
 version: '3'
 services:
-  nginx:
-    build: ./config
-    ports: 
-        - "8000:80"
-    volumes:
-      - ./:/code
-    depends_on: 
-      - django
   db:
     image: mysql:latest
     volumes:
@@ -49,3 +41,11 @@ services:
       - ./:/code
     depends_on:
       - db
+    nginx:
+      build: ./config
+      ports: 
+          - "8000:80"
+      volumes:
+        - ./:/code
+      depends_on: 
+        - django
