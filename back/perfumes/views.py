@@ -11,7 +11,7 @@ from time import time
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from perfumes.utils import knn, tf_idf, exchange_rate
-from django.db.models import Q, Count, Avg
+from django.db.models import Q, Count, Avg, F
 import json
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
@@ -20,63 +20,85 @@ from django.http import Http404, QueryDict
 from rest_framework.exceptions import AuthenticationFailed
 from accounts.views import is_logged_in
 import base64
+import random
 # from perfumes.utils import wordcloud
 
 PAGE_SIZE = 12
 
-famous_notes = [   
-                96, 155, 227, 388, 515, 522, 530, 562, 660, 
-                16, 45, 51, 75, 118, 207, 245, 272, 281, 390, 416, 491, 541, 565, 593, 694, 765, 858, 911,
-                2, 161, 201, 208, 353, 358, 426, 444, 461, 512, 785, 
-                472, 527, 
-                19, 48, 82, 194, 197, 323, 379, 392, 395, 604, 688, 692, 793, 
-                224, 247, 376, 668, 708, 846, 908, 920, 
-                100, 129, 137, 146, 168, 176, 268, 283, 289, 300, 433, 571, 
-                74, 270, 336, 428, 647, 808, 
-                73,778, 889, 
-                26, 71, 205, 599, 624, 
-                88, 124, 173, 203, 274, 
-                113, 539, 747
+@api_view(['GET', 'POST'])
+def perfume_survey(request):
+    if request.method == 'GET':
+        famous_notes =[
+                [],
+                [96, 155, 227, 388, 515, 522, 530, 562, 660],
+                [16, 45, 51, 75, 118, 207, 245, 272, 281, 390, 416, 491, 541, 565, 593, 694, 765, 858, 911],
+                [2, 161, 201, 208, 353, 358, 426, 444, 461, 512, 785],
+                [472, 527],
+                [19, 48, 82, 194, 197, 323, 379, 392, 395, 604, 688, 692, 793],
+                [224, 247, 376, 668, 708, 846, 908, 920],
+                [100, 129, 137, 146, 168, 176, 268, 283, 289, 300, 433, 571],
+                [74, 270, 336, 428, 647, 808],
+                [73,778, 889],
+                [26, 71, 205, 599, 624],
+                [88, 124, 173, 203, 274],
+                [113, 539, 747]
             ]
-
-@api_view(['GET'])
-def filtering(request):
-    gender = request.GET.get('gender', None)
-    age = request.GET.get('age', None)
-    age = str(age)
-    seasons = request.GET.get('season', None)
-    include = request.GET.get('include', None)
-
-    famous_brands =[
+        famous_brands =[
                     1241, 1238, 1624, 2153, 864, 1708, 1713, 1724, 1816, 2023, 1934, 
                     2097, 2626, 528, 527, 390, 391, 647, 648, 260, 40, 215, 936, 1504, 
                     1543, 1517, 555, 687, 678, 1418, 1525, 2706, 2446, 16, 2326, 3046, 
                     614, 653, 1122, 293, 749, 532, 855, 1733, 3130, 2495, 3227, 3032, 
                     1315, 1191, 2326, 1240, 1200, 2036, 3140, 2104
-                    ]
+                ]
+        gender = request.GET.get('gender', 'all')
+        age = request.GET.get('age', None)
+        age = str(age)
+        seasons = request.GET.get('season', None)
+        category = request.GET.get('category', None)
+        category = list(map(int, category.split(',')))
+        notes = request.GET.get('notes', None)
+        notes = list(map(int, notes.split(',')))
+        products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availability=True)
+        print(products)
+        products = products.filter(gender=gender)
+        print('gender_filtered***********', products)
+        if seasons is not None:
+            season_list = seasons.split(',')
+            products = products.filter(seasons__in=season_list)
+        print('season_filtered***********', products)
+        products = products.filter(categories__in=category)
+        print('category_filtered***********', products)
+        # 유명 노트 포함 향수 필터링
+        products = products.filter(brand__in=famous_brands)
+        print('brand_filtered***********', products)
+        # sort => include_note 많이 가지고 있는 애들부터 보여주기
+        notes_list = []
+        for num in category:
+            notes_list += famous_notes[num]
 
-    products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories').filter(availability=True)
-    
-    products = products.filter(gender=gender)
-  
-    if seasons is not None:
-        season_list = seasons.split(',')
-        products = products.filter(seasons__in=season_list)
+        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes'))).filter(all_notes__in=notes).annotate(score=Count('all_notes', filter=Q(all_notes__in=notes_list))).filter(score__gt=0).order_by('-score')
+        if len(products) > 15:
+            products = products[:15]
+        print('final_filtered***********', products)
+        serializer = PerfumeSerializers(products, many=True)
+        return Response(serializer.data)
+    else:
+        gender = request.POST.get('gender', None)
+        age = request.POST.get('age', None)
+        seasons = request.POST.get('seasons', None)
+        like_category = request.POST.get('like_category', None)
+        include_notes = request.POST.get('include_notes', None)
 
-    if include is not None:
-        include_list = include.split(',')
-        for category in include_list:
-            products = products.filter(categories__in=category)
+        # 조사 결과 db에 저장
+        survey = Survey.objects.create(
+            user=user,
+            seasons=seasons,
+            like_category=like_category,
+            like_notes=include_notes,
+        )
+        survey.save()
 
-    # 유명 노트 포함 향수 필터링
-    tops = products.values_list('top_notes',flat=True)
-    hearts = products.values_list('heart_notes',flat=True)
-    base = products.values_list('base_notes',flat=True)
-    products = products.filter(Q(top_notes__in=famous_notes) | Q(heart_notes__in=famous_notes) | Q(base_notes__in=famous_notes))
-    products = products.filter(brand__in=famous_brands)
-
-    return products
-
+        return Response(survey, status=200)
 
 @api_view(['GET'])
 def perfumes_list(request):
@@ -168,22 +190,30 @@ def perfumes_list(request):
 # 성별, 나이, 계절을 받았을 때 남아있는 향수들의 노트를 알려준다 -> include, exclude 카테고리를 받는다. -> note를 리턴
 @api_view(['GET'])
 def left_notes(request):
-    user = is_logged_in(request)
-
-    products = filtering(request)
-
+    famous_notes =[
+                [],
+                [96, 155, 227, 388, 515, 522, 530, 562, 660],
+                [16, 45, 51, 75, 118, 207, 245, 272, 281, 390, 416, 491, 541, 565, 593, 694, 765, 858, 911],
+                [2, 161, 201, 208, 353, 358, 426, 444, 461, 512, 785],
+                [472, 527],
+                [19, 48, 82, 194, 197, 323, 379, 392, 395, 604, 688, 692, 793],
+                [224, 247, 376, 668, 708, 846, 908, 920],
+                [100, 129, 137, 146, 168, 176, 268, 283, 289, 300, 433, 571],
+                [74, 270, 336, 428, 647, 808],
+                [73,778, 889],
+                [26, 71, 205, 599, 624],
+                [88, 124, 173, 203, 274],
+                [113, 539, 747]
+            ]
+    category = request.GET.get('category', None)
+    category = list(map(int, category.split(',')))
     notes = Note.objects.all()
-    tops = products.values_list('top_notes',flat=True)
-    hearts = products.values_list('heart_notes',flat=True)
-    base = products.values_list('base_notes',flat=True)
-    total_list = tops.union(hearts, base)
-    # total_list = total_list.filter(id__in=famous_notes)
-    notes = notes.filter(id__in=list(total_list & famous_notes))
+    result = []
+    for note in category:
+        result += famous_notes[note]
+    
+    notes = notes.filter(id__in=result)
 
-    if len(notes) > 8:
-        notes = notes[:8]
-
-    print(notes)
     serialize = NoteSerializers(notes, many=True)
     return Response(serialize.data)
     
@@ -202,108 +232,6 @@ def nth_survey_or_not(request):
     # 없을 때
     else:
         return Response(status=404)
-
-@api_view(['GET', 'POST'])
-def perfume_survey(request):
-    user = is_logged_in(request)
-    # surveyresult -> user_id key로 묶인다
-
-    if request.method == 'POST':
-        gender = request.POST.get('gender', None)
-        age = request.POST.get('age', None)
-        # age = str(age)
-        seasons = request.POST.get('seasons', None)
-        like_category = request.POST.get('like_category', None)
-        hate_category = request.POST.get('hate_category', None)
-        include_notes = request.POST.get('include_notes', 'all')
-
-        # users = get_user_model().objects.all()
-        products = Perfume.objects.all().prefetch_related('brand').filter(availability=True)
-
-        # 성별
-        if gender is not None:
-            products = products.filter(gender=gender)
-
-        # 나이
-        # products = products.filter(age__startswith=age[0])
-
-        # 계절
-        # seasons_list = seasons.split(',')
-        # for season in seasons_list:
-        #     products = products.filter(season__in=season)
-
-        # 좋아하는 카테고리
-        # like_categories = like_category.split(',')
-        # for like in like_categories:
-        #     products = products.filter(category__name=like)
-
-        # 싫어하는 카테고리
-        # hate_categories = hate_category.split(',')
-        # for hate in hate_categories:
-        #     products = products.exclude(category__name=hate)
-
-        # 좋아하는 향료
-        if include_notes != 'all':
-            try:
-                note_list = include_notes.split(',')
-                for i, note in enumerate(note_list):
-                    products = products.filter(Q(top_notes__name=note) | Q(heart_notes__name=note) | Q(base_notes__name=note))
-                # products = products.distinct()
-                # products = products[:10]
-            except:
-                print(products)
-                return 0
-
-        serializer = PerfumeSurveySerializers(products, many=True)
-        return Response(serializer.data)
-    else:
-        gender = request.GET.get('gender', None)
-        age = request.GET.get('age', None)
-        seasons = request.GET.get('seasons', None)
-        like_category = request.GET.get('like_category', None)
-        hate_category = request.GET.get('hate_category', None)
-        include_notes = request.GET.get('include_notes', None)
-
-        # 조사 결과 db에 저장
-        survey = Survey.objects.create(
-            user=user,
-            seasons=seasons,
-            like_category=like_category,
-            hate_category=hate_category,
-            like_notes=include_notes,
-        )
-        survey.save()
-
-        return Response(survey, status=200)
-
-# 설문조사 결과를 db에 저장
-# @api_view(['POST'])
-# def survey_db_create(request):
-#     try:
-#         encoded_jwt = request.headers['Token']
-#         decoded = jwt.decode(encoded_jwt, settings.SECRET_KEY, algorithms=['HS256'])
-#         user = get_user_model().objects.get(pk=decoded['userID'])
-#     except:  # 회원 아니면
-#         return Response(status=401)
-
-#     gender = request.POST.get('gender', None)
-#     age = request.POST.get('age', None)
-#     seasons = request.POST.get('seasons', None)
-#     like_category = request.POST.get('like_category', None)
-#     hate_category = request.POST.get('hate_category', None)
-#     include_notes = request.POST.get('include_notes', None)
-
-#     # 조사 결과 db에 저장
-#     survey = Survey.objects.create(
-#         user=user.id,
-#         seasons=seasons,
-#         like_category=like_category,
-#         hate_category=hate_category,
-#         like_notes=include_notes,
-#     )
-#     survey.save()
-
-#     return Response(survey, status=200)
 
 def call_tf_idf(request, perfume_pk):
     reviews = Review.get(perfume=perfume_pk)

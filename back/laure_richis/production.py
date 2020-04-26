@@ -44,3 +44,5 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
     'token'
 ]
+
+CRONTAB_EXECUTABLE = ''
