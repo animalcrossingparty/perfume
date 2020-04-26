@@ -41,11 +41,11 @@ services:
       - ./:/code
     depends_on:
       - db
-    nginx:
-      build: ./config
-      ports: 
-          - "8000:80"
-      volumes:
-        - ./:/code
-      depends_on: 
-        - django
+  nginx:
+    build: ./config
+    ports: 
+        - "8000:80"
+    volumes:
+      - ./:/code
+    depends_on: 
+      - django
