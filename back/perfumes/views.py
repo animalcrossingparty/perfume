@@ -17,9 +17,12 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from time import time
 from django.http import Http404, QueryDict
-from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.exceptions import AuthenticationFailed, ValidationError
 from accounts.views import is_logged_in
 import base64
+import os
+from PIL import Image as PILImage
+from django.conf import settings
 import random
 # from perfumes.utils import wordcloud
 
@@ -284,13 +287,16 @@ class ListReviews(APIView):
             user=user,
             perfume=perfume,
         )
-        try:
-            for img_file in dict((request.data).lists())['images']:
-                base64img = base64.b64encode(img_file.read())
-                img = Image.objects.create(data=base64img)
-                review.images.add(img)
-        finally:
-            return Response({'review_id': review.pk}, status=200)
+        
+        for img_file in dict((request.data).lists())['images']:
+            # print(type(img_file.read()))
+            with PILImage.open(img_file) as im:
+                im.save('1.webp', 'webp')
+            with open('1.webp', 'rb') as img:
+                webp_file = Image.objects.create(original=img)
+            review.images.add(img)
+    
+        return Response({'review_id': review.pk}, status=200)
 
 
 class SingleReview(APIView):

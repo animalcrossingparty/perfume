@@ -46,3 +46,5 @@ CORS_ALLOW_HEADERS = [
 ]
 
 CRONTAB_EXECUTABLE = ''
+
+SWAGGER_BASE_URL = 'http://i02b208.p.ssafy.io:8000'

@@ -73,7 +73,7 @@ class SingleUser(APIView):
             serializers.is_valid(raise_exception=True)
             user = serializers.save()
             user.set_password(serializers.data['password'])
-            user = user.save()
+            user.save()
             payload = PayloadSerializers(user)
             encoded = jwt.encode(payload.data, settings.SECRET_KEY, algorithm='HS256')
             return Response({'token': encoded}, status=200)
