@@ -3,9 +3,7 @@ from django.conf import settings
 
 
 class Image(models.Model):
-    original = models.ImageField(upload_to='review/original/', blank=True)
-    small = models.ImageField(upload_to='review/small/', blank=True)
-
+    original = models.ImageField(upload_to='review/', blank=True)
 
 class Brand(models.Model):
     name = models.CharField(max_length=100)

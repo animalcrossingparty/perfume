@@ -139,7 +139,7 @@ def login(request):
     return Response({'token': encoded})
 
 @swagger_auto_schema(
-    operation_summary='이메일 중복 체크',
+    operation_summary='Email 중복 체크',
     method='get'
     )
 @api_view(['GET'])
@@ -148,6 +148,20 @@ def check_duplicate_email(request, email):
 		return Response(data={'email': 'this field is required'}, status=400)
 	try:
 		get_user_model().objects.get(email=email)
+	except:
+		return Response(data={'exists': False}, status=200)
+	return Response(data={'exists': True}, status=200)
+
+@swagger_auto_schema(
+    operation_summary='Username 중복 체크',
+    method='get'
+    )
+@api_view(['GET'])
+def check_duplicate_username(request, username):
+	if username is None:
+		return Response(data={'username': 'this field is required'}, status=400)
+	try:
+		get_user_model().objects.get(username=username)
 	except:
 		return Response(data={'exists': False}, status=200)
 	return Response(data={'exists': True}, status=200)
