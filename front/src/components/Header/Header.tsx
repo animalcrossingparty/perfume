@@ -39,7 +39,7 @@ class Header extends Component<HeaderProps> {
         }
         id="mobile-nav"
         menuIcon={<Icon>menu</Icon>}
-        divider={true}
+        dividor
         fixed={false}
         options={{
           draggable: false,
@@ -54,7 +54,7 @@ class Header extends Component<HeaderProps> {
         }}
       >
         <NavLink
-          to={`/perfume?page=1&sort=alpha&category=all&gender=all&include=all&exclude=None&brand=all`}
+          to={`/perfume?page=1&sort=rate&category=all&gender=all&include=all&exclude=None&brand=all`}
         >
           PERFUMES
         </NavLink>
