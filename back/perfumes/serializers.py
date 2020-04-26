@@ -4,6 +4,8 @@ from accounts.models import Survey
 from accounts.serializers import UserSerializers
 from perfumes.utils.exchange_rate import korean_won
 
+rate = korean_won()
+
 class ImageSerializers(serializers.Serializer):
     data = serializers.SerializerMethodField()
     def get_data(self, instance):
