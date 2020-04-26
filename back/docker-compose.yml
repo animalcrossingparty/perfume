@@ -3,7 +3,7 @@ services:
   nginx:
     image: nginx
     ports: 
-        - "8000:8000"
+        - "8000:80"
     volumes:
       - ./:/code
       - ./config/nginx:/etc/nginx.conf.d
