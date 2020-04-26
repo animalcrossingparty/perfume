@@ -24,6 +24,7 @@ import os
 from PIL import Image as PILImage
 from django.conf import settings
 import random
+from django.core.files.images import File
 # from perfumes.utils import wordcloud
 
 PAGE_SIZE = 12
@@ -287,19 +288,15 @@ class ListReviews(APIView):
             user=user,
             perfume=perfume,
         )
-        
-        for img_file in dict((request.data).lists())['images']:
-            # print(type(img_file.read()))
-            with PILImage.open(img_file) as im:
-                im.save('1.webp', 'webp')
-            with open('1.webp', 'rb') as img:
-                data = img.read()
-            image = Image()
-
-            image = Image.objects.create(original=data)
-            review.images.add(image)
-    
-        return Response({'review_id': review.pk}, status=200)
+        try:
+            for img_file in dict((request.data).lists())['images']:
+                with PILImage.open(img_file) as im:
+                    im.save('tmp.webp', 'webp')
+                image = Image.objects.create()
+                image.original.save(f'{image.pk}.webp', File(open('tmp.webp', 'rb')))
+                review.images.add(image)
+        finally:
+            return Response({'review_id': review.pk}, status=200)
 
 
 class SingleReview(APIView):
@@ -344,13 +341,17 @@ class SingleReview(APIView):
             user=user,
             perfume=review.perfume
         )
-        for image in review.images.all():  # 원래 리뷰의 이미지 삭제
+        for image in review.images.all():
+            fp = os.path.join('media', 'review', 'original', f'{image.pk}.webp')
+            os.remove(fp)
             image.delete()
-        try:  # 업로드 이미지가 있다면 추가
+        try:
             for img_file in dict((request.data).lists())['images']:
-                base64img = base64.b64encode(img_file.read())
-                img = Image.objects.create(data=base64img)
-                review.images.add(img)
+                with PILImage.open(img_file) as im:
+                    im.save('tmp.webp', 'webp')
+                image = Image.objects.create()
+                image.original.save(f'{image.pk}.webp', File(open('tmp.webp', 'rb')))
+                review.images.add(image)
         finally:
             return Response(status=200, headers={'Access-Control-Allow-Headers': 'token'})
 
@@ -372,6 +373,10 @@ class SingleReview(APIView):
         if user != review.user:
             return Response(status=403)
         else:
+            for image in review.images.all():
+                fp = os.path.join('media', 'review', 'original', f'{image.pk}.webp')
+                os.remove(fp)
+                image.delete()
             review.delete()
             return Response(status=200, headers={'Access-Control-Allow-Headers': 'token'})
 
