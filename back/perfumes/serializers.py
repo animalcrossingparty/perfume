@@ -4,7 +4,7 @@ from accounts.models import Survey
 from accounts.serializers import UserSerializers
 from perfumes.utils.exchange_rate import korean_won
 
-class Base64ImageSerializers(serializers.Serializer):
+class ImageSerializers(serializers.Serializer):
     data = serializers.SerializerMethodField()
     def get_data(self, instance):
         return instance.data.decode('ascii')
@@ -76,7 +76,7 @@ class ReviewSerializers(serializers.Serializer):
     rate = serializers.IntegerField(min_value=0, max_value=10)
     created_at = serializers.DateTimeField(read_only=True)
     like_cnt = serializers.IntegerField(source='like_users.count',read_only=True)
-    images = Base64ImageSerializers(read_only=True, many=True)
+    images = ImageSerializers(read_only=True, many=True)
 
     def create(self, validated_data):
         return Review.objects.create(**validated_data)
@@ -92,7 +92,7 @@ class PerfumeDetailSerializers(PerfumeSerializers):
     
 
 # class WordcloudSerializers(serializers.ModelSerializer):
-#     image = Base64ImageField()
+#     image = ImageField()
 
 #     class Meta:
 #         model=MyImageModel
