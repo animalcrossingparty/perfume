@@ -120,9 +120,8 @@ SWAGGER_SETTINGS = {
     'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_examples.SwaggerAutoSchema',
 }
 
-CRONTAB_DJANGO_SETTINGS_MODULE = 'laure_richis.base'
-
 CRONJOBS = {
     ('00**0', 'perfumes.cron.make_wordcloud'), # 매주 일요일 24시에 동작
+    ('00***', 'perfume.cron.exchange_rate') # 매일 24시에 동작
     # ('*****', 'perfumes.cron.test_cron'), # 1분마다 동작(하루 1440번)
 }

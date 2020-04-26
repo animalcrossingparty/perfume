@@ -4,6 +4,8 @@ from accounts.models import Survey
 from accounts.serializers import UserSerializers
 from perfumes.utils.exchange_rate import korean_won
 
+rate = korean_won()
+
 class ImageSerializers(serializers.Serializer):
     data = serializers.SerializerMethodField()
     def get_data(self, instance):
@@ -32,12 +34,14 @@ class PerfumeSerializers(serializers.ModelSerializer):
     total_review = serializers.IntegerField(source='review_set.count', read_only=True)
     brand = BrandSerializers()
     price = serializers.SerializerMethodField(read_only=True)
+    thumbnail = serializers.SerializerMethodField(read_only=True)
     categories = CategorySericalizers(many=True)
 
+    
     class Meta:
         model = Perfume
         fields = '__all__'
-        include = ['avg_rate', 'total_review']
+        include = ['avg_rate', 'total_review', 'thumbnail']
 
     def get_avg_rate(self, instance):
         try:
@@ -46,8 +50,14 @@ class PerfumeSerializers(serializers.ModelSerializer):
             result = 0
         return result
 
-    def get_price(self, instance):
-        return instance.price * korean_won()
+    def get_price(self, perfume):
+        exchanged = perfume.price * rate
+        return exchanged
+
+    def get_thumbnail(self, perfume):
+        name = str(perfume.id)
+        thumbnail = 'http://i02b208.p.ssafy.io:8000/staticfiles/images/' + name + '.jpg'
+        return thumbnail
 
 class PerfumeSurveySerializers(serializers.ModelSerializer):
     top_notes = NoteSerializers(read_only=True, many=True)
