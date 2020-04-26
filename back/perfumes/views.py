@@ -1,4 +1,4 @@
-from .models import Perfume, Review, Brand, Note, Base64Image
+from .models import Perfume, Review, Brand, Note, Image
 from accounts.models import Survey
 from django.shortcuts import render, get_object_or_404
 from .serializers import *
