@@ -10,6 +10,17 @@ body {
   min-height: 100vh;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.align-self-start {
+  align-self: flex-start !important;
+}
+
 .perfume-page-background {
   background: ivory;
 }
@@ -47,18 +58,6 @@ body {
 }
 .hidden {
   display: none !important;
-}
-.perfume_sort_row {
-  display: flex;
-  align-items: center;
-  border: 1px solid gray;
-  height: 4rem;
-}
-.perfume_sort_row > .col {
-  font-size: 1.2rem;
-  border-radius: 4px;
-  box-shadow: 2px 2px 5px gray;
-  margin: 0 3px;
 }
 .wrap {
   flex-wrap: wrap;
@@ -139,6 +138,18 @@ body {
 
 .fadeInDown {
   animation-name: fadeInDown;
+}
+.circle-loader-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40rem;
+  background: pink;
+}
+
+.loading-message {
+  position: absolute;
+  font-size: 8rem;
 }
 .m-0 {
   margin: 0 !important;

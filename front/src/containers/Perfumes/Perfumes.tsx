@@ -91,8 +91,8 @@ class Perfumes extends Component<PerfumeProps> {
                 />
               </Col>
             </Row>
-            <Row className="perfume_sort_row">
-              <Col className="sort_btn">
+            <Row>
+              <Col>
                 {sort !== "alpha" ? (
                   <NavLink
                     to={`/perfume?page=1&sort=alpha&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
@@ -105,7 +105,7 @@ class Perfumes extends Component<PerfumeProps> {
                   </NavLink>
                 )}
               </Col>
-              <Col className="sort_btn">
+              <Col>
                 {sort !== "rate" ? (
                   <NavLink
                     to={`/perfume?page=1&sort=rate&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
@@ -118,7 +118,7 @@ class Perfumes extends Component<PerfumeProps> {
                   </NavLink>
                 )}
               </Col>
-              <Col className="sort_btn">
+              <Col>
                 {sort !== "reviewcnt" ? (
                   <NavLink
                     to={`/perfume?page=1&sort=reviewcnt&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
@@ -154,8 +154,11 @@ class Perfumes extends Component<PerfumeProps> {
               </Col>
             ))
           ) : (
-            <Col s={12} className="center">
-              <Preloader active color="blue" flashing={false} size="big" />
+            <Col s={12}>
+              <h1 className="m-0 p-0 loading-message">향수를 가져오는 중이에요!</h1>
+              <Col s={12} className="circle-loader-wrap">
+                <Preloader active color="pink" flashing={true} size="big" />
+              </Col>
             </Col>
           )}
         </Row>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as detailActions from "redux/modules/detail";
-import { Row, Col, Chip } from "react-materialize";
+import { Row, Col, Chip, Icon } from "react-materialize";
 import { Circle } from "rc-progress";
 import springPIC from "assets/images/spring.jpg";
 import summerPIC from "assets/images/summer.jpg";
@@ -16,6 +16,7 @@ interface DetailProps {
   history: any;
   DetailActions: any;
   detail: any;
+  user: any;
 }
 
 class Detail extends Component<DetailProps> {
@@ -35,10 +36,10 @@ class Detail extends Component<DetailProps> {
     }
   };
   handleTagClick = (e) => {
-    const {history} = this.props
+    const { history } = this.props;
     console.log(e);
-    // history.pushState("","",`http://localhost:3000/perfume?page=1&sort=alpha&category=all&gender=all&include=all&exclude=None&brand=all`)
-  }
+    // history.pushState("","",`http://localhost:3000/perfume?page=1&sort=reviewcnt&category=all&gender=all&include=all&exclude=${}&brand=all`)
+  };
   initializeDetailInfo = async () => {
     const { DetailActions, history } = this.props;
     const perfume_id = history.location.pathname.split("/")[2];
@@ -53,6 +54,7 @@ class Detail extends Component<DetailProps> {
   componentWillUnmount() {
     clearInterval(this.state.interval);
   }
+  makeComma = (x: number) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   render() {
     const { detail } = this.props;
@@ -116,16 +118,21 @@ class Detail extends Component<DetailProps> {
               <small className="right">{detail.id}</small>
               <h4 className="mt-1"> {detail.name} </h4>
               <h5 className="perfume_brand">
-                <small className="mr-3">made by</small>
+                <small className="detail_price">
+                  {detail.price
+                    ? "₩ " + this.makeComma(detail.price) + " 원"
+                    : "가격 정보가 없습니다"}
+                </small>
+                <small>made by</small>
                 {detail.brand.name}{" "}
               </h5>
-              <Row className="categories-row">
+              <Row className="categories-row m-0">
                 <p>CATEGORY</p>
                 {detail.categories.map((cat) => (
-                  <span>{cat.name}</span>
+                  <span key={"d-category-" + cat.id}>{cat.name}</span>
                 ))}
               </Row>
-              <Row>
+              <Row className="note-and-rate-row">
                 <Col s={6}>
                   <h6>탑 노트</h6>
                   <small>
@@ -193,7 +200,7 @@ class Detail extends Component<DetailProps> {
                   </Row>
                 </Col>
                 <Col s={6}>
-                  <div className="rate-wrapper mt-5">
+                  <div className="rate-wrapper pt-5">
                     <div className="rate-inside-circle">
                       <h5>{detail.avg_rate.toFixed(1)}</h5>
                       <h5
@@ -216,11 +223,51 @@ class Detail extends Component<DetailProps> {
             </Col>
           </Row>
         </section>
+                    <div className="review-list-header">{detail.reviews ? 'Reviews - ' +  detail.reviews.length  : '여러분의 소중한 리뷰를 남겨주세요'}</div>
+        <section className="review-list-container">
+          {detail.reviews ? (
+            detail.reviews.map((review) => (
+              <Row className="review-list-row" key={review.id + "-re"}>
+                <Col s={12} className="review-header">
+                    <img
+                      alt=""
+                      className="rank-badge"
+                      src="https://user-images.githubusercontent.com/52684457/79992592-aabfc980-84ee-11ea-8cdf-38f19f9d7305.png"
+                    />
+                    <Col>
+                      <p className="m-0 username">{review.user}</p>
+                      <small>{review.created_at}</small>
+                    </Col>
+                    
+                </Col>
+                <Col s={3} className="review-function">
+                  <Row className="star-row">
+                  <Icon small>star</Icon>
+                    <p className="m-0 ml-2">
+                      
+                      {(review.rate / 2).toFixed(1)}
+                    </p>
+                  </Row>
+                  <Row>
+                    <Icon medium>thumb_up</Icon>
+                    <h6 className="ml-3 mt-0">{review.like_cnt}</h6>
+                  </Row>
+                </Col>
+                <Col s={9} className="review-content">
+                  {review.content}
+                </Col>
 
-        <div className="review_box">
-          <div className="review_title">Reviews</div>
-          <ReviewTextBox id={detail.id} />
-        </div>
+              </Row>
+            ))
+          ) : (
+            <h4>리뷰가 없어용</h4>
+          )}
+          {this.props.user.get("logged") ? (
+            <ReviewTextBox id={detail.id} />
+          ) : (
+            <h4>로그인해서 댓글작성</h4>
+          )}
+        </section>
       </div>
     );
   }
@@ -229,6 +276,7 @@ export default withRouter(
   connect(
     (state) => ({
       detail: state.detail.get("detail"),
+      user: state.user,
     }),
     (dispatch) => ({
       DetailActions: bindActionCreators(detailActions, dispatch),
