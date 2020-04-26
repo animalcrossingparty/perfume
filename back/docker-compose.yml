@@ -1,12 +1,11 @@
 version: '3'
 services:
   nginx:
-    build: ./config/nginx
+    build: ./config
     ports: 
         - "8000:80"
     volumes:
       - ./:/code
-      - ./config/nginx:/etc/nginx.conf.d
     depends_on: 
       - django
   db:
