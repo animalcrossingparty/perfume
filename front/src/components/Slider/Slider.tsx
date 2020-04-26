@@ -49,7 +49,7 @@ export default () => (
 				<h5 className="light grey-text text-lighten-3">
 					로르 리시에서 향수를 찾을 수 있어요.
       </h5>
-			<Link className="my-5" to="/survey"><Button large style={{backgroundColor: '#d1c4e9', color: '#2f2f2f', fontWeight: '700'}} className="mt-5">나에게 꼭 맞는 향수 찾으러가기</Button></Link>
+			<Link className="my-5" to="/survey"><Button large style={{backgroundColor: '#fff', color: '#2f2f2f', fontWeight: '700'}} className="mt-5">나에게 꼭 맞는 향수 찾으러가기</Button></Link>
 
 			</Caption>
 		</Slide>

@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import *
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
+<<<<<<< HEAD
 from perfumes.utils import exchange_rate
    
 rate = exchange_rate.korean_won()
@@ -9,6 +10,14 @@ class Base64ImageSerializers(serializers.ModelSerializer):
     class Meta:
         model = Base64Image
         fields = ['data']
+=======
+from perfumes.utils.exchange_rate import korean_won
+
+class ImageSerializers(serializers.Serializer):
+    data = serializers.SerializerMethodField()
+    def get_data(self, instance):
+        return instance.data.decode('ascii')
+>>>>>>> f4db4026efbb5ef997a9f9ca33f19f5fcf9eb686
 
 class NoteSerializers(serializers.ModelSerializer):
     class Meta:
@@ -33,7 +42,11 @@ class PerfumeSerializers(serializers.ModelSerializer):
     total_review = serializers.IntegerField(source='review_set.count', read_only=True)
     brand = BrandSerializers()
     price = serializers.SerializerMethodField(read_only=True)
+<<<<<<< HEAD
     thumbnail = serializers.SerializerMethodField(read_only=True)
+=======
+    categories = CategorySericalizers(many=True)
+>>>>>>> f4db4026efbb5ef997a9f9ca33f19f5fcf9eb686
 
     
     class Meta:
@@ -41,16 +54,21 @@ class PerfumeSerializers(serializers.ModelSerializer):
         fields = '__all__'
         include = ['avg_rate', 'total_review', 'thumbnail']
 
-    def get_avg_rate(self, review):
+    def get_avg_rate(self, instance):
         try:
-            result = sum(review.review_set.values_list('rate', flat=True))/review.review_set.count()
+            result = sum(instance.review_set.values_list('rate', flat=True))/instance.review_set.count()
         except:
             result = 0
         return result
 
+<<<<<<< HEAD
     def get_price(self, perfume):
         exchanged = perfume.price * rate
         return exchanged
+=======
+    def get_price(self, instance):
+        return instance.price * korean_won()
+>>>>>>> f4db4026efbb5ef997a9f9ca33f19f5fcf9eb686
 
     def get_thumbnail(self, perfume):
         name = str(perfume.id)
@@ -77,13 +95,14 @@ class SurveySerializers(serializers.ModelSerializer):
         fields = ['id', 'age', 'gender', 'season', 'hate_notes', 'like_notes', 'like_category']
 
 class ReviewSerializers(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
     user = serializers.CharField(source='user.username', read_only=True)
     perfume = serializers.IntegerField(source='perfume.pk', read_only=True)
     content = serializers.CharField()
     rate = serializers.IntegerField(min_value=0, max_value=10)
     created_at = serializers.DateTimeField(read_only=True)
     like_cnt = serializers.IntegerField(source='like_users.count',read_only=True)
-    images = Base64ImageSerializers(read_only=True, many=True)
+    images = ImageSerializers(read_only=True, many=True)
 
     def create(self, validated_data):
         return Review.objects.create(**validated_data)
@@ -94,39 +113,12 @@ class ReviewSerializers(serializers.Serializer):
         return instance
 
 
-class PerfumeDetailSerializers(serializers.ModelSerializer):
+class PerfumeDetailSerializers(PerfumeSerializers):
     reviews = ReviewSerializers(many=True, source='review_set')
-    top_notes = NoteSerializers(many=True)
-    heart_notes = NoteSerializers(many=True)
-    base_notes = NoteSerializers(many=True)
-    total_review = serializers.IntegerField(source='review_set.count', read_only=True)
-    avg_rate = serializers.SerializerMethodField(read_only=True)
-    price = serializers.SerializerMethodField(read_only=True)
-    thumbnail = serializers.SerializerMethodField(read_only=True)
+    
 
-    class Meta:
-        model = Perfume
-        fields = '__all__'
-        include = ['avg_rate', 'total_review']
-
-    def get_avg_rate(self, review):
-        try:
-            result = sum(review.review_set.values_list('rate', flat=True))/review.review_set.count()
-        except:
-            result = 0
-        return result
-
-    def get_price(self, perfume):
-        exchanged = perfume.price * exchange_rate.korean_won()
-        return exchanged
-
-    def get_thumbnail(self, perfume):
-        name = str(perfume.id)
-        thumbnail = 'http://i02b208.p.ssafy.io:8000/staticfiles/images/' + name + '.jpg'
-        return thumbnail
-        
 # class WordcloudSerializers(serializers.ModelSerializer):
-#     image = Base64ImageField()
+#     image = ImageField()
 
 #     class Meta:
 #         model=MyImageModel

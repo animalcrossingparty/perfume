@@ -34,6 +34,11 @@ class Detail extends Component<DetailProps> {
       clearInterval(this.state.interval);
     }
   };
+  handleTagClick = (e) => {
+    const {history} = this.props
+    console.log(e);
+    // history.pushState("","",`http://localhost:3000/perfume?page=1&sort=alpha&category=all&gender=all&include=all&exclude=None&brand=all`)
+  }
   initializeDetailInfo = async () => {
     const { DetailActions, history } = this.props;
     const perfume_id = history.location.pathname.split("/")[2];
@@ -114,10 +119,19 @@ class Detail extends Component<DetailProps> {
                 <small className="mr-3">made by</small>
                 {detail.brand.name}{" "}
               </h5>
+              <Row className="categories-row">
+                <p>CATEGORY</p>
+                {detail.categories.map((cat) => (
+                  <span>{cat.name}</span>
+                ))}
+              </Row>
               <Row>
                 <Col s={6}>
                   <h6>탑 노트</h6>
-                  <small>뿌린 직후에서부터 알코올이 날아간 10분전후의 첫 번째 인상의 향</small>
+                  <small>
+                    뿌린 직후에서부터 알코올이 날아간 10분전후의 첫 번째 인상의
+                    향
+                  </small>
                   <Row className="note-tags">
                     {detail.top_notes.length > 0 ? (
                       detail.top_notes.slice(0, 3).map((note, note_id) => (
@@ -126,6 +140,7 @@ class Detail extends Component<DetailProps> {
                           options={null}
                           key={note_id}
                           className={`chip-color-${note_id % 10}`}
+                          // onClick={this.handleTagClick}
                         >
                           {note.kor_name || note.name}
                         </Chip>
@@ -135,7 +150,10 @@ class Detail extends Component<DetailProps> {
                     )}
                   </Row>
                   <h6>하트 노트</h6>
-                  <small>향수를 뿌린 후, 30-60분후의 안정된 상태,향수의 구성 요소들이 조화롭게 배합을 이룬 향의 중간 단계이다.</small>
+                  <small>
+                    향수를 뿌린 후, 30-60분후의 안정된 상태,향수의 구성 요소들이
+                    조화롭게 배합을 이룬 향의 중간 단계이다.
+                  </small>
                   <Row className="note-tags">
                     {detail.heart_notes.length > 0 ? (
                       detail.heart_notes.slice(0, 3).map((note, note_id) => (
@@ -153,7 +171,10 @@ class Detail extends Component<DetailProps> {
                     )}
                   </Row>
                   <h6>베이스 노트</h6>
-                  <small>2-3시간 후부터 모두 날아가기까지의 향, 향수를 뿌렸을 때 가장 많이 느낄 수 있는 향</small>
+                  <small>
+                    2-3시간 후부터 모두 날아가기까지의 향, 향수를 뿌렸을 때 가장
+                    많이 느낄 수 있는 향
+                  </small>
                   <Row className="note-tags">
                     {detail.base_notes.length > 0 ? (
                       detail.base_notes.slice(0, 3).map((note, note_id) => (

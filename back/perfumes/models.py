@@ -1,13 +1,13 @@
 from django.db import models
 from django.conf import settings
 
-class Base64Image(models.Model):
-    data = models.BinaryField()
+class Image(models.Model):
+    original = models.ImageField(upload_to='review/original/', blank=True)
+    small = models.ImageField(upload_to='review/small/', blank=True)
 
 class Brand(models.Model):
     name = models.CharField(max_length=100)
-    logo_image = models.CharField(max_length=200, null=True)
-    image = models.BinaryField(null=True)
+    image = models.ImageField(null=True)
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -26,7 +26,7 @@ class Season(models.Model):
 class Perfume(models.Model):
     name = models.CharField(max_length=200)
     launch_date = models.DateField(null=True, blank=True)
-    thumbnail = models.BinaryField(null=True)
+    thumbnail = models.ImageField(null=True)
     gender = models.IntegerField(null=True)
     brand = models.ForeignKey(to=Brand, on_delete=models.PROTECT)
     top_notes = models.ManyToManyField(to=Note, related_name="perfumes_top")
@@ -44,4 +44,4 @@ class Review(models.Model):
     content = models.TextField()
     rate = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
-    images = models.ManyToManyField(to=Base64Image)
+    images = models.ManyToManyField(to=Image)
