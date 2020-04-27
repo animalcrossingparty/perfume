@@ -71,71 +71,91 @@ class Perfumes extends Component<PerfumeProps> {
       gender,
     } = queryString.parse(window.location.search);
     return (
-      <div className="cards_box">
-        <div className="radio-search">
-          <div className="radio-search-box">
-            <Row className="row-margin">
-              <Col>
-                <RadioGroup
-                  label=""
-                  name="gender"
-                  options={[
-                    { label: "모두", value: "all" },
-                    { label: "남성용", value: "0" },
-                    { label: "여성용", value: "1" },
-                    { label: "공용", value: "2" },
-                  ]}
-                  value={gender}
-                  onChange={({ target: { value } }) => this.handleGender(value)}
-                  withGap
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                {sort !== "alpha" ? (
-                  <NavLink
-                    to={`/perfume?page=1&sort=alpha&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-                  >
-                    사전순
-                  </NavLink>
-                ) : (
-                  <NavLink to="#" className="disabled-link">
-                    사전순
-                  </NavLink>
-                )}
-              </Col>
-              <Col>
-                {sort !== "rate" ? (
-                  <NavLink
-                    to={`/perfume?page=1&sort=rate&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-                  >
-                    평점순
-                  </NavLink>
-                ) : (
-                  <NavLink to="#" className="disabled-link">
-                    평점순
-                  </NavLink>
-                )}
-              </Col>
-              <Col>
-                {sort !== "reviewcnt" ? (
-                  <NavLink
-                    to={`/perfume?page=1&sort=reviewcnt&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-                  >
-                    리뷰순
-                  </NavLink>
-                ) : (
-                  <NavLink to="#" className="disabled-link">
-                    리뷰순
-                  </NavLink>
-                )}
-              </Col>
-            </Row>
-          </div>
-        </div>
-        <div className="perfume-topheader">
-          <div className="pagenation-container">
+      <div>
+        <Row className="perfume-list-subheader mb-0">
+          <Col>
+            <RadioGroup
+              label=""
+              name="gender"
+              options={[
+                { label: "모두", value: "all" },
+                { label: "남성용", value: "0" },
+                { label: "여성용", value: "1" },
+                { label: "공용", value: "2" },
+              ]}
+              value={gender}
+              onChange={({ target: { value } }) => this.handleGender(value)}
+              withGap
+            />
+          </Col>
+          <Col>
+            <Col>
+              {sort !== "alpha" ? (
+                <NavLink
+                  to={`/perfume?page=1&sort=alpha&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                >
+                  사전순
+                </NavLink>
+              ) : (
+                <NavLink to="#" className="disabled-link">
+                  사전순
+                </NavLink>
+              )}
+            </Col>
+            <Col>
+              {sort !== "rate" ? (
+                <NavLink
+                  to={`/perfume?page=1&sort=rate&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                >
+                  평점순
+                </NavLink>
+              ) : (
+                <NavLink to="#" className="disabled-link">
+                  평점순
+                </NavLink>
+              )}
+            </Col>
+            <Col>
+              {sort !== "reviewcnt" ? (
+                <NavLink
+                  to={`/perfume?page=1&sort=reviewcnt&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                >
+                  리뷰순
+                </NavLink>
+              ) : (
+                <NavLink to="#" className="disabled-link">
+                  리뷰순
+                </NavLink>
+              )}
+            </Col>
+            <Col>
+              {sort !== "expensive" ? (
+                <NavLink
+                  to={`/perfume?page=1&sort=expensive&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                >
+                  높은 가격순
+                </NavLink>
+              ) : (
+                <NavLink to="#" className="disabled-link">
+                  높은 가격순
+                </NavLink>
+              )}
+            </Col>
+            <Col>
+              {sort !== "cheap" ? (
+                <NavLink
+                  to={`/perfume?page=1&sort=cheap&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                >
+                  낮은 가격순
+                </NavLink>
+              ) : (
+                <NavLink to="#" className="disabled-link">
+                  낮은 가격순
+                </NavLink>
+              )}
+            </Col>
+          </Col>
+          <Col>
             <Pagination
               activePage={Number(page)}
               items={this.props.num_pages < 20 ? this.props.num_pages : 20}
@@ -144,9 +164,9 @@ class Perfumes extends Component<PerfumeProps> {
               onSelect={this.handlePage}
               maxButtons={10}
             />
-          </div>
-        </div>
-        <Row className="wrap">
+          </Col>
+        </Row>
+        <Row className="container perfume-list-container" style={{height: window.innerHeight - 124}}>
           {GET_PERFUME_INFO !== true ? (
             perfumes.map((perfume) => (
               <Col s={12} m={6} l={4} xl={3} key={perfume.id}>
@@ -155,7 +175,9 @@ class Perfumes extends Component<PerfumeProps> {
             ))
           ) : (
             <Col s={12}>
-              <h1 className="m-0 p-0 loading-message">향수 정보를 가져오는 중입니다,,,</h1>
+              <h1 className="m-0 p-0 loading-message">
+                향수 정보를 가져오는 중입니다,,,
+              </h1>
               <Col s={12} className="circle-loader-wrap">
                 <Preloader active color="green" flashing={true} size="big" />
               </Col>
