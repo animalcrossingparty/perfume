@@ -102,15 +102,3 @@ class PerfumeDetailSerializers(PerfumeSerializers):
     def get_reviews(self, instance):
         ordered = instance.review_set.order_by('-created_at')
         return ReviewSerializers(ordered, many=True).data
-
-# class WordcloudSerializers(serializers.ModelSerializer):
-#     image = ImageField()
-
-#     class Meta:
-#         model=MyImageModel
-#         fields= ('data','image')
-
-#     def create(self, validated_data):
-#         image=validated_data.pop('image')
-#         data=validated_data.pop('data')
-#         return MyImageModel.objects.create(data=data,image=image)
