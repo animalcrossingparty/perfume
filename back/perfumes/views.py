@@ -62,7 +62,40 @@ SORT = {
     'alpha': lambda objects: objects.order_by('name')
 }
 
-def search(request, keywords):
+RESERVED_CAT = {
+    '신선': {'fruits', 'citrus'}, '상콤': {'fruits', 'citrus'}, '과일': {'fruits'},\
+    '새콤': {'fruits', 'citrus'}, '상큼': {'fruits', 'citrus'}, '꽃': {'flowers', 'white_flowers'},\
+    '여성스러운': {'flowers', 'white_flowers'}, '여자여자한': {'flowers', 'white_flowers'},\
+    '플로럴': {'flowers', 'white_flowers'}, '아로마': {'greens', 'resins'}, '허브': {'greens'},\
+    '향긋': {'greens'}, '톡쏘는': {'spices'}, '강렬한': {'spices'}, '달달한': {'beverages', 'sweets'},\
+    '달다구리한': {'beverages', 'sweets'}, '남자다운': {'woods'}, '나무': {'woods'}, '숲': {'woods'},\
+    '분내': {'natural'}, '파우더리': {'natural'}, '뽀송한': {'natural'}
+}
+def search(request):
+    """
+    a = [
+        ['신선', '새콤', '상큼', '상콤'],  # 'citrus'
+        ['과일', '새콤', '상큼', '상콤', '신선'],  # 'fruits'
+        ['꽃', '여성스러운', '여자여자한', '플로럴'],  #'flowers'
+        ['꽃', '여성스러운', '여자여자한', '플로럴'],  #'white_flowers'
+        ['아로마', '허브', '향긋'],  #'greens'
+        ['톡쏘는', '강렬한'],  #'spices'
+        ['달달한', '달다구리한'],  #'sweets'
+        ['남자다운', '나무', '숲'],  #'woods'
+        ['아로마'],  #'resins'
+        ['분내', '파우더리', '뽀송한']  #'musk'
+        ['달달한', '달다구리한']  # 'beverages'
+    ]
+    """
+    # keywords = request.query_params.get('keywords')
+    # perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('top_notes')\
+    #     .prefetch_related('heart_notes').prefetch_related('base_notes').prefetch_related('categories')\
+    #     .prefetch_related('seasons')
+    # keywords = set(keywords)
+    # cat = keywords & set(RESERVED_CAT)
+    # keywords -= reserved
+
+
     # keywords = keywords.split()
     # q = Q()
     # for kw in keywords:
