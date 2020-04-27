@@ -144,12 +144,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 40rem;
-  background: pink;
 }
 
 .loading-message {
   position: absolute;
-  font-size: 8rem;
+  top: 45%;
+  left: 30%;
+  font-size: 3.5rem;
+  font-weight: 100;
+  color: lightgrey;
 }
 .m-0 {
   margin: 0 !important;

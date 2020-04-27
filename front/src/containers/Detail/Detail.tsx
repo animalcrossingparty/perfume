@@ -35,10 +35,9 @@ class Detail extends Component<DetailProps> {
       clearInterval(this.state.interval);
     }
   };
-  handleTagClick = (e) => {
+  handleTagClick = (e, id) => {
     const { history } = this.props;
-    console.log(e);
-    // history.pushState("","",`http://localhost:3000/perfume?page=1&sort=reviewcnt&category=all&gender=all&include=all&exclude=${}&brand=all`)
+    history.push(`/perfume?page=1&sort=rate&category=all&gender=all&include=${id}&brand=all`)
   };
   initializeDetailInfo = async () => {
     const { DetailActions, history } = this.props;
@@ -144,10 +143,9 @@ class Detail extends Component<DetailProps> {
                       detail.top_notes.slice(0, 3).map((note, note_id) => (
                         <Chip
                           close={false}
-                          options={null}
-                          key={note_id}
-                          className={`chip-color-${note_id % 10}`}
-                          // onClick={this.handleTagClick}
+                          onClick={e => this.handleTagClick(e, note.id)}
+                          key={note.id + '-tnote'}
+                          className={`chip-color-${note.id % 10}`}
                         >
                           {note.kor_name || note.name}
                         </Chip>
@@ -223,30 +221,30 @@ class Detail extends Component<DetailProps> {
             </Col>
           </Row>
         </section>
-                    <div className="review-list-header">{detail.reviews ? 'Reviews - ' +  detail.reviews.length  : '여러분의 소중한 리뷰를 남겨주세요'}</div>
+        <div className="review-list-header">
+          {detail.reviews
+            ? "Reviews - " + detail.reviews.length
+            : "여러분의 소중한 리뷰를 남겨주세요"}
+        </div>
         <section className="review-list-container">
           {detail.reviews ? (
             detail.reviews.map((review) => (
               <Row className="review-list-row" key={review.id + "-re"}>
                 <Col s={12} className="review-header">
-                    <img
-                      alt=""
-                      className="rank-badge"
-                      src="https://user-images.githubusercontent.com/52684457/79992592-aabfc980-84ee-11ea-8cdf-38f19f9d7305.png"
-                    />
-                    <Col>
-                      <p className="m-0 username">{review.user}</p>
-                      <small>{review.created_at}</small>
-                    </Col>
-                    
+                  <img
+                    alt=""
+                    className="rank-badge"
+                    src="https://user-images.githubusercontent.com/52684457/79992592-aabfc980-84ee-11ea-8cdf-38f19f9d7305.png"
+                  />
+                  <Col>
+                    <p className="m-0 username">{review.user}</p>
+                    <small>{review.created_at}</small>
+                  </Col>
                 </Col>
                 <Col s={3} className="review-function">
                   <Row className="star-row">
-                  <Icon small>star</Icon>
-                    <p className="m-0 ml-2">
-                      
-                      {(review.rate / 2).toFixed(1)}
-                    </p>
+                    <Icon small>star</Icon>
+                    <p className="m-0 ml-2">{(review.rate / 2).toFixed(1)}</p>
                   </Row>
                   <Row>
                     <Icon medium>thumb_up</Icon>
@@ -256,7 +254,6 @@ class Detail extends Component<DetailProps> {
                 <Col s={9} className="review-content">
                   {review.content}
                 </Col>
-
               </Row>
             ))
           ) : (
