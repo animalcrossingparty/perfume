@@ -62,6 +62,18 @@ SORT = {
     'alpha': lambda objects: objects.order_by('name')
 }
 
+def search(request, keywords):
+    # keywords = keywords.split()
+    # q = Q()
+    # for kw in keywords:
+    #     q |= Q(name_icontains=kw)
+    # Perfume.objects.filter(q)
+    # 봄 여름 가을 겨울 브랜드, 카테고리
+
+    # perfume
+    return 
+
+
 class SurveyAPI(APIView):
     # @swagger_auto_schema(
     # operation_summary="특정 리뷰 '좋아요' / '좋아요 취소' 실행",
@@ -193,7 +205,7 @@ def perfumes_list(request):
         print(paged_perfumes)
         num_pages = paginated.num_pages
         print('페이지 수',num_pages)
-        serializer = PerfumeSerializers(paged_products, many=True)
+        serializer = PerfumeSerializers(paged_perfumes, many=True)
     except: 
         invalid_page_message = f'{page} 페이지에는 결과가 없습니다. 해당 요청의 최대 페이지 수: < {paginated.num_pages} >'
         return Response(invalid_page_message, status=404)
