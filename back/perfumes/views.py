@@ -62,6 +62,18 @@ SORT = {
     'alpha': lambda objects: objects.order_by('name')
 }
 
+def search(request, keywords):
+    # keywords = keywords.split()
+    # q = Q()
+    # for kw in keywords:
+    #     q |= Q(name_icontains=kw)
+    # Perfume.objects.filter(q)
+    # 봄 여름 가을 겨울 브랜드, 카테고리
+
+    # perfume
+    return 
+
+
 class SurveyAPI(APIView):
     # @swagger_auto_schema(
     # operation_summary="특정 리뷰 '좋아요' / '좋아요 취소' 실행",
