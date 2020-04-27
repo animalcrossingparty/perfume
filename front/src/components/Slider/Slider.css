@@ -1,20 +1,21 @@
-.slider .slides li img {
-  filter: brightness(70%);
-  animation: maxToSix 2s;
-}
-
 .slider .indicators .indicator-item.active {
-  background-color: white;
+  background-color: black;
 }
 
-.caption > h3 {
-  font-weight: 600;
+.s1-cap {
+  margin-left: -5rem;
 }
 
+.slider {
+  color: black;
+}
 .slider .indicators {
   position: relative;
   margin-top: -40px;
   z-index: 5;
+}
+.slider .slides li .caption {
+  color: black;
 }
 
 .slider .indicators .indicator-item {
