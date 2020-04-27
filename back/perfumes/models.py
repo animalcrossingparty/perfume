@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-
 class Image(models.Model):
     original = models.ImageField(upload_to='review/', blank=True)
 
@@ -41,7 +40,8 @@ class Perfume(models.Model):
     availability = models.BooleanField()
     seasons = models.ManyToManyField(to=Season)
     price = models.FloatField()
-
+    recommended = models.CharField(max_length=500, blank=True)
+    similar = models.CharField(max_length=500, blank=True)
 
 class Review(models.Model):
     user = models.ForeignKey(

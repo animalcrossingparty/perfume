@@ -245,6 +245,10 @@ def perfume_detail(request, perfume_pk):
     serializer = PerfumeDetailSerializers(perfume)
     return Response(serializer.data)
 
+# tf-idf_corr -> 비슷한 향수 추천
+
+# knn -> 협업 필터링
+
 class ListReviews(APIView):
     @swagger_auto_schema(
         operation_summary='특정 향수의 모든 리뷰 조회'
