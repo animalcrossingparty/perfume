@@ -54,8 +54,8 @@ FAMOUS_BRANDS = [
 SORT = {
     'alpha': lambda objects: objects.all().order_by('name'),
     'reviewcnt': lambda objects: objects.prefetch_related('review_set').annotate(reviewcnt=Count('review'))\
-        .filter(reviewcnt__gt=10).order_by('-reviewcnt'),
-    'rate': lambda objects: objects.prefetch_related('review_set').annotate(avgrate=Avg('review__rate'))\
+        .order_by('-reviewcnt'),
+    'rate': lambda objects: objects.prefetch_related('review_set').annotate(avgrate=Avg('review__rate')).filter(reviewcnt__gt=10)\
         .order_by('-avgrate'),
     'cheap': lambda objects: objects.order_by('price'),
     'expensive': lambda objects: objects.order_by('-price'),
