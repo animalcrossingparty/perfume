@@ -79,9 +79,9 @@ class ListSurvey(APIView):
         # sort => include_note 많이 가지고 있는 애들부터 보여주기
         notes_list = []
         for num in category:
-            notes_list += FAMOUS_NOTES[num]
-
-        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes'))).filter(all_notes__in=notes).annotate(score=Count('all_notes', filter=Q(all_notes__in=notes_list))).filter(score__gt=0).order_by('-score')
+            notes_list += famous_notes[num]
+        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes'))).filter(all_notes__in=notes)
+        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes'))).annotate(score=Count('all_notes', filter=Q(all_notes__in=notes_list))).filter(score__gt=0).order_by('-score')
         if len(products) > 15:
             products = products[:15]
         print('final_filtered***********', products)
@@ -169,6 +169,7 @@ def perfumes_list(request):
     if sort == 'alpha':
         products = products.all().order_by('name')
     elif sort == 'reviewcnt':
+        products = products.filter(review__count__gt=10)
         products = products.order_by('-review__count')
     elif sort == 'rate':
         products = products.order_by('-avg_rate')
@@ -225,16 +226,6 @@ def nth_survey_or_not(request):
     else:
         return Response(status=404)
 
-def call_tf_idf(request, perfume_pk):
-    reviews = Review.get(perfume=perfume_pk)
-
-    return 1
-
-
-@swagger_auto_schema(
-    operation_summary="특정 향수 정보 및 리뷰 조회",
-    method='get'
-    )
 @api_view(['GET'])
 def perfume_detail(request, perfume_pk):
     perfume = Perfume.objects.get(pk=perfume_pk)
