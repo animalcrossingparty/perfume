@@ -75,14 +75,15 @@ def perfume_survey(request):
         notes_list = []
         for num in category:
             notes_list += famous_notes[num]
-
-        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes'))).filter(all_notes__in=notes).annotate(score=Count('all_notes', filter=Q(all_notes__in=notes_list))).filter(score__gt=0).order_by('-score')
+        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes'))).filter(all_notes__in=notes)
+        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes'))).annotate(score=Count('all_notes', filter=Q(all_notes__in=notes_list))).filter(score__gt=0).order_by('-score')
         if len(products) > 15:
             products = products[:15]
         print('final_filtered***********', products)
         serializer = PerfumeSerializers(products, many=True)
         return Response(serializer.data)
     else:
+        user = is_logged_in(request)
         gender = request.POST.get('gender', None)
         age = request.POST.get('age', None)
         seasons = request.POST.get('seasons', None)
@@ -162,6 +163,7 @@ def perfumes_list(request):
     if sort == 'alpha':
         products = products.all().order_by('name')
     elif sort == 'reviewcnt':
+        products = products.filter(review__count__gt=10)
         products = products.order_by('-review__count')
     elif sort == 'rate':
         products = products.order_by('-avg_rate')
@@ -190,6 +192,7 @@ def perfumes_list(request):
 # 성별, 나이, 계절을 받았을 때 남아있는 향수들의 노트를 알려준다 -> include, exclude 카테고리를 받는다. -> note를 리턴
 @api_view(['GET'])
 def left_notes(request):
+    print("start!")
     famous_notes =[
                 [],
                 [96, 155, 227, 388, 515, 522, 530, 562, 660],
@@ -211,7 +214,6 @@ def left_notes(request):
     result = []
     for note in category:
         result += famous_notes[note]
-    
     notes = notes.filter(id__in=result)
 
     serialize = NoteSerializers(notes, many=True)
@@ -232,11 +234,6 @@ def nth_survey_or_not(request):
     # 없을 때
     else:
         return Response(status=404)
-
-def call_tf_idf(request, perfume_pk):
-    reviews = Review.get(perfume=perfume_pk)
-
-    return 1
 
 @api_view(['GET'])
 def perfume_detail(request, perfume_pk):
