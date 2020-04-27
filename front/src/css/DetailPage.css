@@ -14,6 +14,7 @@
 
 .perfume-info-text {
   height: 40rem;
+  display: block;
   animation: fadeIn 4s ease 0s !important;
 }
 
@@ -37,8 +38,9 @@
   position: absolute;
   font-family: "Roboto";
   height: 20rem;
-
-  
+}
+.note-and-rate-row > .col{
+  flex: 1;
 }
 .rate-inside-circle > h5 {
   position: absolute;
@@ -74,7 +76,6 @@
   font-size: 25px;
   font-weight: 100;
   display: flex;
-  border-bottom: 1px solid;
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -89,146 +90,84 @@
   border-bottom: 1px dotted gray;
   padding: 0 5% 0.8% 2%;
 }
-
-.categories-row {
-  padding-left: 0.5rem;
-}
 .categories-row > span {
-  border-bottom: 1px solid black;
+  border-left: 9px solid pink;
   margin: 15px 10px;
   padding: 5px;
 }
+.detail_price {
+  margin-right: auto;
+  font-size: 1.45rem;
+}
 
 /* Reviews */
-.review_box {
-  margin-top: 5rem;
+.review-list-container {
+  padding-left: 10%;
+  padding-right:  10%;
+  margin-right: 5%;
+  margin-left: 5%;
+  background: #d0d0d0;
+}
+.review-list-header {
+  margin: 0 5%;
+  padding: 0 10%;
+  height: 4rem;
+  font-size: 3rem;
+  border-bottom: 2px dashed #d0d0d0;
+  font-weight: 100;
+  background: #fff;
+}
+.review-list-row {
+  min-height: 5rem;
+  background: white;
+  border: 1px solid #f2f2f2;
+  border-bottom: 0;
+  align-items: center;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.rank-badge {
+  height: 3.5rem;
 }
 
-.review_title {
-  font-size: 23px;
-  border-bottom: 1px solid;
-  padding: 0 1rem;
-  margin-bottom: 1rem;
-  display: inline-block;
-}
-
-.write_comment {
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
-  height: 165px;
-  border-radius: 10px;
-  padding: 1rem 2rem;
-  width: 70vw;
-  margin: auto;
-}
-
-.row_comment {
+.review-header {
+  height: 4rem;
   display: flex;
   align-items: center;
+  padding: 0 !important;
+  background: #f2f2f2;
 }
 
-.row_comment > span {
-  margin-right: 1rem;
-  color: rgb(199, 180, 178);
-}
-
-.row_comment > i {
-  margin-right: 1rem;
-  color: rgb(179, 161, 159);
-}
-
-.row_comment > textarea {
-  width: 130vh;
-  height: 70px;
-  margin-top: 1rem;
-  background-color: rgba(255, 255, 255, 0.3);
-  border: 1px solid rgb(199, 180, 178);
-  border-radius: 5px;
-  color: rgb(83, 75, 74);
-  padding: .5rem;
-  font-weight: 500;
-}
-
-
-
-
-.comment_list {
-  /* background-color: rgba(90, 80, 80, 0.9); */
-  background-color: rgba(248, 238, 238, 0.5);
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
-  /* height: 165px; */
-  border-radius: 10px;
-  padding: .3rem 1rem;
-  width: 70vw;
-  margin: 2rem auto;
-}
-
-.comment_user {
+.review-content {
+  background: white;
+  margin: 2rem 0 2rem 0;
+  padding: 0 2rem 0 3rem !important;
+  line-height: 1.75rem;
   display: flex;
   flex-direction: column;
 }
 
-.user_review_name {
-  font-size: 16px;
-  color: rgb(235, 221, 221);
-  display: flex;
-  text-align: start;
-  margin: 1rem auto 1rem 1rem;
+.username {
+  color: royalblue;
+  font-weight: 700;
 }
 
-.review_text {
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
-
-  border-radius: 5px;
-  color: rgb(83, 75, 74);
-  padding: 1rem;
-  font-weight: 500;
-  width: 85%;
-  margin-right: .5rem;
-  text-align: start;
-  display: flex;
-  flex-direction: column;
-  align-self: flex-end;
+.review-function {
+  border: 1px solid #f2f2f2;
+  text-align: center;
+  color: lightgray;
+}
+.review-function > .row {
+  justify-content: center;
+  align-content: center;
 }
 
-.review_text > a {
-  color: rgb(156, 121, 121);
-}
-
-.review_text > a:hover {
-  text-decoration: underline;
-}
-
-.btn_comment_list {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1rem;
-}
-
-.btn_comment_list > button {
-  width: 40px;
-  padding: 0;
-  border-radius: 15px;
-  margin-right: 1rem;
-}
-
-.btn_comment_list > button:focus {
-  background-color: rgb(94, 86, 86);
-}
-
-.review_star {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 1rem;
-}
-
-.review_date {
-  margin-top: .5rem;
-  color: rgb(156, 134, 134);
-}
-
-.material-icons {
-  margin-right: 0;
+.star-row {
+  background: #f2f2f2;
+  color: pink;
+  padding: 0.5rem 0;
+  font-weight: 700;
+  font-size: 1.4rem;
+  top: 0;
 }
