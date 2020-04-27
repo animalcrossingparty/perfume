@@ -26,5 +26,5 @@ def recommend(perfume_num=26149998, n=10):
             print(recommend_perfume)
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
     # api.run('0.0.0.0', port=5000)
