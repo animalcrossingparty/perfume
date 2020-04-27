@@ -24,7 +24,7 @@ class User(AbstractUser):
     
 
 class Survey(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.PROTECT)
+    user = models.OneToOneField(to=User, on_delete=models.PROTECT)
     season = models.ManyToManyField(to=Season)
     like_notes = models.ManyToManyField(to=Note, related_name='surveys_like')
     like_category = models.ManyToManyField(to=Category)

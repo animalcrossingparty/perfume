@@ -77,8 +77,8 @@ class Perfumes extends Component<PerfumeProps> {
             <Row className="row-margin">
               <Col>
                 <RadioGroup
-                  label="T-Shirt Size"
-                  name="size"
+                  label=""
+                  name="gender"
                   options={[
                     { label: "모두", value: "all" },
                     { label: "남성용", value: "0" },
@@ -155,9 +155,9 @@ class Perfumes extends Component<PerfumeProps> {
             ))
           ) : (
             <Col s={12}>
-              <h1 className="m-0 p-0 loading-message">향수를 가져오는 중이에요!</h1>
+              <h1 className="m-0 p-0 loading-message">향수 정보를 가져오는 중입니다,,,</h1>
               <Col s={12} className="circle-loader-wrap">
-                <Preloader active color="pink" flashing={true} size="big" />
+                <Preloader active color="green" flashing={true} size="big" />
               </Col>
             </Col>
           )}

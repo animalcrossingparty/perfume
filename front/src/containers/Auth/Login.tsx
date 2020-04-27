@@ -65,7 +65,7 @@ class Login extends Component<LoginProps> {
             await AuthActions.localLogin({ email, password })
             .then(r => {
                 const token = r.data.token
-                const user = jwt(token); // decode your token here
+                const user = jwt(token);
                 const loggedInfo = user
                 loggedInfo.token = token
                 UserActions.setLoggedInfo(loggedInfo);
