@@ -7,12 +7,13 @@ import { NavLink } from "react-router-dom";
 import {
   Row,
   Col,
-  Pagination,
   Icon,
   Preloader,
   RadioGroup,
+  Select,
 } from "react-materialize";
 import queryString from "query-string";
+import Pagination from "react-js-pagination";
 
 interface PerfumeProps {
   PerfumeActions: any;
@@ -44,8 +45,14 @@ class Perfumes extends Component<PerfumeProps> {
   handlePage = (selectedPage) => {
     const { history, PerfumeActions } = this.props;
     const queryParams = queryString.parse(history.location.search);
+    console.log(selectedPage)
     queryParams.page = selectedPage;
     PerfumeActions.getPerfumeInfo(queryParams);
+    window.history.pushState(
+      "",
+      "",
+      `/perfume?${queryString.stringify(queryParams)}`
+    );
   };
   handleGender = (selectedGender) => {
     const { history, PerfumeActions } = this.props;
@@ -62,16 +69,16 @@ class Perfumes extends Component<PerfumeProps> {
     const { perfumes } = this.props;
     const { GET_PERFUME_INFO } = this.props.pender;
     const {
-      page,
       sort,
       brand,
       category,
       exclude,
       include,
       gender,
+      page
     } = queryString.parse(window.location.search);
     return (
-      <div>
+      <section style={{ height: window.innerHeight - 64 }}>
         <Row className="perfume-list-subheader mb-0">
           <Col>
             <RadioGroup
@@ -89,16 +96,28 @@ class Perfumes extends Component<PerfumeProps> {
             />
           </Col>
           <Col>
+            <Pagination
+              activePage={Number(page)}
+              activeClass='active-page-now'
+              itemsCountPerPage={12}
+              totalItemsCount={12 * this.props.num_pages }
+              pageRangeDisplayed={8}
+              onChange={this.handlePage}
+            />
+          </Col>
+          <Col className="sort-row">
             <Col>
               {sort !== "alpha" ? (
                 <NavLink
                   to={`/perfume?page=1&sort=alpha&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
                 >
-                  사전순
+                  <Icon tiny>sort_by_alpha</Icon>
+                  <div>사전순</div>
                 </NavLink>
               ) : (
                 <NavLink to="#" className="disabled-link">
-                  사전순
+                  <Icon tiny>sort_by_alpha</Icon>
+                  <div>사전순</div>
                 </NavLink>
               )}
             </Col>
@@ -107,11 +126,13 @@ class Perfumes extends Component<PerfumeProps> {
                 <NavLink
                   to={`/perfume?page=1&sort=rate&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
                 >
-                  평점순
+                  <Icon tiny>thumbs_up_down</Icon>
+                  <div>평점순</div>
                 </NavLink>
               ) : (
                 <NavLink to="#" className="disabled-link">
-                  평점순
+                  <Icon tiny>thumbs_up_down</Icon>
+                  <div>평점순</div>
                 </NavLink>
               )}
             </Col>
@@ -120,11 +141,13 @@ class Perfumes extends Component<PerfumeProps> {
                 <NavLink
                   to={`/perfume?page=1&sort=reviewcnt&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
                 >
-                  리뷰순
+                  <Icon tiny>rate_review</Icon>
+                  <div>리뷰순</div>
                 </NavLink>
               ) : (
                 <NavLink to="#" className="disabled-link">
-                  리뷰순
+                  <Icon tiny>rate_review</Icon>
+                  <div>리뷰순</div>
                 </NavLink>
               )}
             </Col>
@@ -133,11 +156,13 @@ class Perfumes extends Component<PerfumeProps> {
                 <NavLink
                   to={`/perfume?page=1&sort=expensive&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
                 >
-                  높은 가격순
+                  <Icon tiny>monetization_on</Icon>
+                  <div>높은 가격 순</div>
                 </NavLink>
               ) : (
                 <NavLink to="#" className="disabled-link">
-                  높은 가격순
+                  <Icon tiny>monetization_on</Icon>
+                  <div>높은 가격 순</div>
                 </NavLink>
               )}
             </Col>
@@ -146,30 +171,126 @@ class Perfumes extends Component<PerfumeProps> {
                 <NavLink
                   to={`/perfume?page=1&sort=cheap&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
                 >
-                  낮은 가격순
+                  <Icon tiny>money</Icon>
+                  <div>낮은 가격 순</div>
                 </NavLink>
               ) : (
                 <NavLink to="#" className="disabled-link">
-                  낮은 가격순
+                  <Icon tiny>money</Icon>
+                  <div>낮은 가격 순</div>
                 </NavLink>
               )}
             </Col>
           </Col>
-          <Col>
-            <Pagination
-              activePage={Number(page)}
-              items={this.props.num_pages < 20 ? this.props.num_pages : 20}
-              leftBtn={<Icon>chevron_left</Icon>}
-              rightBtn={<Icon>chevron_right</Icon>}
-              onSelect={this.handlePage}
-              maxButtons={10}
-            />
+        </Row>
+        <Row className="perfume-list-subheader2">
+          <Col s={4}>
+            <Select
+              id="Select-brand"
+              multiple={false}
+              onChange={function noRefCheck() {}}
+              className="w-100"
+              options={{
+                classes: "",
+                dropdownOptions: {
+                  alignment: "left",
+                  autoTrigger: true,
+                  closeOnClick: true,
+                  constrainWidth: true,
+                  coverTrigger: true,
+                  hover: false,
+                  inDuration: 150,
+                  onCloseEnd: null,
+                  onCloseStart: null,
+                  onOpenEnd: null,
+                  onOpenStart: null,
+                  outDuration: 250,
+                },
+              }}
+              value=""
+            >
+              <option disabled value="">
+                가격대로 찾기
+              </option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </Select>
+          </Col>
+          <Col s={4}>
+            <Select
+              id="Select-brand"
+              multiple={false}
+              onChange={function noRefCheck() {}}
+              className="w-100"
+              options={{
+                classes: "",
+                dropdownOptions: {
+                  alignment: "left",
+                  autoTrigger: true,
+                  closeOnClick: true,
+                  constrainWidth: true,
+                  coverTrigger: true,
+                  hover: false,
+                  inDuration: 150,
+                  onCloseEnd: null,
+                  onCloseStart: null,
+                  onOpenEnd: null,
+                  onOpenStart: null,
+                  outDuration: 250,
+                },
+              }}
+              value=""
+            >
+              <option disabled value="">
+                브랜드로 찾기
+              </option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </Select>
+          </Col>
+          <Col s={4}>
+            <Select
+              id="Select-brand"
+              multiple={false}
+              onChange={function noRefCheck() {}}
+              className="w-100"
+              options={{
+                classes: "",
+                dropdownOptions: {
+                  alignment: "left",
+                  autoTrigger: true,
+                  closeOnClick: true,
+                  constrainWidth: true,
+                  coverTrigger: true,
+                  hover: false,
+                  inDuration: 150,
+                  onCloseEnd: null,
+                  onCloseStart: null,
+                  onOpenEnd: null,
+                  onOpenStart: null,
+                  outDuration: 250,
+                },
+              }}
+              value=""
+            >
+              <option disabled value="">
+                카테고리로 찾기
+              </option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </Select>
           </Col>
         </Row>
-        <Row className="container perfume-list-container" style={{height: window.innerHeight - 124}}>
+        <Row
+          className="container perfume-list-container"
+          style={{ height: window.innerHeight - 180 }}
+        >
           {GET_PERFUME_INFO !== true ? (
             perfumes.map((perfume) => (
-              <Col s={12} m={6} l={4} xl={3} key={perfume.id}>
+              <Col s={12} m={6} l={4} key={perfume.id}>
                 <Cards field={perfume} />
               </Col>
             ))
@@ -184,7 +305,7 @@ class Perfumes extends Component<PerfumeProps> {
             </Col>
           )}
         </Row>
-      </div>
+      </section>
     );
   }
 }
