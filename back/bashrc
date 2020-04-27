@@ -1,4 +1,0 @@
-alias runserver="python manage.py runserver --settings=laure_richis.local"
-alias makemigrations="python manage.py makemigrations --settings=laure_richis.local"
-alias migrate="python manage.py migrate --settings=laure_richis.local"
-alias shell_plus="python manage.py shell_plus --settings=laure_richis.local"
