@@ -5,7 +5,7 @@ import '../css/HomePage.css'
 
 function PerfumePage(history) {
   return (
-    <div style={{minHeight: '100vh', overflow:'hidden'}}>
+    <div style={{minHeight: '100vh', overflowY:'hidden'}}>
       <Header />
       <Perfumes history={history} />
     </div>

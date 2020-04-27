@@ -7,7 +7,9 @@ import {
   Badge,
   Row,
   Col,
+  MediaBox
 } from "react-materialize";
+import noWc from 'assets/noWc.png'
 import { Link } from "react-router-dom";
 import "./Cards.css";
 
@@ -43,6 +45,7 @@ const defaultField = {
   base_notes: [{ name: "floral" }],
   avg_rate: 0,
   total_review: 0,
+  price: 0,
 };
 
 export default function Cards({ field = defaultField }: EachPerfumeProps) {
@@ -51,54 +54,91 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
     1: "FEMALE",
     2: "SHARED / UNISEX",
   };
-
+  const addDefaultSrc = (e) => {
+    e.target.src = noWc
+  };
   return (
     <Card
       closeIcon={<Icon>close</Icon>}
       header={
-        <CardTitle height="260" image={field.thumbnail || "no-image"} reveal waves="light" />
+        <CardTitle
+          height="280"
+          image={field.thumbnail || "no-image"}
+          reveal
+          waves="light"
+        />
       }
-      reveal={<p>워드클라우드가 들어갈 자리입니다</p>}
-      revealIcon={<Icon className="hidden">home</Icon>}
+      reveal={
+        <Col>
+
+        
+        <MediaBox
+          id={field.id + 'wcbox'}
+          options={{
+            inDuration: 275,
+            onCloseEnd: null,
+            onCloseStart: null,
+            onOpenEnd: null,
+            onOpenStart: null,
+            outDuration: 200,
+          }}
+        >
+          <img
+            alt=""
+            width="100%"
+            onError={(e) => addDefaultSrc(e)}
+            src={`http://i02b208.p.ssafy.io:8000/staticfiles/wordcloud/${field.id}-wc.webp`}
+          />
+        </MediaBox>
+        <small>워드 클라우드를 클릭하면 크게 보입니다.</small>
+        <Link to={`/detail/${field.id}`}>
+          <Row className="goto-detail-row mt-auto">
+            {field.name}
+          </Row>
+        </Link>
+        </Col>
+      }
+      revealIcon={<Icon>cloud</Icon>}
     >
       <div>
         <div className="title-gender-tags">
-        <Row>
-          <Col s={9}>
-            <p className="card-title">{field.name}</p>
-          </Col>
-          <Col s={3}>
-            <p className="rate-box right"><Icon className="rate-box-star">star</Icon>{field.avg_rate.toFixed(2)}</p>
-          </Col>
-        </Row>
-        <Row className="mx-2 gender-year">
-          <Col className="gender-indicator">
-            <Icon>wc</Icon>
-            <span>{gender_dict[field.gender]}</span>
-          </Col>
-          <Badge className="perfume-card-badge right">
-            {field.launch_date
-              ? field.launch_date.substr(0, 4)
-              : "(None)"}
-            년 출시
-          </Badge>
-        </Row>
-        <Row className="note-tags">
-          {field.top_notes.length > 0 ? (
-            field.top_notes.slice(0, 3).map((note, note_id) => (
-              <Chip
-                close={false}
-                options={null}
-                key={note_id}
-                className={`chip-color-${note_id % 10}`}
-              >
-                {note.kor_name || note.name}
-              </Chip>
-            ))
-          ) : (
-            <Chip close={false}>노트정보없음</Chip>
-          )}
-        </Row>
+          <Row>
+            <Col s={9}>
+              <p className="card-title">{field.name}</p>
+            </Col>
+            <Col s={3}>
+              <p className="rate-box right">
+                <Icon className="rate-box-star">star</Icon>
+                {field.avg_rate.toFixed(2)}
+              </p>
+            </Col>
+          </Row>
+          <Row className="mx-2 gender-year">
+            <Col className="gender-indicator">
+              <Icon>wc</Icon>
+              <span>{gender_dict[field.gender]}</span>
+            </Col>
+            <Badge className="perfume-card-badge right">
+              {field.launch_date ? field.launch_date.substr(0, 4) : "(None)"}년
+              출시
+            </Badge>
+          </Row>
+          <Row className="note-tags">
+            {field.top_notes.length > 0 ? (
+              field.top_notes.slice(0, 3).map((note, note_id) => (
+                <Chip
+                  close={false}
+                  options={null}
+                  key={note_id}
+                  className={`chip-color-${note_id % 10}`}
+                >
+                  {note.kor_name || note.name}
+                </Chip>
+              ))
+            ) : (
+              <Chip close={false}>노트정보없음</Chip>
+            )}
+          </Row>
         </div>
         <Link to={`/detail/${field.id}`}>
           <Row className="goto-detail-row">
