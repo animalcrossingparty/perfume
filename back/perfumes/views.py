@@ -1,59 +1,60 @@
-from .models import Perfume, Review, Brand, Note, Image
-from accounts.models import Survey
+import jwt, os, base64, json, random
+from time import time
+
+from PIL import Image as PILImage
+
+from django.conf import settings
+from django.core.files.images import File
+from django.core.paginator import Paginator
+from django.http import Http404, QueryDict
 from django.shortcuts import render, get_object_or_404
-from .serializers import *
+from django.contrib.auth import get_user_model
+from django.db.models import Q, Count, Avg, F
+
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.conf import settings
-import jwt
-from time import time
-from django.contrib.auth import get_user_model
-from django.core.paginator import Paginator
-from perfumes.utils import knn, tf_idf, exchange_rate
-from django.db.models import Q, Count, Avg, F
-import json
+from rest_framework.exceptions import AuthenticationFailed, ValidationError
+
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
-from time import time
-from django.http import Http404, QueryDict
-from rest_framework.exceptions import AuthenticationFailed, ValidationError
+
 from accounts.views import is_logged_in
-import base64
-import os
-from PIL import Image as PILImage
-from django.conf import settings
-import random
-from django.core.files.images import File
-# from perfumes.utils import wordcloud
+from accounts.models import Survey
+from .models import Perfume, Review, Brand, Note, Image
+from .serializers import (
+    PerfumeSerializers, PerfumeSurveySerializers, SurveySerializers, ReviewSerializers,
+    PerfumeDetailSerializers
+)
+from .utils import knn, tf_idf, exchange_rate
 
 PAGE_SIZE = 12
+FAMOUS_NOTES = [
+    [],
+    [96, 155, 227, 388, 515, 522, 530, 562, 660],
+    [16, 45, 51, 75, 118, 207, 245, 272, 281, 390, 416, 491, 541, 565, 593, 694, 765, 858, 911],
+    [2, 161, 201, 208, 353, 358, 426, 444, 461, 512, 785],
+    [472, 527],
+    [19, 48, 82, 194, 197, 323, 379, 392, 395, 604, 688, 692, 793],
+    [224, 247, 376, 668, 708, 846, 908, 920],
+    [100, 129, 137, 146, 168, 176, 268, 283, 289, 300, 433, 571],
+    [74, 270, 336, 428, 647, 808],
+    [73,778, 889],
+    [26, 71, 205, 599, 624],
+    [88, 124, 173, 203, 274],
+    [113, 539, 747]
+]
+FAMOUS_BRANDS = [
+    1241, 1238, 1624, 2153, 864, 1708, 1713, 1724, 1816, 2023, 1934, 
+    2097, 2626, 528, 527, 390, 391, 647, 648, 260, 40, 215, 936, 1504, 
+    1543, 1517, 555, 687, 678, 1418, 1525, 2706, 2446, 16, 2326, 3046, 
+    614, 653, 1122, 293, 749, 532, 855, 1733, 3130, 2495, 3227, 3032, 
+    1315, 1191, 2326, 1240, 1200, 2036, 3140, 2104
+]
 
-@api_view(['GET', 'POST'])
-def perfume_survey(request):
-    if request.method == 'GET':
-        famous_notes =[
-                [],
-                [96, 155, 227, 388, 515, 522, 530, 562, 660],
-                [16, 45, 51, 75, 118, 207, 245, 272, 281, 390, 416, 491, 541, 565, 593, 694, 765, 858, 911],
-                [2, 161, 201, 208, 353, 358, 426, 444, 461, 512, 785],
-                [472, 527],
-                [19, 48, 82, 194, 197, 323, 379, 392, 395, 604, 688, 692, 793],
-                [224, 247, 376, 668, 708, 846, 908, 920],
-                [100, 129, 137, 146, 168, 176, 268, 283, 289, 300, 433, 571],
-                [74, 270, 336, 428, 647, 808],
-                [73,778, 889],
-                [26, 71, 205, 599, 624],
-                [88, 124, 173, 203, 274],
-                [113, 539, 747]
-            ]
-        famous_brands =[
-                    1241, 1238, 1624, 2153, 864, 1708, 1713, 1724, 1816, 2023, 1934, 
-                    2097, 2626, 528, 527, 390, 391, 647, 648, 260, 40, 215, 936, 1504, 
-                    1543, 1517, 555, 687, 678, 1418, 1525, 2706, 2446, 16, 2326, 3046, 
-                    614, 653, 1122, 293, 749, 532, 855, 1733, 3130, 2495, 3227, 3032, 
-                    1315, 1191, 2326, 1240, 1200, 2036, 3140, 2104
-                ]
+class ListSurvey(APIView):
+    def get(self, request):
+        query
         gender = request.GET.get('gender', 'all')
         age = request.GET.get('age', None)
         age = str(age)
@@ -73,12 +74,12 @@ def perfume_survey(request):
         products = products.filter(categories__in=category)
         print('category_filtered***********', products)
         # 유명 노트 포함 향수 필터링
-        products = products.filter(brand__in=famous_brands)
+        products = products.filter(brand__in=FAMOUS_BRANDS)
         print('brand_filtered***********', products)
         # sort => include_note 많이 가지고 있는 애들부터 보여주기
         notes_list = []
         for num in category:
-            notes_list += famous_notes[num]
+            notes_list += FAMOUS_NOTES[num]
 
         products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes'))).filter(all_notes__in=notes).annotate(score=Count('all_notes', filter=Q(all_notes__in=notes_list))).filter(score__gt=0).order_by('-score')
         if len(products) > 15:
@@ -86,7 +87,9 @@ def perfume_survey(request):
         print('final_filtered***********', products)
         serializer = PerfumeSerializers(products, many=True)
         return Response(serializer.data)
-    else:
+        return Response(status=200)
+    
+    def post(self, request):
         gender = request.POST.get('gender', None)
         age = request.POST.get('age', None)
         seasons = request.POST.get('seasons', None)
@@ -194,27 +197,12 @@ def perfumes_list(request):
 # 성별, 나이, 계절을 받았을 때 남아있는 향수들의 노트를 알려준다 -> include, exclude 카테고리를 받는다. -> note를 리턴
 @api_view(['GET'])
 def left_notes(request):
-    famous_notes =[
-                [],
-                [96, 155, 227, 388, 515, 522, 530, 562, 660],
-                [16, 45, 51, 75, 118, 207, 245, 272, 281, 390, 416, 491, 541, 565, 593, 694, 765, 858, 911],
-                [2, 161, 201, 208, 353, 358, 426, 444, 461, 512, 785],
-                [472, 527],
-                [19, 48, 82, 194, 197, 323, 379, 392, 395, 604, 688, 692, 793],
-                [224, 247, 376, 668, 708, 846, 908, 920],
-                [100, 129, 137, 146, 168, 176, 268, 283, 289, 300, 433, 571],
-                [74, 270, 336, 428, 647, 808],
-                [73,778, 889],
-                [26, 71, 205, 599, 624],
-                [88, 124, 173, 203, 274],
-                [113, 539, 747]
-            ]
     category = request.GET.get('category', None)
     category = list(map(int, category.split(',')))
     notes = Note.objects.all()
     result = []
     for note in category:
-        result += famous_notes[note]
+        result += FAMOUS_NOTES[note]
     
     notes = notes.filter(id__in=result)
 
@@ -242,6 +230,11 @@ def call_tf_idf(request, perfume_pk):
 
     return 1
 
+
+@swagger_auto_schema(
+    operation_summary="특정 향수 정보 및 리뷰 조회",
+    method='get'
+    )
 @api_view(['GET'])
 def perfume_detail(request, perfume_pk):
     perfume = Perfume.objects.get(pk=perfume_pk)
@@ -372,13 +365,12 @@ class SingleReview(APIView):
         review = self.get_object(review_pk)
         if user != review.user:
             return Response(status=403)
-        else:
-            for image in review.images.all():
-                fp = os.path.join('media', 'review', 'original', f'{image.pk}.webp')
-                os.remove(fp)
-                image.delete()
-            review.delete()
-            return Response(status=200, headers={'Access-Control-Allow-Headers': 'token'})
+        for image in review.images.all():
+            fp = os.path.join('media', 'review', 'original', f'{image.pk}.webp')
+            os.remove(fp)
+            image.delete()
+        review.delete()
+        return Response(status=200, headers={'Access-Control-Allow-Headers': 'token'})
 
 @swagger_auto_schema(
     operation_summary="특정 리뷰 '좋아요' / '좋아요 취소' 실행",
@@ -407,6 +399,5 @@ def like_review(request, review_pk):
     if review in user.like_reviews.all():
         user.like_reviews.remove(review)
         return Response({'userLikesThisReview': False}, status=200)
-    else:
-        user.like_reviews.add(review)
-        return Response({'userLikesThisReview': True}, status=200)
+    user.like_reviews.add(review)
+    return Response({'userLikesThisReview': True}, status=200)

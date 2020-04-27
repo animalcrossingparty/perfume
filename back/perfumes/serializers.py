@@ -67,14 +67,14 @@ class PerfumeSurveySerializers(serializers.ModelSerializer):
 class SurveySerializers(serializers.ModelSerializer):
     gender = UserSerializers(source='user.gender', read_only=True)
     age = UserSerializers(source='user.age',read_only=True)
-    hate_notes = NoteSerializers(many=True)
     like_notes = NoteSerializers(many=True)
     like_category = CategorySerializers(many=True)
 
     class Meta:
         model = Survey
-        fields = ['id', 'age', 'gender', 'season', 'hate_notes', 'like_notes', 'like_category']
-
+        fields = '__all__'
+        include = ['age', 'gender']
+        exclude = ['user']
 
 class ReviewSerializers(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
