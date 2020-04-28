@@ -5,6 +5,7 @@ import DetailPage from './DetailPage'
 import PerfumePage from './PerfumePage'
 import SurveyPage from './SurveyPage'
 import UserRank from './UserRank'
+import SurveyIntroPage from './SurveyIntroPage'
 
 export {
   HomePage,
@@ -14,4 +15,5 @@ export {
   PerfumePage,
   SurveyPage,
   UserRank,
+  SurveyIntroPage
 };

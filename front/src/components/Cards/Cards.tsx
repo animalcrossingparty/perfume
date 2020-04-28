@@ -4,11 +4,9 @@ import {
   Icon,
   CardTitle,
   Chip,
-  Badge,
   Row,
   Col,
   MediaBox,
-  Button,
 } from "react-materialize";
 import noWc from "assets/noWc.png";
 import { Link } from "react-router-dom";
@@ -127,6 +125,9 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
             <span>
               {gender_dict[field.gender]} {field.category}
             </span>
+            <p style={{fontSize: '0.8rem', fontWeight: 700}}>
+              {field.brand.name}
+            </p>
           </Col>
           {field.price > 1 ? 
           <h5 style={{ marginLeft: "auto", color: "#c71585" }}>
@@ -139,10 +140,10 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
 }
         </Row>
     <small>{field.name.substr(0, 9)}...과 유사한 향수들</small>
-        <Row className="mb-5" style={{borderBottom: '2px solid plum'}}>
+        <Row>
           
           {field.similar.length > 2 ? (
-            similar().map((eid) => <Link to={`/detail/${eid}`}><Col className="p-1"><img src={`http://i02b208.p.ssafy.io:8000/staticfiles/images/${eid}.jpg`} height="20px" alt="" /></Col></Link>)
+            similar().map((eid) => <Link key={eid + 'sim'} to={`/detail/${eid}`}><Col className="p-1"><img src={`http://i02b208.p.ssafy.io:8000/staticfiles/images/${eid}.jpg`} height="20px" alt="" /></Col></Link>)
           ) : (
             <Col  style={{paddingTop:'11.5px'}}>비슷한 향수가 없어요</Col>
           )}

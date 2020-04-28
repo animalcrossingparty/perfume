@@ -14,20 +14,21 @@ export default () => (
 		fullscreen={false}
 		options={{
 			duration: 500,
-			height: window.outerHeight * 0.8,
+			height: window.outerHeight * 0.5,
 			indicators: true,
 			interval: 10000000
 		}}
 	>
 		<Slide image={<img alt="" src={s1} />}>
-			<Caption placement="left" className="s1-cap">
+			<Caption placement="right" className="s1-cap">
 				<h3>
 					로르 리시 Laure Richis
       	</h3>
-				<small>FRUITS & CITRUS</small>
-				<h5 className="left ml-5 mt-0 row">
+				<h5 className="right ml-5 mt-0 row">
 					봄에 어울리는 산뜻한 과일향 <Button className="slider-btn">츄-릅</Button>
+					
       	</h5>
+				<small>FRUITS & CITRUS</small>
 			</Caption>
 		</Slide>
 		<Slide image={<img alt="" src={s2} />}>
