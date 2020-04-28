@@ -64,10 +64,10 @@ SORT = {
     'alpha': lambda objects: objects.order_by('name')
 }
 RESERVED_CAT = {
-    '신선': {1, 2}, '새콤': {1, 2}, '상큼': {1, 2}, '상콤': {1, 2}, '과일': {2}, '꽃': {3, 4},\
-    '여성': {3, 4}, '여자': {3, 4}, '플로럴': {3, 4}, '아로마': {5, 9}, '허브': {5}, '향긋': {5},\
-    '톡쏘는': {6}, '강렬한': {6}, '달달': {7, 11}, '달다구리': {7, 11}, '남자다운': {8}, '나무': {8},\
-    '숲': {8}, '분내': {10}, '파우더리': {10}, '뽀송한': {10}
+    '신선': {1, 2}, '새콤': {1, 2}, '상큼': {1, 2}, '상콤': {1, 2}, '과일': {2}, '꽃': {3, 4},
+    '여성': {3, 4}, '여자': {3, 4}, '플로럴': {3, 4}, '아로마': {5, 9}, '허브': {5}, '향긋': {5},
+    '톡쏘는': {6}, '강렬한': {6}, '달달': {7, 11}, '달다구리': {7, 11}, '남자다운': {8}, '나무': {8},
+    '숲': {8}, '분내': {10}, '파우더리': {10}, '뽀송한': {10}, '시트러스': {1}, '풀': {5}, '스파이스': {6}
 }
 SEASONS_ID = {
     '봄': 1, 'spring': 1, '여름': 2, 'summer': 2, '가을': 3, 'autumn': 3, 'fall': 3, '겨울': 4, 'winter': 4
@@ -88,20 +88,20 @@ def search(request):
     점수가 높은 순으로 정렬하여 10개의 향수를 list로 리턴합니다.
 
     카테고리 예약어는 perfumes.views.py의 search 함수 docstring에 있습니다.
-    citrus: ['신선', '새콤', '상큼', '상콤'],
+    citrus: ['시트러스', 신선', '새콤', '상큼', '상콤'],
     fruits: ['과일', '새콤', '상큼', '상콤', '신선'],
     flowers: ['꽃', '여성스러운', '여자여자한', '플로럴'],
     white_flowers: ['꽃', '여성스러운', '여자여자한', '플로럴'],
-    greens: ['아로마', '허브', '향긋'],
-    spices: ['톡쏘는', '강렬한'],
+    greens: ['풀', '아로마', '허브', '향긋'],
+    spices: ['스파이스', '톡쏘는', '강렬한'],
     sweets: ['달달한', '달다구리한'],
     woods: ['남자다운', '나무', '숲'],
     resins: ['아로마'],
-    musk: ['분내', '파우더리', '뽀송한'],
+    musk: ['분내', '파우더리', '뽀송'],
     beverages: ['달달한', '달다구리한']
     """
     keywords = request.GET.get('keywords')
-    keywords = set(keywords.split(',')) - set(['향수들', '향수', 'perfume', 'perfumes'])
+    keywords = set(keywords.split(',')) - {'향수들', '향수', 'perfume', 'perfumes'}
 
     # 달다구리한이라고 쳤을 때 달다구리에 해당하는 카테고리가 나와야 함
     kw_cat = keywords & set(RESERVED_CAT)
@@ -135,7 +135,6 @@ def search(request):
     for season_id in season_search:
         season_Q |= Q(id=season_id)
 
-    # 계절 추가시키기
     perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('top_notes')\
         .prefetch_related('heart_notes').prefetch_related('base_notes')\
         .prefetch_related('categories').prefetch_related('review_set')\

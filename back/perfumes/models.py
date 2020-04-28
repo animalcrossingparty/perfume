@@ -15,7 +15,7 @@ class Category(models.Model):
 
 class Note(models.Model):
     name = models.CharField(max_length=100)
-    kor_name = models.CharField(max_length=100, blank=True)
+    kor_name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
