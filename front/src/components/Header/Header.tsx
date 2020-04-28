@@ -34,7 +34,7 @@ class Header extends Component<HeaderProps> {
         className="header-box"
         brand={
           <Link className="brand-logo" to="/">
-            LAURE RICHIS<small>로르 리시, 세상의 모든 향수</small>
+            LAURE RICHIS
           </Link>
         }
         id="mobile-nav"

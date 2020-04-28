@@ -119,7 +119,7 @@ class Detail extends Component<DetailProps> {
               <h5 className="perfume_brand">
                 <small className="detail_price">
                   {detail.price
-                    ? "₩ " + this.makeComma(detail.price) + " 원"
+                    ? "₩ " + this.makeComma((detail.price).toFixed(0)) + " 원"
                     : "가격 정보가 없습니다"}
                 </small>
                 <small>made by</small>
