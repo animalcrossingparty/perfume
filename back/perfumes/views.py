@@ -102,7 +102,7 @@ def search(request):
     """
     st = time()
     keywords = request.GET.get('keywords')
-    keywords = set(keywords.split(',')) - {'향수들', '향수', 'perfume', 'perfumes'}
+    keywords = set(keywords.split(','))
 
     kw_cat = keywords & set(RESERVED_CAT)
     keywords = keywords - kw_cat
@@ -123,25 +123,26 @@ def search(request):
     for kw in keywords:
         if ord(kw[0]) < 123:  # 검색어가 영어 또는 숫자일 때 (첫글자로 판별)
             keywords_e.add(kw)  # 영어 또는 숫자인 검색어 골라냄. 나중에 이름 검색할 거임
-            brand_Q |= Q(brand__name__icontains=kw)
-            top_note_Q |= Q(top_notes__name__icontains=kw)
-            heart_note_Q |= Q(heart_notes__name__icontains=kw)
-            base_note_Q |= Q(base_notes__name__icontains=kw)
-            review_Q |= Q(review__content__icontains=kw)
+            brand_Q |= Q(brand__name=kw)
+            top_note_Q |= Q(top_notes__name=kw)
+            heart_note_Q |= Q(heart_notes__name=kw)
+            base_note_Q |= Q(base_notes__name=kw)
+            # review_Q |= Q(review__content__icontains=kw)
         else:  # 한국어일 때
-            top_note_Q |= Q(top_notes__kor_name__icontains=kw)
-            heart_note_Q |= Q(heart_notes__kor_name__icontains=kw)
-            base_note_Q |= Q(base_notes__kor_name__icontains=kw)
+            top_note_Q |= Q(top_notes__kor_name=kw)
+            heart_note_Q |= Q(heart_notes__kor_name=kw)
+            base_note_Q |= Q(base_notes__kor_name=kw)
     print('brand_Q:', brand_Q)
     print('note_Q:', top_note_Q)
     print('review_Q:', review_Q)
 
     season_Q = Q()
     for season_id in season_search:
-        season_Q |= Q(id=season_id)
+        season_Q &= Q(id=season_id)
 
+    #.prefetch_related('review_set').annotate(review_cnt=Count('review', filter=review_Q)) + F('review_cnt')
     perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes')\
-        .prefetch_related('base_notes').prefetch_related('categories').prefetch_related('review_set').prefetch_related('seasons')\
+        .prefetch_related('base_notes').prefetch_related('categories').prefetch_related('seasons')\
         .annotate(name_exact=Case(
             When(name__in=keywords_e, then=Value(100000)), default=Value(0), output_field=IntegerField())
             )\
@@ -154,10 +155,9 @@ def search(request):
             note_cnt=Count('top_notes', filter=top_note_Q) + Count('heart_notes', filter=heart_note_Q)\
                 + Count('base_notes', filter=base_note_Q)
             )\
-        .annotate(review_cnt=Count('review', filter=review_Q))\
         .annotate(category_cnt=ExpressionWrapper(Count('categories', filter=Q(id__in=cat_search)), output_field=IntegerField()))\
         .annotate(score=ExpressionWrapper(
-            F('name_exact') + F('name_include') + 100 * F('seasons_cnt') + 10 * F('brand_cnt') + 5 * F('note_cnt') + F('review_cnt'),
+            F('name_exact') + F('name_include') + 100 * F('seasons_cnt') + 10 * F('brand_cnt') + 5 * F('note_cnt'),
             output_field=IntegerField()
             ))\
         .order_by('-score')[:10]
