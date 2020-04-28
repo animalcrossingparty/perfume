@@ -51,11 +51,33 @@ FAMOUS_BRANDS = [
     614, 653, 1122, 293, 749, 532, 855, 1733, 3130, 2495, 3227, 3032, 
     1315, 1191, 2326, 1240, 1200, 2036, 3140, 2104
 ]
+FAMOUS_FEMALE_PERFUMES = [
+    26131711, 26124427, 26143979, 26123609, 26133691, 
+    26125233, 26133238, 26152968, 26132748, 26150347, 
+    26128643, 26128672, 26131830, 26125239, 26134042,
+    26131741, 26131617, 26157585, 26134776, 26148349, 
+    26143253, 26147317, 26125225, 26129045, 26142599,
+    26142669
+]
+FAMOUS_MALE_PERFUMES = [
+    26120368, 26136111, 26120217, 26125536, 26136111, 
+    26120906, 26129285, 26130360, 26120617, 26143814,
+    26131702, 26131542, 26146888, 26153980, 26150184, 
+    26146434, 26124682, 26140186, 26147770
+]
+FAMOUS_UNISEX_PERFUMES = [
+    26128238, 26150936, 26155264, 26132578, 26125725,
+    26129074, 26144402, 26123480, 26130289, 26140273,
+    26122099, 26142856, 26124417, 26129077, 26131303,
+    26122076,26135917, 26125679, 26124217, 26131474,
+    26147313, 26130500
+]
+
 SORT = {
     'alpha': lambda objects: objects.all().order_by('name'),
     'reviewcnt': lambda objects: objects.prefetch_related('review_set').annotate(reviewcnt=Count('review'))\
         .order_by('-reviewcnt'),
-    'rate': lambda objects: objects.prefetch_related('review_set').annotate(avgrate=Avg('review__rate')).filter(reviewcnt__gt=10)\
+    'rate': lambda objects: objects.prefetch_related('review_set').annotate(reviewcnt=Count('review')).annotate(avgrate=Avg('review__rate')).filter(reviewcnt__gt=10)\
         .order_by('-avgrate'),
     'cheap': lambda objects: objects.order_by('price'),
     'expensive': lambda objects: objects.order_by('-price'),
@@ -72,7 +94,24 @@ def search(request, keywords):
 
     # perfume
     return 
+@api_view(['GET'])
+def famous_perfumes(request):
+    gender = request.GET.get('gender', 'all')
 
+    products = Perfume.objects.all().filter(availability=True)
+    # 0: 남성, 1: 여성, 2: 공용
+    if gender == 0:
+        products = products.filter(id__in=FAMOUS_MALE_PERFUMES)
+    elif gender == 1:
+        products = products.filter(id__in=FAMOUS_FEMALE_PERFUMES)
+    elif gender == 2:
+        products = products.filter(id__in=FAMOUS_UNISEX_PERFUMES)
+    else:
+        all_perfumes = FAMOUS_MALE_PERFUMES + FAMOUS_FEMALE_PERFUMES + FAMOUS_UNISEX_PERFUMES
+        products = products.filter(id__in=all_perfumes)
+
+    serializer = PerfumeSerializers(products, many=True)
+    return Response(serializer.data)
 
 class SurveyAPI(APIView):
     # @swagger_auto_schema(
@@ -156,7 +195,7 @@ def perfumes_list(request):
     sort = request.GET.get('sort', 'alpha') # 기본값 없음 무조건 줌
     category = request.GET.get('category', 'all')  # 카테고리는 하나만 옴 사용자의 혼란을 줄이기 위해
     page = int(request.GET.get('page', 1))
-    brands = request.GET.get('brand_name', 'all')
+    brands = request.GET.get('brand', 'all')
     notes = request.GET.get('include', 'all')
     gender = request.GET.get('gender', 'all')  # 0: 남자, 1: 여자, 2: 공용 , all 중 무조건 하나만 줌
     # ------------------------------------------------------------

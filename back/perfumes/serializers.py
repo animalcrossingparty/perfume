@@ -38,7 +38,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
     class Meta:
         model = Perfume
         fields = '__all__'
-        include = ['avg_rate', 'total_review', 'thumbnail']
+        include = ['avg_rate', 'total_review']
 
     def get_avg_rate(self, instance):
         try:
