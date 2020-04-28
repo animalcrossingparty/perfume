@@ -39,7 +39,6 @@ class Header extends Component<HeaderProps> {
         }
         id="mobile-nav"
         menuIcon={<Icon>menu</Icon>}
-        dividor
         fixed={false}
         options={{
           draggable: false,
