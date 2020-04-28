@@ -1,27 +1,3 @@
-.MuiCardActions-root {
-  justify-content: space-around;
-}
-
-.MuiIconButton-root:focus {
-  background-color: rgb(228, 217, 217);
-}
-
-.btn {
-  background-color: rgb(211, 201, 201);
-}
-
-.btn:hover {
-  background-color: rgb(177, 166, 166) !important;
-}
-
-.btn > a {
-  color: white;
-}
-
-.MuiIconButton-root {
-  color: rgba(255, 0, 0, 0.54) !important;
-}
-
 .card-image {
   width: 100%;
 }
@@ -34,24 +10,22 @@
   border-radius: 5px 5px 0 0;
 }
 
-.card-content {
-  /* background: rgb(255, 255, 255); */
-}
 
 .pagenation-container {
   text-align: center;
 }
-
 .card .card-title {
-  width: 90%;
+  margin-left: auto;
+  text-align: right;
+  padding-right: 1rem;
+  font-size: 1rem;
+}
+.card-c-title {
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left: 5px;
-  padding-top: 8px;
-  font-style: italic;
 }
-
 .chip {
   border-radius: 0 !important;
   user-select: none;
@@ -69,61 +43,39 @@
 }
 
 .perfume-card-badge {
-  /* background-color: white; */
-  border-radius: 10px;
-  font-style: italic;
+  background: #dda0dd;
+  color: black !important;
 }
 
 .rate-box {
   display: flex;
   align-items: center;
   padding: 0.25rem 0.8rem;
-  /* background: rgb(240, 223, 223); */
-  color: black;
-  /* box-shadow: 1px 1px 1px gray; */
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 32px;
   border-radius: 50px;
   font-weight: 500;
 }
 .rate-box-star {
+  font-size: 1rem;
   margin-right: 0.2em !important;
   color: rgb(241, 220, 161);
-  text-shadow: 1px 1px 1px gray;
 }
 .gender-indicator {
   color: black;
-  display: flex;
-  align-items: center;
+  font-size: 0.5rem;
 }
 .gender-indicator > i {
   margin-right: 0.3rem;
 }
 
-.goto-detail-row {
-  background: linear-gradient(to right, rgb(241, 222, 222), rgb(217, 217, 236));
-  color: rgb(71, 55, 55);
-  width: 100%;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 !important;
-  font-weight: bold;
-  /* font-style: italic; */
-}
-
-.goto-detail-row:hover {
-  background: linear-gradient(to left, rgb(223, 197, 197), rgb(189, 189, 228));
-  color: rgb(255, 255, 255);
-  transition: 0.3s ease;
-}
 .card .card-content {
   padding: 0 !important;
 }
 
 .title-gender-tags {
-  padding: 1rem 1rem;
+  padding: 1rem 1rem 0 1rem;
+  margin: 0;
 }
 
 .card-image > img {
@@ -136,53 +88,53 @@ span.badge {
   margin-left: 0;
 }
 
+
 .note-tags {
   margin: 1rem !important;
 }
 
 .gender-year {
-  border-bottom: 1px dotted gray;
   padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 .chip-color-0 {
-  background-color: #00363d;
+  background-color: #6a5acd;
   color: white;
 }
 .chip-color-1 {
-  background-color: #f79a3e;
+  background-color: #7d68ee;
   color: white;
 }
 .chip-color-2 {
-  background-color: #eb6651;
+  background-color: #9370db;
   color: white;
 }
 .chip-color-3 {
-  background-color: #30aabc;
+  background-color: #800080;
   color: white;
 }
 .chip-color-4 {
-  background-color: #eb4962;
+  background-color: #9400d3;
   color: white;
 }
 .chip-color-5 {
-  background-color: #37b8af;
+  background-color: #9932cc;
   color: white;
 }
 .chip-color-6 {
-  background-color: #78a300;
+  background-color: #da70d6;
   color: white;
 }
 .chip-color-7 {
-  background-color: #f0ca28;
+  background-color: #dda0dd;
   color: white;
 }
 .chip-color-8 {
-  background-color: #833ab4;
+  background-color: #ff1493;
   color: white;
 }
 .chip-color-9 {
-  background-color: #e1306c;
+  background-color: #c71585;
   color: white;
 }

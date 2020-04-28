@@ -6,7 +6,10 @@
   background-color: transparent;
   animation: fadeInUp 1.2s;
 }
-
+.nav-wrapper {
+  line-height: 64px;
+  background: white;
+}
 nav .brand-logo {
   color: black;
   font-weight: 100;
@@ -25,15 +28,13 @@ nav .brand-logo {
 
 nav ul a , nav ul div {
   font-size: 1rem;
-  background-color: rgba(255,255,255,0.8);
-  font-weight: 400;
+  margin-right: 12px;
+  font-weight: 700;
   color: black;
   display: block;
-  padding: 0 10px;
   cursor: pointer;
   letter-spacing: 5px;
 }
 nav ul a:hover {
   color: white;
-  text-shadow: 1px 1px black;
 }
