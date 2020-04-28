@@ -69,6 +69,10 @@ RESERVED_CAT = {
     '톡쏘는': {6}, '강렬한': {6}, '달달': {7, 11}, '달다구리': {7, 11}, '남자다운': {8}, '나무': {8},\
     '숲': {8}, '분내': {10}, '파우더리': {10}, '뽀송한': {10}
 }
+SEASONS_ID = {
+    '봄': 1, 'spring': 1, '여름': 2, 'summer': 2, '가을': 3, 'autumn': 3, 'fall': 3, '겨울': 4, 'winter': 4
+}
+@api_view(['GET'])
 def search(request):
     """
     a = [
@@ -91,72 +95,59 @@ def search(request):
     # 달다구리한이라고 쳤을 때 달다구리에 해당하는 카테고리가 나와야 함
     kw_cat = keywords & set(RESERVED_CAT)
     keywords -= kw_cat
+
+    season_search = set()
+    for kw in keywords & set(SEASONS_ID):
+        season_search.add(SEASONS_ID[kw])
+
     print('keywords:', keywords)
     cat_search = set()
     for kw in kw_cat:
         cat_search.update(RESERVED_CAT[kw])
     print('cat_search:', cat_search)
 
-    # note_cnt = Value(0); brand_cnt = Value(0); review_cnt = Value(0)
-    # keywords_e = set()
-    # for kw in keywords:
-    #     if ord(kw[0]) < 123:  # 검색어가 영어 또는 숫자일 때 (첫글자로 판별)
-    #         keywords_e.add(kw)  # 영어 또는 숫자인 검색어 골라냄. 나중에 이름 검색할 거임
-    #         brand_cnt += Count('brand', filter=Q(name__icontains=kw))
-    #         note_cnt += Count('top_notes', filter=Q(name__icontains=kw))\
-    #             + Count('heart_notes', filter=Q(name__icontains=kw))\
-    #             + Count('base_notes', filter=Q(name__icontains=kw))
-    #         review_cnt += Count('review', filter=Q(review__content__icontains=kw))
-    #     else:  # 한국어일 때
-    #         note_cnt += Count('top_notes', filter=Q(kor_name__icontains=kw))\
-    #             + Count('heart_notes', filter=Q(kor_name__icontains=kw))\
-    #             + Count('base_notes', filter=Q(kor_name__icontains=kw))
-    # print(brand_cnt)
-    # brand_cnt = ExpressionWrapper(brand_cnt, output_field=IntegerField())
-    # note_cnt = ExpressionWrapper(note_cnt, output_field=IntegerField())
-    # review_cnt = ExpressionWrapper(review_cnt, output_field=IntegerField())
-    # print(brand_cnt)
-
     note_Q = Q(); brand_Q = Q(); review_Q = Q()
     keywords_e = set()
-    print('keywords:', keywords)
     for kw in keywords:
         if ord(kw[0]) < 123:  # 검색어가 영어 또는 숫자일 때 (첫글자로 판별)
             keywords_e.add(kw)  # 영어 또는 숫자인 검색어 골라냄. 나중에 이름 검색할 거임
             brand_Q |= Q(name__icontains=kw)
             note_Q |= Q(name__icontains=kw) | Q(name__icontains=kw) | Q(name__icontains=kw)
             review_Q |= Q(review__content__icontains=kw)
-        else:  # 한국어일 때
-            note_Q |= Q(kor_name__icontains=kw) | Q(kor_name__icontains=kw) | Q(kor_name__icontains=kw)
-    # print(brand_cnt)
-    # brand_cnt = ExpressionWrapper(brand_cnt, output_field=IntegerField())
-    # note_cnt = ExpressionWrapper(note_cnt, output_field=IntegerField())
-    # review_cnt = ExpressionWrapper(review_cnt, output_field=IntegerField())
-    # print(brand_cnt)
+        # else:  # 한국어일 때
+        #     note_Q |= Q(kor_name__icontains=kw) | Q(kor_name__icontains=kw) | Q(kor_name__icontains=kw)
     print('brand_Q:', brand_Q)
     print('note_Q:', note_Q)
     print('review_Q:', review_Q)
 
+    season_Q = Q()
+    for season_id in season_search:
+        season_Q |= Q(id=season_id)
+
     # 계절 추가시키기
-    perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes')\
-        .prefetch_related('base_notes').prefetch_related('categories').prefetch_related('review_set')\
+    perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('top_notes')\
+        .prefetch_related('heart_notes').prefetch_related('base_notes')\
+        .prefetch_related('categories').prefetch_related('review_set')\
+        .prefetch_related('seasons')\
         .annotate(name_exact=Case(
-            When(name__in=keywords_e, then=Value(10000)), default=Value(0), output_field=IntegerField())
+            When(name__in=keywords_e, then=Value(100000)), default=Value(0), output_field=IntegerField())
             )\
         .annotate(name_include=Case(
-            When(name__icontains=keywords_e, then=Value(100)), default=Value(0), output_field=IntegerField())
+            When(name__icontains=keywords_e, then=Value(1000)), default=Value(0), output_field=IntegerField())
             )\
+        .annotate(seasons_cnt=Count('seasons', filter=season_Q))\
         .annotate(brand_cnt=Count('brand', filter=brand_Q))\
         .annotate(note_cnt=Count('top_notes', filter=note_Q) + Count('heart_notes', filter=note_Q) + Count('base_notes', filter=note_Q))\
         .annotate(review_cnt=Count('review', filter=review_Q))\
         .annotate(category_cnt=ExpressionWrapper(Count('categories', filter=Q(id__in=cat_search)), output_field=IntegerField()))\
         .annotate(score=ExpressionWrapper(
-            F('name_exact') + F('name_include') + 10 * F('brand_cnt') + 5 * F('note_cnt') + F('review_cnt'),
+            F('name_exact') + F('name_include') + 100 * F('seasons_cnt') + 10 * F('brand_cnt') + 5 * F('note_cnt') + F('review_cnt'),
             output_field=IntegerField()
             ))\
         .order_by('-score')[:10]
     serializers = PerfumeSerializers(perfumes, many=True)
     return Response(serializers.data, status=200)
+
 
 class SurveyAPI(APIView):
     # @swagger_auto_schema(
