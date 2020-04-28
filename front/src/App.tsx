@@ -8,6 +8,7 @@ import {
   PerfumePage,
   SurveyPage,
   UserRank,
+  SurveyIntroPage
 } from "./pages";
 import storage from "lib/storage";
 import { connect } from "react-redux";
@@ -39,13 +40,14 @@ class App extends Component<AppProps> {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{backgroundColor: '#fbfbfb'}}>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={AboutPage} />
         <Route path="/perfume/" component={PerfumePage} />
         <Route path="/auth" component={LoginPage} />
         <Route path="/detail" component={DetailPage} />
         <Route path="/survey" component={SurveyPage} />
+        <Route exact path="/surveyintro" component={SurveyIntroPage} />
         <Route path="/rank" component={UserRank} />
       </div>
     );
