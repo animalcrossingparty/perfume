@@ -100,45 +100,48 @@ def search(request):
     musk: ['분내', '파우더리', '뽀송'],
     beverages: ['달달한', '달다구리한']
     """
+    st = time()
     keywords = request.GET.get('keywords')
     keywords = set(keywords.split(',')) - {'향수들', '향수', 'perfume', 'perfumes'}
 
-    # 달다구리한이라고 쳤을 때 달다구리에 해당하는 카테고리가 나와야 함
     kw_cat = keywords & set(RESERVED_CAT)
-    keywords -= kw_cat
+    keywords = keywords - kw_cat
+    leng = len(keywords)
+    print('keywords:', keywords)
 
     season_search = set()
     for kw in keywords & set(SEASONS_ID):
         season_search.add(SEASONS_ID[kw])
 
-    print('keywords:', keywords)
     cat_search = set()
     for kw in kw_cat:
         cat_search.update(RESERVED_CAT[kw])
     print('cat_search:', cat_search)
 
-    note_Q = Q(); brand_Q = Q(); review_Q = Q()
+    top_note_Q = Q(); heart_note_Q = Q(); base_note_Q = Q(); brand_Q = Q(); review_Q = Q()
     keywords_e = set()
     for kw in keywords:
         if ord(kw[0]) < 123:  # 검색어가 영어 또는 숫자일 때 (첫글자로 판별)
             keywords_e.add(kw)  # 영어 또는 숫자인 검색어 골라냄. 나중에 이름 검색할 거임
-            brand_Q |= Q(name__icontains=kw)
-            note_Q |= Q(name__icontains=kw) | Q(name__icontains=kw) | Q(name__icontains=kw)
+            brand_Q |= Q(brand__name__icontains=kw)
+            top_note_Q |= Q(top_notes__name__icontains=kw)
+            heart_note_Q |= Q(heart_notes__name__icontains=kw)
+            base_note_Q |= Q(base_notes__name__icontains=kw)
             review_Q |= Q(review__content__icontains=kw)
-        # else:  # 한국어일 때
-        #     note_Q |= Q(kor_name__icontains=kw) | Q(kor_name__icontains=kw) | Q(kor_name__icontains=kw)
+        else:  # 한국어일 때
+            top_note_Q |= Q(top_notes__kor_name__icontains=kw)
+            heart_note_Q |= Q(heart_notes__kor_name__icontains=kw)
+            base_note_Q |= Q(base_notes__kor_name__icontains=kw)
     print('brand_Q:', brand_Q)
-    print('note_Q:', note_Q)
+    print('note_Q:', top_note_Q)
     print('review_Q:', review_Q)
 
     season_Q = Q()
     for season_id in season_search:
         season_Q |= Q(id=season_id)
 
-    perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('top_notes')\
-        .prefetch_related('heart_notes').prefetch_related('base_notes')\
-        .prefetch_related('categories').prefetch_related('review_set')\
-        .prefetch_related('seasons')\
+    perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes')\
+        .prefetch_related('base_notes').prefetch_related('categories').prefetch_related('review_set').prefetch_related('seasons')\
         .annotate(name_exact=Case(
             When(name__in=keywords_e, then=Value(100000)), default=Value(0), output_field=IntegerField())
             )\
@@ -147,7 +150,10 @@ def search(request):
             )\
         .annotate(seasons_cnt=Count('seasons', filter=season_Q))\
         .annotate(brand_cnt=Count('brand', filter=brand_Q))\
-        .annotate(note_cnt=Count('top_notes', filter=note_Q) + Count('heart_notes', filter=note_Q) + Count('base_notes', filter=note_Q))\
+        .annotate(
+            note_cnt=Count('top_notes', filter=top_note_Q) + Count('heart_notes', filter=heart_note_Q)\
+                + Count('base_notes', filter=base_note_Q)
+            )\
         .annotate(review_cnt=Count('review', filter=review_Q))\
         .annotate(category_cnt=ExpressionWrapper(Count('categories', filter=Q(id__in=cat_search)), output_field=IntegerField()))\
         .annotate(score=ExpressionWrapper(
@@ -156,7 +162,10 @@ def search(request):
             ))\
         .order_by('-score')[:10]
     serializers = PerfumeSerializers(perfumes, many=True)
-    return Response(serializers.data, status=200)
+    try:
+        return Response(serializers.data, status=200)
+    finally:
+        print(f'{leng}개 단어 검색하는 데 걸린 시간: {time()-st}s')
 
 
 class SurveyAPI(APIView):
