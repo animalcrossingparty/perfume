@@ -26,7 +26,7 @@ from accounts.models import Survey
 from .models import Perfume, Review, Brand, Note, Image
 from .serializers import (
     PerfumeSerializers, PerfumeSurveySerializers, SurveySerializers, ReviewSerializers,
-    PerfumeDetailSerializers, NoteSerializers
+    PerfumeDetailSerializers, NoteSerializers, SearchQuerySerializers
 )
 from .utils import knn, tf_idf, exchange_rate
 
@@ -72,25 +72,36 @@ RESERVED_CAT = {
 SEASONS_ID = {
     '봄': 1, 'spring': 1, '여름': 2, 'summer': 2, '가을': 3, 'autumn': 3, 'fall': 3, '겨울': 4, 'winter': 4
 }
+@swagger_auto_schema(
+    operation_summary="향수 검색",
+    method='get',
+    query_serializer=SearchQuerySerializers
+)
 @api_view(['GET'])
 def search(request):
     """
-    a = [
-        ['신선', '새콤', '상큼', '상콤'],  # 'citrus'
-        ['과일', '새콤', '상큼', '상콤', '신선'],  # 'fruits'
-        ['꽃', '여성스러운', '여자여자한', '플로럴'],  #'flowers'
-        ['꽃', '여성스러운', '여자여자한', '플로럴'],  #'white_flowers'
-        ['아로마', '허브', '향긋'],  #'greens'
-        ['톡쏘는', '강렬한'],  #'spices'
-        ['달달한', '달다구리한'],  #'sweets'
-        ['남자다운', '나무', '숲'],  #'woods'
-        ['아로마'],  #'resins'
-        ['분내', '파우더리', '뽀송한'],  #'musk'
-        ['달달한', '달다구리한']  # 'beverages'
-    ]
+    검색어는 query param 'keywords'에 ','로 구분해서 주세요
+    카테고리(영문), 노트(영문, 한글은 아직 불가능), 리뷰(영문), 계절(한글, 영문), 향수 이름(영문)으로 검색 후 10개의 향수를 list로 반환합니다.
+    계절을 제외한 카테고리, 노트, 리뷰, 향수 이름은 contains로 필터링합니다.
+    향수 이름이 정확히 맞으면 100,000점, 향수 이름이 비슷하면 1,000점, 브랜드명이 비슷하면 10점, 비슷한 이름의 노트가 포함되어 있으면 각각 5점,
+    리뷰 내용에 해당 단어가 포함되어 있으면 1점으로 계산합니다.
+    점수가 높은 순으로 정렬하여 10개의 향수를 list로 리턴합니다.
+
+    카테고리 예약어는 perfumes.views.py의 search 함수 docstring에 있습니다.
+    citrus: ['신선', '새콤', '상큼', '상콤'],
+    fruits: ['과일', '새콤', '상큼', '상콤', '신선'],
+    flowers: ['꽃', '여성스러운', '여자여자한', '플로럴'],
+    white_flowers: ['꽃', '여성스러운', '여자여자한', '플로럴'],
+    greens: ['아로마', '허브', '향긋'],
+    spices: ['톡쏘는', '강렬한'],
+    sweets: ['달달한', '달다구리한'],
+    woods: ['남자다운', '나무', '숲'],
+    resins: ['아로마'],
+    musk: ['분내', '파우더리', '뽀송한'],
+    beverages: ['달달한', '달다구리한']
     """
     keywords = request.GET.get('keywords')
-    keywords = set(keywords.split(','))
+    keywords = set(keywords.split(',')) - set(['향수들', '향수', 'perfume', 'perfumes'])
 
     # 달다구리한이라고 쳤을 때 달다구리에 해당하는 카테고리가 나와야 함
     kw_cat = keywords & set(RESERVED_CAT)
