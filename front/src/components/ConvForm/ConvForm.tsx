@@ -1,5 +1,6 @@
 import React, { Component, createRef } from "react";
 import { ConversationalForm } from "conversational-form";
+import axios from 'axios'
 
 interface ConvFormProps {
   formFields: any;
@@ -41,7 +42,12 @@ class ConvForm extends Component<ConvFormProps> {
   }
   
   submitCallback(e) {
-    console.log(e.getFormData(true))
+    const { include } = e.getFormData(true)
+    let query = `${Number(include[0])},${Number(include[1])},${Number(include[2])}`
+    axios.get(`http://i02b208.p.ssafy.io:8000/perfumes/survey/?category=${query}`)
+    .then(r=> {
+      console.log(r.data)
+    })
   }
 
   render() {

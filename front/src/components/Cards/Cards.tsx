@@ -7,26 +7,15 @@ import {
   Badge,
   Row,
   Col,
+  MediaBox,
+  Button,
 } from "react-materialize";
+import noWc from "assets/noWc.png";
 import { Link } from "react-router-dom";
 import "./Cards.css";
 
 interface EachPerfumeProps {
-  field: {
-    name: string;
-    launch_date: string;
-    thumbnail: string;
-    gender: number;
-    availibility: string;
-    brand_id: string;
-    id: number;
-    image: string;
-    top_notes: Array<any>;
-    heart_notes: Array<object>;
-    base_notes: Array<object>;
-    avg_rate: number;
-    total_review: number;
-  };
+  field: any;
 }
 
 const defaultField = {
@@ -43,6 +32,10 @@ const defaultField = {
   base_notes: [{ name: "floral" }],
   avg_rate: 0,
   total_review: 0,
+  price: 0,
+  category: [0],
+  similar: [0],
+  recommended: [0],
 };
 
 export default function Cards({ field = defaultField }: EachPerfumeProps) {
@@ -52,63 +45,108 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
     2: "SHARED / UNISEX",
   };
 
+  const addDefaultSrc = (e) => {
+    e.target.src = noWc;
+  };
+
+  const makeComma = (x: number) =>
+    x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  
+  const similar = () => {
+    if (field.similar.length > 3) {
+      return field.similar.substr(1,field.similar.length - 2).split(', ')
+    } else {
+      return '유사한 향수를 찾을 수 없습니다.'
+    }
+    
+  }
+  
   return (
     <Card
       closeIcon={<Icon>close</Icon>}
+      title="show cloud"
       header={
-        <CardTitle height="260" image={field.thumbnail || "no-image"} reveal waves="light" />
+        <Link to={`/detail/${field.id}`}>
+          <CardTitle image={field.thumbnail || "no-image"} waves="light" />
+        </Link>
       }
-      reveal={<p>워드클라우드가 들어갈 자리입니다</p>}
-      revealIcon={<Icon className="hidden">home</Icon>}
+      reveal={
+        <Col>
+          <MediaBox
+            id={field.id + "wcbox"}
+            options={{
+              inDuration: 275,
+              onCloseEnd: null,
+              onCloseStart: null,
+              onOpenEnd: null,
+              onOpenStart: null,
+              outDuration: 200,
+            }}
+          >
+            <img
+              alt=""
+              width="100%"
+              onError={(e) => addDefaultSrc(e)}
+              src={`http://i02b208.p.ssafy.io:8000/staticfiles/wordcloud/${field.id}-wc.webp`}
+            />
+          </MediaBox>
+          <small>워드 클라우드</small>
+          <p>클릭하여 자세히 보기</p>
+          <Row className="note-tags">
+            {field.top_notes.length > 0 ? (
+              field.top_notes.slice(0, 3).map((note, note_id) => (
+                <Chip
+                  close={false}
+                  options={null}
+                  key={note_id}
+                  className={`chip-color-${note_id % 10}`}
+                >
+                  {note.kor_name || note.name}
+                </Chip>
+              ))
+            ) : (
+              <Chip close={false}>노트정보없음</Chip>
+            )}
+          </Row>
+        </Col>
+      }
+      revealIcon={<Icon>cloud_circle</Icon>}
     >
-      <div>
-        <div className="title-gender-tags">
-        <Row>
-          <Col s={9}>
-            <p className="card-title">{field.name}</p>
-          </Col>
-          <Col s={3}>
-            <p className="rate-box right"><Icon className="rate-box-star">star</Icon>{field.avg_rate.toFixed(2)}</p>
-          </Col>
-        </Row>
+      <div className="title-gender-tags">
+        <p className="card-c-title mx-3">{field.name}</p>
+        <div className="perfume-card-badge right p-1 mr-2">
+          {field.launch_date ? field.launch_date.substr(0, 4) : "(None)"}
+        </div>
+        <p className="rate-box">
+          <Icon className="rate-box-star">star</Icon>
+          {field.avg_rate.toFixed(2)}{" "}
+          <small className="ml-2">({field.total_review})</small>
+        </p>
         <Row className="mx-2 gender-year">
           <Col className="gender-indicator">
-            <Icon>wc</Icon>
-            <span>{gender_dict[field.gender]}</span>
+            <span>
+              {gender_dict[field.gender]} {field.category}
+            </span>
           </Col>
-          <Badge className="perfume-card-badge right">
-            {field.launch_date
-              ? field.launch_date.substr(0, 4)
-              : "(None)"}
-            년 출시
-          </Badge>
+          {field.price > 1 ? 
+          <h5 style={{ marginLeft: "auto", color: "#c71585" }}>
+            {makeComma(field.price.toFixed(0))}
+            <small>원</small>
+          </h5>
+          : <h5 style={{ marginLeft: "auto", color: "#c71585", paddingTop: "6px", paddingBottom: '7px', fontSize: '1rem'}}>
+          (가격 없음)
+        </h5>
+}
         </Row>
-        <Row className="note-tags">
-          {field.top_notes.length > 0 ? (
-            field.top_notes.slice(0, 3).map((note, note_id) => (
-              <Chip
-                close={false}
-                options={null}
-                key={note_id}
-                className={`chip-color-${note_id % 10}`}
-              >
-                {note.kor_name || note.name}
-              </Chip>
-            ))
+    <small>{field.name.substr(0, 9)}...과 유사한 향수들</small>
+        <Row className="mb-5" style={{borderBottom: '2px solid plum'}}>
+          
+          {field.similar.length > 2 ? (
+            similar().map((eid) => <Link to={`/detail/${eid}`}><Col className="p-1"><img src={`http://i02b208.p.ssafy.io:8000/staticfiles/images/${eid}.jpg`} height="20px" alt="" /></Col></Link>)
           ) : (
-            <Chip close={false}>노트정보없음</Chip>
+            <Col  style={{paddingTop:'11.5px'}}>비슷한 향수가 없어요</Col>
           )}
         </Row>
-        </div>
-        <Link to={`/detail/${field.id}`}>
-          <Row className="goto-detail-row">
-            <p>보러가기</p>
-            <p className="mx-2">
-              <Icon>insert_comment</Icon>
-            </p>
-            <p>리뷰 ({field.total_review})</p>
-          </Row>
-        </Link>
       </div>
     </Card>
   );

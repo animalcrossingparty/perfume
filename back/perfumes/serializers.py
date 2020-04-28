@@ -102,3 +102,6 @@ class PerfumeDetailSerializers(PerfumeSerializers):
     def get_reviews(self, instance):
         ordered = instance.review_set.order_by('-created_at')
         return ReviewSerializers(ordered, many=True).data
+
+class SearchQuerySerializers(serializers.Serializer):
+    keywords = serializers.CharField(required=True)

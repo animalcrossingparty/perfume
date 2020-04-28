@@ -26,7 +26,7 @@ export default () => (
       	</h3>
 				<small>FRUITS & CITRUS</small>
 				<h5 className="left ml-5 mt-0 row">
-					봄에 어울리는 산뜻한 과일향 <Button className="slider-btn">만나러 가기</Button>
+					봄에 어울리는 산뜻한 과일향 <Button className="slider-btn">츄-릅</Button>
       	</h5>
 			</Caption>
 		</Slide>
