@@ -31,7 +31,7 @@ export default () => (
           </Chip>
         </div>
         <div className="nutshell_1">
-          " 하고 싶은 말 "
+          "잠을 자고 싶어요"
         </div>
       </div>
     </div>

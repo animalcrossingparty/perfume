@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Icon, Button } from "react-materialize";
+import { Icon, Button, Row } from "react-materialize";
 import { bindActionCreators } from "redux";
 import * as reviewActions from "redux/modules/review";
 import BeautyStars from "beauty-stars";
@@ -56,11 +56,12 @@ class ReviewTextBox extends Component<ReviewTextBoxProps> {
     const { content, rate } = this.props.form.toJS();
     return (
       <div className="write_comment">
+        <p className="purple lighten-4 center" style={{color: 'black'}}>PLEASE LEAVE A REVIEW FOR US</p>
         <div className="row_comment">
-          <Icon>chat</Icon>
-          <textarea name="content" id="review-content-text" onChange={this.handleChange} value={content}/>
+          <textarea name="content" id="review-content-text" cols={30} placeholder="당신의 소중한 리뷰를 남겨주세요" rows={20} onChange={this.handleChange} value={content}/>
         </div>
-        <div className="StarRating">
+        <Row style={{justifyContent: 'flex-end'}} className="StarRating">
+          <small className="mr-4">이 향수는 몇 점이었나요?</small>
         <BeautyStars
           value={rate}
           size={this.state.size}
@@ -70,10 +71,10 @@ class ReviewTextBox extends Component<ReviewTextBoxProps> {
           activeColor={this.state.activeColor}
           onChange={this.handleRate}
       />
-          <Button node="button" waves="light" onClick={this.handlePosting}>
-            SUBMIT
+          <Button style={{backgroundColor:'#3f0000', borderRadius: '10px', marginLeft: '2rem'}} node="button" waves="light" onClick={this.handlePosting}>
+            <Icon>chat</Icon>
           </Button>
-        </div>
+        </Row>
       </div>
     );
   }

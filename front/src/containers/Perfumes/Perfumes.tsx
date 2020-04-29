@@ -38,7 +38,7 @@ class Perfumes extends Component<PerfumeProps> {
       { id: '7', label: "스위츠", value: '7', checked: false },
       { id: '8', label: "우디", value: '8', checked: false },
       { id: '9', label: "발삼", value: '9', checked: false },
-      { id: '10', label: "머스트", value: '10', checked: false },
+      { id: '10', label: "머스크", value: '10', checked: false },
       { id: '11', label: "음료", value: '11', checked: false },
       { id: '12', label: "알데하이드", value: '12', checked: false },
     ],
@@ -48,9 +48,19 @@ class Perfumes extends Component<PerfumeProps> {
     const queryParams = queryString.parse(history.location.search);
     await PerfumeActions.getPerfumeInfo(queryParams);
   };
+  initializeCategoryInfo = async () => {
+    const { history } = this.props
+    const {categories} = this.state
+    const cat = queryString.parse(history.location.search).category
+    if (cat !== 'all') {
+      console.log(cat);
+    }
+    await queryString.parse(history.location.search)
+  }
 
   componentDidMount() {
     this.initializePerfumeInfo();
+    this.initializeCategoryInfo()
   }
 
   componentDidUpdate(prevProps) {
@@ -272,12 +282,15 @@ class Perfumes extends Component<PerfumeProps> {
             <div
               style={{
                 position: "fixed",
-                zIndex: 9,
-                background: "white",
-                width: "65%",
+                zIndex: 3,
+                background: "#f0f0f0",
+                width: "64.85%",
+                paddingTop: '10px',
+                margin: '0 20px 10px 12px',
+                border: '1px solid #e0e0e0'
               }}
             >
-              <Row>
+              <Row style={{}}>
                 <p
                   style={{ backgroundColor: "#e0e0e0", letterSpacing: 3 }}
                   className="m-1 ml-4 thin row p-1"
@@ -291,8 +304,9 @@ class Perfumes extends Component<PerfumeProps> {
               </Row>
               <Row
                 style={{
-                  borderBottom: "1px solid #e0e0e0",
-                  marginLeft: "1rem",
+                  margin: '0.5rem 0',
+                  padding: '0 1.5rem',
+                  background: 'white'
                 }}
               >
                 총 {this.props.num_pages} 페이지 중 {page} 페이지 | 검색 된
