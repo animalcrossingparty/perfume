@@ -25,7 +25,6 @@ class Season(models.Model):
     name = models.CharField(max_length=20)
     kor_name = models.CharField(max_length=20, blank=True)
 
-
 class Perfume(models.Model):
     name = models.CharField(max_length=200)
     launch_date = models.DateField(null=True, blank=True)
@@ -39,7 +38,7 @@ class Perfume(models.Model):
     categories = models.ManyToManyField(to=Category)
     availability = models.BooleanField()
     seasons = models.ManyToManyField(to=Season)
-    price = models.FloatField()
+    price = models.FloatField(null=True)
     recommended = models.CharField(max_length=500, blank=True)
     similar = models.CharField(max_length=500, blank=True)
 
