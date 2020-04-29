@@ -26,7 +26,7 @@ class RandomPick extends Component<RandomProps> {
     return (
       <Row>
         {randList.length > 1 ? (
-          randList.map((perfume) => {
+          randList.splice(0,5).map((perfume) => {
             return (
               <Col s={2} className="hover-shadow">
                 <h5 style={{color: ''}} className="card-c-title center px-3 thin">{perfume.name}</h5>

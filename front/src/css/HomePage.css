@@ -20,7 +20,8 @@
 }
 .intro-box {
   text-align: center;
-  height: 359px;
+  padding: 20%;
+  width: 100%;
   border-radius: 50%;
   background-color: #f4f4f4;
   margin: auto
@@ -28,7 +29,7 @@
 
 .intro-box > i {
   color: #d689d9;
-  margin-top: 50px;
+  margin-top: 2%;
 
 }
 
@@ -40,7 +41,7 @@
 }
 
 .intro-box > p {
-  padding: 0 10%;
+  padding: 5% 7%;
   text-align: center;
   color: gray;
 }

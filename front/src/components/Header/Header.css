@@ -27,13 +27,13 @@ nav .brand-logo {
 }
 
 nav ul a , nav ul div {
-  font-size: 16px;
+  font-size: 0.9vw;
   margin-right: 12px;
   font-weight: 700;
   color: black;
   display: block;
   cursor: pointer;
-  letter-spacing: 5px;
+  letter-spacing: 0.15vw;
 }
 nav ul a:hover {
   color: white;
