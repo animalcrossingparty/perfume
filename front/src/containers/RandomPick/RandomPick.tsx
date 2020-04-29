@@ -45,7 +45,7 @@ class RandomPick extends Component<RandomProps> {
           })
         ) : (
           <Col s={2} style={{height: 353.22}}>
-            <ProgressBar />
+            <ProgressBar style={{width:'100%', height:'50px'}} />
           </Col>
         )}
       </Row>
