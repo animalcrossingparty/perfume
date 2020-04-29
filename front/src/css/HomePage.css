@@ -4,7 +4,7 @@
 }
 
 .footer_container {
-  width: 100%;
+  width: 75% !important;
 }
 
 .page-footer {
@@ -13,8 +13,9 @@
 
 .intro-box {
   text-align: center;
-  height: 300px;
-  border: 1px solid #ffffff;
+  height: 450px;
+  border: 1px dotted #e0e0e0;
+  border-radius: 50%;
   background-color: rgba(250, 248, 248, 1);
   margin-bottom: 5rem;
 }
@@ -22,13 +23,14 @@
 .intro-box > i {
   color: #f3d9d9;
   text-shadow: 1px 1px 2px #d89698;
-  margin-top: 1vw;
+  margin-top: 90px;
 }
 
 .intro-box > h4 {
   font-weight: lighter;
   margin: 0 20%;
   color: #977373;
+  margin-bottom: auto;
 }
 
 .intro-box > p {
@@ -53,27 +55,19 @@
   font-weight: lighter;
   text-align: center;
 
-  background-color: #f3d9d9;
   border-bottom: 0px dashed #e9979a;
   border: 1px;
   margin: 5rem auto 0 auto;
   padding-bottom: 0.5rem;
   padding-top: 1rem;
   border-radius: 8px 8px 0 0;
-  color: white;
+  color: black;
 }
 
 /* Perfumes List */
 .cards_box {
   margin: 5rem 0;
   padding: 3rem 2rem;
-}
-
-[type="radio"]:not(:checked) + span,
-[type="radio"]:checked + span {
-  padding-left: 1.6rem;
-  margin-right: 0.6rem;
-  margin-top: 0.5rem;
 }
 
 .perfume_sort_row {
@@ -126,32 +120,6 @@
   padding: 0.5rem 1rem;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   border: 0.4px solid rgba(0, 0, 0, 0.2);
-}
-
-/* radio */
-[type="radio"]:checked + span:after,
-[type="radio"].with-gap:checked + span:after {
-  background-color: rgb(171, 158, 228);
-}
-
-[type="radio"]:checked + span:after,
-[type="radio"].with-gap:checked + span:before,
-[type="radio"].with-gap:checked + span:after {
-  border: 2px solid rgb(194, 121, 170);
-}
-
-/* 임시 css */
-.user_page_link > button {
-  background-color: rgb(231, 208, 208);
-  box-shadow: 1px 1px 2px 0.5px #3f3f3f80;
-}
-
-.user_page_link > button:hover {
-  background-color: rgb(226, 186, 186);
-}
-
-.user_page_link > button > span > a {
-  color: white;
 }
 
 .homegrid {
