@@ -20,7 +20,7 @@ body {
   text-align: left;
 }
 [type="checkbox"]+span:not(.lever) {
-  font-size: 1rem !important;
+  font-size: 16px !important;
   text-align: center;
 }
 [type="radio"]:not(:checked) + span{
@@ -76,7 +76,7 @@ body {
     height: 50vh;
   }
   to {
-    height: 7rem;
+    height: 112px;
   }
 }
 
@@ -188,7 +188,7 @@ body {
   background: rgb(255,255,255,0.2);
   height: 20vh;
   line-height: 20vh;
-  font-size:  2rem;
+  font-size:  32px;
   font-weight: 700;
   color: white;
   text-shadow: 1px 1px 5px black;
@@ -227,7 +227,7 @@ body {
 .loading-message {
   position: fixed;
   top: 35%;
-  font-size: 3.5rem;
+  font-size: 64px;
   font-weight: 100;
   color: lightgrey;
 }
@@ -253,7 +253,7 @@ body {
   position: fixed;
 } 
 .collapsible-header {
-  font-size: 2rem;
+  font-size: 32px;
   border-bottom: 0 !important;
   background-color: #f8f8f8 !important;
 }
@@ -262,11 +262,11 @@ body {
   display: flex;
   align-items: flex-start;
   overflow-y: scroll;
-  padding: 0 12rem 0 1rem;
+  padding: 0 192px 0 16px;
 }
 .collapsible-body {
   text-align: right;
-  padding: 1rem !important;
+  padding: 16px !important;
   font-family: "Roboto";
   letter-spacing: 2px;
 }
@@ -314,7 +314,7 @@ input[type=text]:not(.browser-default) {
   box-shadow: 0 0 3px gray;
 }
 .slider-btn {
-  margin: 0 1rem;
+  margin: 0 16px;
   height: 40px !important;
   background: none !important;
   color: black !important;
@@ -348,123 +348,123 @@ input[type=text]:not(.browser-default) {
 }
 
 .m-1 {
-  margin: 0.25rem !important;
+  margin: 4px !important;
 }
 
 .mt-1,
 .my-1 {
-  margin-top: 0.25rem !important;
+  margin-top: 4px !important;
 }
 
 .mr-1,
 .mx-1 {
-  margin-right: 0.25rem !important;
+  margin-right: 4px !important;
 }
 
 .mb-1,
 .my-1 {
-  margin-bottom: 0.25rem !important;
+  margin-bottom: 4px !important;
 }
 
 .ml-1,
 .mx-1 {
-  margin-left: 0.25rem !important;
+  margin-left: 4px !important;
 }
 
 .m-2 {
-  margin: 0.5rem !important;
+  margin: 8px !important;
 }
 
 .mt-2,
 .my-2 {
-  margin-top: 0.5rem !important;
+  margin-top: 8px !important;
 }
 
 .mr-2,
 .mx-2 {
-  margin-right: 0.5rem !important;
+  margin-right: 8px !important;
 }
 
 .mb-2,
 .my-2 {
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 8px !important;
 }
 
 .ml-2,
 .mx-2 {
-  margin-left: 0.5rem !important;
+  margin-left: 8px !important;
 }
 
 .m-3 {
-  margin: 1rem !important;
+  margin: 16px !important;
 }
 
 .mt-3,
 .my-3 {
-  margin-top: 1rem !important;
+  margin-top: 16px !important;
 }
 
 .mr-3,
 .mx-3 {
-  margin-right: 1rem !important;
+  margin-right: 16px !important;
 }
 
 .mb-3,
 .my-3 {
-  margin-bottom: 1rem !important;
+  margin-bottom: 16px !important;
 }
 
 .ml-3,
 .mx-3 {
-  margin-left: 1rem !important;
+  margin-left:16px !important;
 }
 
 .m-4 {
-  margin: 1.5rem !important;
+  margin: 24px !important;
 }
 
 .mt-4,
 .my-4 {
-  margin-top: 1.5rem !important;
+  margin-top: 24px !important;
 }
 
 .mr-4,
 .mx-4 {
-  margin-right: 1.5rem !important;
+  margin-right: 24px !important;
 }
 
 .mb-4,
 .my-4 {
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 24px !important;
 }
 
 .ml-4,
 .mx-4 {
-  margin-left: 1.5rem !important;
+  margin-left: 24px !important;
 }
 
 .m-5 {
-  margin: 3rem !important;
+  margin: 48px !important;
 }
 
 .mt-5,
 .my-5 {
-  margin-top: 3rem !important;
+  margin-top: 48px !important;
 }
 
 .mr-5,
 .mx-5 {
-  margin-right: 3rem !important;
+  margin-right: 48px !important;
 }
 
 .mb-5,
 .my-5 {
-  margin-bottom: 3rem !important;
+  margin-bottom: 48px !important;
 }
 
 .ml-5,
 .mx-5 {
-  margin-left: 3rem !important;
+  margin-left: 48px !important;
 }
 
 .p-0 {
@@ -492,123 +492,123 @@ input[type=text]:not(.browser-default) {
 }
 
 .p-1 {
-  padding: 0.25rem !important;
+  padding: 4px !important;
 }
 
 .pt-1,
 .py-1 {
-  padding-top: 0.25rem !important;
+  padding-top: 4px !important;
 }
 
 .pr-1,
 .px-1 {
-  padding-right: 0.25rem !important;
+  padding-right: 4px !important;
 }
 
 .pb-1,
 .py-1 {
-  padding-bottom: 0.25rem !important;
+  padding-bottom: 4px !important;
 }
 
 .pl-1,
 .px-1 {
-  padding-left: 0.25rem !important;
+  padding-left: 4px !important;
 }
 
 .p-2 {
-  padding: 0.5rem !important;
+  padding: 8px !important;
 }
 
 .pt-2,
 .py-2 {
-  padding-top: 0.5rem !important;
+  padding-top: 8px !important;
 }
 
 .pr-2,
 .px-2 {
-  padding-right: 0.5rem !important;
+  padding-right: 8px !important;
 }
 
 .pb-2,
 .py-2 {
-  padding-bottom: 0.5rem !important;
+  padding-bottom: 8px !important;
 }
 
 .pl-2,
 .px-2 {
-  padding-left: 0.5rem !important;
+  padding-left: 8px !important;
 }
 
 .p-3 {
-  padding: 1rem !important;
+  padding: 16px !important;
 }
 
 .pt-3,
 .py-3 {
-  padding-top: 1rem !important;
+  padding-top: 16px !important;
 }
 
 .pr-3,
 .px-3 {
-  padding-right: 1rem !important;
+  padding-right: 16px !important;
 }
 
 .pb-3,
 .py-3 {
-  padding-bottom: 1rem !important;
+  padding-bottom: 16px !important;
 }
 
 .pl-3,
 .px-3 {
-  padding-left: 1rem !important;
+  padding-left: 16px !important;
 }
 
 .p-4 {
-  padding: 1.5rem !important;
+  padding: 24px !important;
 }
 
 .pt-4,
 .py-4 {
-  padding-top: 1.5rem !important;
+  padding-top: 24px !important;
 }
 
 .pr-4,
 .px-4 {
-  padding-right: 1.5rem !important;
+  padding-right: 24px !important;
 }
 
 .pb-4,
 .py-4 {
-  padding-bottom: 1.5rem !important;
+  padding-bottom: 24px !important;
 }
 
 .pl-4,
 .px-4 {
-  padding-left: 1.5rem !important;
+  padding-left: 24px !important;
 }
 
 .p-5 {
-  padding: 3rem !important;
+  padding: 48px !important;
 }
 
 .pt-5,
 .py-5 {
-  padding-top: 3rem !important;
+  padding-top: 48px !important;
 }
 
 .pr-5,
 .px-5 {
-  padding-right: 3rem !important;
+  padding-right: 48px !important;
 }
 
 .pb-5,
 .py-5 {
-  padding-bottom: 3rem !important;
+  padding-bottom: 48px !important;
 }
 
 .pl-5,
 .px-5 {
-  padding-left: 3rem !important;
+  padding-left: 48px !important;
 }
 
 .m-auto {
