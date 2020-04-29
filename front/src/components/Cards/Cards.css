@@ -17,7 +17,7 @@
 .card .card-title {
   margin-left: auto;
   text-align: right;
-  padding-right: 16px;
+  padding: 0;
   font-size: 16px;
 }
 .card-c-title {
@@ -52,7 +52,6 @@
 .rate-box {
   display: flex;
   align-items: center;
-  padding: 4px 12.8px;
   font-size: 16px;
   line-height: 32px;
   border-radius: 50px;
@@ -66,17 +65,16 @@
 .gender-indicator {
   color: black;
   font-size: 8px;
+  padding: 0 !important;
 }
-.gender-indicator > i {
-  margin-right: 4.8px;
-}
+
 
 .card .card-content {
   padding: 0 !important;
 }
 
 .title-gender-tags {
-  padding: 16px 16px 0 16px;
+  padding: 3%;
   margin: 0;
   background-color: #f8f8f8;
 }

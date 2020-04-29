@@ -202,7 +202,7 @@ class Detail extends Component<DetailProps> {
                     <div className="rate-inside-circle">
                       <h5>{detail.avg_rate.toFixed(1)}</h5>
                       <h5
-                        style={{ fontSize: "1rem", lineHeight: "12rem" }}
+                        style={{ fontSize: "16px", lineHeight: "192px" }}
                         className="mt-0"
                       >
                         리뷰 평균 평점

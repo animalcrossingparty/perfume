@@ -83,7 +83,7 @@ class ReviewTextBox extends Component<ReviewTextBoxProps> {
             style={{
               backgroundColor: "#3f0000",
               borderRadius: "10px",
-              marginLeft: "2rem",
+              marginLeft: "32px",
             }}
             node="button"
             waves="light"

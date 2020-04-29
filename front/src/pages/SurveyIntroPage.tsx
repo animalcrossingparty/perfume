@@ -7,11 +7,10 @@ import '../css/SurveyPage.css'
 
 function SurveyIntroPage () {
 return (
-<div style={{backgroundColor: '#f9f9f9', minHeight: '100vh'}}>
+<div style={{backgroundColor: '#f9f9f9'}}>
   <Header />
-
-    <div className="container" style={{paddingTop: '80px' }}>
-      <div className="p-5" style={{backgroundColor: '#efefef'}}>
+    <div className="container hdown">
+      <div style={{backgroundColor: '#efefef'}}>
       <Link to="/survey">
         <div style={{backgroundImage: `url(${newbiePIC})`, backgroundColor: '#912fff', borderBottom: '0'}} className="survey-image" >
           <div className="surv-wrapper2">향수를 써 보지 않았어요.</div>

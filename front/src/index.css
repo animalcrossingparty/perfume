@@ -5,9 +5,13 @@ div,
 p {
   font-family: "Roboto", "Sans-serif";
 }
+.col .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 .collapsible-header {
   font-weight: 100;
@@ -151,28 +155,30 @@ body {
   }
 }
 
+.hdown {
+  margin-top: 3.6% !important;
+}
+
 .survey-image {
   will-change: transform;
   display: flex;
-  width: 80%;
+  width: 70%;
   margin: auto;
-  height: 40vh;
+  height: 25vw;
   transition: 0.5s ease;
   justify-content: center;
   align-items: center;
-  transform: translateZ(0);
 }
 
 .hover-shadow {
   transition: 0.3s;
-  margin: auto;
+  margin: 0 2rem;
 }
 .hover-shadow:hover {
   box-shadow: 0 0 9px lightgray;
 }
 .survey-image:not(:hover) {
   background-image: none !important;
-  transform: scaleY(-1);
 }
 .survey-image:not(:hover) .surv-wrapper {
   display: none;
@@ -183,19 +189,19 @@ body {
 .surv-wrapper, .surv-wrapper2 {
   text-align: center;
   border: 1px solid #9e9e9e;
-  width: 30vw;
+  width: 70%;
   border-radius: 30px;
-  background: rgb(255,255,255,0.2);
-  height: 20vh;
-  line-height: 20vh;
-  font-size:  32px;
+  background: rgb(255,255,255,0.5);
+  height: 30%;
+  line-height: 115.19px;
+  font-size:  2vw;
   font-weight: 700;
   color: white;
   text-shadow: 1px 1px 5px black;
   backdrop-filter: blur(10px);
 }
 .surv-wrapper2 {
-  transform: scaleY(-1);
+  transform: scaleZ(-1);
   display: none;
 }
 @keyframes maxToSix {
@@ -214,6 +220,7 @@ body {
 .collapsible {
   box-shadow: none !important;
   margin-top: 0 !important;
+  min-width: 300px;
 }
 .fadeInDown {
   animation-name: fadeInDown;
@@ -262,15 +269,16 @@ body {
   display: flex;
   align-items: flex-start;
   overflow-y: scroll;
-  padding: 0 192px 0 16px;
 }
 .collapsible-body {
   text-align: right;
-  padding: 16px !important;
+  padding: 2% !important;
   font-family: "Roboto";
   letter-spacing: 2px;
 }
-
+.collapsible-body > .row {
+  flex-wrap: wrap;
+}
 .collapsible-body > .row > a {
   color: #9e9e9e;
   border-radius: 8px;

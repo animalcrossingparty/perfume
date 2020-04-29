@@ -32,7 +32,7 @@ class Perfumes extends Component<PerfumeProps> {
       { id: '1', label: "시트러스", value: '1', checked: false },
       { id: '2', label: "프루티", value: '2', checked: false },
       { id: '3', label: "플로럴", value: '3', checked: false },
-      { id: '4', label: "White플로럴", value: '4', checked: false },
+      { id: '4', label: "W.플로럴", value: '4', checked: false },
       { id: '5', label: "그린, 허브", value: '5', checked: false },
       { id: '6', label: "스파이시", value: '6', checked: false },
       { id: '7', label: "스위츠", value: '7', checked: false },
@@ -284,9 +284,9 @@ class Perfumes extends Component<PerfumeProps> {
                 position: "fixed",
                 zIndex: 3,
                 background: "#f0f0f0",
-                width: "64.85%",
+                width: "100%",
                 paddingTop: '10px',
-                margin: '0 20px 10px 12px',
+                marginLeft: '11.25px',
                 border: '1px solid #e0e0e0'
               }}
             >
@@ -321,7 +321,7 @@ class Perfumes extends Component<PerfumeProps> {
                 />
               </Row>
             </div>
-            <div style={{ marginTop: "167.5px" }}>
+            <div style={{ marginTop: "14%" }}>
               {GET_PERFUME_INFO !== true
                 ? perfumes.map((perfume) => (
                     <Col s={10} m={6} l={3} key={perfume.id}>
@@ -334,15 +334,14 @@ class Perfumes extends Component<PerfumeProps> {
                         className="card"
                         style={{
                           border: "1px solid lightgray",
-                          height: "434.72px",
+                          height: "437px",
                         }}
                       >
                         <div
                           className="card-image"
                           style={{
-                            height: "220px",
                             textAlign: "center",
-                            lineHeight: "200px",
+                            lineHeight: "232px",
                             borderBottom: "1px solid lightgray",
                             background: "#f0f0f0",
                           }}
