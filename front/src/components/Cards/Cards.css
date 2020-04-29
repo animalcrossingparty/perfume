@@ -2,7 +2,7 @@
   width: 100%;
 }
 .card-image > img {
-  height: 20rem;
+  height: 320px;
 }
 
 .card {
@@ -17,8 +17,8 @@
 .card .card-title {
   margin-left: auto;
   text-align: right;
-  padding-right: 1rem;
-  font-size: 1rem;
+  padding: 0;
+  font-size: 16px;
 }
 .card-c-title {
   width: 100%;
@@ -52,31 +52,29 @@
 .rate-box {
   display: flex;
   align-items: center;
-  padding: 0.25rem 0.8rem;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 32px;
   border-radius: 50px;
   font-weight: 500;
 }
 .rate-box-star {
-  font-size: 1rem;
+  font-size: 16px;
   margin-right: 0.2em !important;
   color: rgb(241, 220, 161);
 }
 .gender-indicator {
   color: black;
-  font-size: 0.5rem;
+  font-size: 8px;
+  padding: 0 !important;
 }
-.gender-indicator > i {
-  margin-right: 0.3rem;
-}
+
 
 .card .card-content {
   padding: 0 !important;
 }
 
 .title-gender-tags {
-  padding: 1rem 1rem 0 1rem;
+  padding: 3%;
   margin: 0;
   background-color: #f8f8f8;
 }
@@ -92,11 +90,11 @@ span.badge {
 
 
 .note-tags {
-  margin: 1rem !important;
+  margin: 16px !important;
 }
 
 .gender-year {
-  padding-bottom: 0.5rem;
+  padding-bottom: 8px;
   margin-bottom: 0;
 }
 

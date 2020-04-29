@@ -2,7 +2,6 @@
   background-image: url("../assets/detail-bg.png");
   height: 100%;
   background-size: cover;
-  /* background-repeat: no-repeat; */
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
@@ -12,9 +11,9 @@
   background-color: rgba(255, 255, 255, 1);
   width: 66%;
   height: 80vh;
-  margin: 5rem auto;
+  margin: 80px auto;
   box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.4);
-  padding: 2rem 5rem;
+  padding: 32px 80px;
 }
 
 .title {
@@ -25,13 +24,9 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
-.content {
-  /* text-align: center; */
-}
-
 .titles {
   text-align: center;
-  font-size: 2rem;
+  font-size: 32px;
   text-align: left;
   font-weight: 500;
   text-decoration: underline;
@@ -40,17 +35,13 @@
 }
 
 .sub_title {
-  margin-top: 1rem;
-  /* margin-bottom: 3rem; */
+  margin-top: 16px;
   color: gray;
   font-style: italic;
   font-size: 13px;
   text-align: center;
 }
 
-
-/* gender */
-/* before */
 .gender_ .switch label input[type=checkbox]:checked+.lever {
   background-color: lightblue;
 }
@@ -58,7 +49,6 @@
   background-color: rgb(147, 171, 216);
 }
 
-/* after */
 .gender_ .switch label .lever {
   background-color: lightpink;
 }
@@ -66,13 +56,10 @@
   background-color: rgb(240, 157, 154);
 }
 
-
-/* switch click */
 .gender_ .switch label .lever:before {
   background-color: rgba(128, 128, 128, 0.5);
 }
 
-/* switch label */
 .gender_ label {
   color: #fff;
   font-size: 0;
@@ -96,18 +83,13 @@
 }
 
 .none_gender {
-  margin-top: 1rem;
+  margin-top: 16px;
   text-align: center;
 }
 
 [type="checkbox"]+span:not(.lever) {
-  padding-left: 1.6rem;
+  padding-left: 25.6px;
 }
-
-/* .gender > img {
-  width: 20px;
-  height: 19.5px;
-} */
 
 .gender_1 {
   color: lightcoral;
@@ -118,15 +100,12 @@
   color: rgb(102, 166, 206);
   font-weight: 600;
 }
-
-/* season */
 .season {
   text-align: center;
-  margin: 1rem auto;
+  margin: 16px auto;
 }
 .season span {
-  margin-left: 1rem;
-  /* border-bottom: 1px solid; */
+  margin-left: 16px;
   font-style: italic;
   font-weight: 500;
   color: rgb(70, 58, 58);
@@ -134,11 +113,9 @@
   text-align: start;
 }
 [type="checkbox"]+span:not(.lever) {
-  padding-left: 2rem;
+  padding-left: 32px;
 }
 
-/* category */
-/* tags */
 .tags {
   display: flex;
   justify-content: center;
@@ -148,15 +125,14 @@
   text-align: center;
 }
 
-/* favorite category select */
 .rem {
-  margin-bottom: 5rem;
+  margin-bottom: 80px;
 }
 
 .submit_survey {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: .5rem;
+  margin-bottom: 8px;
 }
 
 .submit_survey > button:focus {

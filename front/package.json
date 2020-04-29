@@ -23,6 +23,7 @@
     "jwt-decode": "^2.2.0",
     "loadash": "^1.0.0",
     "materialize-css": "^1.0.0-rc.2",
+    "normalize.css": "^8.0.1",
     "prettier": "^2.0.4",
     "query-string": "^6.12.1",
     "rc-progress": "^2.5.2",

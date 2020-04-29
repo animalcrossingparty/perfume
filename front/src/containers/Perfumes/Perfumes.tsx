@@ -32,13 +32,13 @@ class Perfumes extends Component<PerfumeProps> {
       { id: '1', label: "시트러스", value: '1', checked: false },
       { id: '2', label: "프루티", value: '2', checked: false },
       { id: '3', label: "플로럴", value: '3', checked: false },
-      { id: '4', label: "White플로럴", value: '4', checked: false },
+      { id: '4', label: "W.플로럴", value: '4', checked: false },
       { id: '5', label: "그린, 허브", value: '5', checked: false },
       { id: '6', label: "스파이시", value: '6', checked: false },
       { id: '7', label: "스위츠", value: '7', checked: false },
       { id: '8', label: "우디", value: '8', checked: false },
       { id: '9', label: "발삼", value: '9', checked: false },
-      { id: '10', label: "머스트", value: '10', checked: false },
+      { id: '10', label: "머스크", value: '10', checked: false },
       { id: '11', label: "음료", value: '11', checked: false },
       { id: '12', label: "알데하이드", value: '12', checked: false },
     ],
@@ -48,9 +48,19 @@ class Perfumes extends Component<PerfumeProps> {
     const queryParams = queryString.parse(history.location.search);
     await PerfumeActions.getPerfumeInfo(queryParams);
   };
+  initializeCategoryInfo = async () => {
+    const { history } = this.props
+    const {categories} = this.state
+    const cat = queryString.parse(history.location.search).category
+    if (cat !== 'all') {
+      console.log(cat);
+    }
+    await queryString.parse(history.location.search)
+  }
 
   componentDidMount() {
     this.initializePerfumeInfo();
+    this.initializeCategoryInfo()
   }
 
   componentDidUpdate(prevProps) {
@@ -272,12 +282,15 @@ class Perfumes extends Component<PerfumeProps> {
             <div
               style={{
                 position: "fixed",
-                zIndex: 9,
-                background: "white",
-                width: "65%",
+                zIndex: 3,
+                background: "#f0f0f0",
+                width: "100%",
+                paddingTop: '10px',
+                marginLeft: '11.25px',
+                border: '1px solid #e0e0e0'
               }}
             >
-              <Row>
+              <Row style={{}}>
                 <p
                   style={{ backgroundColor: "#e0e0e0", letterSpacing: 3 }}
                   className="m-1 ml-4 thin row p-1"
@@ -291,8 +304,9 @@ class Perfumes extends Component<PerfumeProps> {
               </Row>
               <Row
                 style={{
-                  borderBottom: "1px solid #e0e0e0",
-                  marginLeft: "1rem",
+                  margin: '8px 0',
+                  padding: '0 24px',
+                  background: 'white'
                 }}
               >
                 총 {this.props.num_pages} 페이지 중 {page} 페이지 | 검색 된
@@ -307,7 +321,7 @@ class Perfumes extends Component<PerfumeProps> {
                 />
               </Row>
             </div>
-            <div style={{ marginTop: "167.5px" }}>
+            <div style={{ marginTop: "14%" }}>
               {GET_PERFUME_INFO !== true
                 ? perfumes.map((perfume) => (
                     <Col s={10} m={6} l={3} key={perfume.id}>
@@ -320,15 +334,14 @@ class Perfumes extends Component<PerfumeProps> {
                         className="card"
                         style={{
                           border: "1px solid lightgray",
-                          height: "434.72px",
+                          height: "437px",
                         }}
                       >
                         <div
                           className="card-image"
                           style={{
-                            height: "220px",
                             textAlign: "center",
-                            lineHeight: "200px",
+                            lineHeight: "232px",
                             borderBottom: "1px solid lightgray",
                             background: "#f0f0f0",
                           }}

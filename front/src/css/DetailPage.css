@@ -1,33 +1,33 @@
 .perfume-info-section {
-  padding-top: 5rem;
+  padding-top: 80px;
   
 }
 
 .perfume-info-image {
-  height: 40rem;
+  height: 640px;
   animation: fadeIn 2s;
 }
 .perfume-info-image img {
   margin: auto;
-  height: 25rem;
+  height: 400px;
 }
 
 .perfume-info-text {
-  height: 40rem;
+  height: 640px;
   display: block;
   animation: fadeIn 4s ease 0s !important;
 }
 
 .rate-wrapper {
   position: relative;
-  height: 30rem;
-  width: 30rem;
+  height: 480px;
+  width: 480px;
 }
 
 .perfume-info-text p {
-  margin: 0 0.3rem;
-  padding-right: 5rem;
-  font-size: 1rem;
+  margin: 0 0.48px;
+  padding-right: 80px;
+  font-size: 16px;
   font-family: "Roboto";
   font-weight: 700;
   color: gray;
@@ -37,23 +37,23 @@
 .rate-inside-circle {
   position: absolute;
   font-family: "Roboto";
-  height: 20rem;
+  height: 320px;
 }
 .note-and-rate-row > .col{
   flex: 1;
 }
 .rate-inside-circle > h5 {
   position: absolute;
-  width: 20rem;
-  line-height: 22rem;
+  width: 320px;
+  line-height: 232px;
   text-align: center;
-  font-size: 6rem;
+  font-size: 96px;
   margin: 0;
 }
 .rate-circle {
   position: relative;
   display: block;
-  width: 20rem;
+  width: 320px;
 }
 
 .season-row {
@@ -61,9 +61,9 @@
 }
 .season-row > .col {
   user-select: none;
-  height: 8rem;
-  line-height: 8rem;
-  font-size: 1.3rem;
+  height: 128px;
+  line-height: 128px;
+  font-size: 1.48px;
   text-align: center;
   letter-spacing: 2px;
   color: white;
@@ -97,7 +97,7 @@
 }
 .detail_price {
   margin-right: auto;
-  font-size: 1.45rem;
+  font-size: 23.2px;
 }
 
 /* Reviews */
@@ -106,19 +106,19 @@
   padding-right:  10%;
   margin-right: 5%;
   margin-left: 5%;
-  background: #d0d0d0;
+  background: #f3f3f3;
 }
 .review-list-header {
   margin: 0 5%;
   padding: 0 10%;
-  height: 4rem;
-  font-size: 3rem;
-  border-bottom: 2px dashed #d0d0d0;
+  height: 64px;
+  font-size: 48px;
+  border-bottom: 2px dashed #e0e0e0;
   font-weight: 100;
   background: #fff;
 }
 .review-list-row {
-  min-height: 5rem;
+  min-height: 80px;
   background: white;
   border: 1px solid #f2f2f2;
   border-bottom: 0;
@@ -128,26 +128,40 @@
   flex-wrap: wrap;
 }
 .rank-badge {
-  height: 3.5rem;
+  height: 56px;
 }
 
 .review-header {
-  height: 4rem;
+  height: 64px;
   display: flex;
   align-items: center;
   padding: 0 !important;
-  background: #f2f2f2;
+  background: #d9d9d9;
 }
 
 .review-content {
   background: white;
-  margin: 2rem 0 2rem 0;
-  padding: 0 2rem 0 3rem !important;
-  line-height: 1.75rem;
+  margin: 32px 0 32px 0;
+  padding: 0 32px 0 48px !important;
+  line-height: 28px;
   display: flex;
   flex-direction: column;
 }
-
+#review-content-text {
+  background: white;
+  border: 1px solid #f0f0f0;
+  min-height: 112px;
+  transition: 1s;
+  padding: 16px 8px 8px 32px;
+  color: #2f2f2f;
+  font-size: 1.16px;
+  font-weight: 400;
+}
+textarea:focus { 
+  outline: none !important;
+  padding-top: 32px !important;
+  min-height: 160px !important;
+}
 .username {
   color: royalblue;
   font-weight: 700;
@@ -166,8 +180,8 @@
 .star-row {
   background: #f2f2f2;
   color: pink;
-  padding: 0.5rem 0;
+  padding: 8px 0;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 22.4px;
   top: 0;
 }

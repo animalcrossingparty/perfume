@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Icon, Button } from "react-materialize";
+import { Icon, Button, Row } from "react-materialize";
 import { bindActionCreators } from "redux";
 import * as reviewActions from "redux/modules/review";
 import BeautyStars from "beauty-stars";
@@ -29,51 +29,69 @@ class ReviewTextBox extends Component<ReviewTextBoxProps> {
     });
   };
   handleRate = (rate) => {
-    const {ReviewActions} = this.props;
-    const name = "rate"
-    const value = rate
+    const { ReviewActions } = this.props;
+    const name = "rate";
+    const value = rate;
     ReviewActions.changeInput({
       name,
       value,
-      form: "form"
-    })
-  }
+      form: "form",
+    });
+  };
   handlePosting = async () => {
     const { form, ReviewActions, id, token } = this.props;
     const { content, rate } = form.toJS();
     try {
-        await ReviewActions.postReview(content, rate, id, token)
-        .then(r => {
-          alert('리뷰가 등록되었습니다')
-        }
-      )
+      await ReviewActions.postReview(content, rate, id, token).then((r) => {
+        alert("리뷰가 등록되었습니다");
+      });
     } catch (e) {
-        alert(e);
+      alert(e);
     }
-}
+  };
 
   render() {
     const { content, rate } = this.props.form.toJS();
     return (
       <div className="write_comment">
+        <p className="purple lighten-4 center" style={{ color: "black" }}>
+          PLEASE LEAVE A REVIEW FOR US
+        </p>
         <div className="row_comment">
-          <Icon>chat</Icon>
-          <textarea name="content" id="review-content-text" onChange={this.handleChange} value={content}/>
+          <textarea
+            name="content"
+            id="review-content-text"
+            cols={30}
+            placeholder="당신의 소중한 리뷰를 남겨주세요"
+            rows={20}
+            onChange={this.handleChange}
+            value={content}
+          />
         </div>
-        <div className="StarRating">
-        <BeautyStars
-          value={rate}
-          size={this.state.size}
-          gap={this.state.gap}
-          maxStars={10}
-          inactiveColor={this.state.inactiveColor}
-          activeColor={this.state.activeColor}
-          onChange={this.handleRate}
-      />
-          <Button node="button" waves="light" onClick={this.handlePosting}>
-            SUBMIT
+        <Row style={{ justifyContent: "flex-end" }} className="StarRating">
+          <small className="mr-4">이 향수는 몇 점이었나요?</small>
+          <BeautyStars
+            value={rate}
+            size={this.state.size}
+            gap={this.state.gap}
+            maxStars={10}
+            inactiveColor={this.state.inactiveColor}
+            activeColor={this.state.activeColor}
+            onChange={this.handleRate}
+          />
+          <Button
+            style={{
+              backgroundColor: "#3f0000",
+              borderRadius: "10px",
+              marginLeft: "32px",
+            }}
+            node="button"
+            waves="light"
+            onClick={this.handlePosting}
+          >
+            <Icon>chat</Icon>
           </Button>
-        </div>
+        </Row>
       </div>
     );
   }
@@ -82,7 +100,7 @@ class ReviewTextBox extends Component<ReviewTextBoxProps> {
 export default connect(
   (state) => ({
     form: state.review.get("form"),
-    token: state.user.getIn(["loggedInfo", "token"])
+    token: state.user.getIn(["loggedInfo", "token"]),
   }),
   (dispatch) => ({
     ReviewActions: bindActionCreators(reviewActions, dispatch),

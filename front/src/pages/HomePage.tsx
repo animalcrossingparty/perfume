@@ -1,5 +1,6 @@
 import React from "react";
 import { Header, Slider, FooterContent } from "../components";
+import {RandomPick} from '../containers/RandomPick'
 import "../css/HomePage.css";
 import { Footer, Icon, Row, Col } from "react-materialize";
 import a from "assets/images/homegrid/a.webp";
@@ -12,7 +13,8 @@ function HomePage() {
     <div>
       <Header />
       <Slider />
-      <h4 className="thin center">PICK YOUR FAVORITE</h4>
+      <h4 className="thin center">BELOVED ITEMS TODAY</h4>
+      <RandomPick />
       <div className="container">
         <h1 className="center thin">STORIES</h1>
         <Row className="px-5 m-0">
@@ -57,11 +59,9 @@ function HomePage() {
         </Row>
       </div>
       <div className="container footer_container">
-        <div className="home-section-devider">
-          <p className="my-0">ABOUT</p>
-        </div>
-        <Row>
-          <Col className="intro-box" s={4}>
+      <h1 className="thin">WHAT IT IS?</h1>
+        <Row className="jcenter py-5" style={{background: 'none', alignItems:'center'}}>
+          <Col className="intro-box" s={3}>
             <Icon large>pie_chart</Icon>
             <h4>BIG DATA</h4>
             <p>
@@ -70,13 +70,13 @@ function HomePage() {
             </p>
           </Col>
 
-          <Col className="intro-box" s={4}>
+          <Col className="intro-box" s={3}>
             <Icon large>devices</Icon>
             <h4>PC & MOBILE</h4>
             <p>언제 어디서나 향수 관련 정보를 찾아보세요.</p>
           </Col>
 
-          <Col className="intro-box" s={4}>
+          <Col className="intro-box" s={3}>
             <Icon large>insert_chart_outlined</Icon>
             <h4>ANALYTICS</h4>
             <p>나이별, 성격별, 통계 자료를 볼 수 있어요.</p>

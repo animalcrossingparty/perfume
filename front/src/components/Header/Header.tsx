@@ -59,7 +59,7 @@ class Header extends Component<HeaderProps> {
         </NavLink>
         <Link to="/surveyintro">SURVEY</Link>
         <Link to="/">REVIEWS</Link>
-        <Link to="/">ABOUT</Link>
+        <Link to="/about">ABOUT</Link>
         {this.props.user.get("logged") ? (
           <Dropdown
           id="dropdown_user"
