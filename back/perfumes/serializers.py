@@ -18,39 +18,25 @@ class BrandSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
+kor_names = ['', '시트러스', '프루츠', '플로럴', '화이트 플로럴', '그린, 허브', '스파이시', '스위츠', '우디', '발삼', '머스크', '음료', '알데하이드']
 class CategorySerializers(serializers.ModelSerializer):
-    name = serializers.SerializerMethodField(read_only=True)
+    name = serializers.SerializerMethodField()
+    value = serializers.IntegerField(source='id', read_only=True)
+    label = serializers.SerializerMethodField()
+
     class Meta:
         model = Category
         fields = '__all__'
-
+        include = ['value', 'label']
+    
     def get_name(self, instance):
-        if instance.id == 1:
-            name = '시트러스'
-        elif instance.id == 2:
-            name = '프루티'
-        elif instance.id == 3:
-            name = '플로럴'
-        elif instance.id == 4:
-            name = '화이트 플로럴'
-        elif instance.id == 5:
-            name = '그린, 허브'
-        elif instance.id == 6:
-            name = '스파이시'
-        elif instance.id == 7:
-            name = '스위츠'
-        elif instance.id == 8:
-            name = '우디'
-        elif instance.id == 9:
-            name = '발삼'
-        elif instance.id == 10:
-            name = '머스트'
-        elif instance.id == 11:
-            name = '음료'
-        elif instance.id == 12:
-            name = '알데하이드'
-
+        name = kor_names[instance.id]
         return name
+
+    def get_label(self, instance):
+        label = kor_names[instance.id]
+        return label
+
 
 class PerfumeSerializers(serializers.ModelSerializer):
     avg_rate = serializers.SerializerMethodField(read_only=True)
