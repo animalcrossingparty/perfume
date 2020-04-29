@@ -6,8 +6,8 @@
 }
 
 .card {
-  background-color: rgba(255, 255, 255, 0.486);
   border-radius: 5px 5px 0 0;
+  border: 1px solid #e0e0e0;
 }
 
 
@@ -43,7 +43,9 @@
 }
 
 .perfume-card-badge {
-  background: #dda0dd;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 2px;
   color: black !important;
 }
 
@@ -76,12 +78,12 @@
 .title-gender-tags {
   padding: 1rem 1rem 0 1rem;
   margin: 0;
+  background-color: #f8f8f8;
 }
 
 .card-image > img {
   height: 280px;
   border-radius: 5px 5px 0 0 !important;
-  /* margin-top: 1rem; */
 }
 
 span.badge {

@@ -1,0 +1,120 @@
+.mem_bg {
+  /* background-image: url("../assets/detail-bg.png"); */
+  height: 100%;
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  background-attachment: fixed;
+  /* background-color: rgb(41, 82, 156); */
+}
+
+.members {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 5vw;
+  /* overflow: auto; */
+}
+
+.member_titles {
+  font-size: 5vw;
+  font-style: italic;
+  font-weight: 200;
+  text-shadow: 2px 2px 1px gray;
+  /* border-bottom: 1px solid; */
+  width: 21vw;
+  margin: 10rem auto 0 auto;
+}
+
+.mem {
+  text-align: center;
+  margin: 5rem auto 0 auto;
+  width: 176px;
+  transition: 2s;
+}
+
+.mem:hover {
+  margin: 3rem auto 0 auto;
+  transition-duration: 0.3s;
+}
+
+.about_mem {
+  text-align: center;
+}
+
+.mem_name {
+  font-size: 20px;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.mem_email {
+  margin-bottom: 1rem;
+}
+
+.mem_email > a {
+  color: gray;
+  font-style: italic;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.nutshell_1 {
+  background-color: #ff8073;
+  margin: 1rem;
+  border-radius: 20px;
+  padding: .3rem;
+}
+.nutshell_2 {
+  background-color: #ff7f90;
+  margin: 1rem;
+  border-radius: 20px;
+  padding: .3rem;
+}
+.nutshell_3 {
+  background-color: #ffc193;
+  margin: 1rem;
+  border-radius: 20px;
+  padding: .3rem;
+}
+.nutshell_4 {
+  background-color: #ffcb5c;
+  margin: 1rem;
+  border-radius: 20px;
+  padding: .3rem;
+}
+.nutshell_5 {
+  background-color: #ffa06f;
+  margin: 1rem;
+  border-radius: 20px;
+  padding: .3rem;
+}
+
+@media (max-width: 1000px) {
+  .members {
+    flex-direction: column;
+  }
+  .nutshell_1 {
+    display: inline-block;
+    margin: 2rem auto;
+    padding: .5rem 1rem;
+  }
+  .nutshell_2 {
+    display: inline-block;
+    margin: 2rem auto;
+    padding: .5rem 1rem;
+  }
+  .nutshell_3 {
+    display: inline-block;
+    margin: 2rem auto;
+    padding: .5rem 1rem;
+  }
+  .nutshell_4 {
+    display: inline-block;
+    margin: 2rem auto;
+    padding: .5rem 1rem;
+  }
+  .nutshell_5 {
+    display: inline-block;
+    margin: 2rem auto;
+    padding: .5rem 1rem;
+  }
+}

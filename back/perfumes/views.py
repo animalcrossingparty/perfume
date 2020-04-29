@@ -53,11 +53,33 @@ FAMOUS_BRANDS = [
     614, 653, 1122, 293, 749, 532, 855, 1733, 3130, 2495, 3227, 3032, 
     1315, 1191, 2326, 1240, 1200, 2036, 3140, 2104
 ]
+FAMOUS_FEMALE_PERFUMES = [
+    26131711, 26124427, 26143979, 26123609, 26133691, 
+    26125233, 26133238, 26152968, 26132748, 26150347, 
+    26128643, 26128672, 26131830, 26125239, 26134042,
+    26131741, 26131617, 26157585, 26134776, 26148349, 
+    26143253, 26147317, 26125225, 26129045, 26142599,
+    26142669
+]
+FAMOUS_MALE_PERFUMES = [
+    26120368, 26136111, 26120217, 26125536, 26136111, 
+    26120906, 26129285, 26130360, 26120617, 26143814,
+    26131702, 26131542, 26146888, 26153980, 26150184, 
+    26146434, 26124682, 26140186, 26147770
+]
+FAMOUS_UNISEX_PERFUMES = [
+    26128238, 26150936, 26155264, 26132578, 26125725,
+    26129074, 26144402, 26123480, 26130289, 26140273,
+    26122099, 26142856, 26124417, 26129077, 26131303,
+    26122076,26135917, 26125679, 26124217, 26131474,
+    26147313, 26130500
+]
+
 SORT = {
     'alpha': lambda objects: objects.all().order_by('name'),
     'reviewcnt': lambda objects: objects.prefetch_related('review_set').annotate(reviewcnt=Count('review'))\
         .order_by('-reviewcnt'),
-    'rate': lambda objects: objects.prefetch_related('review_set').annotate(avgrate=Avg('review__rate')).filter(reviewcnt__gt=10)\
+    'rate': lambda objects: objects.prefetch_related('review_set').annotate(reviewcnt=Count('review')).annotate(avgrate=Avg('review__rate')).filter(reviewcnt__gt=10)\
         .order_by('-avgrate'),
     'cheap': lambda objects: objects.order_by('price'),
     'expensive': lambda objects: objects.order_by('-price'),
@@ -72,6 +94,45 @@ RESERVED_CAT = {
 SEASONS_ID = {
     '봄': 1, 'spring': 1, '여름': 2, 'summer': 2, '가을': 3, 'autumn': 3, 'fall': 3, '겨울': 4, 'winter': 4
 }
+
+@api_view(['GET'])
+def famous_perfumes(request):
+    gender = request.GET.get('gender', 'all')
+    sample = request.GET.get('sample', None)
+    products = Perfume.objects.all().filter(availability=True)
+    print(sample)
+    if sample == '1':
+        # 0: 남성, 1: 여성, 2: 공용
+        if gender == '0':
+            male = random.sample(FAMOUS_MALE_PERFUMES, 6)
+            print(male)
+            products = products.filter(id__in=male)
+        elif gender == '1':
+            female = random.sample(FAMOUS_FEMALE_PERFUMES, 6)
+            print(len(female))
+            products = products.filter(id__in=female)
+        elif gender == '2':
+            unisex = random.sample(FAMOUS_UNISEX_PERFUMES, 6)
+            products = products.filter(id__in=unisex)
+        else:
+            all_perfumes = random.sample(FAMOUS_MALE_PERFUMES + FAMOUS_FEMALE_PERFUMES + FAMOUS_UNISEX_PERFUMES, 6)
+            products = products.filter(id__in=all_perfumes)
+    else:
+        # 0: 남성, 1: 여성, 2: 공용
+        if gender == '0':
+            products = products.filter(id__in=FAMOUS_MALE_PERFUMES)
+        elif gender == '1':
+            products = products.filter(id__in=FAMOUS_FEMALE_PERFUMES)
+        elif gender == '2':
+            products = products.filter(id__in=FAMOUS_UNISEX_PERFUMES)
+        else:
+            all_perfumes = FAMOUS_MALE_PERFUMES + FAMOUS_FEMALE_PERFUMES + FAMOUS_UNISEX_PERFUMES
+            products = products.filter(id__in=all_perfumes)
+
+    serializer = PerfumeSerializers(products, many=True)
+    return Response(serializer.data)
+
+
 @swagger_auto_schema(
     operation_summary="향수 검색",
     method='get',
@@ -128,7 +189,6 @@ def search(request):
     finally:
         print(f'{leng}개 단어 검색하는 데 걸린 시간: {time()-st}s')
 
-
 class SurveyAPI(APIView):
     # @swagger_auto_schema(
     # operation_summary="특정 리뷰 '좋아요' / '좋아요 취소' 실행",
@@ -139,7 +199,7 @@ class SurveyAPI(APIView):
         사용자가 좋아하는 카테고리를 누르면 그 카테고리에 해당하는 노트 리스트를 반환합니다.
         """
         categories = request.GET.get('category', None)
-        categories = map(int, categories.split(','))
+        categories = set(map(int, categories.split(',')))
         notes = Note.objects.all()
         result = []
         for i in categories:
@@ -149,7 +209,7 @@ class SurveyAPI(APIView):
         return Response(serialize.data)
     
     def post(self, request):
-        gender = request.POST.get('gender', 'all')
+        gender = request.POST.get('gender', None)
         # age = str(request.POST.get('age', None))
         seasons = request.POST.get('season', None)
         categories = request.POST.get('category', None)
@@ -182,7 +242,7 @@ class SurveyAPI(APIView):
         for num in categories:
             notes_list += FAMOUS_NOTES[num]
         products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes')))\
-            .filter(all_notes__in=notes)
+            .filter(all_notes__in=notes_list)
         products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes')))\
             .annotate(score=Count('all_notes', filter=Q(all_notes__in=notes_list))).filter(score__gt=0).order_by('-score')
         products = products[:15]
@@ -209,9 +269,9 @@ def perfumes_list(request):
     # QUERY STRINGS ----------------------------------------------
     # 필수값은 무엇인지, 기본값은 무엇인지
     sort = request.GET.get('sort', 'alpha') # 기본값 없음 무조건 줌
-    category = request.GET.get('category', 'all')  # 카테고리는 하나만 옴 사용자의 혼란을 줄이기 위해
+    categories = request.GET.get('category', None)
     page = int(request.GET.get('page', 1))
-    brands = request.GET.get('brand_name', 'all')
+    brands = request.GET.get('brand', 'all')
     notes = request.GET.get('include', 'all')
     gender = request.GET.get('gender', 'all')  # 0: 남자, 1: 여자, 2: 공용 , all 중 무조건 하나만 줌
     # ------------------------------------------------------------
@@ -236,11 +296,11 @@ def perfumes_list(request):
             perfumes = perfumes.filter(brand__in=brands)
 
     try:
-        category = int(category)
+        categories = set(map(int, categories.split(',')))
     except:
         pass
     else:
-        perfumes = perfumes.filter(categories=category)
+        perfumes = perfumes.filter(categories__in=categories)
 
     try:
         notes = set(map(int, notes.split(',')))
