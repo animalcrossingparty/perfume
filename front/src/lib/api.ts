@@ -47,4 +47,4 @@ export const postReview = (content: string, rate: number, id: number, token:stri
     { headers: { "token": token }}
   );
 
-export const getRand = () => axios.get(`${BASE_URL}/perfumes/famous?sample=1`)
+export const getRand = () => axios.get(`${BASE_URL}/perfumes/famous?gender=2&sample=1`)

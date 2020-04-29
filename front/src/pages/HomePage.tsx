@@ -1,5 +1,6 @@
 import React from "react";
 import { Header, Slider, FooterContent } from "../components";
+import {RandomPick} from '../containers/RandomPick'
 import "../css/HomePage.css";
 import { Footer, Icon, Row, Col } from "react-materialize";
 import a from "assets/images/homegrid/a.webp";
@@ -13,6 +14,7 @@ function HomePage() {
       <Header />
       <Slider />
       <h4 className="thin center">PICK YOUR FAVORITE</h4>
+      <RandomPick />
       <div className="container">
         <h1 className="center thin">STORIES</h1>
         <Row className="px-5 m-0">
