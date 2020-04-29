@@ -118,52 +118,13 @@ def search(request):
         cat_search.update(RESERVED_CAT[kw])
     print('cat_search:', cat_search)
 
-    top_note_Q = Q(); heart_note_Q = Q(); base_note_Q = Q(); brand_Q = Q(); review_Q = Q()
-    keywords_e = set()
-    for kw in keywords:
-        if ord(kw[0]) < 123:  # 검색어가 영어 또는 숫자일 때 (첫글자로 판별)
-            keywords_e.add(kw)  # 영어 또는 숫자인 검색어 골라냄. 나중에 이름 검색할 거임
-            brand_Q |= Q(brand__name=kw)
-            top_note_Q |= Q(top_notes__name=kw)
-            heart_note_Q |= Q(heart_notes__name=kw)
-            base_note_Q |= Q(base_notes__name=kw)
-            # review_Q |= Q(review__content__icontains=kw)
-        else:  # 한국어일 때
-            top_note_Q |= Q(top_notes__kor_name=kw)
-            heart_note_Q |= Q(heart_notes__kor_name=kw)
-            base_note_Q |= Q(base_notes__kor_name=kw)
-    print('brand_Q:', brand_Q)
-    print('note_Q:', top_note_Q)
-    print('review_Q:', review_Q)
+    perfumes = Perfume.objects.values()[:5]
+    print(perfumes)
+    print(perfumes[0])
 
-    season_Q = Q()
-    for season_id in season_search:
-        season_Q &= Q(id=season_id)
-
-    #.prefetch_related('review_set').annotate(review_cnt=Count('review', filter=review_Q)) + F('review_cnt')
-    perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('top_notes').prefetch_related('heart_notes')\
-        .prefetch_related('base_notes').prefetch_related('categories').prefetch_related('seasons')\
-        .annotate(name_exact=Case(
-            When(name__in=keywords_e, then=Value(100000)), default=Value(0), output_field=IntegerField())
-            )\
-        .annotate(name_include=Case(
-            When(name__icontains=keywords_e, then=Value(1000)), default=Value(0), output_field=IntegerField())
-            )\
-        .annotate(seasons_cnt=Count('seasons', filter=season_Q))\
-        .annotate(brand_cnt=Count('brand', filter=brand_Q))\
-        .annotate(
-            note_cnt=Count('top_notes', filter=top_note_Q) + Count('heart_notes', filter=heart_note_Q)\
-                + Count('base_notes', filter=base_note_Q)
-            )\
-        .annotate(category_cnt=ExpressionWrapper(Count('categories', filter=Q(id__in=cat_search)), output_field=IntegerField()))\
-        .annotate(score=ExpressionWrapper(
-            F('name_exact') + F('name_include') + 100 * F('seasons_cnt') + 10 * F('brand_cnt') + 5 * F('note_cnt'),
-            output_field=IntegerField()
-            ))\
-        .order_by('-score')[:10]
     serializers = PerfumeSerializers(perfumes, many=True)
     try:
-        return Response(serializers.data, status=200)
+        return Response(123, status=200)
     finally:
         print(f'{leng}개 단어 검색하는 데 걸린 시간: {time()-st}s')
 

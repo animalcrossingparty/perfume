@@ -24,7 +24,7 @@ class Note(models.Model):
 class Season(models.Model):
     name = models.CharField(max_length=20)
     kor_name = models.CharField(max_length=20, blank=True)
-
+p = Perfume.objects.prefetch_related('heart_notes').annotate(heart_cnt=Count('heart_notes', filter=Q(kor_name__in=['라일락', '로즈']))).order_by('-heart_cnt')
 
 class Perfume(models.Model):
     name = models.CharField(max_length=200)
