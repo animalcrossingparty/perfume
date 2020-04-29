@@ -57,28 +57,28 @@
 }
 
 .home-section-devider {
-  font-size: 2.5rem;
+  font-size: 40px;
   font-weight: lighter;
   text-align: center;
 
   border-bottom: 0px dashed #e9979a;
   border: 1px;
-  margin: 5rem auto 0 auto;
-  padding-bottom: 0.5rem;
-  padding-top: 1rem;
+  margin: 80px auto 0 auto;
+  padding-bottom: 8px;
+  padding-top: 16px;
   border-radius: 8px 8px 0 0;
   color: black;
 }
 
 /* Perfumes List */
 .cards_box {
-  margin: 5rem 0;
-  padding: 3rem 2rem;
+  margin: 80px 0;
+  padding: 48px 32px;
 }
 
 .perfume_sort_row {
   border: 0;
-  padding: 1rem;
+  padding: 16px;
   border-radius: 5px;
   margin: 0;
 }
@@ -86,14 +86,14 @@
 .perfume_sort_row > .col {
   box-shadow: 1px 1px 2px rgb(138, 80, 116);
   /* font-weight: bold; */
-  padding: 0.3rem 1rem !important;
+  padding: 4.8px 16px !important;
   font-size: 15px;
 }
 
 .sort_btn {
   /* background-color: rgb(223, 194, 235); */
   background: linear-gradient(to left, rgb(231, 217, 235), rgb(220, 214, 236));
-  padding: 1rem;
+  padding: 16px;
 }
 
 .sort_btn:hover {
@@ -108,7 +108,7 @@
 }
 .row-margin {
   margin-bottom: 0;
-  padding-bottom: 0.5rem;
+  padding-bottom: 8px;
   border-bottom: 1px solid rgb(195, 160, 209);
 }
 
@@ -116,14 +116,14 @@
   /* background: rgb(248, 232, 232); */
   /* box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     border: .4px solid rgba(0, 0, 0, 0.2); */
-  padding: 1rem 2rem;
+  padding: 16px 32px;
   border-radius: 10px 10px 0 0;
 }
 
 .radio-search-box {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   border: 0.4px solid rgba(0, 0, 0, 0.2);
 }
@@ -134,7 +134,7 @@
   backdrop-filter: blur(10px);
   color: white;
   font-family: "Roboto";
-  line-height: 2rem;
+  line-height: 32px;
   line-height-step: 10px;
   transition: 1s;
 }

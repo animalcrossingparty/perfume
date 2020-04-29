@@ -304,8 +304,8 @@ class Perfumes extends Component<PerfumeProps> {
               </Row>
               <Row
                 style={{
-                  margin: '0.5rem 0',
-                  padding: '0 1.5rem',
+                  margin: '8px 0',
+                  padding: '0 24px',
                   background: 'white'
                 }}
               >

@@ -10,7 +10,7 @@ return (
 <div style={{backgroundColor: '#f9f9f9', minHeight: '100vh'}}>
   <Header />
 
-    <div className="container" style={{paddingTop: '5rem' }}>
+    <div className="container" style={{paddingTop: '80px' }}>
       <div className="p-5" style={{backgroundColor: '#efefef'}}>
       <Link to="/survey">
         <div style={{backgroundImage: `url(${newbiePIC})`, backgroundColor: '#912fff', borderBottom: '0'}} className="survey-image" >

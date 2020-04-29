@@ -2,14 +2,14 @@
   display: flex;
   flex-direction:column;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 48px;
 }
 
 .user_r > h1 {
   font-style: italic;
   font-weight: 200;
   border-bottom: 1px solid;
-  padding: 1rem 2rem;
+  padding: 16px 32px;
   color: rgb(136, 125, 125);
 }
 
@@ -20,7 +20,7 @@
 }
 
 .bedge > img {
-  margin-right: .3rem;
+  margin-right: 4.8px;
   width: 35px;
 }
 
@@ -28,44 +28,44 @@
   /* border: 3px solid rgb(243, 184, 144); */
   background-color: rgb(243, 184, 144);
   color: rgb(255, 244, 224);
-  padding: .1rem .5rem;
+  padding: 1.6px 8px;
   border-radius: 15px;
 }
 .staff_bedge {
   /* border: 3px solid rgb(253, 230, 181); */
   background-color: rgb(253, 230, 181);
   color: rgb(177, 94, 84);
-  padding: .1rem .5rem;
+  padding: 1.6px 8px;
   border-radius: 15px;
 }
 .top_bedge {
   background-color: rgb(190, 176, 240);
   color: rgb(255, 255, 255);
-  padding: .1rem .5rem;
+  padding: 1.6px 8px;
   border-radius: 15px;
 }
 .flower_bedge {
   background-color: rgb(248, 184, 179);
   color: rgb(255, 255, 255);
-  padding: .1rem .5rem;
+  padding: 1.6px 8px;
   border-radius: 15px;
 }
 .flowerBud_bedge {
   background-color: rgb(248, 195, 179);
   color: rgb(255, 255, 255);
-  padding: .1rem .5rem;
+  padding: 1.6px 8px;
   border-radius: 15px;
 }
 .bud_bedge {
   background-color: rgb(201, 223, 150);
   color: rgb(255, 255, 255);
-  padding: .1rem .5rem;
+  padding: 1.6px 8px;
   border-radius: 15px;
 }
 .sprout_bedge {
   background-color: rgb(148, 180, 147);
   color: rgb(255, 255, 255);
-  padding: .1rem .5rem;
+  padding: 1.6px 8px;
   border-radius: 15px;
 }
 
@@ -80,8 +80,8 @@
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   margin-bottom: 50px;
-  margin-top: 1rem;
-  padding: 2rem 5rem;
+  margin-top: 16px;
+  padding: 32px 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,8 +94,8 @@
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   margin-bottom: 50px;
-  margin-top: 1rem;
-  padding: 2rem 5rem;
+  margin-top: 16px;
+  padding: 32px 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -104,6 +104,6 @@
 @media (max-width: 585px) {
   .rank_box {
     /* height: 720px; */
-    padding: .5rem 1rem;
+    padding: 8px 16px;
   }
 }
