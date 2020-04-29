@@ -25,13 +25,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'haystack',
     'rest_framework',
     'drf_yasg',
     'accounts',
     'perfumes',
     'corsheaders',
     'django_crontab',
-    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -127,11 +127,11 @@ CRONJOBS = {
     # ('*****', 'perfumes.cron.test_cron'), # 1분마다 동작(하루 1440번)
 }
 
-WHOOSH_INDEX=os.path.join(BASE_DIR, 'whoosh_index')
+# WHOOSH_INDEX=os.path.join(BASE_DIR, 'whoosh_index')
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': WHOOSH_INDEX,
-    },
-}
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+#         'PATH': WHOOSH_INDEX,
+#     },
+# }

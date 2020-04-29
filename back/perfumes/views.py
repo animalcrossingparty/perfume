@@ -81,7 +81,7 @@ SORT = {
         .order_by('-reviewcnt'),
     'rate': lambda objects: objects.prefetch_related('review_set').annotate(reviewcnt=Count('review')).annotate(avgrate=Avg('review__rate')).filter(reviewcnt__gt=10)\
         .order_by('-avgrate'),
-    'cheap': lambda objects: objects.order_by('price'),
+    'cheap': lambda objects: objects.order_by(F('price').asc(nulls_last=True)),
     'expensive': lambda objects: objects.order_by('-price'),
     'alpha': lambda objects: objects.order_by('name')
 }
