@@ -57,7 +57,7 @@ class Header extends Component<HeaderProps> {
         >
           PERFUMES
         </NavLink>
-        <Link to="/survey">SURVEY</Link>
+        <Link to="/surveyintro">SURVEY</Link>
         <Link to="/">REVIEWS</Link>
         <Link to="/">ABOUT</Link>
         {this.props.user.get("logged") ? (

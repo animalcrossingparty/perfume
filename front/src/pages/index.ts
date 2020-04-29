@@ -6,6 +6,7 @@ import PerfumePage from './PerfumePage'
 import SurveyPage from './SurveyPage'
 import UserRank from './UserRank'
 import TeamPage from './TeamPage'
+import SurveyIntroPage from './SurveyIntroPage'
 
 export {
   HomePage,
@@ -16,4 +17,5 @@ export {
   SurveyPage,
   UserRank,
   TeamPage,
+  SurveyIntroPage
 };
