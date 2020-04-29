@@ -98,22 +98,20 @@ SEASONS_ID = {
 @api_view(['GET'])
 def famous_perfumes(request):
     gender = request.GET.get('gender', 'all')
-    gender = int(gender)
     sample = request.GET.get('sample', None)
-    sample = int(sample)
     products = Perfume.objects.all().filter(availability=True)
     print(sample)
-    if sample == 1:
+    if sample == '1':
         # 0: 남성, 1: 여성, 2: 공용
-        if gender == 0:
+        if gender == '0':
             male = random.sample(FAMOUS_MALE_PERFUMES, 6)
             print(male)
             products = products.filter(id__in=male)
-        elif gender == 1:
+        elif gender == '1':
             female = random.sample(FAMOUS_FEMALE_PERFUMES, 6)
             print(len(female))
             products = products.filter(id__in=female)
-        elif gender == 2:
+        elif gender == '2':
             unisex = random.sample(FAMOUS_UNISEX_PERFUMES, 6)
             products = products.filter(id__in=unisex)
         else:
@@ -121,11 +119,11 @@ def famous_perfumes(request):
             products = products.filter(id__in=all_perfumes)
     else:
         # 0: 남성, 1: 여성, 2: 공용
-        if gender == 0:
+        if gender == '0':
             products = products.filter(id__in=FAMOUS_MALE_PERFUMES)
-        elif gender == 1:
+        elif gender == '1':
             products = products.filter(id__in=FAMOUS_FEMALE_PERFUMES)
-        elif gender == 2:
+        elif gender == '2':
             products = products.filter(id__in=FAMOUS_UNISEX_PERFUMES)
         else:
             all_perfumes = FAMOUS_MALE_PERFUMES + FAMOUS_FEMALE_PERFUMES + FAMOUS_UNISEX_PERFUMES
