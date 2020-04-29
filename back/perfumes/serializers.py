@@ -19,10 +19,38 @@ class BrandSerializers(serializers.ModelSerializer):
 
 
 class CategorySerializers(serializers.ModelSerializer):
+    name = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Category
         fields = '__all__'
 
+    def get_name(self, instance):
+        if instance.id == 1:
+            name = '시트러스'
+        elif instance.id == 2:
+            name = '프루티'
+        elif instance.id == 3:
+            name = '플로럴'
+        elif instance.id == 4:
+            name = '화이트 플로럴'
+        elif instance.id == 5:
+            name = '그린, 허브'
+        elif instance.id == 6:
+            name = '스파이시'
+        elif instance.id == 7:
+            name = '스위츠'
+        elif instance.id == 8:
+            name = '우디'
+        elif instance.id == 9:
+            name = '발삼'
+        elif instance.id == 10:
+            name = '머스트'
+        elif instance.id == 11:
+            name = '음료'
+        elif instance.id == 12:
+            name = '알데하이드'
+
+        return name
 
 class PerfumeSerializers(serializers.ModelSerializer):
     avg_rate = serializers.SerializerMethodField(read_only=True)
@@ -38,7 +66,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
     class Meta:
         model = Perfume
         fields = '__all__'
-        include = ['avg_rate', 'total_review', 'thumbnail']
+        include = ['avg_rate', 'total_review']
 
     def get_avg_rate(self, instance):
         try:
@@ -102,3 +130,6 @@ class PerfumeDetailSerializers(PerfumeSerializers):
     def get_reviews(self, instance):
         ordered = instance.review_set.order_by('-created_at')
         return ReviewSerializers(ordered, many=True).data
+
+class SearchQuerySerializers(serializers.Serializer):
+    keywords = serializers.CharField(required=True)

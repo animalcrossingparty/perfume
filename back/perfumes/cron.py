@@ -24,3 +24,5 @@ def make_wordcloud():
         data = json.load(json_file)
     wordcloud.making_wordcloud(data)
     return 'wordcloud is updated successfully'
+
+

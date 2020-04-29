@@ -8,6 +8,7 @@ import {
   PerfumePage,
   SurveyPage,
   UserRank,
+  TeamPage,
   SurveyIntroPage
 } from "./pages";
 import storage from "lib/storage";
@@ -49,6 +50,7 @@ class App extends Component<AppProps> {
         <Route path="/survey" component={SurveyPage} />
         <Route exact path="/surveyintro" component={SurveyIntroPage} />
         <Route path="/rank" component={UserRank} />
+        <Route path="/team" component={TeamPage} />
       </div>
     );
   }
