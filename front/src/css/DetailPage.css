@@ -106,14 +106,14 @@
   padding-right:  10%;
   margin-right: 5%;
   margin-left: 5%;
-  background: #d0d0d0;
+  background: #f3f3f3;
 }
 .review-list-header {
   margin: 0 5%;
   padding: 0 10%;
   height: 4rem;
   font-size: 3rem;
-  border-bottom: 2px dashed #d0d0d0;
+  border-bottom: 2px dashed #e0e0e0;
   font-weight: 100;
   background: #fff;
 }
@@ -136,7 +136,7 @@
   display: flex;
   align-items: center;
   padding: 0 !important;
-  background: #f2f2f2;
+  background: #d9d9d9;
 }
 
 .review-content {
@@ -147,7 +147,21 @@
   display: flex;
   flex-direction: column;
 }
-
+#review-content-text {
+  background: white;
+  border: 1px solid #f0f0f0;
+  min-height: 7rem;
+  transition: 1s;
+  padding: 1rem 0.5rem 0.5rem 2rem;
+  color: #2f2f2f;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+textarea:focus { 
+  outline: none !important;
+  padding-top: 2rem !important;
+  min-height: 10rem !important;
+}
 .username {
   color: royalblue;
   font-weight: 700;

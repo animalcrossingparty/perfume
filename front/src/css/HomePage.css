@@ -8,22 +8,28 @@
 }
 
 .page-footer {
-  background-color: #c78b8d88;
+  background-color: #b0b0b0;
 }
-
+.page-footer a {
+  color: #e0e0e0 !important;
+  letter-spacing: 4px;
+}
+.jcenter {
+  justify-content: center;
+  display: flex;
+}
 .intro-box {
   text-align: center;
-  height: 450px;
-  border: 1px dotted #e0e0e0;
+  height: 359px;
   border-radius: 50%;
-  background-color: rgba(250, 248, 248, 1);
-  margin-bottom: 5rem;
+  background-color: #f4f4f4;
+  margin: auto
 }
 
 .intro-box > i {
-  color: #f3d9d9;
-  text-shadow: 1px 1px 2px #d89698;
-  margin-top: 90px;
+  color: #d689d9;
+  margin-top: 50px;
+
 }
 
 .intro-box > h4 {

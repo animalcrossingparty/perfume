@@ -163,6 +163,12 @@ body {
   transform: translateZ(0);
 }
 
+.hover-shadow {
+  transition: 0.3s;
+}
+.hover-shadow:hover {
+  box-shadow: 0 0 9px lightgray;
+}
 .survey-image:not(:hover) {
   background-image: none !important;
   transform: scaleY(-1);
@@ -206,6 +212,7 @@ body {
 }
 .collapsible {
   box-shadow: none !important;
+  margin-top: 0 !important;
 }
 .fadeInDown {
   animation-name: fadeInDown;

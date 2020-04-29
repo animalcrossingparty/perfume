@@ -28,7 +28,7 @@ class RandomPick extends Component<RandomProps> {
         {randList.length > 1 ? (
           randList.map((perfume) => {
             return (
-              <Col s={2}>
+              <Col s={2} className="hover-shadow">
                 <h5 style={{color: ''}} className="card-c-title center px-3 thin">{perfume.name}</h5>
                 <Link to={`/detail/${perfume.id}`}>
                   <div
@@ -38,15 +38,13 @@ class RandomPick extends Component<RandomProps> {
                       backgroundSize: 'cover'
                     }}
                   >
-                    
-                  
                   </div>
                 </Link>
               </Col>
             );
           })
         ) : (
-          <Col s={2}>
+          <Col s={2} style={{height: 353.22}}>
             <ProgressBar />
           </Col>
         )}
