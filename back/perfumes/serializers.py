@@ -62,8 +62,10 @@ class PerfumeSerializers(serializers.ModelSerializer):
         return result
 
     def get_price(self, instance):
-        try: return instance.price * rate
-        except: return 0
+        try:
+            return instance.price * rate
+        except:
+            return 0
 
     def get_thumbnail(self, instance):
         return f'http://i02b208.p.ssafy.io:8000/staticfiles/images/{instance.pk}.jpg'
