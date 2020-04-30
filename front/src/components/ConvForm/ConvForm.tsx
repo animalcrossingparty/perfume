@@ -3,6 +3,8 @@ import { ConversationalForm } from "conversational-form";
 import {Checkbox, Button} from 'react-materialize'
 import axios from "axios";
 import queryString from "query-string";
+import user_anon from 'assets/user_anon.png'
+import richis from 'assets/member/4.png'
 interface ConvFormProps {
   formFields: any;
 }
@@ -37,6 +39,11 @@ class ConvForm extends Component<ConvFormProps> {
         preventAutoFocus: true,
         loadExternalStyleSheet: true,
         context: node,
+        userInterfaceOptions: {},
+      showProgressBar: false,
+      animationsEnabled: true,
+      userImage: `${user_anon}`,
+      robotImage: `${richis}`,
         dictionaryData: {
           "input-placeholder": "여기에 답변을 입력해주세요.",
         },
@@ -96,7 +103,7 @@ class ConvForm extends Component<ConvFormProps> {
           <h4 className="select-u-want">아래에서 마음에 드는 노트(향기)를 골라주세요. (두 개 이상)</h4>
             <form className="note-select-wrapper grid-templ" onSubmit={this.submitSurvey}>
             {this.state.notes.map((n) => 
-              (n.id === 0 ? null : <section key={n.id + 's-note'}><Checkbox id={n.id.toString()} style={{background:'plum'}} label={n.kor_name} value={n.id.toString()} /></section>)
+              (n.id === 0 ? null : <section key={n.id + 's-note'}><Checkbox id={n.id.toString()} className="each-note-checkbox" label={n.kor_name} value={n.id.toString()} /></section>)
             )}
             <Button className="survey-commit-btn" type="submit" waves="light">향수 추천받기</Button>
             </form>

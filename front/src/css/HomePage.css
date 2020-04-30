@@ -168,3 +168,7 @@
   text-shadow: 2px 2px 4px #3f3f3f;
   text-align: center;
 }
+
+.homegrid-haeder > h1 {
+  font-size: 30px;
+}

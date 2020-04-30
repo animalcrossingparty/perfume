@@ -5,6 +5,9 @@ div,
 p {
   font-family: "Roboto", "Sans-serif";
 }
+h1 {
+  font-size: 1.2rem;
+}
 .col .row {
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -35,10 +38,10 @@ body {
 }
 [type="radio"]:checked + span{
   padding-left: 24px !important;
-  background-color: rgb(216, 193, 230);
+  background-color: #F2EFFB;
   border-radius: 10px;
   width: 35%;
-  color: white;
+  color: black;
   text-align: center !important;
 }
 
@@ -85,8 +88,9 @@ body {
 }
 
 .disabled-link {
-  color: white !important;
-  background-color: rgb(216, 193, 230);
+  color: black !important;
+  font-weight: 700;
+  background-color: #EFEFFB;
   pointer-events: none;
 }
 .hidden {
@@ -266,9 +270,12 @@ input:not([type]), input[type=text]:not(.browser-default) {
   position: fixed;
 } 
 .collapsible-header {
-  font-size: 32px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #4f4f4f;
+  letter-spacing: 4px;
   border-bottom: 0 !important;
-  background-color: #f8f8f8 !important;
+  background-color: #CECEF6 !important;
 }
 .perfume-list-container {
   position:relative;
@@ -281,6 +288,7 @@ input:not([type]), input[type=text]:not(.browser-default) {
   padding: 2% !important;
   font-family: "Roboto";
   letter-spacing: 2px;
+  background-color: #F2EFFB;
 }
 .collapsible-body > .row {
   flex-wrap: wrap;
@@ -302,7 +310,7 @@ input:not([type]), input[type=text]:not(.browser-default) {
   margin-left: 4px;
 }
 .collapsible-body > .row > a > i {
-  color: purple;
+  color: #D0A9F5;
 }
 .w-100 {
   width: 100%;
@@ -321,10 +329,10 @@ input[type=text]:not(.browser-default) {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: pink;
+  background: #CECEF6;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hotpink;
+  background: #CECEF6;
   box-shadow: 0 0 3px gray;
 }
 .slider-btn {
