@@ -27,6 +27,7 @@ class Survey extends Component<{}> {
             'name': 'gender',
             'cf-questions': '어떤 분을 위한 향수인가요?',
             "isMultiChoice": false, 
+            'cf-input-placeholder': '성별을 선택해주세요',
             "children": [
               {
                 'tag': 'option',
@@ -139,62 +140,61 @@ class Survey extends Component<{}> {
               },
               {
                 'tag': 'option',
-                'cf-label': '과일 및 견과류 향',
+                'cf-label': '프루티',
                 'value': 2
               },
               {
                 'tag': 'option',
-                'cf-label': '일반 꽃 계열',
+                'cf-label': '플로럴',
                 'value': 3
               },
               {
                 'tag': 'option',
-                'cf-label': '흰 꽃 계열',
+                'cf-label': '화이트 플로럴',
                 'value': 4
               },
               {
                 'tag': 'option',
-                'cf-label': '허브와 푸제르 향',
+                'cf-label': '그린, 허브',
                 'value': 5
               },
               {
                 'tag': 'option',
-                'cf-label': '향신료',
+                'cf-label': '스파이시',
                 'value': 6
               },
               {
                 'tag': 'option',
-                'cf-label': '스위트, 구르망',
+                'cf-label': '스위츠',
                 'value': 7
               },
               {
                 'tag': 'option',
-                'cf-label': '나무, 이끼 향',
+                'cf-label': '우디',
                 'value': 8
               },
               {
                 'tag': 'option',
-                'cf-label': '건포도, 식초 향',
+                'cf-label': '발사믹',
                 'value': 9
               },
               {
                 'tag': 'option',
-                'cf-value': '머스크, 앰버, 동물 향',
+                'cf-label': '머스크',
                 'value': 10
               },
               {
                 'tag': 'option',
-                'cf-value': '술, 음료',
+                'cf-label': '술, 음료',
                 'value': 11
               },
               {
                 'tag': 'option',
-                'cf-value': '합성물질',
+                'cf-label': '알데하이드',
                 'value': 12
               }
             ]
           }
-
 
         ]} />
     );

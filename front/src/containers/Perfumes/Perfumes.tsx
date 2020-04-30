@@ -27,6 +27,7 @@ interface PerfumeProps {
   pender: any;
   category: any;
   fbrand: any;
+  location: any;
 }
 
 class Perfumes extends Component<PerfumeProps> {
@@ -41,8 +42,8 @@ class Perfumes extends Component<PerfumeProps> {
   }
 
   componentDidUpdate(prevProps) {
-    let oldId = prevProps.history.location.search;
-    let newId = this.props.history.location.search;
+    let oldId = prevProps.history.location.key;
+    let newId = this.props.history.location.key;
     if (newId !== oldId) {
       this.initializePerfumeInfo();
     }
@@ -119,9 +120,8 @@ class Perfumes extends Component<PerfumeProps> {
       page,
     } = queryString.parse(window.location.search);
     return (
-      <section style={{ height: window.innerHeight - 64 }}>
-        <Row className="perfume-list-subheader mb-0" />
-        <Row className="perfume-list-container" style={{ height: "100%" }}>
+      <section style={{ height: window.innerHeight - 64, backgroundColor: '#EFF5FB' }}>
+        <Row className="perfume-list-container" style={{ height: "100%", marginTop: '64px' }}>
           <Col s={2} className="perfume-sidenav">
             <Collapsible accordion={false}>
               <CollapsibleItem
@@ -212,11 +212,12 @@ class Perfumes extends Component<PerfumeProps> {
                 icon={null}
                 node="div"
               >
-                <div>
+                <div className="pr-3">
                   <div
                     style={{
                       borderBottom: "1px solid #e0e0e0",
-                      marginBottom: "15px",
+                      marginBottom: "25px",
+                      marginTop: 25
                     }}
                   >
                     GENDER
@@ -225,9 +226,9 @@ class Perfumes extends Component<PerfumeProps> {
                     label=""
                     name="gender"
                     options={[
-                      { label: "shared", value: "all" },
-                      { label: "MALE", value: "0" },
-                      { label: "FEMALE", value: "1" },
+                      { label: "Shared", value: "all" },
+                      { label: "Male", value: "0" },
+                      { label: "Female", value: "1" },
                     ]}
                     value={gender}
                     onChange={({ target: { value } }) =>
@@ -239,11 +240,12 @@ class Perfumes extends Component<PerfumeProps> {
                   style={{
                     borderBottom: "1px solid #e0e0e0",
                     margin: "25px 0",
+                    padding: '5%'
                   }}
                 >
                   CATEGORY
                 </div>
-                <Row>
+                <Row className="pl-2">
                   {this.props.category.map((cat) => {
                     return (
                       <Checkbox
@@ -285,11 +287,11 @@ class Perfumes extends Component<PerfumeProps> {
                     }}
                     value=""
                   >
-                    <option disabled value="">
-                    - - - - - - - - - - - -  ALL - - - - - - - - - - - -
+                    <option value="all">
+                    ALL
                     </option>
                     {
-                      this.props.fbrand.map((br) => (<option value={br.id}>{br.name}</option>))
+                      this.props.fbrand.map((br) => (<option key={br.id + 'key'} value={br.id}>{br.name}</option>))
                     }
                   </Select>
                 </div>
@@ -301,7 +303,7 @@ class Perfumes extends Component<PerfumeProps> {
               style={{
                 position: "fixed",
                 zIndex: 3,
-                background: "#f0f0f0",
+                background: "#CECEF6",
                 width: "100%",
                 paddingTop: "10px",
                 marginLeft: "11.25px",
@@ -310,11 +312,11 @@ class Perfumes extends Component<PerfumeProps> {
             >
               <Row style={{}}>
                 <p
-                  style={{ backgroundColor: "#e0e0e0", letterSpacing: 3 }}
+                  style={{ backgroundColor: "#F8EFFB",fontWeight: 700,color: '#3f3f3f', letterSpacing: 3, width: '100%', padding: '28px 12px' }}
                   className="m-1 ml-4 thin row p-1"
                 >
-                  <Icon className="mr-3">info</Icon>맞춤 향수를 찾으실 때는 -{" "}
-                  <Link style={{ color: "magenta" }} to="/surveyintro">
+                  <Icon style={{color: '#fff'}} className="mr-3">info</Icon>맞춤 향수를 찾으실 때는 -{" "}
+                  <Link style={{ color: "plum", fontWeight: 700 }} to="/surveyintro">
                     SURVEY
                   </Link>
                   -를 이용해보세요
@@ -324,7 +326,7 @@ class Perfumes extends Component<PerfumeProps> {
                 style={{
                   margin: "8px 0",
                   padding: "0 24px",
-                  background: "white",
+                  background: "#F8EFFB",
                 }}
               >
                 총 {this.props.num_pages} 페이지 중 {page} 페이지 | 검색 된

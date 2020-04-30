@@ -24,7 +24,7 @@ function HomePage() {
             s={4}
           >
             <div className="homegrid-header">
-              <h1 className="pt-5">불가리</h1>
+              <h1 className="pt-5">BVLGARI</h1>
               <h4 className="center">로즈 골데아</h4>
             </div>
             <div className="homegrid-content">
@@ -43,7 +43,7 @@ function HomePage() {
             s={8}
           >
             <div className="homegrid-header">
-              <h1>크리드</h1>
+              <h1>CREED</h1>
               <h4 className="center">버진 아일랜드 워터</h4>
             </div>
             <div className="homegrid-content">
@@ -65,7 +65,7 @@ function HomePage() {
             s={7}
           >
             <div className="homegrid-header pt-5">
-              <h1 className="pt-5">조말론</h1>
+              <h1 className="pt-5">JO MALONE</h1>
               <h4 className="center">잉글리쉬 페어 앤 프리지아 코롱</h4>
             </div>
 
@@ -86,7 +86,7 @@ function HomePage() {
               className="homegrid"
             >
               <div className="homegrid-header">
-              <h1 className="pt-3 m-0">미스 디올</h1>
+              <h1 className="pt-3 m-0">MS DIOR</h1>
             <h4 className="center">미스 디올 오 드 퍼퓸</h4>
               </div>
             <div className="homegrid-content" style={{margin: '8% auto auto auto'}}>

@@ -32,8 +32,8 @@ export default () => (
 			</Caption>
 		</Slide>
 		<Slide image={<img alt="" src={s2} />}>
-			<Caption placement="left">
-				<h3>
+			<Caption placement="left" style={{color: '#2f2f2f'}}>
+				<h3 className="mt-5" style={{marginLeft: -200, fontWeight: 100}}>
 					5월 달, 인기 향수 계열은 플로럴
       </h3>
 				<h5>
@@ -43,13 +43,10 @@ export default () => (
 		</Slide>
 		<Slide image={<img alt="" src={s3} />}>
 			<Caption placement="center">
-				<h3>
+				<h3 className="mt-5" style={{textShadow: '0 0 5px white'}}>
 					당신이 애타게 찾던 향수는?
       </h3>
-				<h5>
-					로르 리시에서 향수를 찾을 수 있어요.
-      </h5>
-			<Link className="my-5" to="/survey"><Button large style={{backgroundColor: '#fff', color: '#2f2f2f', fontWeight: '700'}} className="mt-5">나에게 꼭 맞는 향수 찾으러가기</Button></Link>
+			<Link className="my-5" to="/surveyintro"><Button large style={{backgroundColor: '#D0A9F5', color: '#2f2f2f', fontWeight: '700'}} className="mt-5">나에게 꼭 맞는 향수 찾으러가기</Button></Link>
 
 			</Caption>
 		</Slide>

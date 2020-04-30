@@ -1,5 +1,6 @@
 .perfume-info-section {
-  padding-top: 80px;
+  padding-top: 70px;
+  background: #EFF8FB
   
 }
 
@@ -51,8 +52,8 @@
   margin: 0;
 }
 .similar-container {
-  background-color: #e6d5f6;
-  border: 9px solid #f2e9fa;
+  background-color: #f9f2ff;
+  border: 8px double #d9d6f7;
   text-align: center;
   line-height: 300%;
   border-left: 0;
@@ -100,24 +101,24 @@
 }
 
 .disabled-season {
-  filter: brightness(0.3)
+  filter: brightness(0.2)
 }
 
-.perfume_name {
-  font-size: 25px;
-  font-weight: 500;
-  margin-bottom: 1.5vh;
-  border-bottom: 1px dotted gray;
-  padding: 0 5% 0.8% 2%;
-}
 .categories-row > span {
-  border-left: 9px solid pink;
   margin: 15px 10px;
-  padding: 5px;
+  padding: 12px;
+  font-weight: 900;
+  font-family: 'Roboto';
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  background-color: rgb(208, 228, 248);
+
 }
 .detail_price {
   margin-right: auto;
-  font-size: 23.2px;
+  font-size: 40px;
+  color: rgb(135, 68, 190);
+  font-weight: 700;
 }
 
 /* Reviews */
@@ -131,21 +132,21 @@
 .review-list-header {
   margin: 0 5%;
   padding: 0 10%;
-  height: 64px;
-  font-size: 48px;
+  font-size: 2vw;
   border-bottom: 2px dashed #e0e0e0;
   font-weight: 100;
-  background: #fff;
+  background: #CECEF6;
 }
 .review-list-row {
   min-height: 80px;
   background: white;
-  border: 1px solid #f2f2f2;
+  border: 1px solid #EFF5FB;
   border-bottom: 0;
   align-items: center;
   margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
+  margin: 2% 0;
 }
 .rank-badge {
   height: 56px;
@@ -156,7 +157,7 @@
   display: flex;
   align-items: center;
   padding: 0 !important;
-  background: #d9d9d9;
+  background: #EFF5FB;
 }
 
 .review-content {

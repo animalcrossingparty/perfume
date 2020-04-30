@@ -57,7 +57,7 @@ class SurveyResultPage extends Component<ResultProps> {
                 </Link>
               ))
             ) : (
-              <h1>결과가 없어용</h1>
+              <h1 style={{position: 'absolute'}}>결과가 없어용</h1>
             )}
           </div>
         </div>

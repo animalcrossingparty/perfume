@@ -55,6 +55,7 @@ class Detail extends Component<DetailProps> {
     if (newId !== oldId) {
       console.log('update!!!!!!!!!!!!!!!!!!!!!')
       this.initializeDetailInfo()
+      window.scrollTo(0,0)
     }
   }
   componentDidMount() {
@@ -270,10 +271,15 @@ class Detail extends Component<DetailProps> {
         </section>
         <div className="review-list-header">
           {detail.reviews
-            ? "Reviews - " + detail.reviews.length
+            ? `Reviews (${detail.reviews.length})`
             : "여러분의 소중한 리뷰를 남겨주세요"}
         </div>
-
+        <h5 className="thin center">
+          {detail.name} - 리뷰 키워드 WORD CLOUD
+        </h5>
+        <section>
+          <img src={`http://i02b208.p.ssafy.io:8000/staticfiles/wordcloud/${detail.id}-wc.webp`} width="100%" height="700px" alt=""/>
+        </section>
         <section className="review-list-container">
           {detail.reviews ? (
             detail.reviews.map((review) => (
