@@ -52,8 +52,13 @@
 }
 .similar-container {
   background-color: #e6d5f6;
-  border: 5px solid plum;
+  border: 9px solid #f2e9fa;
+  text-align: center;
+  line-height: 300%;
+  border-left: 0;
+  border-right: 0;
   display: grid;
+  margin-bottom: 5%;
   width: 100%;
   grid-template-rows: repeat(1, 200px);
   grid-column-gap: 2%;

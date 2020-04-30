@@ -17,6 +17,7 @@ interface DetailProps {
   DetailActions: any;
   detail: any;
   user: any;
+  location: any
 }
 
 class Detail extends Component<DetailProps> {
@@ -25,9 +26,7 @@ class Detail extends Component<DetailProps> {
     accel: 50,
     interval: setInterval(() => 1, 5000),
   };
-  componentWillReceiveProps(nextProps){
-      this.initializeDetailInfo()
-  }
+
   addOne = () => {
     if (this.state.progress < this.props.detail.avg_rate.toFixed(1) * 10) {
       this.state.accel > 1
@@ -50,6 +49,14 @@ class Detail extends Component<DetailProps> {
     await DetailActions.getPerfumeDetail(perfume_id);
   };
 
+  componentDidUpdate(prevProps) {
+    let oldId = prevProps.location.key;
+    let newId = this.props.location.key;
+    if (newId !== oldId) {
+      console.log('update!!!!!!!!!!!!!!!!!!!!!')
+      this.initializeDetailInfo()
+    }
+  }
   componentDidMount() {
     const interval = setInterval(this.addOne, this.state.accel);
     this.initializeDetailInfo();
@@ -110,7 +117,7 @@ class Detail extends Component<DetailProps> {
               </Row>
             </Col>
             <Col s={6} className="perfume-info-text">
-              <p>{detail.launch_date.substr(0, 4)}년 출시</p>
+              <p>{detail.launch_date ? detail.launch_date.substr(0, 4) : `(정보없음)`}년 출시</p>
               <small className="right">{detail.id}</small>
               <h4 className="mt-1"> {detail.name} </h4>
               <h5 className="perfume_brand">
@@ -225,15 +232,15 @@ class Detail extends Component<DetailProps> {
             detail.similar
               .substr(1, detail.similar.length - 2)
               .split(", ")
-              .map((sim) => (
+              .map((sim, rank) => (
                 <Link
-                  to={`/detail/${sim}`}
+                  to={{ pathname: `/detail/${sim}` }}
                   className="each-similar"
                   key={sim + "th"}
                   style={{
                     backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim}.jpg)`,
                   }}
-                />
+                ># {rank + 1}</Link>
               ))
           ) : (
             <div>비슷한 향수 데이터가 없습니다.</div>
@@ -247,15 +254,15 @@ class Detail extends Component<DetailProps> {
             detail.recommended
               .substr(1, detail.recommended.length - 2)
               .split(", ")
-              .map((sim) => (
+              .map((sim, rank) => (
                 <Link
-                  to={`/detail/${sim}`}
+                  to={{ pathname: `/detail/${sim}` }}
                   className="each-similar"
                   key={sim + "th"}
                   style={{
                     backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim}.jpg)`,
                   }}
-                />
+                ># {rank + 1}</Link>
               ))
           ) : (
             <div>추천 향수 데이터가 없습니다.</div>
