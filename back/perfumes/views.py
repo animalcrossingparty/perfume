@@ -173,7 +173,7 @@ def search(request):
 
     perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('categories')\
         .prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')\
-        .prefetch_related('seasons').prefetch_related('review_set')\
+        .prefetch_related('seasons')\
         .annotate(score=
             3 * Count('name', filter=Q(name__in=keywords))\
             + 3 * Count('brand', filter=Q(brand__name__in=keywords))\
@@ -292,24 +292,21 @@ def perfumes_list(request):
     except:
         pass
     else:
-        if len(brands) == 1:
-            perfumes = perfumes.filter(brand=int(brands))
-        else:
-            perfumes = perfumes.filter(brand__in=brands)
+        perfumes = perfumes.filter(brand__id__in=brands)
 
     try:
         categories = set(map(int, categories.split(',')))
     except:
         pass
     else:
-        perfumes = perfumes.filter(categories__in=categories)
+        perfumes = perfumes.filter(categories__id__in=categories)
 
     try:
         notes = set(map(int, notes.split(',')))
     except:
         pass
     else:
-        perfumes = perfumes.filter(Q(top_notes__in=notes) | Q(heart_notes__in=notes) | Q(base_notes__in=notes))
+        perfumes = perfumes.filter(Q(top_notes__id__in=notes) | Q(heart_notes__id__in=notes) | Q(base_notes__id__in=notes))
 
     # 정렬
     perfumes = SORT[sort](perfumes)
