@@ -26,7 +26,8 @@ from accounts.models import Survey
 from .models import Perfume, Review, Brand, Note, Image
 from .serializers import (
     PerfumeSerializers, PerfumeSurveySerializers, SurveySerializers, ReviewSerializers,
-    PerfumeDetailSerializers, NoteSerializers, SearchQuerySerializers
+    PerfumeDetailSerializers, NoteSerializers, SearchQuerySerializers, SurveyGETQuery,
+    SurveyPOSTQuery
 )
 from .utils import knn, tf_idf, exchange_rate
 
@@ -192,10 +193,10 @@ def search(request):
         print(f'{leng}개 단어 검색하는 데 걸린 시간: {time()-st}s')
 
 class SurveyAPI(APIView):
-    # @swagger_auto_schema(
-    # operation_summary="특정 리뷰 '좋아요' / '좋아요 취소' 실행",
-    # query_serializer=SurveyQueryParamsSerializers,
-    # )
+    @swagger_auto_schema(
+        query_serializer=SearchQuerySerializers,
+        operation_summary='Survey 중 카테고리 선택 후 해당 노트 리스트 반환',
+        )
     def get(self, request):
         """
         사용자가 좋아하는 카테고리를 누르면 그 카테고리에 해당하는 노트 리스트를 반환합니다.
@@ -210,9 +211,25 @@ class SurveyAPI(APIView):
         serialize = NoteSerializers(notes, many=True)
         return Response(serialize.data)
     
+    @swagger_auto_schema(
+        operation_summary='Survey',
+        request_body=SurveyPOSTQuery,
+        manual_parameters=[
+            openapi.Parameter(
+                'Token',
+                openapi.IN_HEADER,
+                description='JWT',
+                type=openapi.TYPE_STRING,
+                )
+            ]
+        )
     def post(self, request):
+        """
+        
+        """
         gender = request.POST.get('gender', None)
-        # age = str(request.POST.get('age', None))
+        gender = int(gender)
+        age = str(request.POST.get('age', None))
         seasons = request.POST.get('season', None)
         categories = request.POST.get('category', None)
         categories = set(map(int, categories.split(',')))
@@ -229,14 +246,14 @@ class SurveyAPI(APIView):
 
         if seasons is not None:
             season_list = seasons.split(',')
-            products = products.filter(seasons__in=season_list)
+            products = products.filter(seasons__id__in=season_list)
             print('season_filtered***********', products)
         
-        products = products.filter(categories__in=categories)
+        products = products.filter(categories__id__in=categories)
         print('category_filtered***********', products)
         
         # 유명 노트 포함 향수 필터링
-        products = products.filter(brand__in=FAMOUS_BRANDS)
+        products = products.filter(brand__id__in=FAMOUS_BRANDS)
         print('brand_filtered***********', products)
 
         # sort => include_note 많이 가지고 있는 애들부터 보여주기
