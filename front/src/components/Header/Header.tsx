@@ -53,7 +53,7 @@ class Header extends Component<HeaderProps> {
         }}
       >
         <NavLink
-          to={`/perfume?page=1&sort=rate&category=all&gender=all&include=all&exclude=None&brand=all`}
+          to={`/perfume?page=1&sort=reviewcnt&category=all&gender=all&include=all&exclude=None&brand=all`}
         >
           PERFUMES
         </NavLink>
