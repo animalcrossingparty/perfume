@@ -37,5 +37,6 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger')),
     path('accounts/', include('accounts.urls')),
     path('perfumes/', include('perfumes.urls')),
+    path('search/', search)
     # path('search/', include('haystack.urls')),
 ]
