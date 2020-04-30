@@ -144,7 +144,7 @@ def search(request):
     검색어는 query param 'keywords'에 ','로 구분해서 주세요
     카테고리(영문), 노트(영문, 한글은 아직 불가능), 리뷰(영문), 계절(한글, 영문), 향수 이름(영문)으로 검색 후 10개의 향수를 list로 반환합니다.
     계절을 제외한 카테고리, 노트, 리뷰, 향수 이름은 contains로 필터링합니다.
-    향수 이름이 정확히 맞으면 100,000점, 향수 이름이 비슷하면 1,000점, 브랜드명이 비슷하면 10점, 비슷한 이름의 노트가 포함되어 있으면 각각 5점,
+    향수 이름이 비슷하면 3점, 브랜드명이 비슷하면 3점, 해당 계절의 향수이면 2점, 해당 노트가 포함되어 있으면 각각 1점, 
     리뷰 내용에 해당 단어가 포함되어 있으면 1점으로 계산합니다.
     점수가 높은 순으로 정렬하여 10개의 향수를 list로 리턴합니다.
 
@@ -164,28 +164,30 @@ def search(request):
     st = time()
     keywords = request.GET.get('keywords')
     keywords = set(keywords.split(','))
-
-    kw_cat = keywords & set(RESERVED_CAT)
-    keywords = keywords - kw_cat
     leng = len(keywords)
-    print('keywords:', keywords)
-
-    season_search = set()
-    for kw in keywords & set(SEASONS_ID):
-        season_search.add(SEASONS_ID[kw])
-
-    cat_search = set()
+    kw_cat = keywords & set(RESERVED_CAT)
+    keywords -= kw_cat
+    id_kw_cat = set()
     for kw in kw_cat:
-        cat_search.update(RESERVED_CAT[kw])
-    print('cat_search:', cat_search)
+        id_kw_cat |= RESERVED_CAT[kw]
 
-    perfumes = Perfume.objects.values()[:5]
-    print(perfumes)
-    print(perfumes[0])
-
+    perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('categories')\
+        .prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')\
+        .prefetch_related('seasons').prefetch_related('review_set')\
+        .annotate(score=
+            3 * Count('name', filter=Q(name__in=keywords))\
+            + 3 * Count('brand', filter=Q(brand__name__in=keywords))\
+            + Count('categories', filter=Q(categories__id__in=id_kw_cat))
+            + Count('top_notes', filter=Q(top_notes__name__in=keywords))
+            + Count('heart_notes', filter=Q(heart_notes__name__in=keywords))
+            + Count('base_notes', filter=Q(base_notes__name__in=keywords))
+            + 2 * Count('seasons', filter=Q(seasons__name__in=keywords))
+            + 2 * Count('seasons', filter=Q(seasons__kor_name__in=keywords))
+        )\
+        .order_by('-score')[:10]
     serializers = PerfumeSerializers(perfumes, many=True)
     try:
-        return Response(123, status=200)
+        return Response(serializers.data, status=200)
     finally:
         print(f'{leng}개 단어 검색하는 데 걸린 시간: {time()-st}s')
 
