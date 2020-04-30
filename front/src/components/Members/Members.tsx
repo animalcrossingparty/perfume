@@ -53,7 +53,9 @@ export default () => (
           </Chip>
         </div>
         <div className="nutshell_2">
-          " 하고 싶은 말 "
+          "Covid-19 때문에 프로젝트 기간 내내 재택 근무였지만, 
+          아침에 눈떠서 잠들 때까지 zoom을 켜놓고 해서 그런지 외로움을 느낄 새 없이 재미있게 개발했어요. 
+          다음 프로젝트도 화이팅합시다!"
         </div>
       </div>
     </div>
@@ -64,7 +66,7 @@ export default () => (
           박홍은
         </div>
         <div className="mem_email">
-          <a href="mailto:박홍은@gmail.com">박홍은@gmail.com</a>
+          <a href="mailto:박홍은@gmail.com">toohong5@gmail.com</a>
         </div>
         <div className="role">
           <Chip>
@@ -75,7 +77,7 @@ export default () => (
           </Chip>
         </div>
         <div className="nutshell_3">
-          " 하고 싶은 말 "
+          "제티 먹고싶다"
         </div>
       </div>
     </div>
@@ -108,7 +110,7 @@ export default () => (
           남승현
         </div>
         <div className="mem_email">
-          <a href="mailto:남승현@gmail.com">남승현@gmail.com</a>
+          <a href="mailto:남승현@gmail.com">gtsmell@gmail.com</a>
         </div>
         <div className="role">
           <Chip>
@@ -119,7 +121,7 @@ export default () => (
           </Chip>
         </div>
         <div className="nutshell_5">
-          " 하고 싶은 말 "
+          "배고파요"
         </div>
       </div>
     </div>
