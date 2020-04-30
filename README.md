@@ -8,7 +8,7 @@ typora-root-url: ./
 
 ![all](.\images\all.png)
 
-
+![](/images/all.png)
 
 ### 목차
 
