@@ -45,10 +45,30 @@
 .rate-inside-circle > h5 {
   position: absolute;
   width: 320px;
-  line-height: 232px;
+  line-height: 320px;
   text-align: center;
   font-size: 96px;
   margin: 0;
+}
+.similar-container {
+  background-color: #e6d5f6;
+  border: 9px solid #f2e9fa;
+  text-align: center;
+  line-height: 300%;
+  border-left: 0;
+  border-right: 0;
+  display: grid;
+  margin-bottom: 5%;
+  width: 100%;
+  grid-template-rows: repeat(1, 200px);
+  grid-column-gap: 2%;
+  grid-template-columns: repeat(10, 1fr);
+}
+.each-similar {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
 }
 .rate-circle {
   position: relative;

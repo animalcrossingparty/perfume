@@ -14,6 +14,7 @@ import {
   CollapsibleItem,
   ProgressBar,
   Checkbox,
+  Select,
 } from "react-materialize";
 import queryString from "query-string";
 import Pagination from "react-js-pagination";
@@ -24,43 +25,19 @@ interface PerfumeProps {
   perfumes: any;
   history: any;
   pender: any;
+  category: any;
+  fbrand: any;
 }
 
 class Perfumes extends Component<PerfumeProps> {
-  state = {
-    categories: [
-      { id: '1', label: "시트러스", value: '1', checked: false },
-      { id: '2', label: "프루티", value: '2', checked: false },
-      { id: '3', label: "플로럴", value: '3', checked: false },
-      { id: '4', label: "W.플로럴", value: '4', checked: false },
-      { id: '5', label: "그린, 허브", value: '5', checked: false },
-      { id: '6', label: "스파이시", value: '6', checked: false },
-      { id: '7', label: "스위츠", value: '7', checked: false },
-      { id: '8', label: "우디", value: '8', checked: false },
-      { id: '9', label: "발삼", value: '9', checked: false },
-      { id: '10', label: "머스크", value: '10', checked: false },
-      { id: '11', label: "음료", value: '11', checked: false },
-      { id: '12', label: "알데하이드", value: '12', checked: false },
-    ],
-  };
   initializePerfumeInfo = async () => {
     const { PerfumeActions, history } = this.props;
     const queryParams = queryString.parse(history.location.search);
     await PerfumeActions.getPerfumeInfo(queryParams);
   };
-  initializeCategoryInfo = async () => {
-    const { history } = this.props
-    const {categories} = this.state
-    const cat = queryString.parse(history.location.search).category
-    if (cat !== 'all') {
-      console.log(cat);
-    }
-    await queryString.parse(history.location.search)
-  }
 
   componentDidMount() {
     this.initializePerfumeInfo();
-    this.initializeCategoryInfo()
   }
 
   componentDidUpdate(prevProps) {
@@ -96,28 +73,21 @@ class Perfumes extends Component<PerfumeProps> {
     PerfumeActions.getPerfumeInfo(queryParams);
   };
   handleCategory = (e) => {
-    const {id, value } = e.target
-    const { history, PerfumeActions } = this.props;
-    const {categories} = this.state
+    const id = e.target.id;
+    const { history, PerfumeActions, category } = this.props;
     const queryParams = queryString.parse(history.location.search);
-    const changedCategory = {id, value, label: this.state.categories[id-1].label, checked: !this.state.categories[id-1].checked}
-    this.setState({
-      categories: categories.map(
-        cat => id === cat.id
-          ? { ...cat, ...changedCategory }
-          : cat
-      )
-    })
-    let sc:any = []
-    for (let i=0;i<12;i++){
-      if
-      (this.state.categories[i].checked) {
-        sc.push(Number(this.state.categories[i].value))
+    let sc: Array<any> = [];
+    category.map((cat) => {
+      if (cat.id === id) {
+        cat.checked = !cat.checked;
       }
-    }
+      if (cat.checked) {
+        sc.push(cat.id);
+      }
+      return 1
+    });
+    PerfumeActions.setCartSelect(category);
     queryParams.category = sc.join(",");
-    console.log(sc.join(','));
-    
     window.history.pushState(
       "",
       "",
@@ -125,6 +95,17 @@ class Perfumes extends Component<PerfumeProps> {
     );
     PerfumeActions.getPerfumeInfo(queryParams);
   };
+  handleBrand = (e) => {
+    const { history, PerfumeActions } = this.props;
+    const queryParams = queryString.parse(history.location.search);
+    queryParams.brand = e.target.value;
+    PerfumeActions.getPerfumeInfo(queryParams);
+    window.history.pushState(
+      "",
+      "",
+      `/perfume?${queryString.stringify(queryParams)}`
+    );
+  }
   render() {
     const { perfumes } = this.props;
     const { GET_PERFUME_INFO } = this.props.pender;
@@ -244,9 +225,9 @@ class Perfumes extends Component<PerfumeProps> {
                     label=""
                     name="gender"
                     options={[
-                      { label: "공용", value: "all" },
-                      { label: "남성용", value: "0" },
-                      { label: "여성용", value: "1" },
+                      { label: "shared", value: "all" },
+                      { label: "MALE", value: "0" },
+                      { label: "FEMALE", value: "1" },
                     ]}
                     value={gender}
                     onChange={({ target: { value } }) =>
@@ -263,8 +244,14 @@ class Perfumes extends Component<PerfumeProps> {
                   CATEGORY
                 </div>
                 <Row>
-                  {this.state.categories.map((category) => {
-                    return <Checkbox onChange={this.handleCategory} key={category.id + 'ckbx'} {...category} />;
+                  {this.props.category.map((cat) => {
+                    return (
+                      <Checkbox
+                        onChange={this.handleCategory}
+                        key={cat.id + "ckbx"}
+                        {...cat}
+                      />
+                    );
                   })}
                 </Row>
               </CollapsibleItem>
@@ -274,7 +261,38 @@ class Perfumes extends Component<PerfumeProps> {
                 icon={null}
                 node="div"
               >
-                (구현중)
+                <div style={{height: '5vw'}}>
+                  
+                  <Select
+                    multiple={false}
+                    onChange={this.handleBrand}
+                    options={{
+                      classes: "",
+                      dropdownOptions: {
+                        alignment: "right",
+                        autoTrigger: true,
+                        closeOnClick: true,
+                        constrainWidth: true,
+                        coverTrigger: true,
+                        hover: false,
+                        inDuration: 150,
+                        onCloseEnd: null,
+                        onCloseStart: null,
+                        onOpenEnd: null,
+                        onOpenStart: null,
+                        outDuration: 250,
+                      },
+                    }}
+                    value=""
+                  >
+                    <option disabled value="">
+                    - - - - - - - - - - - -  ALL - - - - - - - - - - - -
+                    </option>
+                    {
+                      this.props.fbrand.map((br) => (<option value={br.id}>{br.name}</option>))
+                    }
+                  </Select>
+                </div>
               </CollapsibleItem>
             </Collapsible>
           </Col>
@@ -285,9 +303,9 @@ class Perfumes extends Component<PerfumeProps> {
                 zIndex: 3,
                 background: "#f0f0f0",
                 width: "100%",
-                paddingTop: '10px',
-                marginLeft: '11.25px',
-                border: '1px solid #e0e0e0'
+                paddingTop: "10px",
+                marginLeft: "11.25px",
+                border: "1px solid #e0e0e0",
               }}
             >
               <Row style={{}}>
@@ -304,9 +322,9 @@ class Perfumes extends Component<PerfumeProps> {
               </Row>
               <Row
                 style={{
-                  margin: '8px 0',
-                  padding: '0 24px',
-                  background: 'white'
+                  margin: "8px 0",
+                  padding: "0 24px",
+                  background: "white",
                 }}
               >
                 총 {this.props.num_pages} 페이지 중 {page} 페이지 | 검색 된
@@ -370,6 +388,8 @@ export default connect(
     perfumes: state.perfume.get("perfumesList"),
     num_pages: state.perfume.get("num_pages"),
     pender: state.pender.pending,
+    category: state.perfume.get("category"),
+    fbrand: state.perfume.get("fbrand"),
   }),
   (dispatch) => ({
     PerfumeActions: bindActionCreators(perfumeActions, dispatch),

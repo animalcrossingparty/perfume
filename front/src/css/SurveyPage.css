@@ -6,18 +6,33 @@
   display: flex;
   flex-direction: column;
 }
-
+.conversational-form-inner {
+  background: plum;
+}
+.animate-in {
+  background-color: #e0e0e0;
+  padding: 0.5%;
+  margin: 0.3vw;
+}
+.inputWrapper {
+  background: white
+}
 .survey_box {
   background-color: rgba(255, 255, 255, 1);
-  width: 66%;
-  height: 80vh;
-  margin: 80px auto;
-  box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.4);
+  width: 80%;
+  height: 90vh;
+  margin: auto;
+  margin-top: 5%;
   padding: 32px 80px;
 }
-
+.result_box {
+  background-color: #f9f3ff;
+  width: 82%;
+  padding: 5% 10%;
+  margin: auto;
+}
 .title {
-  font-size: 30px;
+  font-size: 3vw;
   font-style: italic;
   font-weight: 200;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
@@ -155,10 +170,57 @@
 }
 
 .survey_inner_container {
-  background-color: blue;
-  height: 60vh;
+  background-color: #d0d0d0;
+  height: 630px;
+}
+.result-rank {
+  color: royalblue;
+  position: absolute;
+  padding-left: 1vw;
+  font-weight: 700;
 }
 
+.result-grid {
+  background-color: #e6d5f6;
+  display: grid;
+  text-align: center;
+  overflow-y: hidden;
+  grid-template-rows: repeat(6, 250px);
+  grid-row-gap: 2%;
+  grid-column-gap: 2%;
+  grid-template-columns: repeat(3, 1fr);
+}
+.each-grid-result {
+  background-color: rgb(187, 187, 226);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.result-title {
+  font-size: 2vw;
+  font-weight: 100;
+  background-color: #ffedf8;
+  padding: 1rem 1rem 4rem 1rem;
+}
+.result-header {
+  opacity: 0;
+  color: black;
+  width: 50%;
+  margin: auto;
+  font-weight: 400;
+  background-color: #fafafa;
+  z-index: 99;
+  transition: 0.3s ease;
+}
+.result-price {
+  font-size: 2rem;
+  color: black;
+  transition: 0.4s ease;
+}
+.each-grid-result:hover .result-header {
+  opacity: 0.9 !important;
+  z-index: 3;
+}
 .survey_inner_container div {
   height: 100%
 }
@@ -166,4 +228,18 @@
   width: auto !important;
   min-width: 60px !important;
   transition: 450ms ease-in-out !important;
+}
+
+.note-select-wrapper {
+  width: 80%;
+  margin: auto;
+  position: relative;
+  max-height: 580px;
+  background-color: #f3f3f3;
+}
+.grid-templ {
+  display: grid;
+  text-align: left;
+  grid-template-rows: repeat(11, 50px);
+  grid-template-columns: repeat(4, 1fr);
 }

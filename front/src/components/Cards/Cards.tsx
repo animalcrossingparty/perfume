@@ -119,7 +119,7 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
           {field.avg_rate.toFixed(2)}{" "}
           <small className="ml-2">({field.total_review})</small>
         </p>
-        <Row className="gender-year">
+        <Row className="gender-year" style={{maxHeight: '22px'}}>
           <Col className="gender-indicator">
             <span>
               {gender_dict[field.gender]} {field.category}
@@ -129,28 +129,27 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
             </p>
           </Col>
           {field.price > 1 ? (
-            <h5 style={{ marginLeft: "auto", color: "#c71585" }}>
+            <h5 style={{ fontSize:'1.3vw', margin:'0 0 0 auto', overflow:'hidden', color: "#c71585" }}>
               {makeComma(field.price.toFixed(0))}
               <small>원</small>
             </h5>
           ) : (
             <h5
               style={{
-                marginLeft: "auto",
+                margin:'0 0 0 auto',
                 color: "#c71585",
-                paddingTop: "6px",
-                paddingBottom: "7px",
-                fontSize: "1rem",
+                fontSize:'1vw',
               }}
             >
               (가격 없음)
             </h5>
           )}
         </Row>
-        <small className="mb-2">
+        <Row className="mt-3" style={{fontSize: '0.6vw'}}>
           {field.name.substr(0, 9)}...과 유사한 향수들
-        </small>
+        </Row>
         <Row className="m-0 jcenter">
+          
           {field.similar.length > 2 ? (
             similar().map((eid) => (
               <Link key={eid + "sim"} to={`/detail/${eid}`}>
