@@ -138,14 +138,14 @@
   line-height: 32px;
   line-height-step: 10px;
   transition: 1s;
+  padding: 0 !important;
 }
 
 .homegrid:hover{
   cursor: pointer;
-  color: black;
   border: initial;
   display: block;
-  background: white !important;
+  background-image: none !important;
 }
 
 .homegrid > hr {
@@ -155,7 +155,16 @@
   background: white;
   color: black
 }
-.homegrid > p {
-  background: rgba(0, 0, 0, 0.3);
-  color: white
+.homegrid-content {
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+  padding: 1rem;
+  width: 65%;
+  margin: auto;
+  margin-top: 20%;
+}
+
+.homegrid-header {
+  text-shadow: 2px 2px 4px #3f3f3f;
+  text-align: center;
 }
