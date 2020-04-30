@@ -8,7 +8,7 @@ import springPIC from "assets/images/spring.jpg";
 import summerPIC from "assets/images/summer.jpg";
 import autumnPIC from "assets/images/autumn.jpg";
 import winterPIC from "assets/images/winter.jpg";
-
+import { Link } from "react-router-dom";
 import { ReviewTextBox } from "components/";
 import { withRouter } from "react-router";
 import "../../css/DetailPage.css";
@@ -25,6 +25,9 @@ class Detail extends Component<DetailProps> {
     accel: 50,
     interval: setInterval(() => 1, 5000),
   };
+  componentWillReceiveProps(nextProps){
+      this.initializeDetailInfo()
+  }
   addOne = () => {
     if (this.state.progress < this.props.detail.avg_rate.toFixed(1) * 10) {
       this.state.accel > 1
@@ -37,7 +40,9 @@ class Detail extends Component<DetailProps> {
   };
   handleTagClick = (e, id) => {
     const { history } = this.props;
-    history.push(`/perfume?page=1&sort=rate&category=all&gender=all&include=${id}&brand=all`)
+    history.push(
+      `/perfume?page=1&sort=rate&category=all&gender=all&include=${id}&brand=all`
+    );
   };
   initializeDetailInfo = async () => {
     const { DetailActions, history } = this.props;
@@ -74,9 +79,7 @@ class Detail extends Component<DetailProps> {
                       ? ""
                       : "disabled-season"
                   }
-                >
-                  봄
-                </Col>
+                ></Col>
                 <Col
                   s={3}
                   style={{ backgroundImage: `url(${summerPIC})` }}
@@ -85,9 +88,7 @@ class Detail extends Component<DetailProps> {
                       ? ""
                       : "disabled-season"
                   }
-                >
-                  여름
-                </Col>
+                ></Col>
                 <Col
                   s={3}
                   style={{ backgroundImage: `url(${autumnPIC})` }}
@@ -96,9 +97,7 @@ class Detail extends Component<DetailProps> {
                       ? ""
                       : "disabled-season"
                   }
-                >
-                  가을
-                </Col>
+                ></Col>
                 <Col
                   s={3}
                   style={{ backgroundImage: `url(${winterPIC})` }}
@@ -107,9 +106,7 @@ class Detail extends Component<DetailProps> {
                       ? ""
                       : "disabled-season"
                   }
-                >
-                  겨울
-                </Col>
+                ></Col>
               </Row>
             </Col>
             <Col s={6} className="perfume-info-text">
@@ -119,7 +116,7 @@ class Detail extends Component<DetailProps> {
               <h5 className="perfume_brand">
                 <small className="detail_price">
                   {detail.price
-                    ? "₩ " + this.makeComma((detail.price).toFixed(0)) + " 원"
+                    ? "₩ " + this.makeComma(detail.price.toFixed(0)) + " 원"
                     : "가격 정보가 없습니다"}
                 </small>
                 <small>made by</small>
@@ -143,8 +140,8 @@ class Detail extends Component<DetailProps> {
                       detail.top_notes.slice(0, 3).map((note, note_id) => (
                         <Chip
                           close={false}
-                          onClick={e => this.handleTagClick(e, note.id)}
-                          key={note.id + '-tnote'}
+                          onClick={(e) => this.handleTagClick(e, note.id)}
+                          key={note.id + "-tnote"}
                           className={`chip-color-${note.id % 10}`}
                         >
                           {note.kor_name || note.name}
@@ -221,11 +218,55 @@ class Detail extends Component<DetailProps> {
             </Col>
           </Row>
         </section>
+
+        <h5 className="thin center">{detail.name}과 비슷한 향수들</h5>
+        <section className="similar-container">
+          {detail.similar && detail.similar.length > 3 ? (
+            detail.similar
+              .substr(1, detail.similar.length - 2)
+              .split(", ")
+              .map((sim) => (
+                <Link
+                  to={`/detail/${sim}`}
+                  className="each-similar"
+                  key={sim + "th"}
+                  style={{
+                    backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim}.jpg)`,
+                  }}
+                />
+              ))
+          ) : (
+            <div>비슷한 향수 데이터가 없습니다.</div>
+          )}
+        </section>
+        <h5 className="thin center">
+          {detail.name}을 좋아하는 유저가 선택한 향수들
+        </h5>
+        <section className="similar-container">
+          {detail.recommended && detail.recommended.length > 3 ? (
+            detail.recommended
+              .substr(1, detail.recommended.length - 2)
+              .split(", ")
+              .map((sim) => (
+                <Link
+                  to={`/detail/${sim}`}
+                  className="each-similar"
+                  key={sim + "th"}
+                  style={{
+                    backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim}.jpg)`,
+                  }}
+                />
+              ))
+          ) : (
+            <div>추천 향수 데이터가 없습니다.</div>
+          )}
+        </section>
         <div className="review-list-header">
           {detail.reviews
             ? "Reviews - " + detail.reviews.length
             : "여러분의 소중한 리뷰를 남겨주세요"}
         </div>
+
         <section className="review-list-container">
           {detail.reviews ? (
             detail.reviews.map((review) => (
