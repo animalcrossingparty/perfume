@@ -260,11 +260,12 @@ class SurveyAPI(APIView):
         notes_list = []
         for num in categories:
             notes_list += FAMOUS_NOTES[num]
-        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes')))\
-            .filter(all_notes__in=notes_list)
-        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes')))\
-            .annotate(score=Count('all_notes', filter=Q(all_notes__in=notes_list))).filter(score__gt=0).order_by('-score')
-        products = products[:15]
+
+        products = products.annotate(
+            score=Count('top_notes', filter=Q(top_notes__id__in=notes_list))
+                + Count('heart_notes', filter=Q(heart_notes__id__in=notes_list))
+                + Count('base_notes', filter=Q(base_notes__id__in=notes_list))
+            ).order_by('-score')[:15]
         print('final_filtered***********', products)
 
         try:
