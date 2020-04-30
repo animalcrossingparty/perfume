@@ -6,7 +6,7 @@ typora-root-url: ./
 
 [팀 노션 바로가기](https://www.notion.so/e89e794cf439444994ab31f82d06f37a) 
 
-![all](front\src\assets\member\all.png)
+![all](images\all.png)
 
 
 
