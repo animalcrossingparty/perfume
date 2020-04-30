@@ -225,7 +225,7 @@ class SurveyAPI(APIView):
         )
     def post(self, request):
         """
-        
+        서비스 
         """
         gender = request.POST.get('gender', None)
         gender = int(gender)
@@ -272,14 +272,14 @@ class SurveyAPI(APIView):
         except:
             pass
         else:
-            survey = Survey.objects.create(
-                user=user,
-                seasons=seasons,
-                like_category=like_category,
-                like_notes=include_notes,
-            )
-            survey.save()
-
+            try:
+                survey = Survey.objects.get(user=user)
+            except:
+                survey = Survey.objects.create(user=user)
+            survey.season.set(seasons)
+            survey.like_category.set(categories)
+            survey.like_notes.set(notes)
+            
         serializer = PerfumeSerializers(products, many=True)
         return Response(serializer.data, status=200)
 
