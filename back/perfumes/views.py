@@ -26,7 +26,8 @@ from accounts.models import Survey
 from .models import Perfume, Review, Brand, Note, Image
 from .serializers import (
     PerfumeSerializers, PerfumeSurveySerializers, SurveySerializers, ReviewSerializers,
-    PerfumeDetailSerializers, NoteSerializers, SearchQuerySerializers
+    PerfumeDetailSerializers, NoteSerializers, SearchQuerySerializers, SurveyGETQuery,
+    SurveyPOSTQuery
 )
 from .utils import knn, tf_idf, exchange_rate
 
@@ -192,10 +193,10 @@ def search(request):
         print(f'{leng}개 단어 검색하는 데 걸린 시간: {time()-st}s')
 
 class SurveyAPI(APIView):
-    # @swagger_auto_schema(
-    # operation_summary="특정 리뷰 '좋아요' / '좋아요 취소' 실행",
-    # query_serializer=SurveyQueryParamsSerializers,
-    # )
+    @swagger_auto_schema(
+        query_serializer=SearchQuerySerializers,
+        operation_summary='Survey 중 카테고리 선택 후 해당 노트 리스트 반환',
+        )
     def get(self, request):
         """
         사용자가 좋아하는 카테고리를 누르면 그 카테고리에 해당하는 노트 리스트를 반환합니다.
@@ -210,17 +211,32 @@ class SurveyAPI(APIView):
         serialize = NoteSerializers(notes, many=True)
         return Response(serialize.data)
     
+    @swagger_auto_schema(
+        operation_summary='Survey',
+        request_body=SurveyPOSTQuery,
+        manual_parameters=[
+            openapi.Parameter(
+                'Token',
+                openapi.IN_HEADER,
+                description='JWT',
+                type=openapi.TYPE_STRING,
+                )
+            ]
+        )
     def post(self, request):
+        """
+        서비스 
+        """
         gender = request.POST.get('gender', None)
-        # age = str(request.POST.get('age', None))
+        gender = int(gender)
+        age = str(request.POST.get('age', None))
         seasons = request.POST.get('season', None)
         categories = request.POST.get('category', None)
         categories = set(map(int, categories.split(',')))
         notes = request.POST.get('notes', None)
         notes = set(map(int, notes.split(',')))
 
-        products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand')\
-            .prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')\
+        products = Perfume.objects.prefetch_related('seasons')\
             .prefetch_related('categories').filter(availability=True)
         print(products)
 
@@ -229,25 +245,26 @@ class SurveyAPI(APIView):
 
         if seasons is not None:
             season_list = seasons.split(',')
-            products = products.filter(seasons__in=season_list)
+            products = products.filter(seasons__id__in=season_list)
             print('season_filtered***********', products)
         
-        products = products.filter(categories__in=categories)
+        products = products.filter(categories__id__in=categories)
         print('category_filtered***********', products)
         
         # 유명 노트 포함 향수 필터링
-        products = products.filter(brand__in=FAMOUS_BRANDS)
+        products = products.filter(brand__id__in=FAMOUS_BRANDS)
         print('brand_filtered***********', products)
 
         # sort => include_note 많이 가지고 있는 애들부터 보여주기
         notes_list = []
         for num in categories:
             notes_list += FAMOUS_NOTES[num]
-        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes')))\
-            .filter(all_notes__in=notes_list)
-        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes')))\
-            .annotate(score=Count('all_notes', filter=Q(all_notes__in=notes_list))).filter(score__gt=0).order_by('-score')
-        products = products[:15]
+
+        products = products.prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')\
+            .annotate(score=Count('top_notes', filter=Q(top_notes__id__in=notes_list))
+                + Count('heart_notes', filter=Q(heart_notes__id__in=notes_list))
+                + Count('base_notes', filter=Q(base_notes__id__in=notes_list))
+            ).order_by('-score')[:15]
         print('final_filtered***********', products)
 
         try:
@@ -255,14 +272,15 @@ class SurveyAPI(APIView):
         except:
             pass
         else:
-            survey = Survey.objects.create(
-                user=user,
-                seasons=seasons,
-                like_category=like_category,
-                like_notes=include_notes,
-            )
-            survey.save()
-
+            try:
+                survey = Survey.objects.get(user=user)
+            except:
+                survey = Survey.objects.create(user=user)
+            print(seasons, categories, notes)
+            survey.season.set(season_list)
+            survey.like_category.set(categories)
+            survey.like_notes.set(notes)
+            
         serializer = PerfumeSerializers(products, many=True)
         return Response(serializer.data, status=200)
 

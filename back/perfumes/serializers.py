@@ -120,5 +120,17 @@ class PerfumeDetailSerializers(PerfumeSerializers):
         ordered = instance.review_set.order_by('-created_at')
         return ReviewSerializers(ordered, many=True).data
 
+
 class SearchQuerySerializers(serializers.Serializer):
     keywords = serializers.CharField(required=True)
+
+
+class SurveyGETQuery(serializers.Serializer):
+    category = serializers.CharField()
+
+
+class SurveyPOSTQuery(serializers.Serializer):
+    gender = serializers.CharField()
+    season = serializers.CharField()
+    category = serializers.CharField()
+    notes = serializers.CharField()
