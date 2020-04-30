@@ -5,11 +5,12 @@
 ### 목차
 
 <hr>
+
 [1. 서비스 소개](#1.-서비스-소개)
 
 [2. 기술스택](#2.-기술스택)
 
-[3. 데이터 수집 및 분석 과정](#3.-데이터-수집-및-분석-과정)
+[3. 데이터 분석 과정](#3.-데이터-분석-과정)
 
 [4. 아키텍처 상세](#4.-아키텍처-상세)
 
@@ -154,9 +155,7 @@
 - TF-IDF는 용어빈도-역문서빈도를 의미합니다.
 - 각 향수들이 가진 리뷰를 기반으로 다른 향수들과의 유사성을 측정합니다.
 
-$$
-TF * IDF = [({용어 x가 문서에 나온 수\over문서에 있는 용어 총 개수}) \times log_{10}({문서 총 개수\over용어x가 들어있는 문서 개수})]
-$$
+![ex1](images/ex1.png)
 
 - 위의 식을 구현하기 위해 `scikit-learn`의 tfidfvectorizer API를 사용하였습니다.
 
@@ -168,9 +167,7 @@ tfidf_matrix = tf.fit_transform(reviews['content'])
 - 영어의 불용어(stop-words)를 제거했고, ngram_range를 1에서 2까지로 정의하였습니다.
 - 한 향수의 리뷰가 다른 품과 얼마나 유사한지를 확인하기 위해 코사인 유사도 행렬을 구축하였습니다. 이를 위해 TF-IDF 간 벡터간의 점곱을 구합니다.
 
-$$
-\cos\theta = {\vec{a}\cdot\vec{b} \over \lVert\vec{a}\lVert\cdot\lVert\vec{b}\lVert}
-$$
+![ex2](images/ex2.png)
 
 ```python
 cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
