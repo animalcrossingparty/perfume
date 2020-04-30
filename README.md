@@ -184,7 +184,7 @@ cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
 * 여러 SVD 중 행렬의 대각원소(특이값) 중 상위 t개만 골라내는 truncated SVD를 사용하였습니다.
 * 행이 향수의 고유Id, 열이 User인 피봇테이블을 생성합니다.
 
-![pivot](images/pivot.png)
+![pivot](images/p.png)
 
 - 차원축소를 위해 scikit learn의 TruncatedSVD API를 사용합니다. 차원을 12차원으로 축소시켰습니다.
 
