@@ -276,7 +276,8 @@ class SurveyAPI(APIView):
                 survey = Survey.objects.get(user=user)
             except:
                 survey = Survey.objects.create(user=user)
-            survey.season.set(seasons)
+            print(seasons, categories, notes)
+            survey.season.set(season_list)
             survey.like_category.set(categories)
             survey.like_notes.set(notes)
             
