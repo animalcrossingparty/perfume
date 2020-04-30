@@ -4,7 +4,7 @@ import { Slider, Caption, Slide, Button } from 'react-materialize';
 import {Link } from 'react-router-dom'
 import './Slider.css'
 import s1 from 'assets/s1-min.webp'
-import s2 from 'assets/s2-min.jpg'
+import s2 from 'assets/s2-min.png'
 import s3 from 'assets/s3-min.jpg'
 import s4 from 'assets/s4-min.jpg'
 
@@ -34,7 +34,7 @@ export default () => (
 		<Slide image={<img alt="" src={s2} />}>
 			<Caption placement="left">
 				<h3>
-					4월 달, 인기 향수 계열은 플로럴
+					5월 달, 인기 향수 계열은 플로럴
       </h3>
 				<h5>
 					봄이 지나가기 전에 골라야 할 향수가 있다면?
