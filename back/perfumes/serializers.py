@@ -62,7 +62,10 @@ class PerfumeSerializers(serializers.ModelSerializer):
         return result
 
     def get_price(self, instance):
-        return instance.price * rate
+        try:
+            return instance.price * rate
+        except:
+            return 0
 
     def get_thumbnail(self, instance):
         return f'http://i02b208.p.ssafy.io:8000/staticfiles/images/{instance.pk}.jpg'
@@ -117,5 +120,17 @@ class PerfumeDetailSerializers(PerfumeSerializers):
         ordered = instance.review_set.order_by('-created_at')
         return ReviewSerializers(ordered, many=True).data
 
+
 class SearchQuerySerializers(serializers.Serializer):
     keywords = serializers.CharField(required=True)
+
+
+class SurveyGETQuery(serializers.Serializer):
+    category = serializers.CharField()
+
+
+class SurveyPOSTQuery(serializers.Serializer):
+    gender = serializers.CharField()
+    season = serializers.CharField()
+    category = serializers.CharField()
+    notes = serializers.CharField()

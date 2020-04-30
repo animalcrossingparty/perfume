@@ -26,7 +26,8 @@ from accounts.models import Survey
 from .models import Perfume, Review, Brand, Note, Image
 from .serializers import (
     PerfumeSerializers, PerfumeSurveySerializers, SurveySerializers, ReviewSerializers,
-    PerfumeDetailSerializers, NoteSerializers, SearchQuerySerializers
+    PerfumeDetailSerializers, NoteSerializers, SearchQuerySerializers, SurveyGETQuery,
+    SurveyPOSTQuery
 )
 from .utils import knn, tf_idf, exchange_rate
 
@@ -81,7 +82,7 @@ SORT = {
         .order_by('-reviewcnt'),
     'rate': lambda objects: objects.prefetch_related('review_set').annotate(reviewcnt=Count('review')).annotate(avgrate=Avg('review__rate')).filter(reviewcnt__gt=10)\
         .order_by('-avgrate'),
-    'cheap': lambda objects: objects.order_by('price'),
+    'cheap': lambda objects: objects.order_by(F('price').asc(nulls_last=True)),
     'expensive': lambda objects: objects.order_by('-price'),
     'alpha': lambda objects: objects.order_by('name')
 }
@@ -144,7 +145,7 @@ def search(request):
     검색어는 query param 'keywords'에 ','로 구분해서 주세요
     카테고리(영문), 노트(영문, 한글은 아직 불가능), 리뷰(영문), 계절(한글, 영문), 향수 이름(영문)으로 검색 후 10개의 향수를 list로 반환합니다.
     계절을 제외한 카테고리, 노트, 리뷰, 향수 이름은 contains로 필터링합니다.
-    향수 이름이 정확히 맞으면 100,000점, 향수 이름이 비슷하면 1,000점, 브랜드명이 비슷하면 10점, 비슷한 이름의 노트가 포함되어 있으면 각각 5점,
+    향수 이름이 비슷하면 3점, 브랜드명이 비슷하면 3점, 해당 계절의 향수이면 2점, 해당 노트가 포함되어 있으면 각각 1점, 
     리뷰 내용에 해당 단어가 포함되어 있으면 1점으로 계산합니다.
     점수가 높은 순으로 정렬하여 10개의 향수를 list로 리턴합니다.
 
@@ -161,69 +162,41 @@ def search(request):
     musk: ['분내', '파우더리', '뽀송'],
     beverages: ['달달한', '달다구리한']
     """
+    st = time()
     keywords = request.GET.get('keywords')
-    keywords = set(keywords.split(',')) - {'향수들', '향수', 'perfume', 'perfumes'}
-
-    # 달다구리한이라고 쳤을 때 달다구리에 해당하는 카테고리가 나와야 함
+    keywords = set(keywords.split(','))
+    leng = len(keywords)
     kw_cat = keywords & set(RESERVED_CAT)
     keywords -= kw_cat
-
-    season_search = set()
-    for kw in keywords & set(SEASONS_ID):
-        season_search.add(SEASONS_ID[kw])
-
-    print('keywords:', keywords)
-    cat_search = set()
+    id_kw_cat = set()
     for kw in kw_cat:
-        cat_search.update(RESERVED_CAT[kw])
-    print('cat_search:', cat_search)
+        id_kw_cat |= RESERVED_CAT[kw]
 
-    note_Q = Q(); brand_Q = Q(); review_Q = Q()
-    keywords_e = set()
-    for kw in keywords:
-        if ord(kw[0]) < 123:  # 검색어가 영어 또는 숫자일 때 (첫글자로 판별)
-            keywords_e.add(kw)  # 영어 또는 숫자인 검색어 골라냄. 나중에 이름 검색할 거임
-            brand_Q |= Q(name__icontains=kw)
-            note_Q |= Q(name__icontains=kw) | Q(name__icontains=kw) | Q(name__icontains=kw)
-            review_Q |= Q(review__content__icontains=kw)
-        # else:  # 한국어일 때
-        #     note_Q |= Q(kor_name__icontains=kw) | Q(kor_name__icontains=kw) | Q(kor_name__icontains=kw)
-    print('brand_Q:', brand_Q)
-    print('note_Q:', note_Q)
-    print('review_Q:', review_Q)
-
-    season_Q = Q()
-    for season_id in season_search:
-        season_Q |= Q(id=season_id)
-
-    perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('top_notes')\
-        .prefetch_related('heart_notes').prefetch_related('base_notes')\
-        .prefetch_related('categories').prefetch_related('review_set')\
+    perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('categories')\
+        .prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')\
         .prefetch_related('seasons')\
-        .annotate(name_exact=Case(
-            When(name__in=keywords_e, then=Value(100000)), default=Value(0), output_field=IntegerField())
-            )\
-        .annotate(name_include=Case(
-            When(name__icontains=keywords_e, then=Value(1000)), default=Value(0), output_field=IntegerField())
-            )\
-        .annotate(seasons_cnt=Count('seasons', filter=season_Q))\
-        .annotate(brand_cnt=Count('brand', filter=brand_Q))\
-        .annotate(note_cnt=Count('top_notes', filter=note_Q) + Count('heart_notes', filter=note_Q) + Count('base_notes', filter=note_Q))\
-        .annotate(review_cnt=Count('review', filter=review_Q))\
-        .annotate(category_cnt=ExpressionWrapper(Count('categories', filter=Q(id__in=cat_search)), output_field=IntegerField()))\
-        .annotate(score=ExpressionWrapper(
-            F('name_exact') + F('name_include') + 100 * F('seasons_cnt') + 10 * F('brand_cnt') + 5 * F('note_cnt') + F('review_cnt'),
-            output_field=IntegerField()
-            ))\
+        .annotate(score=
+            3 * Count('name', filter=Q(name__in=keywords))\
+            + 3 * Count('brand', filter=Q(brand__name__in=keywords))\
+            + Count('categories', filter=Q(categories__id__in=id_kw_cat))
+            + Count('top_notes', filter=Q(top_notes__name__in=keywords))
+            + Count('heart_notes', filter=Q(heart_notes__name__in=keywords))
+            + Count('base_notes', filter=Q(base_notes__name__in=keywords))
+            + 2 * Count('seasons', filter=Q(seasons__name__in=keywords))
+            + 2 * Count('seasons', filter=Q(seasons__kor_name__in=keywords))
+        )\
         .order_by('-score')[:10]
     serializers = PerfumeSerializers(perfumes, many=True)
-    return Response(serializers.data, status=200)
+    try:
+        return Response(serializers.data, status=200)
+    finally:
+        print(f'{leng}개 단어 검색하는 데 걸린 시간: {time()-st}s')
 
 class SurveyAPI(APIView):
-    # @swagger_auto_schema(
-    # operation_summary="특정 리뷰 '좋아요' / '좋아요 취소' 실행",
-    # query_serializer=SurveyQueryParamsSerializers,
-    # )
+    @swagger_auto_schema(
+        query_serializer=SearchQuerySerializers,
+        operation_summary='Survey 중 카테고리 선택 후 해당 노트 리스트 반환',
+        )
     def get(self, request):
         """
         사용자가 좋아하는 카테고리를 누르면 그 카테고리에 해당하는 노트 리스트를 반환합니다.
@@ -238,17 +211,32 @@ class SurveyAPI(APIView):
         serialize = NoteSerializers(notes, many=True)
         return Response(serialize.data)
     
+    @swagger_auto_schema(
+        operation_summary='Survey',
+        request_body=SurveyPOSTQuery,
+        manual_parameters=[
+            openapi.Parameter(
+                'Token',
+                openapi.IN_HEADER,
+                description='JWT',
+                type=openapi.TYPE_STRING,
+                )
+            ]
+        )
     def post(self, request):
+        """
+        서비스 
+        """
         gender = request.POST.get('gender', None)
-        # age = str(request.POST.get('age', None))
+        gender = int(gender)
+        age = str(request.POST.get('age', None))
         seasons = request.POST.get('season', None)
         categories = request.POST.get('category', None)
         categories = set(map(int, categories.split(',')))
         notes = request.POST.get('notes', None)
         notes = set(map(int, notes.split(',')))
 
-        products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand')\
-            .prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')\
+        products = Perfume.objects.prefetch_related('seasons')\
             .prefetch_related('categories').filter(availability=True)
         print(products)
 
@@ -257,25 +245,26 @@ class SurveyAPI(APIView):
 
         if seasons is not None:
             season_list = seasons.split(',')
-            products = products.filter(seasons__in=season_list)
+            products = products.filter(seasons__id__in=season_list)
             print('season_filtered***********', products)
         
-        products = products.filter(categories__in=categories)
+        products = products.filter(categories__id__in=categories)
         print('category_filtered***********', products)
         
         # 유명 노트 포함 향수 필터링
-        products = products.filter(brand__in=FAMOUS_BRANDS)
+        products = products.filter(brand__id__in=FAMOUS_BRANDS)
         print('brand_filtered***********', products)
 
         # sort => include_note 많이 가지고 있는 애들부터 보여주기
         notes_list = []
         for num in categories:
             notes_list += FAMOUS_NOTES[num]
-        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes')))\
-            .filter(all_notes__in=notes_list)
-        products = products.annotate(all_notes=(F('top_notes') + F('heart_notes') + F('base_notes')))\
-            .annotate(score=Count('all_notes', filter=Q(all_notes__in=notes_list))).filter(score__gt=0).order_by('-score')
-        products = products[:15]
+
+        products = products.prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')\
+            .annotate(score=Count('top_notes', filter=Q(top_notes__id__in=notes_list))
+                + Count('heart_notes', filter=Q(heart_notes__id__in=notes_list))
+                + Count('base_notes', filter=Q(base_notes__id__in=notes_list))
+            ).order_by('-score')[:15]
         print('final_filtered***********', products)
 
         try:
@@ -283,14 +272,15 @@ class SurveyAPI(APIView):
         except:
             pass
         else:
-            survey = Survey.objects.create(
-                user=user,
-                seasons=seasons,
-                like_category=like_category,
-                like_notes=include_notes,
-            )
-            survey.save()
-
+            try:
+                survey = Survey.objects.get(user=user)
+            except:
+                survey = Survey.objects.create(user=user)
+            print(seasons, categories, notes)
+            survey.season.set(season_list)
+            survey.like_category.set(categories)
+            survey.like_notes.set(notes)
+            
         serializer = PerfumeSerializers(products, many=True)
         return Response(serializer.data, status=200)
 
@@ -320,24 +310,21 @@ def perfumes_list(request):
     except:
         pass
     else:
-        if len(brands) == 1:
-            perfumes = perfumes.filter(brand=int(brands))
-        else:
-            perfumes = perfumes.filter(brand__in=brands)
+        perfumes = perfumes.filter(brand__id__in=brands)
 
     try:
         categories = set(map(int, categories.split(',')))
     except:
         pass
     else:
-        perfumes = perfumes.filter(categories__in=categories)
+        perfumes = perfumes.filter(categories__id__in=categories)
 
     try:
         notes = set(map(int, notes.split(',')))
     except:
         pass
     else:
-        perfumes = perfumes.filter(Q(top_notes__in=notes) | Q(heart_notes__in=notes) | Q(base_notes__in=notes))
+        perfumes = perfumes.filter(Q(top_notes__id__in=notes) | Q(heart_notes__id__in=notes) | Q(base_notes__id__in=notes))
 
     # 정렬
     perfumes = SORT[sort](perfumes)

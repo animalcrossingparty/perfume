@@ -6,6 +6,7 @@ backcall==0.1.0
 beautifulsoup4==4.9.0
 bleach==3.1.3
 branca==0.3.1
+bs4==0.0.1
 certifi==2019.11.28
 cffi==1.14.0
 chardet==3.0.4
@@ -21,6 +22,7 @@ django-appconf==1.0.4
 django-cors-headers==3.2.1
 django-crontab==0.7.1
 django-extensions==2.2.9
+django-imagekit==4.0.2
 djangorestframework==3.11.0
 djangorestframework-simplejwt==4.4.0
 dnspython==1.16.0
@@ -38,6 +40,7 @@ isort==4.3.21
 itypes==1.1.0
 jedi==0.16.0
 Jinja2==2.11.1
+joblib==0.14.1
 jsonschema==3.2.0
 jupyter-client==6.1.1
 jupyter-core==4.6.3
@@ -60,6 +63,7 @@ pandas==0.25.3
 pandocfilters==1.4.2
 parso==0.6.2
 pickleshare==0.7.5
+pilkit==2.0
 Pillow==7.1.1
 prometheus-client==0.7.1
 prompt-toolkit==3.0.4
@@ -82,12 +86,14 @@ randstr==0.1.2
 requests==2.23.0
 ruamel.yaml==0.16.10
 ruamel.yaml.clib==0.2.0
+scikit-learn==0.22.2.post1
 scipy==1.3.1
 seaborn==0.9.0
 Send2Trash==1.5.0
 simplejson==3.17.0
 six==1.14.0
 sklearn==0.0
+soupsieve==2.0
 SQLAlchemy==1.3.16
 sqlparse==0.3.1
 swagger-spec-validator==2.5.0
