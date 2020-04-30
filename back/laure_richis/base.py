@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'haystack',
     'rest_framework',
     'drf_yasg',
     'accounts',
@@ -125,3 +126,12 @@ CRONJOBS = {
     ('0 0 * * *', 'perfume.cron.exchange_rate') # 매일 24시에 동작
     # ('*****', 'perfumes.cron.test_cron'), # 1분마다 동작(하루 1440번)
 }
+
+# WHOOSH_INDEX=os.path.join(BASE_DIR, 'whoosh_index')
+
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+#         'PATH': WHOOSH_INDEX,
+#     },
+# }
