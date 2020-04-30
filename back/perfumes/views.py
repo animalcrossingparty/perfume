@@ -236,8 +236,7 @@ class SurveyAPI(APIView):
         notes = request.POST.get('notes', None)
         notes = set(map(int, notes.split(',')))
 
-        products = Perfume.objects.all().prefetch_related('seasons').prefetch_related('brand')\
-            .prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')\
+        products = Perfume.objects.prefetch_related('seasons')\
             .prefetch_related('categories').filter(availability=True)
         print(products)
 
@@ -261,8 +260,8 @@ class SurveyAPI(APIView):
         for num in categories:
             notes_list += FAMOUS_NOTES[num]
 
-        products = products.annotate(
-            score=Count('top_notes', filter=Q(top_notes__id__in=notes_list))
+        products = products.prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')\
+            .annotate(score=Count('top_notes', filter=Q(top_notes__id__in=notes_list))
                 + Count('heart_notes', filter=Q(heart_notes__id__in=notes_list))
                 + Count('base_notes', filter=Q(base_notes__id__in=notes_list))
             ).order_by('-score')[:15]
