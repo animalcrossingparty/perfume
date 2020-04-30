@@ -2,7 +2,7 @@
 
 [팀 노션 바로가기](https://www.notion.so/e89e794cf439444994ab31f82d06f37a) 
 
-![all](C:\Users\multicampus\Desktop\perfume\front\src\assets\member\all.webp)
+![all](front\src\assets\member\all.webp)
 
 
 
