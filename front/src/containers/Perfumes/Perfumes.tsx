@@ -308,8 +308,8 @@ class Perfumes extends Component<PerfumeProps> {
                   pageRangeDisplayed={15}
                   onChange={this.handlePage}
                 />
-                총 {this.props.num_pages} 페이지 중 {page} 페이지 | 검색 된
-                향수: {this.props.num_pages * 12}개{" "}
+               {this.props.num_pages} 페이지 / {page} 페이지 | 
+                ITEM: {this.props.num_pages * 12}개{" "}
               </div>
 
             <Row style={{backgroundColor: '#fafafa'}}>

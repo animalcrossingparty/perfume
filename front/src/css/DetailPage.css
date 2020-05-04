@@ -1,7 +1,6 @@
 .perfume-info-section {
   padding-top: 70px;
-  background: #EFF8FB
-  
+  background: #fff
 }
 
 .perfume-info-image {
@@ -21,8 +20,8 @@
 
 .rate-wrapper {
   position: relative;
-  height: 480px;
-  width: 480px;
+  height: 10vw;
+  width: 10vw;
 }
 
 .perfume-info-text p {
@@ -34,34 +33,51 @@
   color: gray;
   display: flex;
 }
-
+.detail-info-header-text {
+  padding-top: 4%
+}
 .rate-inside-circle {
   position: absolute;
-  font-family: "Roboto";
-  height: 320px;
+  height: 10vw;
 }
-.note-and-rate-row > .col{
-  flex: 1;
+.note-tags {
+  margin: 1% 3% !important
+}
+.note-and-rate-row {
+  background-color: #fff;
+}
+.note-and-rate-row > span {
+  text-align: center;
+  padding: 1% 0;
+  display: block;
+  background-color: #fff;
 }
 .rate-inside-circle > h5 {
   position: absolute;
-  width: 320px;
-  line-height: 320px;
+  display: block;
+  width: 10vw;
+  line-height: 10vw;
   text-align: center;
-  font-size: 96px;
+  font-size: 2vw;
   margin: 0;
 }
+.rate-inside-circle i {
+  color: #4f4f4f !important;
+  margin-right: 0.2vw
+}
+.detail-top-divide {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+}
 .similar-container {
-  background-color: #f9f2ff;
-  border: 8px double #d9d6f7;
+  background-color: #fff;
   text-align: center;
-  line-height: 300%;
   border-left: 0;
   border-right: 0;
   display: grid;
   margin-bottom: 5%;
   width: 100%;
-  grid-template-rows: repeat(1, 200px);
+  grid-template-rows: repeat(1, 5vw);
   grid-column-gap: 2%;
   grid-template-columns: repeat(10, 1fr);
 }
@@ -74,23 +90,15 @@
 .rate-circle {
   position: relative;
   display: block;
-  width: 320px;
+  width: 10vw;
 }
 
 .season-row {
-  padding: 0 20%;
+  padding: 0% 20%;
 }
 .season-row > .col {
   user-select: none;
-  height: 128px;
-  line-height: 128px;
-  font-size: 1.48px;
-  text-align: center;
-  letter-spacing: 2px;
-  color: white;
-  text-shadow: 0 0 15px black;
-  font-weight: 100;
-  backdrop-filter: brightness(0.5);
+  height: 80px;
   background-position: center;
 }
 .perfume_brand {
@@ -99,48 +107,51 @@
   display: flex;
   color: rgba(0, 0, 0, 0.6);
 }
-
-.disabled-season {
-  filter: brightness(0.2)
+.detail-info-text-header {
+  display: grid;
+  grid-template-columns: 3fr 1fr
 }
-
+.disabled-season {
+  filter: brightness(0.2);
+  border: 0 !important;
+}
+.categories-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
 .categories-row > span {
   margin: 15px 10px;
-  padding: 12px;
+  padding: 8px;
   font-weight: 900;
-  font-family: 'Roboto';
-  border: 1px solid #e0e0e0;
-  border-radius: 15px;
-  background-color: rgb(208, 228, 248);
-
+  background-color: #4f4f4f;
+  font-size: 13px;
+  color: white;
 }
 .detail_price {
   margin-right: auto;
   font-size: 40px;
-  color: rgb(135, 68, 190);
+  color: #dc143c;
   font-weight: 700;
 }
-
+.review-write-box {
+  margin: 1% 5%; 
+  background-color: #f0f0f0;
+}
 /* Reviews */
 .review-list-container {
-  padding-left: 10%;
-  padding-right:  10%;
   margin-right: 5%;
   margin-left: 5%;
-  background: #f3f3f3;
+  background: #fdfdfd;
 }
 .review-list-header {
   margin: 0 5%;
   padding: 0 10%;
   font-size: 2vw;
-  border-bottom: 2px dashed #e0e0e0;
   font-weight: 100;
-  background: #CECEF6;
 }
 .review-list-row {
   min-height: 80px;
   background: white;
-  border: 1px solid #EFF5FB;
   border-bottom: 0;
   align-items: center;
   margin-bottom: 0;
@@ -157,7 +168,7 @@
   display: flex;
   align-items: center;
   padding: 0 !important;
-  background: #EFF5FB;
+  background: #efefef;
 }
 
 .review-content {
@@ -178,8 +189,11 @@
   font-size: 1.16px;
   font-weight: 400;
 }
+textarea {
+  font-size: 16px !important;
+}
 textarea:focus { 
-  outline: none !important;
+  outline: 2px solid skyblue !important;
   padding-top: 32px !important;
   min-height: 160px !important;
 }

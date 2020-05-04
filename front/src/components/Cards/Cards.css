@@ -66,7 +66,7 @@
 .rate-box-star {
   font-size: 20px;
   margin-right: 0.2em !important;
-  color: rgb(241, 220, 161);
+  color: rgb(241, 220, 161) !important;
 }
 .gender-indicator {
   color: black;
@@ -107,43 +107,13 @@ span.badge {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
 }
-.chip-color-0 {
-  background-color: #6a5acd;
-  color: white;
-}
-.chip-color-1 {
-  background-color: #7d68ee;
-  color: white;
-}
-.chip-color-2 {
-  background-color: #9370db;
-  color: white;
-}
-.chip-color-3 {
-  background-color: #800080;
-  color: white;
-}
-.chip-color-4 {
-  background-color: #9400d3;
-  color: white;
-}
-.chip-color-5 {
-  background-color: #9932cc;
-  color: white;
-}
-.chip-color-6 {
-  background-color: #da70d6;
-  color: white;
-}
-.chip-color-7 {
-  background-color: #dda0dd;
-  color: white;
-}
-.chip-color-8 {
-  background-color: #ff1493;
-  color: white;
-}
-.chip-color-9 {
-  background-color: #c71585;
-  color: white;
-}
+.chip-color-0 {background-color: #6a5acd;color: white;}
+.chip-color-1 {background-color: #7d68ee;color: white;}
+.chip-color-2 {background-color: #9370db;color: white;}
+.chip-color-3 {background-color: #800080;color: white;}
+.chip-color-4 {background-color: #9400d3;color: white;}
+.chip-color-5 {background-color: #9932cc;color: white;}
+.chip-color-6 {background-color: #da70d6;color: white;}
+.chip-color-7 {background-color: #dda0dd;color: white;}
+.chip-color-8 {background-color: #ff1493;color: white;}
+.chip-color-9 {background-color: #c71585;color: white;}

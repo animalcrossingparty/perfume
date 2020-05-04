@@ -53,10 +53,7 @@ class ReviewTextBox extends Component<ReviewTextBoxProps> {
   render() {
     const { content, rate } = this.props.form.toJS();
     return (
-      <div className="write_comment">
-        <p className="purple lighten-4 center" style={{ color: "black" }}>
-          PLEASE LEAVE A REVIEW FOR US
-        </p>
+      <div className="write_comment shadow-2">
         <div className="row_comment">
           <textarea
             name="content"
