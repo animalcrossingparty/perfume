@@ -14,7 +14,7 @@ export default () => (
 		fullscreen={false}
 		options={{
 			duration: 500,
-			height: window.outerHeight * 0.5,
+			height: window.outerHeight * 1,
 			indicators: true,
 			interval: 10000000
 		}}
