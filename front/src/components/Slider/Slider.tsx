@@ -20,7 +20,7 @@ export default () => (
 		}}
 	>
 		<Slide image={<img alt="" src={s1} />}>
-			<Caption placement="right" className="s1-cap">
+			<Caption placement="right" className="s1-cap s-font">
 				<h3>
 					로르 리시 Laure Richis
       	</h3>
@@ -32,7 +32,7 @@ export default () => (
 			</Caption>
 		</Slide>
 		<Slide image={<img alt="" src={s2} />}>
-			<Caption placement="left" style={{color: '#2f2f2f'}}>
+			<Caption placement="left" className="s-font" style={{color: '#2f2f2f'}}>
 				<h3 className="mt-5" style={{marginLeft: -200, fontWeight: 100}}>
 					5월 달, 인기 향수 계열은 플로럴
       </h3>
@@ -42,7 +42,7 @@ export default () => (
 			</Caption>
 		</Slide>
 		<Slide image={<img alt="" src={s3} />}>
-			<Caption placement="center">
+			<Caption placement="center" className="s-font">
 				<h3 className="mt-5" style={{textShadow: '0 0 5px white'}}>
 					당신이 애타게 찾던 향수는?
       </h3>
@@ -51,7 +51,7 @@ export default () => (
 			</Caption>
 		</Slide>
 		<Slide image={<img alt="" src={s4} />}>
-			<Caption placement="left">
+			<Caption placement="left" className="s-font">
 				<h3>
 					여름에는 어떤 향수를 뿌리면 좋을까?
       </h3>
