@@ -187,6 +187,7 @@ class Detail extends Component<DetailProps> {
                       <Icon>grade</Icon>
                       {detail.avg_rate.toFixed(2)}
                     </h5>
+
                   </div>
                   <Circle
                     className="rate-circle"
