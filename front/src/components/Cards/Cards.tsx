@@ -111,7 +111,7 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
     >
       <div className="title-gender-tags">
         <p className="card-c-title">{field.name}</p>
-        <div className="perfume-card-badge right p-1 mr-2">
+        <div className="perfume-card-badge">
           {field.launch_date ? field.launch_date.substr(0, 4) : "(None)"}
         </div>
         <p className="rate-box">
@@ -129,7 +129,7 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
             </p>
           </Col>
           {field.price > 1 ? (
-            <h5 style={{ fontSize:'1.3vw', margin:'0 0 0 auto', overflow:'hidden', color: "#c71585" }}>
+            <h5 style={{ fontSize:'1.3vw', margin:'0 0 0 auto', overflow:'hidden', color: "#dc143c" }}>
               {makeComma(field.price.toFixed(0))}
               <small>원</small>
             </h5>
@@ -137,21 +137,21 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
             <h5
               style={{
                 margin:'0 0 0 auto',
-                color: "#c71585",
+                color: "#e0e0e0",
                 fontSize:'1vw',
               }}
             >
-              (가격 없음)
+              가격 없음
             </h5>
           )}
         </Row>
-        <Row className="mt-3" style={{fontSize: '0.6vw'}}>
+        <Row className="mt-3 mb-1" style={{fontSize: '0.6vw'}}>
           {field.name.substr(0, 9)}...과 유사한 향수들
         </Row>
-        <Row className="m-0 jcenter">
+        <section className="similar-grid-row">
           
           {field.similar.length > 2 ? (
-            similar().map((eid) => (
+            similar().splice(0,9).map((eid) => (
               <Link key={eid + "sim"} to={`/detail/${eid}`}>
                 <img
                   src={`http://i02b208.p.ssafy.io:8000/staticfiles/images/${eid}.jpg`}
@@ -161,9 +161,11 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
               </Link>
             ))
           ) : (
-            <Col style={{ paddingTop: "11.5px" }}>비슷한 향수가 없어요</Col>
+            ['비','슷','한','향','수','가','없','어','요'].map((eid) => (
+            <div key={eid + 'non'}>{eid}</div>
+            ))
           )}
-        </Row>
+        </section>
       </div>
     </Card>
   );

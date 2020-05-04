@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { ReviewTextBox } from "components/";
 import { withRouter } from "react-router";
 import "../../css/DetailPage.css";
+
 interface DetailProps {
   history: any;
   DetailActions: any;
