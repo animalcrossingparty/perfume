@@ -15,6 +15,7 @@ function HomePage() {
       <Slider />
       <h4 className="thin center">BELOVED ITEMS TODAY</h4>
       <RandomPick />
+      <h4 className="thin center">BELOVED BRANDS TODAY</h4>
       <div className="container">
         <h1 className="center thin">STORIES</h1>
         <Row className="px-5 m-0">
@@ -44,10 +45,10 @@ function HomePage() {
           >
             <div className="homegrid-header">
               <h1>CREED</h1>
-              <h4 className="center">버진 아일랜드 워터</h4>
+              <h4>버진 아일랜드 워터</h4>
             </div>
             <div className="homegrid-content">
-              <p>시원하고 상쾌한 느낌의 향수.</p>
+              <p style={{fontWeight: 700, fontStyle: 'italic'}}>시원하고 상쾌한 느낌의 향수.</p>
               <p>
                 크루즈를 타고 카르브 해의 Ginger 섬을 향해가던 중 영감을 얻어 만들어진 향수.
                 휴양지 버진 아일랜드에서 가져온 이름처럼 여러 열대과일의 향을 추출해
@@ -65,12 +66,12 @@ function HomePage() {
             s={7}
           >
             <div className="homegrid-header pt-5">
-              <h1 className="pt-5">JO MALONE</h1>
+              <h1 className="pt-5">Jo Malone</h1>
               <h4 className="center">잉글리쉬 페어 앤 프리지아 코롱</h4>
             </div>
 
             <div className="homegrid-content">
-            <p>은은하면서 신선하고 감미로운 향.</p>
+            <p style={{fontWeight: 700, fontStyle: 'italic'}}>은은하면서 신선하고 감미로운 향.</p>
             <p>
              부드럽고 감미로운 향을 부여하는 잉글리쉬 페어 앤 프리지아는 가을의 정수라 할 수 있습니다.
              화이트 프리지아 부케향에 이제 막 익은 배의 신선함을 입히고, 
@@ -86,11 +87,11 @@ function HomePage() {
               className="homegrid"
             >
               <div className="homegrid-header">
-              <h1 className="pt-3 m-0">MS DIOR</h1>
+              <h1 className="pt-3 m-0">Miss Dior</h1>
             <h4 className="center">미스 디올 오 드 퍼퓸</h4>
               </div>
             <div className="homegrid-content" style={{margin: '8% auto auto auto'}}>
-            <p>매혹적인 플로럴 향.</p>
+            <p style={{fontWeight: 700, fontStyle: 'italic'}}>매혹적인 플로럴 향.</p>
             <p>
             감각적인 그라스산 로즈와 생기 넘치는 로즈 우드가 섬세하게 어우러진 미스 디올 오 드 퍼퓸의 향기를 경험해 보세요.</p>
             <i>“저는 플로럴 노트가 지닌 관능적이면서도 감각적인 향기를 표현하고자 했습니다. 

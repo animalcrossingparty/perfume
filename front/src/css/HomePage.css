@@ -1,4 +1,6 @@
-
+@font-face { font-family: 'MapoFlowerIsland'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff'); font-weight: normal; font-style: normal; }
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&family=Tinos&display=swap');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css); <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'> * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
 .footer-teammates {
   text-align: center;
 }
@@ -134,7 +136,7 @@
   background-repeat: no-repeat;
   backdrop-filter: blur(10px);
   color: white;
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
   line-height: 32px;
   line-height-step: 10px;
   transition: 1s;
@@ -155,8 +157,21 @@
   background: white;
   color: black
 }
-.homegrid-content {
-  background: rgba(255, 255, 255, 0.8);
+.homegrid:not(:hover) + .homegrid-content {
+  background-color: #000000;
+  opacity: 0;
+  /* background: rgba(255, 255, 255, 0.8);
+  color: black;
+  padding: 1rem;
+  width: 65%;
+  margin: auto;
+  margin-top: 20%; */
+
+}
+
+.homegrid:hover + .homegrid-content:after {
+  background: rgba(255, 255, 255, 0.8) !important;
+  opacity: 1 !important;
   color: black;
   padding: 1rem;
   width: 65%;
@@ -164,11 +179,27 @@
   margin-top: 20%;
 }
 
+.homegrid-content > p {
+  font-family: 'MapoFlowerIsland' !important;
+}
+
 .homegrid-header {
   text-shadow: 2px 2px 4px #3f3f3f;
+  font-weight: 700;
   text-align: center;
 }
 
-.homegrid-haeder > h1 {
+.homegrid-header > h1 {
   font-size: 30px;
+  /* font-family: 'Tinos', serif; */
+  font-family: 'PT Serif', serif;
+}
+
+.homegrid-header > h4 {
+  font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
+
+}
+
+.homegrid-header + .s2-homegrid-header {
+  text-align: right !important;
 }
