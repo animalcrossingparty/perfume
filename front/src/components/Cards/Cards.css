@@ -1,18 +1,22 @@
 .card-image {
   width: 100%;
+  padding: 0 25px;
 }
-.card-image > img {
-  height: 320px;
-}
+
 
 .card {
   border-radius: 5px 5px 0 0;
-  border: 1px solid #e0e0e0;
 }
 
 
 .pagenation-container {
   text-align: center;
+  display: flex;
+  align-items: center;
+  position: sticky !important;
+  z-index: 99;
+  background-color: #fff;
+  top:0
 }
 .card .card-title {
   margin-left: auto;
@@ -24,6 +28,8 @@
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
+  font-size: 20px;
+  font-weight: 400;
   text-overflow: ellipsis;
 }
 .chip {
@@ -43,22 +49,22 @@
 }
 
 .perfume-card-badge {
-  border: 1px solid #e0e0e0;
   border-radius: 6px;
-  padding: 2px;
-  color: black !important;
+  line-height: 30px;
+  color: #9f9f9f !important;
 }
 
 .rate-box {
   display: flex;
   align-items: center;
+  justify-content: right;
   font-size: 16px;
-  line-height: 32px;
+  line-height: 30px;
   border-radius: 50px;
   font-weight: 500;
 }
 .rate-box-star {
-  font-size: 16px;
+  font-size: 20px;
   margin-right: 0.2em !important;
   color: rgb(241, 220, 161);
 }
@@ -76,7 +82,7 @@
 .title-gender-tags {
   padding: 3%;
   margin: 0;
-  background-color: #f8f8f8;
+  background-color: #fff;
 }
 
 .card-image > img {
@@ -97,7 +103,10 @@ span.badge {
   padding-bottom: 4px;
   margin-bottom: 0;
 }
-
+.similar-grid-row {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
 .chip-color-0 {
   background-color: #6a5acd;
   color: white;
