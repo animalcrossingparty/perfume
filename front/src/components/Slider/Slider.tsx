@@ -6,7 +6,7 @@ import './Slider.css'
 import s1 from 'assets/s1-min.webp'
 import s2 from 'assets/s2-min.png'
 import s3 from 'assets/s3-min.jpg'
-import s4 from 'assets/s4-min.jpg'
+import s4 from 'assets/s4-min.png'
 
 
 export default () => (
