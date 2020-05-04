@@ -38,6 +38,14 @@ class CategorySerializers(serializers.ModelSerializer):
         return label
 
 
+class PerfumeBriefSerializers(serializers.ModelSerializer):
+    brand = serializers.CharField(source='brand.name')
+
+    class Meta:
+        model = Perfume
+        fields = ['id', 'name', 'brand', 'thumbnail']
+
+
 class PerfumeSerializers(serializers.ModelSerializer):
     avg_rate = serializers.SerializerMethodField(read_only=True)
     top_notes = NoteSerializers(many=True)
@@ -53,6 +61,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
         model = Perfume
         fields = '__all__'
         include = ['avg_rate', 'total_review']
+        exclude = ['recommended']
 
     def get_avg_rate(self, instance):
         try:
@@ -75,10 +84,11 @@ class PerfumeSurveySerializers(serializers.ModelSerializer):
     top_notes = NoteSerializers(read_only=True, many=True)
     heart_notes = NoteSerializers(read_only=True, many=True)
     base_notes = NoteSerializers(read_only=True, many=True)
+
     class Meta:
         model = Perfume
         fields = '__all__'
-        exclude = ['price']
+        exclude = ['price', 'similar', 'recommended']
 
 
 class SurveySerializers(serializers.ModelSerializer):
@@ -115,11 +125,25 @@ class ReviewSerializers(serializers.Serializer):
 
 class PerfumeDetailSerializers(PerfumeSerializers):
     reviews = serializers.SerializerMethodField()
+    recommended = serializers.SerializerMethodField()
+    similar = serializers.SerializerMethodField()
+
+    class Meta(PerfumeSerializers.Meta):
+        exclude = None
 
     def get_reviews(self, instance):
         ordered = instance.review_set.order_by('-created_at')
         return ReviewSerializers(ordered, many=True).data
 
+    def get_recommended(self, instance):
+        recom = map(int, instance.recommended[1:-1].split(', '))
+        recom_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in recom]
+        return PerfumeBriefSerializers(recom_p, many=True).data
+
+    def get_similar(self, instance):
+        sim = map(int, instance.similar[1:-1].split(', '))
+        sim_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in sim]
+        return PerfumeBriefSerializers(sim_p, many=True).data
 
 class SearchQuerySerializers(serializers.Serializer):
     keywords = serializers.CharField(required=True)
