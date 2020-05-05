@@ -18,7 +18,7 @@ interface DetailProps {
   DetailActions: any;
   detail: any;
   user: any;
-  location: any
+  location: any;
 }
 
 class Detail extends Component<DetailProps> {
@@ -54,9 +54,9 @@ class Detail extends Component<DetailProps> {
     let oldId = prevProps.location.key;
     let newId = this.props.location.key;
     if (newId !== oldId) {
-      console.log('update!!!!!!!!!!!!!!!!!!!!!')
-      this.initializeDetailInfo()
-      window.scrollTo(0,0)
+      console.log("update!!!!!!!!!!!!!!!!!!!!!");
+      this.initializeDetailInfo();
+      window.scrollTo(0, 0);
     }
   }
   componentDidMount() {
@@ -74,8 +74,8 @@ class Detail extends Component<DetailProps> {
     return (
       <div className="container mt-5">
         <section className="perfume-info-section">
-          <Row>
-            <Col s={6} className="perfume-info-image center" width="70%">
+          <section className="detail-top-divide">
+            <div className="perfume-info-image center">
               <Row>
                 <img src={detail.thumbnail} alt="" />
               </Row>
@@ -117,125 +117,174 @@ class Detail extends Component<DetailProps> {
                   }
                 ></Col>
               </Row>
-            </Col>
-            <Col s={6} className="perfume-info-text">
-              <p>{detail.launch_date ? detail.launch_date.substr(0, 4) : `(정보없음)`}년 출시</p>
-              <small className="right">{detail.id}</small>
-              <h4 className="mt-1"> {detail.name} </h4>
-              <h5 className="perfume_brand">
-                <small className="detail_price">
-                  {detail.price
-                    ? "₩ " + this.makeComma(detail.price.toFixed(0)) + " 원"
-                    : "가격 정보가 없습니다"}
-                </small>
-                <small>made by</small>
-                {detail.brand.name}{" "}
-              </h5>
-              <Row className="categories-row m-0">
-                <p>CATEGORY</p>
-                {detail.categories.map((cat) => (
-                  <span key={"d-category-" + cat.id}>{cat.name}</span>
-                ))}
-              </Row>
-              <Row className="note-and-rate-row">
-                <Col s={6}>
-                  <h6>탑 노트</h6>
-                  <Row className="note-tags">
-                    {detail.top_notes.length > 0 ? (
-                      detail.top_notes.slice(0, 3).map((note, note_id) => (
-                        <Chip
-                          close={false}
-                          onClick={(e) => this.handleTagClick(e, note.id)}
-                          key={note.id + "-tnote"}
-                          className={`chip-color-${note.id % 10}`}
-                        >
-                          {note.kor_name || note.name}
-                        </Chip>
-                      ))
-                    ) : (
-                      <Chip close={false}>노트정보없음</Chip>
-                    )}
-                  </Row>
-                  <h6>하트 노트</h6>
-                  <Row className="note-tags">
-                    {detail.heart_notes.length > 0 ? (
-                      detail.heart_notes.slice(0, 3).map((note, note_id) => (
-                        <Chip
-                          close={false}
-                          options={null}
-                          key={note_id}
-                          className={`chip-color-${note_id % 10}`}
-                        >
-                          {note.kor_name || note.name}
-                        </Chip>
-                      ))
-                    ) : (
-                      <Chip close={false}>노트정보없음</Chip>
-                    )}
-                  </Row>
-                  <h6>베이스 노트</h6>
-                  <Row className="note-tags">
-                    {detail.base_notes.length > 0 ? (
-                      detail.base_notes.slice(0, 3).map((note, note_id) => (
-                        <Chip
-                          close={false}
-                          options={null}
-                          key={note_id}
-                          className={`chip-color-${note_id % 10}`}
-                        >
-                          {note.kor_name || note.name}
-                        </Chip>
-                      ))
-                    ) : (
-                      <Chip close={false}>노트정보없음</Chip>
-                    )}
-                  </Row>
-                </Col>
-                <Col s={6}>
-                  <div className="rate-wrapper pt-5">
-                    <div className="rate-inside-circle">
-                      <h5>{detail.avg_rate.toFixed(1)}</h5>
-                      <h5
-                        style={{ fontSize: "16px", lineHeight: "192px" }}
-                        className="mt-0"
-                      >
-                        리뷰 평균 평점
-                      </h5>
-                    </div>
-                    <Circle
-                      className="rate-circle"
-                      percent={this.state.progress}
-                      strokeWidth={4}
-                      strokeColor={"pink"}
-                      trailColor={"lightgray"}
-                    />
+            </div>
+            <section className="perfume-info-text">
+              <div className="detail-info-text-header">
+                <div className="detail-info-header-text">
+                  <p className="ml-3 right" style={{ color: "#f3f3f3" }}>
+                    {detail.id}
+                  </p>
+                  <p
+                    style={{
+                      color: "#c3c3c3",
+                      fontSize: "1.56vw",
+                      fontWeight: 400,
+                      letterSpacing: "0.1vw",
+                    }}
+                  >
+                    {detail.brand.name}
+                  </p>
+                  <h4
+                    style={{
+                      lineHeight: "1.86vw",
+                      fontSize: "1.86vw",
+                      height: "1.86vw",
+                      overflowY: "scroll",
+                    }}
+                    className="mt-1"
+                  >
+                    {" "}
+                    {detail.name}{" "}
+                    <span
+                      style={{
+                        background: "#e0e0e0",
+                        borderRadius: "15px",
+                        fontSize: "1vw",
+                        padding: "2px",
+                      }}
+                    >
+                      {" "}
+                      {detail.launch_date
+                        ? detail.launch_date.substr(0, 4)
+                        : `(정보없음)`}{" "}
+                    </span>{" "}
+                  </h4>
+                  <h5 className="perfume_brand">
+                    <small className="detail_price">
+                      {detail.price
+                        ? "₩ " + this.makeComma(detail.price.toFixed(0))
+                        : "가격 정보가 없습니다"}
+                    </small>
+                  </h5>
+                  <section className="categories-row m-0 center">
+                    <span
+                      style={{
+                        color: "#4f4f4f",
+                        background: "none",
+                        borderRight: "1px solid #e0e0e0",
+                      }}
+                    >
+                      CATEGORY
+                    </span>
+                    {detail.categories.map((cat) => (
+                      <span key={"d-category-" + cat.id}>{cat.name}</span>
+                    ))}
+                  </section>
+                </div>
+                <div className="rate-wrapper">
+                  <div className="rate-inside-circle">
+                    <h5>
+                      <Icon>grade</Icon>
+                      {detail.avg_rate.toFixed(2)}
+                    </h5>
+
                   </div>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+                  <Circle
+                    className="rate-circle"
+                    percent={this.state.progress}
+                    strokeWidth={4}
+                    strokeColor={"lightpink"}
+                    trailColor={"lightgray"}
+                  />
+                </div>
+              </div>
+
+              <section className="note-and-rate-row center">
+                <span>TOP NOTES</span>
+                <div className="note-tags">
+                  {detail.top_notes.length > 0 ? (
+                    detail.top_notes.slice(0, 3).map((note, note_id) => (
+                      <Chip
+                        close={false}
+                        onClick={(e) => this.handleTagClick(e, note.id)}
+                        key={note.id + "-tnote"}
+                        className={`chip-color-${note.id % 10}`}
+                      >
+                        {note.kor_name || note.name}
+                      </Chip>
+                    ))
+                  ) : (
+                    <Chip close={false}>노트정보없음</Chip>
+                  )}
+                </div>
+                <span>HEART NOTES</span>
+                <div className="note-tags">
+                  {detail.heart_notes.length > 0 ? (
+                    detail.heart_notes.slice(0, 3).map((note, note_id) => (
+                      <Chip
+                        close={false}
+                        options={null}
+                        key={note_id}
+                        className={`chip-color-${note_id % 10}`}
+                      >
+                        {note.kor_name || note.name}
+                      </Chip>
+                    ))
+                  ) : (
+                    <Chip close={false}>노트정보없음</Chip>
+                  )}
+                </div>
+                <span>BASE NOTES</span>
+                <div className="note-tags">
+                  {detail.base_notes.length > 0 ? (
+                    detail.base_notes.slice(0, 3).map((note, note_id) => (
+                      <Chip
+                        close={false}
+                        options={null}
+                        key={note_id}
+                        className={`chip-color-${note_id % 10}`}
+                      >
+                        {note.kor_name || note.name}
+                      </Chip>
+                    ))
+                  ) : (
+                    <Chip close={false}>노트정보없음</Chip>
+                  )}
+                </div>
+              </section>
+              <h6
+                className="thin center"
+                style={{
+                  backgroundColor: "#4f4f4f",
+                  color: "white",
+                  padding: "10px 0",
+                }}
+              >
+                {detail.name}과 비슷한 향수들
+              </h6>
+              <section className="similar-container">
+                {detail.similar && detail.similar.length > 3 ? (
+                  detail.similar
+                    .substr(1, detail.similar.length - 2)
+                    .split(", ")
+                    .map((sim, rank) => (
+                      <Link
+                        to={{ pathname: `/detail/${sim}` }}
+                        className="each-similar"
+                        key={sim + "th"}
+                        style={{
+                          backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim}.jpg)`,
+                        }}
+                      ></Link>
+                    ))
+                ) : (
+                  <div>비슷한 향수 데이터가 없습니다.</div>
+                )}
+              </section>
+            </section>
+          </section>
         </section>
 
-        <h5 className="thin center">{detail.name}과 비슷한 향수들</h5>
-        <section className="similar-container">
-          {detail.similar && detail.similar.length > 3 ? (
-            detail.similar
-              .substr(1, detail.similar.length - 2)
-              .split(", ")
-              .map((sim, rank) => (
-                <Link
-                  to={{ pathname: `/detail/${sim}` }}
-                  className="each-similar"
-                  key={sim + "th"}
-                  style={{
-                    backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim}.jpg)`,
-                  }}
-                ># {rank + 1}</Link>
-              ))
-          ) : (
-            <div>비슷한 향수 데이터가 없습니다.</div>
-          )}
-        </section>
         <h5 className="thin center">
           {detail.name}을 좋아하는 유저가 선택한 향수들
         </h5>
@@ -252,7 +301,7 @@ class Detail extends Component<DetailProps> {
                   style={{
                     backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim}.jpg)`,
                   }}
-                ># {rank + 1}</Link>
+                ></Link>
               ))
           ) : (
             <div>추천 향수 데이터가 없습니다.</div>
@@ -263,11 +312,26 @@ class Detail extends Component<DetailProps> {
             ? `Reviews (${detail.reviews.length})`
             : "여러분의 소중한 리뷰를 남겨주세요"}
         </div>
-        <h5 className="thin center">
+        <h5
+          className="thin center"
+          style={{ background: "#4f4f4f", color: "white" }}
+        >
           {detail.name} - 리뷰 키워드 WORD CLOUD
         </h5>
-        <section>
-          <img src={`http://i02b208.p.ssafy.io:8000/staticfiles/wordcloud/${detail.id}-wc.webp`} width="100%" height="700px" alt=""/>
+        <section style={{ padding: "5%" }}>
+          <img
+            src={`http://i02b208.p.ssafy.io:8000/staticfiles/wordcloud/${detail.id}-wc.webp`}
+            width="100%"
+            height="700px"
+            alt=""
+          />
+        </section>
+        <section className="review-write-box">
+          {this.props.user.get("logged") ? (
+            <ReviewTextBox id={detail.id} />
+          ) : (
+            <h4>로그인해서 댓글작성</h4>
+          )}
         </section>
         <section className="review-list-container">
           {detail.reviews ? (
@@ -301,11 +365,6 @@ class Detail extends Component<DetailProps> {
             ))
           ) : (
             <h4>리뷰가 없어용</h4>
-          )}
-          {this.props.user.get("logged") ? (
-            <ReviewTextBox id={detail.id} />
-          ) : (
-            <h4>로그인해서 댓글작성</h4>
           )}
         </section>
       </div>
