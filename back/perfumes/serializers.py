@@ -61,7 +61,6 @@ class PerfumeSerializers(serializers.ModelSerializer):
         model = Perfume
         fields = '__all__'
         include = ['avg_rate', 'total_review']
-        exclude = ['recommended']
 
     def get_avg_rate(self, instance):
         try:
@@ -128,9 +127,6 @@ class PerfumeDetailSerializers(PerfumeSerializers):
     recommended = serializers.SerializerMethodField()
     similar = serializers.SerializerMethodField()
 
-    class Meta(PerfumeSerializers.Meta):
-        exclude = None
-
     def get_reviews(self, instance):
         ordered = instance.review_set.order_by('-created_at')
         return ReviewSerializers(ordered, many=True).data
@@ -147,6 +143,7 @@ class PerfumeDetailSerializers(PerfumeSerializers):
 
 class SearchQuerySerializers(serializers.Serializer):
     keywords = serializers.CharField(required=True)
+    page = serializers.IntegerField(default=1)
 
 
 class SurveyGETQuery(serializers.Serializer):
