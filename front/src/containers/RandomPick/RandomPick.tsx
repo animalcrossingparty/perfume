@@ -28,14 +28,15 @@ class RandomPick extends Component<RandomProps> {
         {randList.length > 1 ? (
           randList.splice(0,5).map((perfume) => {
             return (
-              <Col key={perfume.name + 'idrdp'} s={2} className="hover-shadow">
+              <Col key={perfume.name + 'idrdp'} s={12} m={6} l={3} xl={2} className="hover-shadow">
                 <h5 style={{color: ''}} className="card-c-title center px-3 thin">{perfume.name}</h5>
                 <Link to={`/detail/${perfume.id}`}>
                   <div
                     style={{
                       height: "300px",
                       backgroundImage: `url(${perfume.thumbnail})`,
-                      backgroundSize: 'cover'
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
                     }}
                   >
                   </div>
