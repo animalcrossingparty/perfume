@@ -1,6 +1,5 @@
 .card-image {
   width: 100%;
-  padding: 0 25px;
 }
 
 
@@ -85,8 +84,33 @@
   background-color: #fff;
 }
 
+.threeone-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  text-align: left;
+  padding: 3px 0;
+}
+
+.threeone-grid i {
+  color: skyblue;
+  cursor: pointer;
+  text-align: center;
+  transition: 1s;
+  text-shadow: 2px 1px 1px #e0e0e0;
+}
+
+.threeone-grid i:hover {
+  color: orange;
+  text-align: center;
+  text-shadow: 2px 1px 1px #3f3f3f;
+}
+.card-reveal {
+  overflow: hidden;
+}
 .card-image > img {
-  height: 280px;
+  height: 13vw !important;
+  width: 13vw !important;
+  margin: auto !important;
   border-radius: 5px 5px 0 0 !important;
 }
 
@@ -107,8 +131,10 @@ span.badge {
   display:grid;
   grid-template-columns: repeat(10, 1fr);
   height: 0;
+  margin: auto;
   overflow-y: hidden;
-  transition: 3s;
+  padding-top: 5px;
+  transition: 0.5s;
 }
 .card:hover .similar-grid-row {
   height: auto;
