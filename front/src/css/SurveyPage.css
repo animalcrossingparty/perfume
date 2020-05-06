@@ -184,13 +184,10 @@
   text-align: center;
 }
 
-#conversational-form {
-  height: 100% !important;
-}
 
 .survey_inner_container {
   background-color: #FBEFF2;
-  height: 630px;
+  height: 640px;
 }
 .result-rank {
   color: royalblue;
