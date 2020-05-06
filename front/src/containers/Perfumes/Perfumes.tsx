@@ -15,6 +15,7 @@ import {
   ProgressBar,
   Checkbox,
   Select,
+  Autocomplete,
 } from "react-materialize";
 import queryString from "query-string";
 import Pagination from "react-js-pagination";
@@ -36,7 +37,23 @@ class Perfumes extends Component<PerfumeProps> {
     const queryParams = queryString.parse(history.location.search);
     await PerfumeActions.getPerfumeInfo(queryParams);
   };
-
+  initializeSearchInfo = async (e) => {
+    e.preventDefault();
+    const { PerfumeActions, history } = this.props;
+    let rawq = e.target.querySelector("input").value.split(' ');
+    const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
+    let result = [] as any[]
+    rawq.map(r=> {
+      console.log(r)
+      if (regExp.test(r)) {
+        let t = r.replace(regExp, "");
+        result.push(t)
+      } else {
+        result.push(r)
+      }
+    })
+    await PerfumeActions.searchInfo(result.join(','));
+  };
   componentDidMount() {
     this.initializePerfumeInfo();
   }
@@ -130,7 +147,12 @@ class Perfumes extends Component<PerfumeProps> {
               height: 40,
             }}
           >
-            <input type="text" placeholder="🧐  검색어를 입력해주세요." />
+            <form onSubmit={this.initializeSearchInfo}>
+              <Autocomplete
+                icon={<Icon>textsms</Icon>}
+                placeholder=" 검색어를 입력해주세요."
+              />
+            </form>
           </div>
           {sort !== "alpha" ? (
             <NavLink
