@@ -156,13 +156,21 @@ class PerfumeDetailSerializers(PerfumeSerializers):
         return ReviewSerializers(ordered, many=True).data
 
     def get_recommended(self, instance):
+        print(instance.recommended)
         recom = map(int, instance.recommended[1:-1].split(', '))
-        recom_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in recom]
+        try:
+            recom_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in recom]
+        except:
+            return []
         return PerfumeBriefSerializers(recom_p, many=True).data
 
     def get_similar(self, instance):
+        print(instance.similar)
         sim = map(int, instance.similar[1:-1].split(', '))
-        sim_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in sim]
+        try:
+            sim_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in sim]
+        except:
+            return []
         return PerfumeBriefSerializers(sim_p, many=True).data
 
 class SearchQuerySerializers(serializers.Serializer):
