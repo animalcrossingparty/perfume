@@ -1,14 +1,15 @@
 import React from 'react';
 import { Header,  FooterContent, Members } from "../components";
-import { Footer, Icon, Row, Col } from "react-materialize";
+import { Footer, Icon } from "react-materialize";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 function AboutPage() {
   return (
     <section>
       <Header />
-      <h1 className="mt-5 pt-5">LAURE RICHIS</h1> <h2>로르 리시</h2>
+      {/* <h1 className="mt-5 pt-5">LAURE RICHIS</h1> <h2>로르 리시</h2> */}
       
       <Members />
-      <div className="container footer_container">
+      {/* <div className="container footer_container">
       <h1 className="thin">WHAT IT IS?</h1>
         <Row className="jcenter py-5" style={{background: 'none', alignItems:'center'}}>
           <Col className="intro-box" s={3}>
@@ -32,17 +33,17 @@ function AboutPage() {
             <p>나이별, 성격별, 통계 자료를 볼 수 있어요.</p>
           </Col>
         </Row>
-      </div>
+      </div> */}
 
       <Footer
         copyrights="2020 SSAFY DJ02-08"
         links={
           <ul className="text-gray">
             <li>
-              <a href="#!">Github</a>
+              <a href="#!"><FontAwesomeIcon icon="coffee" /></a>
             </li>
             <li>
-              <a href="#!">SSAFY</a>
+              <a href="#!">SSAF</a>
             </li>
             <li>
               <a href="#!">SSAFY Instagram</a>

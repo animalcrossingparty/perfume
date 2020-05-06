@@ -1,10 +1,11 @@
 .mem_bg {
   /* background-image: url("../assets/detail-bg.png"); */
-  height: 100%;
-  background-size: cover;
+  /* height: 100%; */
+  /* background-size: cover; */
   /* background-repeat: no-repeat; */
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   /* background-color: rgb(41, 82, 156); */
+  margin-bottom: 5rem;
 }
 
 .members {
@@ -21,7 +22,8 @@
   text-shadow: 2px 2px 1px gray;
   /* border-bottom: 1px solid; */
   width: 21vw;
-  margin: 10rem auto 0 auto;
+  margin: 0 auto;
+  padding-top: 10rem;
 }
 
 .mem {
@@ -66,8 +68,8 @@
 .nutshell_2 {
   background-color: #ff7f90;
   margin: 1rem;
-  border-radius: 20px;
-  padding: .3rem;
+  border-radius: 30px;
+  padding: 1rem;
 }
 .nutshell_3 {
   background-color: #ffc193;
@@ -117,4 +119,8 @@
     margin: 2rem auto;
     padding: .5rem 1rem;
   }
+}
+
+.members {
+  /* align-items: flex-start; */
 }

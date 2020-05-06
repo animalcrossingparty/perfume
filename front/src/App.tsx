@@ -8,7 +8,6 @@ import {
   PerfumePage,
   SurveyPage,
   UserRank,
-  TeamPage,
   SurveyIntroPage,
   SurveyResultPage
 } from "./pages";
@@ -52,7 +51,6 @@ class App extends Component<AppProps> {
         <Route path="/result" component={SurveyResultPage} />
         <Route exact path="/surveyintro" component={SurveyIntroPage} />
         <Route path="/rank" component={UserRank} />
-        <Route path="/team" component={TeamPage} />
       </div>
     );
   }
