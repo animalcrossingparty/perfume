@@ -1,0 +1,36 @@
+.famous-selection-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 2%;
+  grid-row-gap: 2%;
+  padding-top: 2%
+}
+
+.famous-selection-box > div {
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+}
+.famous-selection-box > div:hover {
+  box-shadow: 0 0 10px #e0e0e0;
+}
+
+.famous-selection-img {
+  margin: auto;
+  display: block;
+  height: 200px;
+  width: 200px
+}
+
+.famous-selection-perfume-name {
+  font-size: 20px;
+  text-align: center;
+}
+
+.famous-survey-tab {
+  background-color: white;
+}
+
+.carousel {
+  height: 550px !important;
+}

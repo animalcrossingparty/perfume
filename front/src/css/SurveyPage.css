@@ -7,14 +7,19 @@
   flex-direction: column;
 }
 .conversational-form-inner {
-  background: #f0e0e0;
+  background: #f0cff9;
 }
-.animate-in {
-  background-color: #f9f0e0;
+.one-row .animate-in {
+  background-color: #fff;
+  border-radius: 15px !important;
+  padding: 0 !important
 }
-.one-row {
-  padding-left: 3%;
+
+cf-button {
+  margin: 5px !important;
 }
+
+
 .select-u-want {
   font-weight: 100;
   padding: 2%;
@@ -23,21 +28,21 @@
   font-size: 22px;
   background-color:#EFFBF5;
 }
-.cf-image {
+/* .cf-image {
   width: 145px !important;
   height: 86px  !important;
   border-radius: 15px;
-}
+} */
 .inputWrapper {
   background: white
 }
 .survey_box {
-  background-color: #E0ECF8;
+  background-color: #fff;
   width: 80%;
-  height: 90vh;
+  overflow: hidden;
+  height: 100vh;
   margin: auto;
-  margin-top: 5%;
-  padding: 32px 80px;
+  padding: 5%;
 }
 .result_box {
   background-color: #E0ECF8;
@@ -147,9 +152,7 @@
 .inputWrapper > textarea {
   display: none !important;
 }
-.cf-list {
-  height: 135px !important;
-}
+
 .tags {
   display: flex;
   justify-content: center;
@@ -173,9 +176,6 @@
   background-color: rgb(105, 85, 85);
 }
 
-.tabs {
-  display: none;
-}
 
 .survey-tab-1 {
   background-color: white;
@@ -187,7 +187,7 @@
 
 .survey_inner_container {
   background-color: #FBEFF2;
-  height: 640px;
+  height: 100%;
 }
 .result-rank {
   color: royalblue;
@@ -241,10 +241,18 @@
 .survey_inner_container div {
   height: 100%
 }
-.cf-input-button {
-  width: auto !important;
-  min-width: 60px !important;
-  transition: 450ms ease-in-out !important;
+.hide-input {
+  min-height: 60px;
+  transition: 1s;
+  border-radius: 10px;
+}
+.one-row{
+  padding: 2px !important;
+  border-radius: 10px !important;
+  min-height: 60px;
+}
+.cf-chat-response text>p {
+  background-color: white !important;
 }
 
 .note-select-wrapper {

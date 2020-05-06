@@ -8,6 +8,7 @@ import UserRank from './UserRank'
 import TeamPage from './TeamPage'
 import SurveyIntroPage from './SurveyIntroPage'
 import SurveyResultPage from './SurveyResultPage'
+import ExpSurveyPage from './ExpSurveyPage'
 
 export {
   HomePage,
@@ -19,5 +20,6 @@ export {
   UserRank,
   TeamPage,
   SurveyIntroPage,
-  SurveyResultPage
+  SurveyResultPage,
+  ExpSurveyPage
 };
