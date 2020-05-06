@@ -88,9 +88,9 @@ class PerfumeSerializers(serializers.ModelSerializer):
             return instance.similar
         sim_p = Perfume.objects.exclude(similar='')
         try:
-            sim_p = sim_p.filter(categories__in=instance.categories.all())[instance.id & 1]
-        except:
-            sim_p = sim_p[instance.id & 1]
+            sim_p = sim_p.filter(categories__in=instance.categories.all())
+        finally:
+            sim_p = sim_p[instance.id % 10]
         return sim_p.similar
 
     def get_recommended(self, instance):
@@ -98,9 +98,9 @@ class PerfumeSerializers(serializers.ModelSerializer):
             return instance.recommended
         rec_p = Perfume.objects.exclude(recommended='')
         try:
-            rec_p = rec_p.filter(categories__in=instance.categories.all())[instance.id & 1]
-        except:
-            rec_p = rec_p[instance.id & 1]
+            rec_p = rec_p.filter(categories__in=instance.categories.all())
+        finally:
+            rec_p = rec_p[instance.id % 10]
         return rec_p.recommended
 
 class PerfumeSurveySerializers(serializers.ModelSerializer):
