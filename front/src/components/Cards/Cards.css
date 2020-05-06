@@ -104,8 +104,14 @@ span.badge {
   margin-bottom: 0;
 }
 .similar-grid-row {
-  display: grid;
+  display:grid;
   grid-template-columns: repeat(10, 1fr);
+  height: 0;
+  overflow-y: hidden;
+  transition: 3s;
+}
+.card:hover .similar-grid-row {
+  height: auto;
 }
 .chip-color-0 {background-color: #6a5acd;color: white;}
 .chip-color-1 {background-color: #7d68ee;color: white;}

@@ -61,7 +61,6 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
   return (
     <Card
       closeIcon={<Icon>close</Icon>}
-      title="show cloud"
       header={
         <Link to={`/detail/${field.id}`}>
           <CardTitle image={field.thumbnail || "no-image"} waves="light" />
@@ -107,64 +106,72 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
           </Row>
         </Col>
       }
-      revealIcon={<Icon>cloud_circle</Icon>}
+      revealIcon={<Icon></Icon>}
     >
       <div className="title-gender-tags">
         <p className="card-c-title">{field.name}</p>
-        <div className="perfume-card-badge">
-          {field.launch_date ? field.launch_date.substr(0, 4) : "(None)"}
-        </div>
+        <Col className="gender-indicator">
+          <span>
+            {gender_dict[field.gender]} {field.category}
+          </span>
+          <p style={{ fontSize: "0.8rem", fontWeight: 700 }}>
+            {field.brand.name}
+          </p>
+        </Col>
         <p className="rate-box">
           <Icon className="rate-box-star">star</Icon>
           {field.avg_rate.toFixed(2)}{" "}
           <small className="ml-2">({field.total_review})</small>
         </p>
-        <Row className="gender-year" style={{maxHeight: '22px'}}>
-          <Col className="gender-indicator">
-            <span>
-              {gender_dict[field.gender]} {field.category}
-            </span>
-            <p style={{ fontSize: "0.8rem", fontWeight: 700 }}>
-              {field.brand.name}
-            </p>
-          </Col>
+        <Row className="gender-year" style={{ maxHeight: "22px" }}>
           {field.price > 1 ? (
-            <h5 style={{ fontSize:'1.3vw', margin:'0 0 0 auto', overflow:'hidden', color: "#dc143c" }}>
-              {makeComma(field.price.toFixed(0))}
-              <small>원</small>
+            <h5
+              style={{
+                fontSize: "1.3vw",
+                margin: "0 0 0 auto",
+                overflow: "hidden",
+                color: "#dc143c",
+              }}
+            >
+              ₩ {makeComma(field.price.toFixed(0))}
             </h5>
           ) : (
             <h5
               style={{
-                margin:'0 0 0 auto',
+                margin: "0 0 0 auto",
                 color: "#e0e0e0",
-                fontSize:'1vw',
+                fontSize: "1vw",
               }}
             >
               가격 없음
             </h5>
           )}
         </Row>
-        <Row className="mt-3 mb-1" style={{fontSize: '0.6vw'}}>
-          {field.name.substr(0, 9)}...과 유사한 향수들
-        </Row>
+
         <section className="similar-grid-row">
-          
-          {field.similar.length > 2 ? (
-            similar().splice(0,9).map((eid) => (
-              <Link key={eid + "sim"} to={`/detail/${eid}`}>
-                <img
-                  src={`http://i02b208.p.ssafy.io:8000/staticfiles/images/${eid}.jpg`}
-                  width="24px"
-                  alt=""
-                />
-              </Link>
-            ))
-          ) : (
-            ['비','슷','한','향','수','가','없','어','요'].map((eid) => (
-            <div key={eid + 'non'}>{eid}</div>
-            ))
-          )}
+          {field.similar.length > 2
+            ? similar()
+                .splice(0, 9)
+                .map((eid) => (
+                  <Link key={eid + "sim"} to={`/detail/${eid}`}>
+                    <img
+                      src={`http://i02b208.p.ssafy.io:8000/staticfiles/images/${eid}.jpg`}
+                      width="24px"
+                      alt=""
+                    />
+                  </Link>
+                ))
+            : [
+                "비",
+                "슷",
+                "한",
+                "향",
+                "수",
+                "가",
+                "없",
+                "어",
+                "요",
+              ].map((eid) => <div key={eid + "non"}>{eid}</div>)}
         </section>
       </div>
     </Card>

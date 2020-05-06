@@ -36,7 +36,12 @@ body {
 .align-self-start {
   align-self: flex-start !important;
 }
-
+.pagenation-container > ul {
+  margin: 2% auto !important;
+  padding: 1%;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0
+}
 .perfume-page-background {
   background: #fff;
 }
@@ -141,14 +146,16 @@ body {
     transform: translate3d(0, 0, 0);
   }
 }
-
+.select-wrapper {
+  border: 2px solid #4f4f4f;
+}
 .hdown {
   margin-top: 3.6% !important;
 }
 .gender-radio-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 0 10%;
+  grid-template-columns: 93px 93px 93px;
+  padding: 3%;
   text-align: center;
 }
 .active-page-now {
@@ -189,6 +196,7 @@ body {
   font-size: 12px;
   border-bottom: 0 !important;
 }
+
 [type="radio"]:checked+span:after {
   background-color: #4f4f4f !important;
   border: 2px solid lightgray !important;
@@ -199,7 +207,8 @@ body {
   grid-template-rows: repeat(25px, 6);
   grid-template-columns: 1fr 1fr;
   text-align: left;
-  padding: 0 5% 10% 15%;
+  padding: 10%;
+  padding-top: 5%;
 }
 .hover-shadow {
   transition: 0.3s;
@@ -272,7 +281,12 @@ input:not([type]), input[type=text]:not(.browser-default) {
   justify-content: center;
   align-items: center;
 }
-
+.sidenav-indicator {
+  text-align: left;
+  margin: 5%;
+  letter-spacing: 0.3vw;
+  font-weight: 700;
+}
 .loading-message {
   position: fixed;
   top: 35%;
@@ -317,7 +331,7 @@ input:not([type]), input[type=text]:not(.browser-default) {
   padding: 1% !important;
   font-family: "Roboto";
   letter-spacing: 2px;
-  background: #fcfcfc;
+  background-color: white;
   border: 0 !important;
 }
 .collapsible-body > .row {
