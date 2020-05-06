@@ -3,7 +3,7 @@ import Icon from '@material-ui/core/Icon'
 
 // carousel
 import Carousel from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
+// import '@brainhubeu/react-carousel/lib/style.css';
 
 export default () => (
   <Carousel

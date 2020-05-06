@@ -7,6 +7,7 @@ import SurveyPage from './SurveyPage'
 import UserRank from './UserRank'
 import SurveyIntroPage from './SurveyIntroPage'
 import SurveyResultPage from './SurveyResultPage'
+import ExpSurveyPage from './ExpSurveyPage'
 
 export {
   HomePage,
@@ -16,6 +17,7 @@ export {
   PerfumePage,
   SurveyPage,
   UserRank,
-   SurveyIntroPage,
-  SurveyResultPage
+  SurveyIntroPage,
+  SurveyResultPage,
+  ExpSurveyPage,
 };
