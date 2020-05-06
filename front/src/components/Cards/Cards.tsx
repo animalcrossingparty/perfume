@@ -110,14 +110,20 @@ export default function Cards({ field = defaultField }: EachPerfumeProps) {
     >
       <div className="title-gender-tags">
         <p className="card-c-title">{field.name}</p>
-        <Col className="gender-indicator">
-          <span>
-            {gender_dict[field.gender]} {field.category}
-          </span>
-          <p style={{ fontSize: "0.8rem", fontWeight: 700 }}>
-            {field.brand.name}
-          </p>
-        </Col>
+        <section className="threeone-grid">
+          <div className="gender-indicator">
+            <span>
+              {gender_dict[field.gender]} {field.category}
+            </span>
+            <p style={{ fontSize: "0.8rem", fontWeight: 700 }}>
+              {field.brand.name}
+            </p>
+          </div>
+
+
+
+          <Icon className="activator">cloud</Icon>
+        </section>
         <p className="rate-box">
           <Icon className="rate-box-star">star</Icon>
           {field.avg_rate.toFixed(2)}{" "}
