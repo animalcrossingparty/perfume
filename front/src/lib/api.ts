@@ -39,6 +39,9 @@ export const getPerfumes = (q) =>
 export const getPerfumeDetail = (id: number) =>
   axios.get(`${BASE_URL}/perfumes/${id}`);
 
+export const getSearch = (keywords: string) =>
+  axios.get(`${BASE_URL}/search/?keywords=${keywords}`)
+
 // review
 export const postReview = (content: string, rate: number, id: number, token:string) =>
   axios.post(

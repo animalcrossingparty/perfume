@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:100,400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:100, 400, 700);
 body,
 table,
 div,
@@ -25,7 +25,6 @@ body {
   text-align: left;
 }
 
-
 .row {
   display: flex;
   flex-direction: row;
@@ -38,9 +37,9 @@ body {
 }
 .pagenation-container > ul {
   margin: 2% auto !important;
-  padding: 1%;
+  padding: 8px;
   border-radius: 10px;
-  border: 1px solid #e0e0e0
+  border: 1px solid #e0e0e0;
 }
 .perfume-page-background {
   background: #fff;
@@ -78,7 +77,10 @@ body {
   background-color: #4f4f4f;
   pointer-events: none;
 }
-.disabled-link > span, i {
+.disabled-link > span {
+  color: white !important;
+}
+.disabled-link i {
   color: white !important;
 }
 .hidden {
@@ -87,7 +89,7 @@ body {
 .wrap {
   flex-wrap: wrap;
 }
-  
+
 @keyframes tada {
   from {
     transform: scale3d(1, 1, 1);
@@ -134,7 +136,7 @@ body {
 .fadeInUp {
   animation-name: fadeInUp;
 }
-  
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -174,30 +176,45 @@ body {
   justify-content: center;
   align-items: center;
 }
+.perfume-sidenav {
+  animation: fadeIn 4s ease;
+}
 .perfume-sub-nav {
-  margin-top: 64px;
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+  position: sticky;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 35px;
+  grid-column-gap: 30px;
   text-align: center;
   border-top: 0;
-  border-bottom: 1px solid #e0e0e0;
-  padding-right: 10%;
+}
+.perfume-list-container-header-wrapper {
+  margin-top: 64px;
+  margin-bottom: 64px;
+  padding: 20px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #e0e0e0;
+  position: static;
+  z-index: 99;
 }
 .perfume-sub-nav > a {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 15px;
+  border: 1px solid #e0e0e0;
   font-weight: 700;
   color: #3f3f3f !important;
 }
-.perfume-sub-nav .input-field, input[type=text]:not(.browser-default) {
+.perfume-sub-nav .input-field,
+input[type="text"]:not(.browser-default) {
   margin: 0 !important;
   height: 38px !important;
   font-size: 12px;
   border-bottom: 0 !important;
 }
 
-[type="radio"]:checked+span:after {
+[type="radio"]:checked + span:after {
   background-color: #4f4f4f !important;
   border: 2px solid lightgray !important;
 }
@@ -226,15 +243,16 @@ body {
 .survey-image:not(:hover) .surv-wrapper2 {
   display: block;
 }
-.surv-wrapper, .surv-wrapper2 {
+.surv-wrapper,
+.surv-wrapper2 {
   text-align: center;
   border: 1px solid #9e9e9e;
   width: 70%;
   border-radius: 30px;
-  background: rgb(255,255,255,0.5);
+  background: rgb(255, 255, 255, 0.5);
   height: 30%;
   line-height: 115.19px;
-  font-size:  2vw;
+  font-size: 2vw;
   font-weight: 700;
   color: white;
   text-shadow: 1px 1px 5px black;
@@ -243,6 +261,50 @@ body {
 .surv-wrapper2 {
   transform: scaleZ(-1);
   display: none;
+}
+.bmc-button img {
+  height: 34px !important;
+  width: 35px !important;
+  margin-bottom: 1px !important;
+  box-shadow: none !important;
+  border: none !important;
+  vertical-align: middle !important;
+}
+@import url('https://fonts.googleapis.com/css?family=Cookie&display=swap');
+.bmc-button {
+  padding: 7px 10px 7px 10px !important;
+  line-height: 35px !important;
+  height: 51px !important;
+  min-width: 217px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  color: #ffffff !important;
+  background-color: cornflowerblue !important;
+  border-radius: 5px !important;
+  border: 1px solid transparent !important;
+  padding: 7px 10px 7px 10px !important;
+  font-size: 28px !important;
+  letter-spacing: 0.6px !important;
+  box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+  -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+  margin: 0 auto !important;
+  font-family: "Cookie", cursive !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  -o-transition: 0.3s all linear !important;
+  -webkit-transition: 0.3s all linear !important;
+  -moz-transition: 0.3s all linear !important;
+  -ms-transition: 0.3s all linear !important;
+  transition: 0.3s all linear !important;
+}
+.bmc-button:hover,
+.bmc-button:active,
+.bmc-button:focus {
+  -webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+  text-decoration: none !important;
+  box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+  opacity: 0.85 !important;
+  color: #ffffff !important;
 }
 @keyframes maxToSix {
   from {
@@ -254,7 +316,8 @@ body {
     height: 60vh !important;
   }
 }
-input:not([type]), input[type=text]:not(.browser-default) {
+input:not([type]),
+input[type="text"]:not(.browser-default) {
   width: 100% !important;
   color: gray;
   font-style: italic;
@@ -302,13 +365,17 @@ input:not([type]), input[type=text]:not(.browser-default) {
 .card {
   box-shadow: none !important;
 }
-.perfume-sidenav {
-  padding: 0 28% 0 5%;
+.perfume-sidenav i {
+  display: initial;
+  color: #4f4f4f;
 }
 .perfume-sidenav > ul {
   position: sticky;
-  top: 0
-} 
+  width: 300px;
+  box-shadow: 0 0 10px #e0e0e0 !important;
+  margin: 0 auto;
+  padding-top: 64px !important;
+}
 
 .collapsible-header {
   font-size: 13px;
@@ -319,12 +386,13 @@ input:not([type]), input[type=text]:not(.browser-default) {
   background-color: #4f4f4f !important;
 }
 .perfume-list-container {
-  position:relative;
+  position: relative;
   height: auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
   overflow-y: scroll;
   padding-right: 6%;
+  animation: fadeIn 1s ease;
 }
 .collapsible-body {
   text-align: right;
@@ -362,7 +430,7 @@ input:not([type]), input[type=text]:not(.browser-default) {
 .input-field {
   width: 100%;
 }
-input[type=text]:not(.browser-default) {
+input[type="text"]:not(.browser-default) {
   font-style: normal !important;
 }
 
@@ -374,7 +442,6 @@ input[type=text]:not(.browser-default) {
   border-radius: 15px !important;
   border: 1px solid black !important;
   box-shadow: none !important;
-
 }
 .m-0 {
   margin: 0 !important;
@@ -469,7 +536,7 @@ input[type=text]:not(.browser-default) {
 
 .ml-3,
 .mx-3 {
-  margin-left:16px !important;
+  margin-left: 16px !important;
 }
 
 .m-4 {

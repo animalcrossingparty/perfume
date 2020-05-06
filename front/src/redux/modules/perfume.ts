@@ -8,11 +8,13 @@ import * as API from "lib/api";
 const GET_PERFUME_INFO = "GET_PERFUME_INFO"; // 향수 정보 가져오기
 const GET_RANDOM_INFO = "GET_RANDOM_INFO";
 const SET_CATEGORY_SELECT = "SET_CATEGORY_SELECT";
+// const GET_SEARCH_INFO = "GET_SEARCH_INFO"
 // 액션 프로바이더 정의
 
 export const getPerfumeInfo = createAction(GET_PERFUME_INFO, API.getPerfumes);
 export const getRandInfo = createAction(GET_RANDOM_INFO, API.getRand);
 export const setCartSelect = createAction(SET_CATEGORY_SELECT);
+export const searchInfo = createAction(GET_PERFUME_INFO, API.getSearch)
 
 const initialState = Map({
   perfumesList: [],
@@ -89,6 +91,7 @@ const initialState = Map({
     { id: 3140, name: "빅토리아 시크릿" },
     { id: 3227, name: "입생로랑" },
   ],
+
 });
 
 export default handleActions(
