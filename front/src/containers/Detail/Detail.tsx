@@ -139,7 +139,7 @@ class Detail extends Component<DetailProps> {
                       lineHeight: "1.86vw",
                       fontSize: "1.86vw",
                       height: "1.86vw",
-                      overflowY: "scroll",
+                      overflowY: "hidden",
                     }}
                     className="mt-1"
                   >
