@@ -1,6 +1,8 @@
 @font-face { font-family: 'MapoFlowerIsland'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff'); font-weight: normal; font-style: normal; }
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif&family=Tinos&display=swap');
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css); <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'> * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
+@font-face { font-family: 'NIXGONM-Vb'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'MapoPeacefull'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff'); font-weight: normal; font-style: normal; }
 .footer-teammates {
   text-align: center;
 }
@@ -143,20 +145,20 @@
   padding: 0 !important;
 }
 
-.homegrid:hover{
+/* .homegrid:hover{
   cursor: pointer;
   border: initial;
   display: block;
   background-image: none !important;
-}
+} */
 
 .homegrid > hr {
   border: 1px solid white;
 }
-.homegrid:hover > p{
+/* .homegrid:hover > p{
   background: white;
   color: black
-}
+} */
 .homegrid:not(:hover) + .homegrid-content {
   background-color: #000000;
   opacity: 0;
@@ -169,7 +171,7 @@
 
 }
 
-.homegrid:hover + .homegrid-content:after {
+/* .homegrid:hover + .homegrid-content:after {
   background: rgba(255, 255, 255, 0.8) !important;
   opacity: 1 !important;
   color: black;
@@ -177,14 +179,15 @@
   width: 65%;
   margin: auto;
   margin-top: 20%;
-}
+} */
 
 .homegrid-content > p {
-  font-family: 'MapoFlowerIsland' !important;
+  font-family: 'MapoPeacefull';
+  /* font-family: 'MapoFlowerIsland' !important; */
 }
 
 .homegrid-header {
-  text-shadow: 2px 2px 4px #3f3f3f;
+  /* text-shadow: 2px 2px 4px #3f3f3f; */
   font-weight: 700;
   text-align: center;
 }
@@ -192,14 +195,21 @@
 .homegrid-header > h1 {
   font-size: 30px;
   /* font-family: 'Tinos', serif; */
-  font-family: 'PT Serif', serif;
+  font-family: 'NIXGONM-Vb';
+  /* font-family: 'PT Serif', serif; */
 }
 
 .homegrid-header > h4 {
-  font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
+  font-family: 'NIXGONM-Vb';
+  /* font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; */
 
 }
+.homegrid-content > i {
+  color: black !important;
+  font-family: 'MapoPeacefull';
+  /* font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; */
 
+}
 .homegrid-header + .s2-homegrid-header {
   text-align: right !important;
 }
