@@ -1,6 +1,6 @@
 @font-face { font-family: 'NanumSquareRound'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff'); font-weight: normal; font-style: normal; }
 .slider .indicators .indicator-item.active {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .s1-cap {
@@ -29,7 +29,59 @@
   cursor: pointer;
   height: 11px;
   width: 11px;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(0, 0, 0, 0.2);
   transition: background-color .3s;
   border-radius: 50%;
+}
+
+.link_banner_btn {
+  margin-top: 6.9rem;
+  margin-right: 1rem;
+  font-weight: 500;
+  background-color: rgb(211, 193, 223);
+  border-radius: 3px;
+  color: black;
+  /* color: white; */
+  /* text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9); */
+}
+
+.link_banner_btn_box > button:hover {
+  background-color: rgb(129, 100, 115);
+  color: white;;
+}
+
+.home_survey_btn_box {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 0 5rem 0;
+}
+
+.home_survey_sc {
+  color: gray;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.home_survey_btn {
+  border-radius: 30px;
+  background-color: rgb(134, 115, 115);
+}
+
+.home_survey_btn:hover {
+  background-color: rgb(206, 178, 178);
+}
+
+.home_survey_btn:focus {
+  background-color: rgb(170, 142, 142);
+}
+
+@media (max-width: 530px) {
+  .home_survey_btn_box {
+    flex-direction: column;
+    text-align: center;
+  }
+  .home_survey_sc {
+    margin-top: 3rem;
+  }
 }
