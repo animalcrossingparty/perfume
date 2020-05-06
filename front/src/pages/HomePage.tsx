@@ -2,7 +2,7 @@ import React from "react";
 import { Header, Slider, FooterContent } from "../components";
 import {RandomPick} from '../containers/RandomPick'
 import "../css/HomePage.css";
-import { Footer, Icon, Row, Col } from "react-materialize";
+import { Footer, Icon, Row, Col, Button } from "react-materialize";
 import a from "assets/images/homegrid/a.jpg";
 import b from "assets/images/homegrid/b.png";
 import c from "assets/images/homegrid/c.png";
@@ -13,6 +13,22 @@ function HomePage() {
     <div>
       <Header />
       <Slider />
+
+      {/* survey btn */}
+      <div className="home_survey_btn_box">
+        <div className="home_survey">
+          <div className="home_survey_sc">
+          * 향수를 사용해본적이 없다면</div>
+          <Button className="home_survey_btn">로르 리시 챗봇 보러가기</Button>
+        </div>
+
+        <div className="home_survey">
+          <div className="home_survey_sc">
+          * 사용하는 / 사용했던 향수가 있다면</div>
+          <Button className="home_survey_btn">내가 쓴 향수 고르고 추천받기 </Button>
+        </div>
+      </div>
+
       <h4 className="thin center">BELOVED ITEMS TODAY</h4>
       <RandomPick />
       <h4 className="thin center">BELOVED BRANDS TODAY</h4>
