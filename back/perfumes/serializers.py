@@ -56,6 +56,8 @@ class PerfumeSerializers(serializers.ModelSerializer):
     price = serializers.SerializerMethodField(read_only=True)
     thumbnail = serializers.SerializerMethodField(read_only=True)
     categories = CategorySerializers(many=True)
+    similar = serializers.SerializerMethodField()
+    recommended = serializers.SerializerMethodField()
 
     class Meta:
         model = Perfume
@@ -85,6 +87,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
         if instance.similar:
             return instance.similar
         sim_p = Perfume.objects.exclude(similar='')[instance.id % 2694]
+        # Perfume.objects.exclude(similar='')
         # try:
         #     sim_p = sim_p.filter(categories__in=instance.categories.all())
         # finally:
