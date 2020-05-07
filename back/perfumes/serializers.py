@@ -80,8 +80,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
     def get_thumbnail(self, instance):
         return f'http://i02b208.p.ssafy.io:8000/staticfiles/images/{instance.pk}.jpg'
 
-<<<<<<< HEAD
-=======
+
 
     def get_similar(self, instance):
         if instance.similar:
@@ -102,7 +101,6 @@ class PerfumeSerializers(serializers.ModelSerializer):
         # finally:
         #     rec_p = rec_p[0]
         return rec_p.recommended
->>>>>>> a7dbbfa60bd5b027d358359dfd77fba954e3baaa
 
 class PerfumeSurveySerializers(serializers.ModelSerializer):
     top_notes = NoteSerializers(read_only=True, many=True)
