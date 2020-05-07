@@ -26,7 +26,7 @@ return (
     <div className="home_survey">
       <div className="home_survey_sc">
         * 사용하는 / 사용했던 향수가 있다면</div>
-      <Button className="home_survey_btn">내가 쓴 향수 고르고 추천받기 </Button>
+      <Button className="home_survey_btn2">내가 쓴 향수 고르고 추천받기 </Button>
     </div>
   </div>
 

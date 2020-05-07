@@ -271,7 +271,8 @@
 
 .header-right-text {
   /* text-align: end; */
-  text-align: start;
+  /* text-align: start; */
+  margin-left: 3rem;
 }
 .header-x-short-text {
   width: 45%;
@@ -295,6 +296,11 @@
   }
   .header-center {
     justify-content: center;
+  }
+  .header-right-text {
+    /* text-align: end; */
+    /* text-align: start; */
+    margin-left: 0;
   }
 }
 
