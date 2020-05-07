@@ -1,10 +1,13 @@
+from time import time
 from rest_framework import serializers
 from .models import *
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
 from perfumes.utils.exchange_rate import korean_won
 
-rate = korean_won()
+EXCHANGE_RATE = 0; EXCHANGE_RATE_EXP = 0
+print(f'환율 가져오기 전. 환율: {EXCHANGE_RATE}, 만료시간: {EXCHANGE_RATE_EXP}, 현재: {time()}')
+
 
 class NoteSerializers(serializers.ModelSerializer):
     class Meta:
@@ -72,8 +75,14 @@ class PerfumeSerializers(serializers.ModelSerializer):
         return result
 
     def get_price(self, instance):
+        global EXCHANGE_RATE, EXCHANGE_RATE_EXP
+        now = time()
+        if EXCHANGE_RATE_EXP < now:
+            EXCHANGE_RATE = korean_won()
+            EXCHANGE_RATE_EXP = now + 24 * 3600
+            print(f'환율 가져온 후. 환율: {EXCHANGE_RATE}, 만료시간: {EXCHANGE_RATE_EXP}, 현재: {now}')
         try:
-            return instance.price * rate
+            return instance.price * EXCHANGE_RATE
         except:
             return 0
 
@@ -86,7 +95,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
             return instance.similar
         sim_p = Perfume.objects.exclude(similar='')
         if instance.categories.exists():
-            sim_p = sim_p.filter(categories__in=instance.categories.all())[:12]\
+            sim_p = sim_p.filter(categories__in=instance.categories.all())[:10]\
                 .values_list('id', flat=True)
             return str(list(sim_p))
         return sim_p[instance.id % 2694].similar
@@ -97,7 +106,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
             return instance.recommended
         rec_p = Perfume.objects.exclude(recommended='')
         if instance.categories.exists():
-            rec_p = rec_p.filter(categories__in=instance.categories.all())[:12]\
+            rec_p = rec_p.filter(categories__in=instance.categories.all())[:10]\
                 .values_list('id', flat=True)
             return str(list(rec_p))
         return rec_p[instance.id % 2550].recommended
@@ -166,7 +175,7 @@ class PerfumeDetailSerializers(PerfumeSerializers):
         if not recommended:
             recommended = Perfume.objects.exclude(recommended='')
             if instance.categories.exists():
-                recom_p = recommended.filter(categories__in=instance.categories.all())[:12]
+                recom_p = recommended.filter(categories__in=instance.categories.all())[:10]
                 return PerfumeBriefSerializers(recom_p, many=True).data
             else:
                 recommended = recommended[instance.id % 2550].recommended
@@ -179,7 +188,7 @@ class PerfumeDetailSerializers(PerfumeSerializers):
         if not similar:
             similar = Perfume.objects.exclude(similar='')
             if instance.categories.exists():
-                sim_p = similar.filter(categories__in=instance.categories.all())[:12]
+                sim_p = similar.filter(categories__in=instance.categories.all())[:10]
                 return PerfumeBriefSerializers(sim_p, many=True).data
             else:
                 similar = similar[instance.id % 2694].similar
