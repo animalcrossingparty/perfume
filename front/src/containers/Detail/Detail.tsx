@@ -263,19 +263,17 @@ class Detail extends Component<DetailProps> {
                 {detail.name}과 비슷한 향수들
               </h6>
               <section className="similar-container">
-                {detail.similar && detail.similar.length > 3 ? (
+                {detail.similar && detail.similar.length > 0 ? (
                   detail.similar
-                    .substr(1, detail.similar.length - 2)
-                    .split(", ")
                     .map((sim, rank) => (
                       <Link
-                        to={{ pathname: `/detail/${sim}` }}
+                        to={{ pathname: `/detail/${sim.id}` }}
                         className="each-similar"
-                        key={sim + "th"}
+                        key={sim.id + "th"}
                         style={{
-                          backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim}.jpg)`,
+                          backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim.id}.jpg)`,
                         }}
-                      ></Link>
+                      >{sim.name}</Link>
                     ))
                 ) : (
                   <div>비슷한 향수 데이터가 없습니다.</div>
@@ -289,19 +287,17 @@ class Detail extends Component<DetailProps> {
           {detail.name}을 좋아하는 유저가 선택한 향수들
         </h5>
         <section className="similar-container">
-          {detail.recommended && detail.recommended.length > 3 ? (
+          {detail.recommended && detail.recommended.length > 0 ? (
             detail.recommended
-              .substr(1, detail.recommended.length - 2)
-              .split(", ")
               .map((sim, rank) => (
                 <Link
-                  to={{ pathname: `/detail/${sim}` }}
+                  to={{ pathname: `/detail/${sim.id}` }}
                   className="each-similar"
-                  key={sim + "th"}
+                  key={sim.id + "th"}
                   style={{
-                    backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim}.jpg)`,
+                    backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim.id}.jpg)`,
                   }}
-                ></Link>
+                >{sim.name}</Link>
               ))
           ) : (
             <div>추천 향수 데이터가 없습니다.</div>

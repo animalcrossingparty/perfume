@@ -4,10 +4,8 @@ import {RandomPick} from '../containers/RandomPick'
 import "../css/HomePage.css";
 import { Footer, Icon, Row, Col, Button } from "react-materialize";
 import a from "assets/images/homegrid/a.png";
-import b from "assets/images/homegrid/b.png";
 import c from "assets/images/homegrid/c.png";
 import d from "assets/images/homegrid/d.png";
-import e from "assets/images/homegrid/e.webp";
 import { faGithub, faInstagram, faGitlab, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
