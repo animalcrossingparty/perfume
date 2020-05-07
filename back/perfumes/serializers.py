@@ -80,27 +80,29 @@ class PerfumeSerializers(serializers.ModelSerializer):
         except:
             return 0
 
+
     def get_thumbnail(self, instance):
         return f'http://i02b208.p.ssafy.io:8000/staticfiles/images/{instance.pk}.jpg'
+
 
     def get_similar(self, instance):
         if instance.similar:
             return instance.similar
-        sim_p = Perfume.objects.exclude(similar='')
-        try:
-            sim_p = sim_p.filter(categories__in=instance.categories.all())
-        finally:
-            sim_p = sim_p[instance.id % 10]
+        sim_p = Perfume.objects.exclude(similar='')[instance.id % 2694]
+        # try:
+        #     sim_p = sim_p.filter(categories__in=instance.categories.all())
+        # finally:
+        #     sim_p = sim_p[0]
         return sim_p.similar
 
     def get_recommended(self, instance):
         if instance.recommended:
             return instance.recommended
-        rec_p = Perfume.objects.exclude(recommended='')
-        try:
-            rec_p = rec_p.filter(categories__in=instance.categories.all())
-        finally:
-            rec_p = rec_p[instance.id % 10]
+        rec_p = Perfume.objects.exclude(recommended='')[instance.id % 2694]
+        # try:
+        #     rec_p = rec_p.filter(categories__in=instance.categories.all())
+        # finally:
+        #     rec_p = rec_p[0]
         return rec_p.recommended
 
 class PerfumeSurveySerializers(serializers.ModelSerializer):
