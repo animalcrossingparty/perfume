@@ -34,3 +34,49 @@
 .carousel {
   height: 550px !important;
 }
+
+.exp-survey-result {
+  display:grid;
+  width: 100vw;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 100vh;
+  align-items: center;
+  padding: 40px;
+}
+.exp-survey-result > a > div {
+  display: block;
+  border-radius: 10px;
+  background-size: cover;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #e0e0e0;
+  padding: 15px;
+  cursor: pointer;
+  user-select: none;
+  width: 250px;
+  height: 250px !important;
+}
+
+.exp-survey-result > a > div:hover {
+  border: 2px solid #e0e0e0
+}
+
+.header-quotes {
+  margin-top: 120px;
+  text-align: center;
+  font-family: 'Cafe24Oneprettynight';
+  font-size: 32px;
+}
+
+.submit-exp-survey {
+  background-color: #CEB2B2 !important;
+  color: #4f4f4f;
+  width: 130px;
+  text-align: center;
+  font-family: 'Cafe24Oneprettynight';
+  height: 65px;
+  border-radius: 20px;
+  font-size: 27px;
+  display: block;
+  margin-left: auto;
+}
