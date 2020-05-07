@@ -61,7 +61,6 @@ class PerfumeSerializers(serializers.ModelSerializer):
         model = Perfume
         fields = '__all__'
         include = ['avg_rate', 'total_review']
-        exclude = ['recommended']
 
     def get_avg_rate(self, instance):
         try:
@@ -123,7 +122,6 @@ class SurveySerializers(serializers.ModelSerializer):
         model = Survey
         fields = '__all__'
         include = ['age', 'gender']
-        exclude = ['user']
 
 class ReviewSerializers(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
