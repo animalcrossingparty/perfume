@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as perfumeActions from "redux/modules/perfume";
 import { Cards } from "components/";
-import icon_l from 'assets/images/icon.png'
+import icon_l from "assets/images/icon.png";
 // import ban from 'assets/ban.webp'
 import { NavLink } from "react-router-dom";
 import {
@@ -133,13 +133,15 @@ class Perfumes extends Component<PerfumeProps> {
       sort,
       brand,
       category,
-      exclude,
       include,
       gender,
       page,
+      exclude
     } = queryString.parse(window.location.search);
     return (
-      <section style={{ backgroundColor: "#fff", fontFamily: 'S-CoreDream-3Light' }}>
+      <section
+        style={{ backgroundColor: "#fff", fontFamily: "S-CoreDream-3Light" }}
+      >
         <section
           className="perfume-list-container"
           style={{ height: window.innerHeight }}
@@ -236,7 +238,7 @@ class Perfumes extends Component<PerfumeProps> {
                 icon={null}
                 node="div"
               >
-                <div style={{padding: '12px 30px', textAlign:'center'}}>
+                <div style={{ padding: "12px 30px", textAlign: "center" }}>
                   <Select
                     multiple={false}
                     onChange={this.handleBrand}
@@ -266,105 +268,123 @@ class Perfumes extends Component<PerfumeProps> {
                       </option>
                     ))}
                   </Select>
-                    <a className="bmc-button center" target="_blank" rel="noopener noreferrer" href="https://www.buymeacoffee.com/wHexPZL">
-                      <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee" />
-                    <span style={{marginLeft:15, fontSize:28}}>Buy us a coffee</span></a>
+                  <a
+                    className="bmc-button center"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.buymeacoffee.com/wHexPZL"
+                  >
+                    <img
+                      src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    />
+                    <span style={{ marginLeft: 15, fontSize: 28 }}>
+                      Buy us a coffee
+                    </span>
+                  </a>
                 </div>
-                <p style={{color: '#6f6f6f'}}>Laure Richis, 2020</p>
+                <p style={{ color: "#6f6f6f" }}>Laure Richis, 2020</p>
               </CollapsibleItem>
             </Collapsible>
           </aside>
           <div>
-          {/* <img src={ban} alt="" style={{ width: '100%', marginTop: '1.5rem'}} /> */}
+            {/* <img src={ban} alt="" style={{ width: '100%', marginTop: '1.5rem'}} /> */}
             <section className="perfume-list-container-header-wrapper">
-            <div className="survey_chatbot_title" style={{width: '100%', margin:'0', boxShadow:'none', backgroundColor: '#4f4f4f'}}>
-            <div className="chatbot_start">
-              <img src={icon_l} alt="" style={{ width: '30px' }} />
-              {this.props.num_pages} 페이지 중 {page} 페이지 | ITEM:{this.props.num_pages * 12}개
-            </div>
-            <div className="chatbot_end">
-            </div>
-          </div>
+              <div
+                className="survey_chatbot_title"
+                style={{
+                  width: "100%",
+                  margin: "0",
+                  boxShadow: "none",
+                  backgroundColor: "#4f4f4f",
+                }}
+              >
+                <div className="chatbot_start">
+                  <img src={icon_l} alt="" style={{ width: "30px" }} />
+                  {this.props.num_pages} 페이지 중 {page} 페이지 | ITEM:
+                  {this.props.num_pages * 12}개
+                </div>
+                <div className="chatbot_end"></div>
+              </div>
 
+              <section className="perfume-sub-nav">
+                {sort !== "alpha" ? (
+                  <NavLink
+                    to={`/perfume?page=1&sort=alpha&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                  >
+                    <Icon tiny>sort_by_alpha</Icon>
+                    <span>사전순</span>
+                  </NavLink>
+                ) : (
+                  <NavLink to="#" className="disabled-link">
+                    <Icon tiny>sort_by_alpha</Icon>
+                    <span>사전순</span>
+                  </NavLink>
+                )}
+                {sort !== "rate" ? (
+                  <NavLink
+                    to={`/perfume?page=1&sort=rate&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                  >
+                    <Icon tiny>thumbs_up_down</Icon>
+                    <span>평점순</span>
+                  </NavLink>
+                ) : (
+                  <NavLink to="#" className="disabled-link">
+                    <Icon tiny>thumbs_up_down</Icon>
+                    <span>평점순</span>
+                  </NavLink>
+                )}
+                {sort !== "reviewcnt" ? (
+                  <NavLink
+                    to={`/perfume?page=1&sort=reviewcnt&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                  >
+                    <Icon tiny>rate_review</Icon>
+                    <span>리뷰순</span>
+                  </NavLink>
+                ) : (
+                  <NavLink to="#" className="disabled-link">
+                    <Icon tiny>rate_review</Icon>
+                    <span>리뷰순</span>
+                  </NavLink>
+                )}
+                {sort !== "expensive" ? (
+                  <NavLink
+                    to={`/perfume?page=1&sort=expensive&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                  >
+                    <Icon tiny>monetization_on</Icon>
+                    <span>높은 가격 순</span>
+                  </NavLink>
+                ) : (
+                  <NavLink to="#" className="disabled-link">
+                    <Icon tiny>monetization_on</Icon>
+                    <span>높은 가격 순</span>
+                  </NavLink>
+                )}
+                {sort !== "cheap" ? (
+                  <NavLink
+                    to={`/perfume?page=1&sort=cheap&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                  >
+                    <Icon tiny>money</Icon>
+                    <span>낮은 가격 순</span>
+                  </NavLink>
+                ) : (
+                  <NavLink to="#" className="disabled-link">
+                    <Icon tiny>money</Icon>
+                    <span>낮은 가격 순</span>
+                  </NavLink>
+                )}
+              </section>
 
-            <section className="perfume-sub-nav">
-              {sort !== "alpha" ? (
-                <NavLink
-                  to={`/perfume?page=1&sort=alpha&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-                >
-                  <Icon tiny>sort_by_alpha</Icon>
-                  <span>사전순</span>
-                </NavLink>
-              ) : (
-                <NavLink to="#" className="disabled-link">
-                  <Icon tiny>sort_by_alpha</Icon>
-                  <span>사전순</span>
-                </NavLink>
-              )}
-              {sort !== "rate" ? (
-                <NavLink
-                  to={`/perfume?page=1&sort=rate&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-                >
-                  <Icon tiny>thumbs_up_down</Icon>
-                  <span>평점순</span>
-                </NavLink>
-              ) : (
-                <NavLink to="#" className="disabled-link">
-                  <Icon tiny>thumbs_up_down</Icon>
-                  <span>평점순</span>
-                </NavLink>
-              )}
-              {sort !== "reviewcnt" ? (
-                <NavLink
-                  to={`/perfume?page=1&sort=reviewcnt&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-                >
-                  <Icon tiny>rate_review</Icon>
-                  <span>리뷰순</span>
-                </NavLink>
-              ) : (
-                <NavLink to="#" className="disabled-link">
-                  <Icon tiny>rate_review</Icon>
-                  <span>리뷰순</span>
-                </NavLink>
-              )}
-              {sort !== "expensive" ? (
-                <NavLink
-                  to={`/perfume?page=1&sort=expensive&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-                >
-                  <Icon tiny>monetization_on</Icon>
-                  <span>높은 가격 순</span>
-                </NavLink>
-              ) : (
-                <NavLink to="#" className="disabled-link">
-                  <Icon tiny>monetization_on</Icon>
-                  <span>높은 가격 순</span>
-                </NavLink>
-              )}
-              {sort !== "cheap" ? (
-                <NavLink
-                  to={`/perfume?page=1&sort=cheap&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-                >
-                  <Icon tiny>money</Icon>
-                  <span>낮은 가격 순</span>
-                </NavLink>
-              ) : (
-                <NavLink to="#" className="disabled-link">
-                  <Icon tiny>money</Icon>
-                  <span>낮은 가격 순</span>
-                </NavLink>
-              )}
-            </section>
-            
-            <div className="pagenation-container">
-              <Pagination
-                activePage={Number(page)}
-                activeClass="active-page-now"
-                itemsCountPerPage={12}
-                totalItemsCount={12 * this.props.num_pages}
-                pageRangeDisplayed={15}
-                onChange={this.handlePage}
-              />
-            </div>
+              <div className="pagenation-container">
+                <Pagination
+                  activePage={Number(page)}
+                  activeClass="active-page-now"
+                  itemsCountPerPage={12}
+                  totalItemsCount={12 * this.props.num_pages}
+                  pageRangeDisplayed={15}
+                  onChange={this.handlePage}
+                />
+              </div>
             </section>
             <Row style={{ backgroundColor: "#fafafa" }}>
               {perfumeLoading === true

@@ -89,152 +89,17 @@ class Detail extends Component<DetailProps> {
         <section className="tricol">
           <aside className="leftcol">
             <div>
-              <div className="each-col-header" />
               <h5 className="sub-title-col">카테고리</h5>
               <div className="categories-row">
-              {detail.categories.map((cat) => (
-                <span key={"d-category-" + cat.id}>{cat.name}</span>
-              ))}
+                {detail.categories.map((cat) => (
+                  <span key={"d-category-" + cat.id}>{cat.name}</span>
+                ))}
               </div>
-
             </div>
-            <div></div>
-          </aside>
-          <aside className="red centercol"></aside>
-          <aside className="blue rightcol"></aside>
-        </section>
-        <section className="wc-row black">
-          <div className="wc-row-wrap"></div>
-          <div className="wc-row-recc"></div>
-        </section>
-        <section className="perfume-info-section">
-          <section className="detail-top-divide">
-            <div className="perfume-info-image center">
-              <Row>
-                <img src={detail.thumbnail} alt="" />
-              </Row>
-              <Row className="season-row">
-                <Col
-                  s={3}
-                  style={{ backgroundImage: `url(${springPIC})` }}
-                  className={
-                    detail.seasons.some((elem) => elem === 1)
-                      ? ""
-                      : "disabled-season"
-                  }
-                ></Col>
-                <Col
-                  s={3}
-                  style={{ backgroundImage: `url(${summerPIC})` }}
-                  className={
-                    detail.seasons.some((elem) => elem === 2)
-                      ? ""
-                      : "disabled-season"
-                  }
-                ></Col>
-                <Col
-                  s={3}
-                  style={{ backgroundImage: `url(${autumnPIC})` }}
-                  className={
-                    detail.seasons.some((elem) => elem === 3)
-                      ? ""
-                      : "disabled-season"
-                  }
-                ></Col>
-                <Col
-                  s={3}
-                  style={{ backgroundImage: `url(${winterPIC})` }}
-                  className={
-                    detail.seasons.some((elem) => elem === 4)
-                      ? ""
-                      : "disabled-season"
-                  }
-                ></Col>
-              </Row>
-            </div>
-            <section className="perfume-info-text">
-              <div className="detail-info-text-header">
-                <div className="detail-info-header-text">
-                  <p className="ml-3 right" style={{ color: "#f3f3f3" }}>
-                    {detail.id}
-                  </p>
-                  <p
-                    style={{
-                      color: "#c3c3c3",
-                      fontSize: "1.56vw",
-                      fontWeight: 400,
-                      letterSpacing: "0.1vw",
-                    }}
-                  >
-                    {detail.brand.name}
-                  </p>
-                  <h4
-                    style={{
-                      lineHeight: "1.8vw",
-                      fontSize: "1.8vw",
-                      height: "3vw",
-                      overflowY: "hidden",
-                      marginBottom: 0,
-                    }}
-                    className="mt-1"
-                  >
-                    {detail.name}
-                    <span
-                      style={{
-                        background: "#e0e0e0",
-                        borderRadius: "15px",
-                        fontSize: "1vw",
-                        padding: "2px",
-                      }}
-                    >
-                      {detail.launch_date
-                        ? detail.launch_date.substr(0, 4)
-                        : `(정보없음)`}
-                    </span>
-                  </h4>
-                  <h5 className="perfume_brand">
-                    <small className="detail_price">
-                      {detail.price
-                        ? "₩ " + this.makeComma(detail.price.toFixed(0))
-                        : "가격 정보가 없습니다"}
-                    </small>
-                  </h5>
-                </div>
-
-                <div className="rate-wrapper">
-                  <div className="rate-inside-circle">
-                    <h5>
-                      <Icon>grade</Icon>
-                      {detail.avg_rate.toFixed(2)}
-                    </h5>
-                  </div>
-                  <Circle
-                    className="rate-circle"
-                    percent={this.state.progress}
-                    strokeWidth={4}
-                    strokeColor={"lightpink"}
-                    trailColor={"lightgray"}
-                  />
-                </div>
-              </div>
-
-              <section className="note-and-rate-row center">
-                <section className="categories-row m-0 center">
-                  <span
-                    style={{
-                      color: "#4f4f4f",
-                      background: "none",
-                      borderRight: "1px solid #e0e0e0",
-                    }}
-                  >
-                    CATEGORY
-                  </span>
-                  {detail.categories.map((cat) => (
-                    <span key={"d-category-" + cat.id}>{cat.name}</span>
-                  ))}
-                </section>
-
-                <span>TOP NOTES</span>
+            <div>
+              <h5 className="sub-title-col">노트</h5>
+              <div style={{ textAlign: "right" }}>
+                <span className="pr-2">TOP NOTES</span>
                 <div className="note-tags">
                   {detail.top_notes.length > 0 ? (
                     detail.top_notes.slice(0, 3).map((note, note_id) => (
@@ -251,7 +116,7 @@ class Detail extends Component<DetailProps> {
                     <Chip close={false}>노트정보없음</Chip>
                   )}
                 </div>
-                <span>HEART NOTES</span>
+                <span className="pr-2">HEART NOTES</span>
                 <div className="note-tags">
                   {detail.heart_notes.length > 0 ? (
                     detail.heart_notes.slice(0, 3).map((note, note_id) => (
@@ -268,7 +133,7 @@ class Detail extends Component<DetailProps> {
                     <Chip close={false}>노트정보없음</Chip>
                   )}
                 </div>
-                <span>BASE NOTES</span>
+                <span className="pr-2">BASE NOTES</span>
                 <div className="note-tags">
                   {detail.base_notes.length > 0 ? (
                     detail.base_notes.slice(0, 3).map((note, note_id) => (
@@ -285,17 +150,121 @@ class Detail extends Component<DetailProps> {
                     <Chip close={false}>노트정보없음</Chip>
                   )}
                 </div>
-              </section>
-              <h6
-                className="thin center "
-                style={{
-                  backgroundColor: "#fff",
-                  color: "#4f4f4f",
-                  padding: "10px 0",
-                }}
-              >
-                {detail.name}과 비슷한 향수들
-              </h6>
+              </div>
+            </div>
+          </aside>
+          <aside className="centercol">
+            <div
+              className="detail-thumbnail"
+              style={{ backgroundImage: `url(${detail.thumbnail})` }}
+            />
+            <Row className="season-row">
+              <Col
+                s={3}
+                style={{ backgroundImage: `url(${springPIC})` }}
+                className={
+                  detail.seasons.some((elem) => elem === 1)
+                    ? ""
+                    : "disabled-season"
+                }
+              ></Col>
+              <Col
+                s={3}
+                style={{ backgroundImage: `url(${summerPIC})` }}
+                className={
+                  detail.seasons.some((elem) => elem === 2)
+                    ? ""
+                    : "disabled-season"
+                }
+              ></Col>
+              <Col
+                s={3}
+                style={{ backgroundImage: `url(${autumnPIC})` }}
+                className={
+                  detail.seasons.some((elem) => elem === 3)
+                    ? ""
+                    : "disabled-season"
+                }
+              ></Col>
+              <Col
+                s={3}
+                style={{ backgroundImage: `url(${winterPIC})` }}
+                className={
+                  detail.seasons.some((elem) => elem === 4)
+                    ? ""
+                    : "disabled-season"
+                }
+              ></Col>
+            </Row>
+          </aside>
+          <aside className="rightcol">
+            <div>
+              <div className="detail-info-text-header">
+                <div className="detail-info-header-text">
+                  <p
+                    style={{
+                      color: "#4f4f4f",
+                      fontSize: "1.4vw",
+                      letterSpacing: "0.2vw",
+                      margin: 0,
+                    }}
+                  >
+                    {detail.brand.name}
+                    <span
+                      style={{
+                        background: "#4f4f4f",
+                        color: "#fff",
+                        borderRadius: "4px",
+                        textAlign: "center",
+                        fontSize: "0.8vw",
+                        padding: "4px 2px",
+                        marginLeft: 12,
+                      }}
+                    >
+                      {detail.launch_date
+                        ? detail.launch_date.substr(0, 4)
+                        : `(정보없음)`}
+                    </span>
+                  </p>
+                  <h4
+                    style={{
+                      lineHeight: "2.2vw",
+                      fontSize: "2.2vw",
+                      height: "3vw",
+                      overflowY: "hidden",
+                    }}
+                    className="my-1"
+                  >
+                    {detail.name}
+                  </h4>
+                  <h5 className="perfume_brand">
+                    <small className="detail_price">
+                      {detail.price
+                        ? "₩ " + this.makeComma(detail.price.toFixed(0))
+                        : "가격 정보가 없습니다"}
+                    </small>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h5 className="sub-title-col">평점</h5>
+              <div className="rate-wrapper">
+                <div className="rate-inside-circle">
+                  <Icon className="mt-2">grade</Icon>
+                  <span>{detail.avg_rate.toFixed(2)}</span>
+                </div>
+                <Circle
+                  className="rate-circle"
+                  percent={this.state.progress}
+                  strokeWidth={8}
+                  strokeColor={"#4f4f4f"}
+                  trailColor={"lightgray"}
+                />
+              </div>
+            </div>
+            <div>
+              <h5 className="sub-title-col">유사 향수 목록</h5>
               <section className="similar-container">
                 {detail.similar && detail.similar.length > 0 ? (
                   detail.similar.map((sim, rank) => (
@@ -321,60 +290,68 @@ class Detail extends Component<DetailProps> {
                   <div>비슷한 향수 데이터가 없습니다.</div>
                 )}
               </section>
-            </section>
-          </section>
+            </div>
+          </aside>
+        </section>
+        <section className="wc-row">
+          <div className="wc-row-wrap">
+            <MediaBox
+              id="MediaBox_7"
+              className='wc-box'
+              options={{
+                inDuration: 275,
+                onCloseEnd: null,
+                onCloseStart: null,
+                onOpenEnd: null,
+                onOpenStart: null,
+                outDuration: 200,
+              }}
+            >
+              <img
+                src={`http://i02b208.p.ssafy.io:8000/staticfiles/wordcloud/${detail.id}-wc.webp`}
+                width="400px"
+                height="200px"
+                alt=""
+              />
+            </MediaBox>
+          </div>
+          <div className="wc-row-recc">
+            <h5 className="sub-title-col">평점 기반 추천 향수</h5>
+            <section className="recom-container">
+                {detail.recommended && detail.recommended.length > 0 ? (
+                  detail.recommended.map((sim, rank) => (
+                    <Link
+                      to={{ pathname: `/detail/${sim.id}` }}
+                      className="each-similar"
+                      key={sim.id + "th"}
+                      style={{
+                        backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim.id}.jpg)`,
+                      }}
+                    >
+                      <Button
+                        node="div"
+                        className="d-none"
+                        tooltip={sim.name}
+                        tooltipOptions={{
+                          position: "bottom",
+                        }}
+                      ></Button>
+                    </Link>
+                  ))
+                ) : (
+                  <div>추천 향수 데이터가 없습니다.</div>
+                )}
+              </section>
+
+          </div>
         </section>
 
-        <h5
-          className="thin center py-2"
-          style={{ backgroundColor: "#4f4f4f", color: "#fff" }}
-        >
-          {detail.name}을 좋아하는 유저가 선택한 향수들
-        </h5>
-        <section className="similar-container">
-          {detail.recommended && detail.recommended.length > 0 ? (
-            detail.recommended.map((sim, rank) => (
-              <Link
-                to={{ pathname: `/detail/${sim.id}` }}
-                className="each-similar"
-                key={sim.id + "th"}
-                style={{
-                  backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim.id}.jpg)`,
-                }}
-              >
-                <Button
-                  node="div"
-                  className="d-none"
-                  tooltip={sim.name}
-                  tooltipOptions={{
-                    position: "bottom",
-                  }}
-                ></Button>
-              </Link>
-            ))
-          ) : (
-            <div>추천 향수 데이터가 없습니다.</div>
-          )}
-        </section>
-        <div className="review-list-header">
+        <div className="review-list-header pt-5">
           {detail.reviews
             ? `(${detail.reviews.length})`
             : "여러분의 소중한 리뷰를 남겨주세요"}
         </div>
-        <h5
-          className="thin center py-2"
-          style={{ background: "#4f4f4f", color: "white" }}
-        >
-          {detail.name} - 리뷰 키워드 WORD CLOUD
-        </h5>
-        <section style={{ padding: "5%" }}>
-          <img
-            src={`http://i02b208.p.ssafy.io:8000/staticfiles/wordcloud/${detail.id}-wc.webp`}
-            width="100%"
-            height="700px"
-            alt=""
-          />
-        </section>
+
         <section className="review-write-box">
           {this.props.user.get("logged") ? (
             <ReviewTextBox id={detail.id} />

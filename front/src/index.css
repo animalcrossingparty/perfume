@@ -37,7 +37,7 @@ body {
 }
 .d-none {
   width: 0 !important;
-  min-height: 70px;
+  min-height: 30px;
   opacity: 0;
 }
 
