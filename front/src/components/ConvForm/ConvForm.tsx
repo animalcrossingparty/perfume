@@ -70,10 +70,16 @@ class ConvForm extends Component<ConvFormProps> {
     console.log(this.state.prevAnswers)
     const nodeList = e.target.querySelectorAll('input')
     let sn = [] as number[]
+    let checkCnt = 0
     for (let i=0;i < nodeList.length;++i) {
       if (nodeList[i].checked) {
         sn.push(Number(nodeList[i].value))
+        checkCnt++
       }
+    }
+    if (checkCnt < 2) {
+      alert('노트를 두 개 이상 선택해 주세요!')
+      return 
     }
     const notes = sn.join(',')
     const age = Number(this.state.prevAnswers.age)

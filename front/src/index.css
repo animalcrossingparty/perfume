@@ -1,10 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100, 400, 700);
-body,
-table,
-div,
-p {
-  font-family: "Roboto";
-}
+@import url('https://fonts.googleapis.com/css?family=Cookie&display=swap');
+@font-face { font-family: 'MapoFlowerIsland'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff'); font-weight: normal; font-style: normal; }
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&family=Tinos&display=swap');
+/* @font-face { font-family: 'NIXGONM-Vb'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff'); font-weight: normal; font-style: normal; } */
+/* @font-face { font-family: 'MapoPeacefull'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff'); font-weight: normal; font-style: normal; } */
+/* @font-face { font-family: 'HangeulNuri-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/HangeulNuri-Bold.woff') format('woff'); font-weight: normal; font-style: normal; } */
+@font-face { font-family: 'Cafe24Oneprettynight'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'S-CoreDream-3Light'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+
 h1 {
   font-size: 17.2px;
 }
@@ -31,9 +35,17 @@ body {
   flex-wrap: wrap;
   align-items: center;
 }
+.d-none {
+  width: 0 !important;
+  min-height: 70px;
+  opacity: 0;
+}
 
 .align-self-start {
   align-self: flex-start !important;
+}
+.pagenation-container {
+  z-index: 0 !important
 }
 .pagenation-container > ul {
   margin: 2% auto !important;
@@ -270,7 +282,7 @@ input[type="text"]:not(.browser-default) {
   border: none !important;
   vertical-align: middle !important;
 }
-@import url('https://fonts.googleapis.com/css?family=Cookie&display=swap');
+
 .bmc-button {
   padding: 7px 10px 7px 10px !important;
   line-height: 35px !important;

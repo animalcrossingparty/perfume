@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from '../components'
 import {Survey} from '../containers/Survey'
 import icon_l from '../assets/images/icon.png'
-import icon_b from '../assets/fdeer.png'
 import { Link } from 'react-router-dom'
 import CloseIcon from '@material-ui/icons/Close';
 import '../css/SurveyPage.css'

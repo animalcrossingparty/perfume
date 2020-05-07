@@ -493,7 +493,7 @@ cf-list {
 
 .note-select-wrapper {
   width: 75%;
-  height: 350px;
+  height: -webkit-fill-available;
   margin: 0 auto 5rem auto;
   padding: 0 1.5rem;
   position: relative;
@@ -631,34 +631,35 @@ cf-list {
 
 
 .image-link-to-expsurvey {
-  height: 200px;
-  width: 200px;
+  height: 450px;
+  width: 450px;
   background-color: pink;
   text-align: center;
-  line-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 50px;
   background-position: center;
   background-size: cover;
+  box-shadow: 0 0 15px #e0e0e0;
 }
-.image-link-to-expsurvey:hover {
-  height: 225px;
-  width: 225px;
-  color: black;
-  font-size: 200%;
-  text-align: center;
-  /* opacity: 0.3; */
-  border: 1px solid #ccc;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+.ilink-expand {
+  font-size: 45px;
+  background-color: rgba(128, 128, 128, 0.5);
+  width: 100%;
+  color: white;
+  padding: 15px 0;
+  transition: 1s ease;
 }
-.image-link-to-expsurvey > p {
-  color: white !important;
-  /* font-size: 200%; */
-  text-align: center;
+.image-link-to-expsurvey:hover .ilink-expand {
+  padding: 200px 0;
+  background-color: rgba(64, 64, 64, 0.5);
+  text-shadow: 0 0 5px #4f4f4f;
 }
 .imagelink-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 94vh;
+  height: 90vh;
 }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as detailActions from "redux/modules/detail";
-import { Row, Col, Chip, Icon } from "react-materialize";
+import { Row, Col, Chip, Icon, Button } from "react-materialize";
 import { Circle } from "rc-progress";
 import springPIC from "assets/images/spring.jpg";
 import summerPIC from "assets/images/summer.jpg";
@@ -187,7 +187,6 @@ class Detail extends Component<DetailProps> {
                       <Icon>grade</Icon>
                       {detail.avg_rate.toFixed(2)}
                     </h5>
-
                   </div>
                   <Circle
                     className="rate-circle"
@@ -264,17 +263,27 @@ class Detail extends Component<DetailProps> {
               </h6>
               <section className="similar-container">
                 {detail.similar && detail.similar.length > 0 ? (
-                  detail.similar
-                    .map((sim, rank) => (
-                      <Link
-                        to={{ pathname: `/detail/${sim.id}` }}
-                        className="each-similar"
-                        key={sim.id + "th"}
-                        style={{
-                          backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim.id}.jpg)`,
-                        }}
-                      >{sim.name}</Link>
-                    ))
+                  detail.similar.map((sim, rank) => (
+                    <Link
+                    to={{ pathname: `/detail/${sim.id}` }}
+                    className="each-similar"
+                    key={sim.id + "th"}
+                    style={{
+                      backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim.id}.jpg)`,
+                    }}
+                  >
+                    <Button
+                      node="div"
+                      className="d-none"
+                      tooltip={sim.name}
+                      tooltipOptions={{
+                        position: "bottom",
+                      }}
+                    >
+                        </Button>
+                      </Link>
+                    
+                  ))
                 ) : (
                   <div>비슷한 향수 데이터가 없습니다.</div>
                 )}
@@ -288,17 +297,26 @@ class Detail extends Component<DetailProps> {
         </h5>
         <section className="similar-container">
           {detail.recommended && detail.recommended.length > 0 ? (
-            detail.recommended
-              .map((sim, rank) => (
-                <Link
-                  to={{ pathname: `/detail/${sim.id}` }}
-                  className="each-similar"
-                  key={sim.id + "th"}
-                  style={{
-                    backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim.id}.jpg)`,
-                  }}
-                >{sim.name}</Link>
-              ))
+            detail.recommended.map((sim, rank) => (
+              <Link
+              to={{ pathname: `/detail/${sim.id}` }}
+              className="each-similar"
+              key={sim.id + "th"}
+              style={{
+                backgroundImage: `url(http://i02b208.p.ssafy.io:8000/staticfiles/images/${sim.id}.jpg)`,
+              }}
+            >
+              <Button
+                node="div"
+                className="d-none"
+                tooltip={sim.name}
+                tooltipOptions={{
+                  position: "bottom",
+                }}
+              >
+                  </Button>
+                </Link>
+            ))
           ) : (
             <div>추천 향수 데이터가 없습니다.</div>
           )}

@@ -1,0 +1,69 @@
+.article-container {
+  width: 60%;
+  margin: 75px auto;
+  font-family: 'MapoFlowerIsland' !important;
+}
+
+.article-container .collapsible-header:hover {
+  box-shadow: 0 3px 5px #a0a0a0 !important;
+}
+.article-container h1 {
+  font-size: 30px !important
+}
+.article-container h3 {
+  font-size: 24px !important;
+  border-left: 12px solid #e0e0e0;
+  padding-left: 12px;
+}
+.article-container .collapsible-header {
+  background-color: #fff !important;
+  transition: 0.3s ease !important;
+  color: #4f4f4f;
+  box-shadow: 0px 3px 5px #e0e0e0;
+}
+
+.article-container .collapsible-body {
+  background: #fff
+}
+.article-container .collapsible-body {
+  padding: 0 !important
+}
+.article-container li {
+  margin-bottom: 50px;
+}
+
+.info-collap-header {
+  display: grid;
+  margin: auto;
+  width: 100%;
+  grid-template-columns: 1fr 3fr;
+}
+.info-collap-header > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info-collap-header > div >img {
+  width: 50px;
+  height: 50px;
+  margin-right: 25px;
+}
+
+.info-contents {
+  padding: 30px;
+  text-align: left;
+  box-shadow: 0 0 10px #e0e0e0;
+  font-family: 'Cafe24Oneprettynight';
+}
+
+.info-contents > img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  bottom: 0;
+  max-height: 770px;
+}
+
+.info-contents > p {
+  font-size: 18px;
+}
