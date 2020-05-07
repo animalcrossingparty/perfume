@@ -19,7 +19,7 @@ class ConvForm extends Component<ConvFormProps> {
   flowCallback = (dto, success, error) => {
     if (dto.tag.name === "include") {
       if (dto.tag.value.length === 3) {
-        console.log(success());
+        success();
       } else {
         return error();
       }
