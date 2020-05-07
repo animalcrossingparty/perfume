@@ -1,12 +1,19 @@
 import React, { Component, createRef } from "react";
 import { ConversationalForm } from "conversational-form";
 import {Checkbox, Button} from 'react-materialize'
+import CloseIcon from '@material-ui/icons/Close';
 import axios from "axios";
 import queryString from "query-string";
 import user_anon from 'assets/water.png'
 import richis from 'assets/dolfin.png'
+import bee from 'assets/badge/Staff.png'
 interface ConvFormProps {
   formFields: any;
+}
+
+function refreshPush() {
+  window.location.reload();
+  // window.parent.location = window.parent.location.href;
 }
 
 class ConvForm extends Component<ConvFormProps> {
@@ -63,10 +70,16 @@ class ConvForm extends Component<ConvFormProps> {
     console.log(this.state.prevAnswers)
     const nodeList = e.target.querySelectorAll('input')
     let sn = [] as number[]
+    let checkCnt = 0
     for (let i=0;i < nodeList.length;++i) {
       if (nodeList[i].checked) {
         sn.push(Number(nodeList[i].value))
+        checkCnt++
       }
+    }
+    if (checkCnt < 2) {
+      alert('노트를 두 개 이상 선택해 주세요!')
+      return 
     }
     const notes = sn.join(',')
     const age = Number(this.state.prevAnswers.age)
@@ -99,13 +112,30 @@ class ConvForm extends Component<ConvFormProps> {
         {this.state.endconv === false ? (
           <div ref={this.convRef} />
         ) : (
-          <div>
-          <h4 className="select-u-want">아래에서 마음에 드는 노트(향기)를 골라주세요. (두 개 이상)</h4>
-            <form className="note-select-wrapper grid-templ" onSubmit={this.submitSurvey}>
-            {this.state.notes.map((n) => 
-              (n.id === 0 ? null : <section key={n.id + 's-note'}><Checkbox id={n.id.toString()} className="each-note-checkbox" label={n.kor_name} value={n.id.toString()} /></section>)
-            )}
-            <Button className="survey-commit-btn" type="submit" waves="light">향수 추천받기</Button>
+          <div className="the_other_survey">
+              <div className="gray_window_bar">
+                <div className="choose_note_window">
+                  <img src={bee} alt=""/>
+                  Choose Your Note
+                </div>
+                <div className="close_button">
+                <button type="button" onClick={refreshPush} >
+                  <CloseIcon /> 
+                </button>
+                </div>
+              </div>
+            <form className="note-select-wrapper" onSubmit={this.submitSurvey}>
+              <h4 className="select-u-want">📝 아래에서 마음에 드는 향기(note)를 골라주세요. <div className="more_two">(두 개 이상)</div></h4>
+              <div className="btn_survey_">
+              <Button className="survey-commit-btn" type="submit" waves="light">향수 추천받기</Button>
+              </div>
+              <div className="grid_plz_box">
+                <div className="note_select_ grid-templ">
+                {this.state.notes.map((n) => 
+                  (n.id === 0 ? null : <section key={n.id + 's-note'}><Checkbox id={n.id.toString()} className="each-note-checkbox" label={n.kor_name} value={n.id.toString()} /></section>)
+                )}
+                </div>
+              </div>
             </form>
           </div>
         )}

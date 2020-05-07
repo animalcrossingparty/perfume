@@ -66,9 +66,10 @@ return (
         <div className="homegrid-content">
           <div style={{fontWeight: 100, color: 'gray', fontSize: '13px', marginBottom: '1.5rem'}}>은은하면서 신선하고 감미로운 향.</div>
           <div className="home-story-text">
-            부드럽고 감미로운 향을 부여하는 잉글리쉬 페어 앤 프리지아는 가을의 정수라 할 수 있습니다.
-            화이트 프리지아 부케향에 이제 막 익은 배의 신선함을 입히고,
-            호박, 파출리, 우디향으로 은은함을 더했습니다. 
+            부드럽고 감미로운 향을 부여하는 잉글리쉬 페어 앤 프리지아는 <br/>
+            가을의 정수라 할 수 있습니다. <br/>
+            화이트 프리지아 부케향에 이제 막 익은 배의 신선함을 입히고, 
+            호박, 파출리, 우디향으로 은은함을 더했습니다. <br/>
             감미롭고 특별한 향이 느껴집니다.
           </div>
         </div>

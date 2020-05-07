@@ -65,11 +65,11 @@
   margin-top: 120px;
   text-align: center;
   font-family: 'Cafe24Oneprettynight';
-  font-size: 32px;
+  font-size: 32.96px;
 }
 
 .submit-exp-survey {
-  background-color: #CEB2B2 !important;
+  background-color: rgb(228, 173, 174) !important;
   color: #4f4f4f;
   width: 130px;
   text-align: center;
@@ -79,4 +79,5 @@
   font-size: 27px;
   display: block;
   margin-left: auto;
+  box-shadow: 0 0 10px #e0e0e0;
 }

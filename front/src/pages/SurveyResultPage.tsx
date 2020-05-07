@@ -3,6 +3,10 @@ import { Header } from "../components";
 import {Link} from 'react-router-dom'
 import axios from "axios";
 import queryString from "query-string";
+import { faUser } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import CloseIcon from '@material-ui/icons/Close';
+import flo from 'assets/badge/TopUser.png'
 
 interface ResultProps {}
 
@@ -37,10 +41,20 @@ class SurveyResultPage extends Component<ResultProps> {
       <div>
         <Header />
         <div className="result_box">
+          <div className="black_window">
+            <div className="black_window_left">
+            <FontAwesomeIcon className="black_window_emoji" icon={faUser} />
+            result</div>
+            <Link to="/"><CloseIcon /></Link>
+          </div>
+          
           <div className="result-title">
-            Recommended Perfumes by Laure_Richis
+            <div className="img_reco_title">
+              <img src={flo} alt=""/>
+              Recommended Perfumes by Laure_Richis
+            </div>
             <hr/>
-            <small className="right">당신에게 추천하는 향수 15선</small>
+            <small className="reco_for_u right">당신에게 추천하는 향수 15선</small>
           </div>
           <div className="result-grid p-4">
             {this.state.perfumes.length > 1 ? (

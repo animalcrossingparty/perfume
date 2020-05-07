@@ -140,7 +140,7 @@ class ExpSurveyPage extends Component<ExpSurveyPageProps> {
         ) : (
           <section style={{ marginTop: 80 }} >
             <div>
-              <h4>로르리시가 추천하는 당신에게 꼭 맞는 향수입니다.</h4>
+              <h4 className="header-quotes">로르리시가 추천하는 당신에게 꼭 맞는 향수입니다.</h4>
             </div>
             <div className="exp-survey-result">
               {this.state.result.map((r) => (

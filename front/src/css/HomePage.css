@@ -270,7 +270,8 @@
 }
 
 .header-right-text {
-  text-align: end;
+  /* text-align: end; */
+  text-align: start;
 }
 .header-x-short-text {
   width: 45%;
