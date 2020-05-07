@@ -450,12 +450,14 @@ class SingleReview(APIView):
         review = self.get_object(review_pk)
         if user != review.user:
             return Response(status=403)
+        print(request.data['content'])
         serializers = ReviewSerializers(instance=review, data=request.data)
         serializers.is_valid(raise_exception=True)
         review = serializers.save(
             user=user,
             perfume=review.perfume
         )
+        print(review.content)
         for image in review.images.all():
             fp = os.path.join('media', 'review', 'original', f'{image.pk}.webp')
             os.remove(fp)
