@@ -1,11 +1,11 @@
-.bg {
+/* .bg {
   background-image: url("../assets/detail-bg.png");
   height: 100%;
   background-size: cover;
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
-}
+} */
 
 /* .bg_no_scroll {
 
