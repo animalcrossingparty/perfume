@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import * as perfumeActions from "redux/modules/perfume";
 import { Cards } from "components/";
 import icon_l from 'assets/images/icon.png'
+// import ban from 'assets/ban.webp'
 import { NavLink } from "react-router-dom";
 import {
   Row,
@@ -274,6 +275,7 @@ class Perfumes extends Component<PerfumeProps> {
             </Collapsible>
           </aside>
           <div>
+          {/* <img src={ban} alt="" style={{ width: '100%', marginTop: '1.5rem'}} /> */}
             <section className="perfume-list-container-header-wrapper">
             <div className="survey_chatbot_title" style={{width: '100%', margin:'0', boxShadow:'none', backgroundColor: '#4f4f4f'}}>
             <div className="chatbot_start">
@@ -352,6 +354,7 @@ class Perfumes extends Component<PerfumeProps> {
                 </NavLink>
               )}
             </section>
+            
             <div className="pagenation-container">
               <Pagination
                 activePage={Number(page)}
