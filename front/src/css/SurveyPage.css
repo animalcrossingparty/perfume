@@ -595,6 +595,11 @@ cf-list {
   background-color: rgb(255, 199, 125);
 }
 
+.btn_survey_ .btn:focus {
+  background-color: rgb(199, 199, 199);
+  color: rgb(107, 107, 107);
+}
+
 .grid-templ {
   display: grid;
   text-align: left;
