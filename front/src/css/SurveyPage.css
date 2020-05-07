@@ -1,5 +1,3 @@
-@font-face { font-family: 'NIXGONM-Vb'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff'); font-weight: normal; font-style: normal; }
-
 .bg {
   background-image: url("../assets/detail-bg.png");
   height: 100%;
@@ -395,12 +393,21 @@ cf-button {
   grid-template-columns: repeat(4, 1fr);
 }
 
-.male-img {
-  font-family: 'NIXGONM-Vb' !important;
+.image-link-to-expsurvey {
+  height: 200px;
+  width: 200px;
+  background-color: pink;
+  text-align: center;
+  line-height: 200px;
+  margin: 50px;
+  background-position: center;
+  background-size: cover;
 }
-.female-img {
-  font-family: 'NIXGONM-Vb' !important;
-}
-.unisex-img {
-  font-family: 'NIXGONM-Vb' !important;
+
+.imagelink-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 94vh;
 }
