@@ -94,7 +94,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
     def get_recommended(self, instance):
         if instance.recommended:
             return instance.recommended
-        rec_p = Perfume.objects.exclude(recommended='')[instance.id % 2694]
+        rec_p = Perfume.objects.exclude(recommended='')[instance.id % 2550]
         # try:
         #     rec_p = rec_p.filter(categories__in=instance.categories.all())
         # finally:
@@ -159,16 +159,18 @@ class PerfumeDetailSerializers(PerfumeSerializers):
         return ReviewSerializers(ordered, many=True).data
 
     def get_recommended(self, instance):
-        if not instance.recommended:
-            return []
-        recom = map(int, instance.recommended[1:-1].split(', '))
+        recommended = instance.recommended
+        if not recommended:
+            recommended = Perfume.objects.exclude(recommended='')[instance.id % 2550].recommended
+        recom = map(int, recommended[1:-1].split(', '))
         recom_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in recom]
         return PerfumeBriefSerializers(recom_p, many=True).data
 
     def get_similar(self, instance):
-        if not instance.similar:
-            return []
-        sim = map(int, instance.similar[1:-1].split(', '))
+        similar = instance.similar
+        if not similar:
+            similar = Perfume.objects.exclude(similar='')[instance.id % 2694].similar
+        sim = map(int, similar[1:-1].split(', '))
         sim_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in sim]
         return PerfumeBriefSerializers(sim_p, many=True).data
 
