@@ -10,6 +10,7 @@ import dol from "assets/first.png"
 import fin from "assets/find.png"
 import { faGithub, faInstagram, faGitlab, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from "react-router-dom";
 
 function HomePage() {
 return (
@@ -22,14 +23,24 @@ return (
     <div className="home_survey">
       <div className="home_survey_sc">
         * 향수를 사용해본적이 없다면</div>
+        <Link
+            to={{ pathname: "/survey", state: 0 }}
+            style={{ color: "black" }}
+          >
         <img src={dol} alt="" style={{ width: '320px' }} />
+        </Link>
       {/* <Button className="home_survey_btn">로르 리시 챗봇 보러가기</Button> */}
     </div>
 
     <div className="home_survey">
       <div className="home_survey_sc">
         * 사용하는 / 사용했던 향수가 있다면</div>
+        <Link
+            to={{ pathname: "/surveyintro", state: 0 }}
+            style={{ color: "black" }}
+          >
       <img src={fin} alt="" style={{ width: '320px' }} />
+      </Link>
       {/* <Button className="home_survey_btn2">내가 쓴 향수 고르고 추천받기 </Button> */}
     </div>
   </div>
