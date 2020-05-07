@@ -1,3 +1,5 @@
+@font-face { font-family: 'NIXGONM-Vb'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 .bg {
   background-image: url("../assets/detail-bg.png");
   height: 100%;
@@ -282,4 +284,14 @@ cf-button {
   grid-row-gap: 5%;
   grid-column-gap: 5%;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.male-img {
+  font-family: 'NIXGONM-Vb' !important;
+}
+.female-img {
+  font-family: 'NIXGONM-Vb' !important;
+}
+.unisex-img {
+  font-family: 'NIXGONM-Vb' !important;
 }
