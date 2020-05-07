@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as perfumeActions from "redux/modules/perfume";
 import { Cards } from "components/";
+import icon_l from 'assets/images/icon.png'
 import { NavLink } from "react-router-dom";
 import {
   Row,
@@ -137,7 +138,7 @@ class Perfumes extends Component<PerfumeProps> {
       page,
     } = queryString.parse(window.location.search);
     return (
-      <section style={{ backgroundColor: "#fff" }}>
+      <section style={{ backgroundColor: "#fff", fontFamily: 'S-CoreDream-3Light' }}>
         <section
           className="perfume-list-container"
           style={{ height: window.innerHeight }}
@@ -205,9 +206,9 @@ class Perfumes extends Component<PerfumeProps> {
                     label=""
                     name="gender"
                     options={[
-                      { label: "Shared", value: "all" },
-                      { label: "Male", value: "0" },
-                      { label: "Female", value: "1" },
+                      { label: "SHRD", value: "all" },
+                      { label: "MALE", value: "0" },
+                      { label: "FMLE", value: "1" },
                     ]}
                     value={gender}
                     onChange={({ target: { value } }) =>
@@ -274,18 +275,16 @@ class Perfumes extends Component<PerfumeProps> {
           </aside>
           <div>
             <section className="perfume-list-container-header-wrapper">
-            {this.props.num_pages} 페이지 / {page} 페이지 | ITEM:{" "}
-            {this.props.num_pages * 12}개{" "}
-            <div className="pagenation-container">
-              <Pagination
-                activePage={Number(page)}
-                activeClass="active-page-now"
-                itemsCountPerPage={12}
-                totalItemsCount={12 * this.props.num_pages}
-                pageRangeDisplayed={15}
-                onChange={this.handlePage}
-              />
+            <div className="survey_chatbot_title" style={{width: '100%', margin:'0', boxShadow:'none', backgroundColor: '#4f4f4f'}}>
+            <div className="chatbot_start">
+              <img src={icon_l} alt="" style={{ width: '30px' }} />
+              {this.props.num_pages} 페이지 중 {page} 페이지 | ITEM:{this.props.num_pages * 12}개
             </div>
+            <div className="chatbot_end">
+            </div>
+          </div>
+
+
             <section className="perfume-sub-nav">
               {sort !== "alpha" ? (
                 <NavLink
@@ -353,6 +352,16 @@ class Perfumes extends Component<PerfumeProps> {
                 </NavLink>
               )}
             </section>
+            <div className="pagenation-container">
+              <Pagination
+                activePage={Number(page)}
+                activeClass="active-page-now"
+                itemsCountPerPage={12}
+                totalItemsCount={12 * this.props.num_pages}
+                pageRangeDisplayed={15}
+                onChange={this.handlePage}
+              />
+            </div>
             </section>
             <Row style={{ backgroundColor: "#fafafa" }}>
               {perfumeLoading === true
