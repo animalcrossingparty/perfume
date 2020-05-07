@@ -407,7 +407,21 @@ cf-button {
   background-position: center;
   background-size: cover;
 }
-
+.image-link-to-expsurvey:hover {
+  height: 225px;
+  width: 225px;
+  color: black;
+  font-size: 200%;
+  text-align: center;
+  /* opacity: 0.3; */
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.image-link-to-expsurvey > p {
+  color: white !important;
+  /* font-size: 200%; */
+  text-align: center;
+}
 .imagelink-container {
   display: flex;
   flex-direction: row;
