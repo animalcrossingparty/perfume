@@ -1,11 +1,8 @@
-from random import randint
-
 from rest_framework import serializers
-
-from perfumes.utils.exchange_rate import korean_won
 from .models import *
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
+from perfumes.utils.exchange_rate import korean_won
 
 rate = korean_won()
 
@@ -59,13 +56,12 @@ class PerfumeSerializers(serializers.ModelSerializer):
     price = serializers.SerializerMethodField(read_only=True)
     thumbnail = serializers.SerializerMethodField(read_only=True)
     categories = CategorySerializers(many=True)
-    similar = serializers.SerializerMethodField()
-    recommended = serializers.SerializerMethodField()
 
     class Meta:
         model = Perfume
         fields = '__all__'
         include = ['avg_rate', 'total_review']
+        exclude = ['recommended']
 
     def get_avg_rate(self, instance):
         try:
@@ -83,25 +79,6 @@ class PerfumeSerializers(serializers.ModelSerializer):
     def get_thumbnail(self, instance):
         return f'http://i02b208.p.ssafy.io:8000/staticfiles/images/{instance.pk}.jpg'
 
-    def get_similar(self, instance):
-        if instance.similar:
-            return instance.similar
-        sim_p = Perfume.objects.exclude(similar='')
-        try:
-            sim_p = sim_p.filter(categories__in=instance.categories.all())
-        finally:
-            sim_p = sim_p[instance.id % 10]
-        return sim_p.similar
-
-    def get_recommended(self, instance):
-        if instance.recommended:
-            return instance.recommended
-        rec_p = Perfume.objects.exclude(recommended='')
-        try:
-            rec_p = rec_p.filter(categories__in=instance.categories.all())
-        finally:
-            rec_p = rec_p[instance.id % 10]
-        return rec_p.recommended
 
 class PerfumeSurveySerializers(serializers.ModelSerializer):
     top_notes = NoteSerializers(read_only=True, many=True)
@@ -124,7 +101,7 @@ class SurveySerializers(serializers.ModelSerializer):
         model = Survey
         fields = '__all__'
         include = ['age', 'gender']
-
+        exclude = ['user']
 
 class ReviewSerializers(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -151,31 +128,25 @@ class PerfumeDetailSerializers(PerfumeSerializers):
     recommended = serializers.SerializerMethodField()
     similar = serializers.SerializerMethodField()
 
+    class Meta(PerfumeSerializers.Meta):
+        exclude = None
+
     def get_reviews(self, instance):
         ordered = instance.review_set.order_by('-created_at')
         return ReviewSerializers(ordered, many=True).data
 
     def get_recommended(self, instance):
-        print(instance.recommended)
         recom = map(int, instance.recommended[1:-1].split(', '))
-        try:
-            recom_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in recom]
-        except:
-            return []
+        recom_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in recom]
         return PerfumeBriefSerializers(recom_p, many=True).data
 
     def get_similar(self, instance):
-        print(instance.similar)
         sim = map(int, instance.similar[1:-1].split(', '))
-        try:
-            sim_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in sim]
-        except:
-            return []
+        sim_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in sim]
         return PerfumeBriefSerializers(sim_p, many=True).data
 
 class SearchQuerySerializers(serializers.Serializer):
     keywords = serializers.CharField(required=True)
-    page = serializers.IntegerField(default=1)
 
 
 class SurveyGETQuery(serializers.Serializer):
