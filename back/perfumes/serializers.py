@@ -1,6 +1,3 @@
-from django.db.models import (
-    Q, Count
-)
 from rest_framework import serializers
 from .models import *
 from accounts.models import Survey
@@ -89,9 +86,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
             return instance.similar
         sim_p = Perfume.objects.exclude(similar='')
         if instance.categories.exists():
-            sim_p = sim_p.prefetch_related('categories')\
-                .annotate(score=Count('categories', filter=Q(categories__in=instance.categories.all())))\
-                .order_by('-score')[:12]\
+            sim_p = sim_p.filter(categories__in=instance.categories.all())[:12]\
                 .values_list('id', flat=True)
             return str(list(sim_p))
         return sim_p[instance.id % 2694].similar
@@ -102,9 +97,7 @@ class PerfumeSerializers(serializers.ModelSerializer):
             return instance.recommended
         rec_p = Perfume.objects.exclude(recommended='')
         if instance.categories.exists():
-            rec_p = rec_p.prefetch_related('categories')\
-                .annotate(score=Count('categories', filter=Q(categories__in=instance.categories.all())))\
-                .order_by('-score')[:12]\
+            rec_p = rec_p.filter(categories__in=instance.categories.all())[:12]\
                 .values_list('id', flat=True)
             return str(list(rec_p))
         return rec_p[instance.id % 2550].recommended
@@ -173,9 +166,7 @@ class PerfumeDetailSerializers(PerfumeSerializers):
         if not recommended:
             recommended = Perfume.objects.exclude(recommended='')
             if instance.categories.exists():
-                recom_p = recommended.prefetch_related('categories')\
-                .annotate(score=Count('categories', filter=Q(categories__in=instance.categories.all())))\
-                .order_by('-score')[:12]  # 쿼리셋
+                recom_p = recommended.filter(categories__in=instance.categories.all())[:12]
                 return PerfumeBriefSerializers(recom_p, many=True).data
             else:
                 recommended = recommended[instance.id % 2550].recommended
@@ -188,12 +179,10 @@ class PerfumeDetailSerializers(PerfumeSerializers):
         if not similar:
             similar = Perfume.objects.exclude(similar='')
             if instance.categories.exists():
-                sim_p = similar.prefetch_related('categories')\
-                .annotate(score=Count('categories', filter=Q(categories__in=instance.categories.all())))\
-                .order_by('-score')[:12]  # 쿼리셋
+                sim_p = similar.filter(categories__in=instance.categories.all())[:12]
                 return PerfumeBriefSerializers(sim_p, many=True).data
             else:
-                similar = similar[instance.id % 2550].similar
+                similar = similar[instance.id % 2694].similar
         sim = map(int, similar[1:-1].split(', '))
         sim_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in sim]
         return PerfumeBriefSerializers(sim_p, many=True).data
