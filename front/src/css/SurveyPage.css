@@ -636,20 +636,20 @@ cf-list {
 
 
 .image-link-to-expsurvey {
-  height: 450px;
-  width: 450px;
+  height: 20vw;
+  width: 20vw;
   background-color: pink;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 50px;
+  margin: 3vw;
   background-position: center;
   background-size: cover;
   box-shadow: 0 0 15px #e0e0e0;
 }
 .ilink-expand {
-  font-size: 45px;
+  font-size: 2vw;
   background-color: rgba(128, 128, 128, 0.5);
   width: 100%;
   color: white;
@@ -657,7 +657,7 @@ cf-list {
   transition: 1s ease;
 }
 .image-link-to-expsurvey:hover .ilink-expand {
-  padding: 200px 0;
+  line-height: 18.3vw;
   background-color: rgba(64, 64, 64, 0.5);
   text-shadow: 0 0 5px #4f4f4f;
 }

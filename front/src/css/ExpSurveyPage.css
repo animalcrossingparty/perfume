@@ -18,8 +18,8 @@
 .famous-selection-img {
   margin: auto;
   display: block;
-  height: 200px;
-  width: 200px
+  height: 10vw;
+  width: 10vw
 }
 
 .famous-selection-perfume-name {
@@ -37,6 +37,7 @@
 
 .exp-survey-result {
   display:grid;
+  animation: fadeInUp 1250ms ease;
   width: 100vw;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -71,12 +72,12 @@
 .submit-exp-survey {
   background-color: #fdf0f0;
   color: #4f4f4f;
-  width: 130px;
+  width: 12vw;
   text-align: center;
   font-family: 'Cafe24Oneprettynight';
-  height: 60px;
+  height: 3vw;
   border-radius: 20px;
-  font-size: 27px;
+  font-size: 1.8vw;
   display: block;
   margin-left: auto;
   box-shadow: 1px 1px 3px .5px #ee6e73;

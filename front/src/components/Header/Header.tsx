@@ -86,10 +86,10 @@ class Header extends Component<HeaderProps> {
             {this.props.user.getIn(["loggedInfo", "username"])}
           </Link>
           <Divider />
-          <Link style={{pointerEvents: "none", fontSize: "13px"}} to="#">124 points</Link>
+          <Link style={{fontSize: "13px"}} to="#">124 points</Link>
           
           <Divider />
-          <Link style={{pointerEvents: "none", fontSize: "13px"}} to="#" onClick={this.handleLogout}>
+          <Link style={{fontSize: "13px"}} to="#" onClick={this.handleLogout}>
             LOGOUT
           </Link>
         </Dropdown>
