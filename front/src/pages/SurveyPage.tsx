@@ -42,6 +42,7 @@ return (
     <div className="survey_inner_container">
       <Survey />
     </div>
+    <div className="cate_to-2"></div>
   </div>
 </div>
 )
