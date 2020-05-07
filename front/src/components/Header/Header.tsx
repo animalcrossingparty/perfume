@@ -57,6 +57,7 @@ class Header extends Component<HeaderProps> {
         >
           PERFUMES
         </NavLink>
+        {/* <div className="nav_me"> */}
         <Link to="/surveyintro">SURVEY</Link>
         <Link to="/">REVIEWS</Link>
         <Link to="/about">ABOUT</Link>
@@ -79,21 +80,23 @@ class Header extends Component<HeaderProps> {
             outDuration: 250
           }}
           trigger={<div >{this.props.user.getIn(["loggedInfo", "username"])}</div>}
+          style={{fontSize: "20px"}}
         >
-          <Link style={{pointerEvents: "none"}} to="#" >
+          <Link style={{pointerEvents: "none", fontSize: "13px"}} to="#">
             {this.props.user.getIn(["loggedInfo", "username"])}
           </Link>
           <Divider />
-          <Link to="#">124 points</Link>
+          <Link style={{pointerEvents: "none", fontSize: "13px"}} to="#">124 points</Link>
           
           <Divider />
-          <Link to="#" onClick={this.handleLogout}>
+          <Link style={{pointerEvents: "none", fontSize: "13px"}} to="#" onClick={this.handleLogout}>
             LOGOUT
           </Link>
         </Dropdown>
         ) : (
           <Link to="/auth/login">LOGIN</Link>
         )}
+        {/* </div> */}
       </Navbar>
     );
   }

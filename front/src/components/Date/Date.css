@@ -35,9 +35,9 @@
   color: rgb(199, 122, 202);
 }
 
-.age_ .dropdown-content li>a, .age .dropdown-content li>span {
+/* .age_ .dropdown-content li>a, .age .dropdown-content li>span {
   color: rgb(199, 122, 202);
-}
+} */
 
 .age_ .datepicker-cancel, .datepicker-clear, .age .datepicker-today, .datepicker-done {
   color: rgb(199, 122, 202);
