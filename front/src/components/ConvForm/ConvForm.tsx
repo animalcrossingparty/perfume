@@ -3,8 +3,8 @@ import { ConversationalForm } from "conversational-form";
 import {Checkbox, Button} from 'react-materialize'
 import axios from "axios";
 import queryString from "query-string";
-import user_anon from 'assets/user_anon.png'
-import richis from 'assets/member/4.png'
+import user_anon from 'assets/water.png'
+import richis from 'assets/dolfin.png'
 interface ConvFormProps {
   formFields: any;
 }
