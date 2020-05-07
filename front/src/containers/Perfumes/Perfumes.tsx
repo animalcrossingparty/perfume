@@ -15,6 +15,7 @@ import {
   ProgressBar,
   Checkbox,
   Select,
+  Autocomplete,
 } from "react-materialize";
 import queryString from "query-string";
 import Pagination from "react-js-pagination";
@@ -36,7 +37,23 @@ class Perfumes extends Component<PerfumeProps> {
     const queryParams = queryString.parse(history.location.search);
     await PerfumeActions.getPerfumeInfo(queryParams);
   };
-
+  initializeSearchInfo = async (e) => {
+    e.preventDefault();
+    const { PerfumeActions, history } = this.props;
+    let rawq = e.target.querySelector("input").value.split(" ");
+    const regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
+    let result = [] as any[];
+    rawq.map((r) => {
+      console.log(r);
+      if (regExp.test(r)) {
+        let t = r.replace(regExp, "");
+        result.push(t);
+      } else {
+        result.push(r);
+      }
+    });
+    await PerfumeActions.searchInfo(result.join(","));
+  };
   componentDidMount() {
     this.initializePerfumeInfo();
   }
@@ -109,7 +126,7 @@ class Perfumes extends Component<PerfumeProps> {
   };
   render() {
     const { perfumes } = this.props;
-    const { GET_PERFUME_INFO } = this.props.pender;
+    const perfumeLoading = this.props.pender.GET_PERFUME_INFO;
     const {
       sort,
       brand,
@@ -121,89 +138,61 @@ class Perfumes extends Component<PerfumeProps> {
     } = queryString.parse(window.location.search);
     return (
       <section style={{ backgroundColor: "#fff" }}>
-        <section className="perfume-sub-nav">
-          <div
-            style={{
-              paddingRight: "25%",
-              position: "sticky",
-              top: 0,
-              height: 40,
-            }}
-          >
-            <input type="text" placeholder="🧐  검색어를 입력해주세요." />
-          </div>
-          {sort !== "alpha" ? (
-            <NavLink
-              to={`/perfume?page=1&sort=alpha&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-            >
-              <Icon tiny>sort_by_alpha</Icon>
-              <span>사전순</span>
-            </NavLink>
-          ) : (
-            <NavLink to="#" className="disabled-link">
-              <Icon tiny>sort_by_alpha</Icon>
-              <span>사전순</span>
-            </NavLink>
-          )}
-          {sort !== "rate" ? (
-            <NavLink
-              to={`/perfume?page=1&sort=rate&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-            >
-              <Icon tiny>thumbs_up_down</Icon>
-              <span>평점순</span>
-            </NavLink>
-          ) : (
-            <NavLink to="#" className="disabled-link">
-              <Icon tiny>thumbs_up_down</Icon>
-              <span>평점순</span>
-            </NavLink>
-          )}
-          {sort !== "reviewcnt" ? (
-            <NavLink
-              to={`/perfume?page=1&sort=reviewcnt&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-            >
-              <Icon tiny>rate_review</Icon>
-              <span>리뷰순</span>
-            </NavLink>
-          ) : (
-            <NavLink to="#" className="disabled-link">
-              <Icon tiny>rate_review</Icon>
-              <span>리뷰순</span>
-            </NavLink>
-          )}
-          {sort !== "expensive" ? (
-            <NavLink
-              to={`/perfume?page=1&sort=expensive&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-            >
-              <Icon tiny>monetization_on</Icon>
-              <span>높은 가격 순</span>
-            </NavLink>
-          ) : (
-            <NavLink to="#" className="disabled-link">
-              <Icon tiny>monetization_on</Icon>
-              <span>높은 가격 순</span>
-            </NavLink>
-          )}
-          {sort !== "cheap" ? (
-            <NavLink
-              to={`/perfume?page=1&sort=cheap&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
-            >
-              <Icon tiny>money</Icon>
-              <span>낮은 가격 순</span>
-            </NavLink>
-          ) : (
-            <NavLink to="#" className="disabled-link">
-              <Icon tiny>money</Icon>
-              <span>낮은 가격 순</span>
-            </NavLink>
-          )}
-        </section>
         <section
           className="perfume-list-container"
           style={{ height: window.innerHeight }}
         >
           <aside className="perfume-sidenav">
             <Collapsible accordion={false}>
+              <CollapsibleItem
+                expanded={true}
+                header="SEARCH"
+                icon={null}
+                node="div"
+              >
+                <form
+                  onSubmit={this.initializeSearchInfo}
+                  style={{ padding: "0px 10px 0 10px", color: "#4f4f4f" }}
+                >
+                  <Autocomplete
+                    icon={<Icon>search</Icon>}
+                    options={{
+                      data: {
+                        시트러스: null,
+                        새콤: null,
+                        신선: null,
+                        상큼: null,
+                        상콤: null,
+                        과일: null,
+                        꽃: null,
+                        여성스러운: null,
+                        여자여자한: null,
+                        플로럴: null,
+                        풀: null,
+                        아로마: null,
+                        허브: null,
+                        향긋: null,
+                        스파이스: null,
+                        톡쏘는: null,
+                        강렬한: null,
+                        달달한: null,
+                        달다구리한: null,
+                        남자다운: null,
+                        나무: null,
+                        숲: null,
+                        분내: null,
+                        파우더리: null,
+                        뽀송: null,
+                        봄: null,
+                        여름: null,
+                        가을: null,
+                        겨울: null,
+                      },
+                    }}
+                    placeholder=" 검색어를 입력해주세요."
+                  />
+                </form>
+              </CollapsibleItem>
               <CollapsibleItem
                 expanded={true}
                 header="COLLECTIONS"
@@ -245,7 +234,7 @@ class Perfumes extends Component<PerfumeProps> {
                 icon={null}
                 node="div"
               >
-                <div style={{ height: "5vw", padding: "10%" }}>
+                <div style={{padding: '12px 30px', textAlign:'center'}}>
                   <Select
                     multiple={false}
                     onChange={this.handleBrand}
@@ -275,11 +264,16 @@ class Perfumes extends Component<PerfumeProps> {
                       </option>
                     ))}
                   </Select>
+                    <a className="bmc-button center" target="_blank" rel="noopener noreferrer" href="https://www.buymeacoffee.com/wHexPZL">
+                      <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee" />
+                    <span style={{marginLeft:15, fontSize:28}}>Buy us a coffee</span></a>
                 </div>
+                <p style={{color: '#6f6f6f'}}>Laure Richis, 2020</p>
               </CollapsibleItem>
             </Collapsible>
           </aside>
           <div>
+            <section className="perfume-list-container-header-wrapper">
             {this.props.num_pages} 페이지 / {page} 페이지 | ITEM:{" "}
             {this.props.num_pages * 12}개{" "}
             <div className="pagenation-container">
@@ -292,8 +286,76 @@ class Perfumes extends Component<PerfumeProps> {
                 onChange={this.handlePage}
               />
             </div>
+            <section className="perfume-sub-nav">
+              {sort !== "alpha" ? (
+                <NavLink
+                  to={`/perfume?page=1&sort=alpha&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                >
+                  <Icon tiny>sort_by_alpha</Icon>
+                  <span>사전순</span>
+                </NavLink>
+              ) : (
+                <NavLink to="#" className="disabled-link">
+                  <Icon tiny>sort_by_alpha</Icon>
+                  <span>사전순</span>
+                </NavLink>
+              )}
+              {sort !== "rate" ? (
+                <NavLink
+                  to={`/perfume?page=1&sort=rate&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                >
+                  <Icon tiny>thumbs_up_down</Icon>
+                  <span>평점순</span>
+                </NavLink>
+              ) : (
+                <NavLink to="#" className="disabled-link">
+                  <Icon tiny>thumbs_up_down</Icon>
+                  <span>평점순</span>
+                </NavLink>
+              )}
+              {sort !== "reviewcnt" ? (
+                <NavLink
+                  to={`/perfume?page=1&sort=reviewcnt&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                >
+                  <Icon tiny>rate_review</Icon>
+                  <span>리뷰순</span>
+                </NavLink>
+              ) : (
+                <NavLink to="#" className="disabled-link">
+                  <Icon tiny>rate_review</Icon>
+                  <span>리뷰순</span>
+                </NavLink>
+              )}
+              {sort !== "expensive" ? (
+                <NavLink
+                  to={`/perfume?page=1&sort=expensive&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                >
+                  <Icon tiny>monetization_on</Icon>
+                  <span>높은 가격 순</span>
+                </NavLink>
+              ) : (
+                <NavLink to="#" className="disabled-link">
+                  <Icon tiny>monetization_on</Icon>
+                  <span>높은 가격 순</span>
+                </NavLink>
+              )}
+              {sort !== "cheap" ? (
+                <NavLink
+                  to={`/perfume?page=1&sort=cheap&brand=${brand}&category=${category}&exclude=${exclude}&include=${include}&gender=${gender}`}
+                >
+                  <Icon tiny>money</Icon>
+                  <span>낮은 가격 순</span>
+                </NavLink>
+              ) : (
+                <NavLink to="#" className="disabled-link">
+                  <Icon tiny>money</Icon>
+                  <span>낮은 가격 순</span>
+                </NavLink>
+              )}
+            </section>
+            </section>
             <Row style={{ backgroundColor: "#fafafa" }}>
-              {GET_PERFUME_INFO !== true
+              {perfumeLoading === true
                 ? perfumes.map((perfume) => (
                     <Col s={10} m={6} l={3} key={perfume.id}>
                       <Cards field={perfume} />
@@ -304,7 +366,7 @@ class Perfumes extends Component<PerfumeProps> {
                       <div
                         className="card"
                         style={{
-                          height: "437px",
+                          height: "300px",
                         }}
                       >
                         <div
@@ -338,7 +400,7 @@ export default connect(
   (state) => ({
     perfumes: state.perfume.get("perfumesList"),
     num_pages: state.perfume.get("num_pages"),
-    pender: state.pender.pending,
+    pender: state.pender.success,
     category: state.perfume.get("category"),
     fbrand: state.perfume.get("fbrand"),
   }),

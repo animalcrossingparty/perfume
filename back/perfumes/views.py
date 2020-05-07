@@ -143,7 +143,7 @@ def famous_perfumes(request):
 def search(request):
     """
     검색어는 query param 'keywords'에 ','로 구분해서 주세요
-    카테고리(영문), 노트(영문, 한글은 아직 불가능), 리뷰(영문), 계절(한글, 영문), 향수 이름(영문)으로 검색 후 10개의 향수를 list로 반환합니다.
+    카테고리(한글), 향수 이름(영문), 계절(한글, 영문), 으로 검색 후 10개의 향수를 list로 반환합니다.
     계절을 제외한 카테고리, 노트, 리뷰, 향수 이름은 contains로 필터링합니다.
     향수 이름이 비슷하면 3점, 브랜드명이 비슷하면 3점, 해당 계절의 향수이면 2점, 해당 노트가 포함되어 있으면 각각 1점, 
     리뷰 내용에 해당 단어가 포함되어 있으면 1점으로 계산합니다.
@@ -163,6 +163,7 @@ def search(request):
     beverages: ['달달한', '달다구리한']
     """
     st = time()
+    page = int(request.GET.get('page', 1))
     keywords = request.GET.get('keywords')
     keywords = set(keywords.split(','))
     leng = len(keywords)
@@ -173,24 +174,31 @@ def search(request):
         id_kw_cat |= RESERVED_CAT[kw]
 
     perfumes = Perfume.objects.prefetch_related('brand').prefetch_related('categories')\
-        .prefetch_related('top_notes').prefetch_related('heart_notes').prefetch_related('base_notes')\
         .prefetch_related('seasons')\
         .annotate(score=
             3 * Count('name', filter=Q(name__in=keywords))\
             + 3 * Count('brand', filter=Q(brand__name__in=keywords))\
             + Count('categories', filter=Q(categories__id__in=id_kw_cat))
-            + Count('top_notes', filter=Q(top_notes__name__in=keywords))
-            + Count('heart_notes', filter=Q(heart_notes__name__in=keywords))
-            + Count('base_notes', filter=Q(base_notes__name__in=keywords))
             + 2 * Count('seasons', filter=Q(seasons__name__in=keywords))
             + 2 * Count('seasons', filter=Q(seasons__kor_name__in=keywords))
         )\
-        .order_by('-score')[:10]
-    serializers = PerfumeSerializers(perfumes, many=True)
+        .order_by('-score')
+
     try:
-        return Response(serializers.data, status=200)
+        paginated = Paginator(perfumes, PAGE_SIZE)
+        paged_perfumes = paginated.page(page)
+        print(paged_perfumes)
+        num_pages = paginated.num_pages
+        print('페이지 수',num_pages)
+        serializer = PerfumeSerializers(paged_perfumes, many=True)
+    except: 
+        invalid_page_message = f'{page} 페이지에는 결과가 없습니다. 해당 요청의 최대 페이지 수: < {paginated.num_pages} >'
+        return Response(invalid_page_message, status=404)
+    try:
+        return Response(serializer.data, headers={'num_pages': num_pages, 'Access-Control-Expose-Headers': 'num_pages'})
     finally:
         print(f'{leng}개 단어 검색하는 데 걸린 시간: {time()-st}s')
+
 
 class SurveyAPI(APIView):
     @swagger_auto_schema(

@@ -35,7 +35,7 @@
 }
 
 .link_banner_btn {
-  margin-top: 6.9rem;
+  /* margin-top: 6.9rem; */
   margin-right: 1rem;
   font-weight: 500;
   background-color: rgb(211, 193, 223);
@@ -45,9 +45,21 @@
   /* text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9); */
 }
 
+.img_btn_in_slider > img {
+  width: 359px !important;
+  height: 64px !important;
+  margin-top: 3rem;
+}
+
+.img_btn_in_slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .link_banner_btn_box > button:hover {
   background-color: rgb(129, 100, 115);
-  color: white;;
+  color: white;
 }
 
 .home_survey_btn_box {

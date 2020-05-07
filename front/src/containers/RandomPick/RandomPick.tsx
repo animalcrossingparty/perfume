@@ -24,16 +24,19 @@ class RandomPick extends Component<RandomProps> {
   render() {
     const { randList } = this.props;
     return (
-      <Row>
+      <Row className="random_perfume_center">
         {randList.length > 1 ? (
           randList.splice(0,5).map((perfume) => {
             return (
-              <Col key={perfume.name + 'idrdp'} s={12} m={6} l={3} xl={2} className="hover-shadow">
-                <h5 style={{color: ''}} className="card-c-title center px-3 thin">{perfume.name}</h5>
+              <Col key={perfume.name + 'idrdp'} s={12} m={6} l={4} xl={2} className="hover-shadow">
+              {/* <Col key={perfume.name + 'idrdp'} className="hover-shadow"> */}
+                <h5 style={{color: ''}} className="card-c-title center px-3 thin ran_car_name">{perfume.name}</h5>
                 <Link to={`/detail/${perfume.id}`}>
                   <div
                     style={{
-                      height: "300px",
+                      height: "200px",
+                      width: "130px",
+                      margin: "0 auto",
                       backgroundImage: `url(${perfume.thumbnail})`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
@@ -45,7 +48,7 @@ class RandomPick extends Component<RandomProps> {
             );
           })
         ) : (
-          <Col s={2} style={{height: 353.22}}>
+          <Col s={2} style={{height: 253.22}}>
             <ProgressBar style={{width:'100%', height:'50px'}} />
           </Col>
         )}
