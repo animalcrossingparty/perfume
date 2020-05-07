@@ -70,22 +70,47 @@
 
 .home_survey_sc {
   color: gray;
-  font-size: 13px;
+  font-size: 18px;
+  font-weight: 500;
   text-align: center;
   margin-bottom: 1rem;
 }
 
 .home_survey_btn {
-  border-radius: 30px;
-  background-color: rgb(134, 115, 115);
+  font-size: 21px;
+  border-radius: 15px;
+  /* background-color: #2f95b9; */
+  background-color: #b13a1a;
+  height: 50px;
+  padding: 0 2rem;
+  font-family: 'S-CoreDream-3Light';
+}
+
+.home_survey_btn2 {
+  font-size: 21px;
+  border-radius: 15px;
+  background-color: #b13a1a;
+  height: 50px;
+  padding: 0 2rem;
+  font-family: 'S-CoreDream-3Light';
 }
 
 .home_survey_btn:hover {
-  background-color: rgb(206, 178, 178);
+  background-color: #812e16;
+  font-weight: bold;
+  /* text-shadow: 1px 1px 5px #83cfda; */
+}
+.home_survey_btn2:hover {
+  /* background-color: #972b5a; */
+  background-color: #812e16;
+  font-weight: bold;
 }
 
 .home_survey_btn:focus {
-  background-color: rgb(170, 142, 142);
+  background-color: #972b5a;
+}
+.home_survey_btn2:focus {
+  background-color: #972b5a;
 }
 
 @media (max-width: 530px) {

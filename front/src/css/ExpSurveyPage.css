@@ -69,15 +69,27 @@
 }
 
 .submit-exp-survey {
-  background-color: rgb(228, 173, 174) !important;
+  background-color: #fdf0f0;
   color: #4f4f4f;
   width: 130px;
   text-align: center;
   font-family: 'Cafe24Oneprettynight';
-  height: 65px;
+  height: 60px;
   border-radius: 20px;
   font-size: 27px;
   display: block;
   margin-left: auto;
-  box-shadow: 0 0 10px #e0e0e0;
+  box-shadow: 1px 1px 3px .5px #ee6e73;
+  margin-top: 2rem;
+}
+
+.submit-exp-survey:hover {
+  color: #ee6e73;
+  background-color: #fdf0f0;
+  box-shadow: 1px 1px 3px .5px #ee6e73;
+}
+
+.submit-exp-survey:focus {
+  background-color: #dda8aa;
+  color: white;
 }
