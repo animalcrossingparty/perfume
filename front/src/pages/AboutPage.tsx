@@ -1,14 +1,18 @@
 import React from 'react';
 import { Header,  FooterContent, Members } from "../components";
-import { Footer, Icon, Row, Col } from "react-materialize";
+import { Footer, Icon } from "react-materialize";
+
+import { faGithub, faInstagram, faGitlab, faYoutube } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 function AboutPage() {
   return (
     <section>
       <Header />
-      <h1 className="mt-5 pt-5">LAURE RICHIS</h1> <h2>로르 리시</h2>
+      {/* <h1 className="mt-5 pt-5">LAURE RICHIS</h1> <h2>로르 리시</h2> */}
       
       <Members />
-      <div className="container footer_container">
+      {/* <div className="container footer_container">
       <h1 className="thin">WHAT IT IS?</h1>
         <Row className="jcenter py-5" style={{background: 'none', alignItems:'center'}}>
           <Col className="intro-box" s={3}>
@@ -32,29 +36,29 @@ function AboutPage() {
             <p>나이별, 성격별, 통계 자료를 볼 수 있어요.</p>
           </Col>
         </Row>
-      </div>
+      </div> */}
 
       <Footer
         copyrights="2020 SSAFY DJ02-08"
         links={
-          <ul className="text-gray">
+          <ul className="fontaweseom_row">
             <li>
-              <a href="#!">Github</a>
+              <a href="#!" className="fontaweseom_footer"><FontAwesomeIcon icon={faGithub} /></a>
             </li>
             <li>
-              <a href="#!">SSAFY</a>
+              <a href="#!" className="fontaweseom_footer"><FontAwesomeIcon icon={faGitlab} /></a>
             </li>
             <li>
-              <a href="#!">SSAFY Instagram</a>
+              <a href="#!" className="fontaweseom_footer"><FontAwesomeIcon icon={faInstagram} /></a>
             </li>
             <li>
-              <a href="#!">Buy us a coffee</a>
+              <a href="#!" className="fontaweseom_footer"><FontAwesomeIcon icon={faYoutube} /></a>
             </li>
           </ul>
         }
         moreLinks={
           <a
-            className="grey-text text-lighten-4 right"
+            className="footer_notion right"
             href="https://www.notion.so/Laure-Richis-e89e794cf439444994ab31f82d06f37a"
           >
             <Icon>supervised_user_circle</Icon>See Our Project on NOTION
