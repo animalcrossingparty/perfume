@@ -71,13 +71,14 @@ nav a {
   /* font-size: 12px; */
 }
 
-.dropdown-trigger < li {
 
-}
-
-.dropdown-content {
+#mobile-nav > li .dropdown-content {
   top: -45px;
-  left: -8px;
+  left: -6px;
+}
+.hide-on-med-and-down .dropdown-content {
+  top: -45px;
+  left: -15px;
 }
 
 .dropdown-content > li {
