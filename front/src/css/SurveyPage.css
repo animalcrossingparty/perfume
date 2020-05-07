@@ -8,9 +8,24 @@
   display: flex;
   flex-direction: column;
 }
-.conversational-form-inner {
-  background: #f0cff9;
+
+ /* .cf-button {
+  width: 160px;
+  height: 150px;
+}  */
+
+.cf-button .cf-image {
+  width: 160px;
+  height: 110px !important;
 }
+
+.conversational-form-inner {
+  /* background: linear-gradient(to top, rgb(236, 100, 100), rgba(43, 90, 133, 0.979)) */
+  /* background: rgba(128, 0, 128, 0.479) */
+  border-bottom: 5px solid #b9c5ff;
+}
+
+
 .one-row .animate-in {
   background-color: #fff;
   border-radius: 15px !important;
@@ -21,6 +36,10 @@ cf-button {
   margin: 5px !important;
 }
 
+.chatbot_banner {
+  background-color: rgba(75, 80, 90, 0.979);
+  
+}
 
 .select-u-want {
   font-weight: 100;
@@ -39,12 +58,18 @@ cf-button {
   background: white
 }
 .survey_box {
-  background-color: #fff;
+  background-color: rgb(248, 248, 246);
   width: 80%;
   overflow: hidden;
   height: 100vh;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5rem;
   padding: 5%;
+  border: 3px solid;
+  border-bottom: 12px solid;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 5px 5px 1px 1px rgb(172, 160, 187);
 }
 .result_box {
   background-color: #E0ECF8;
@@ -52,12 +77,96 @@ cf-button {
   padding: 5% 10%;
   margin: auto;
 }
-.title {
-  font-size: 3vw;
-  font-style: italic;
+.survey_chatbot_title {
+  font-size: 15px;
+  /* font-style: italic; */
   font-weight: 200;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.4); */
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgb(48, 46, 46);
+  width: 80%;
+  margin: 7rem auto 0 auto;
+  padding: .8rem 1.2rem;
+  /* text-align: center; */
+  border-radius: 3px 3px 0 0;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 5px 5px 1px 1px rgb(172, 160, 187);
+}
+
+.row_cate {
+  display: flex;
+}
+
+.cate_you {
+  width: 100px;
+  height: 30px;
+  margin-left: 1rem;;
+  background-color: #b9c5ff;
+  border-radius: 8px 8px 0 0;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cate_other {
+  width: 100px;
+  height: 30px;
+  margin-left: 1rem;;
+  background-color: rgb(238, 223, 255);
+  border-radius: 8px 8px 0 0;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cate_to {
+  height: 5px;
+  background-color: #b9c5ff;
+  border-radius: 3px 3px 0 0;
+}
+
+.chatbot_start {
+  display: flex;
+  align-items: center;
+}
+
+.chatbot_end {
+  display: flex;
+  align-items: center;
+}
+
+.chatbot_banner {
+  padding: 2rem;
+  background-color: rgb(80, 77, 112);
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.chatbot_banner > img {
+  margin: 0 2rem;
+}
+
+.chatbot_end > a {
+  background-color: rgb(169, 175, 184);
   color: rgba(0, 0, 0, 0.7);
+  border-radius: 7px;
+  padding: .1rem;
+}
+
+.chatbot_end > a:hover {
+  background-color: rgb(130, 125, 145);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.chatbot_start > img {
+  margin-right: .5rem;
 }
 
 .titles {
@@ -186,7 +295,7 @@ cf-button {
   text-align: center;
 }
 
-
+ 
 .survey_inner_container {
   background-color: #FBEFF2;
   height: 100%;

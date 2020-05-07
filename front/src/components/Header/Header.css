@@ -24,17 +24,95 @@ nav .brand-logo {
   transform: rotate(0.001deg);
   font-weight: 400;
   letter-spacing: 0px;
+  font-size: 10px;
 }
 
 nav ul a , nav ul div {
-  font-size: 0.9vw;
-  margin-right: 12px;
+  /* font-size: 0.9vw; */
+  font-size: 12px;
+  /* margin-right: 12px; */
   font-weight: 700;
   color: black;
   display: block;
   cursor: pointer;
-  letter-spacing: 0.15vw;
+  padding: 0 .7rem;
+  /* letter-spacing: 0.15vw; */
 }
 nav ul a:hover {
   color: white;
+  background-color: rgba(63, 59, 59, 0.3);
 }
+
+nav a {
+  color: black;
+  /* color: rgba(255, 255, 255, 0); */
+}
+
+.nav_me > a {
+  /* padding-right: 1rem; */
+  padding: 0 1rem;
+  /* padding: 0 2rem 0 1rem; */
+}
+
+.nav_me {
+  /* display: flex; */
+  /* padding: 0; */
+}
+
+@media (max-width: 992px) {
+  .nav_me {
+    /* flex-direction: column; */
+  }
+}
+
+.dropdown-trigger {
+  padding: 0 1rem 0 1rem;
+  margin-right: 2rem;
+  /* font-size: 12px; */
+}
+
+.dropdown-trigger < li {
+
+}
+
+.dropdown-content {
+  top: -45px;
+  left: -8px;
+}
+
+.dropdown-content > li {
+  /* text-align: center; */
+  font-size: 10px;
+}
+
+.divider {
+  margin: 0 !important;
+}
+
+/* 막내 선택자 */
+#mobile-nav > li:last-child {
+  padding-left: 1rem;
+}
+
+#mobile-nav > li:last-child:hover {
+  background-color: rgb(242, 242, 242)
+}
+
+.dropdown-trigger:hover {
+  background-color: rgb(242, 242, 242)
+}
+
+
+/* dropdown color */
+nav .dropdown-content li>a, .dropdown-content li>span {
+  color: rgb(63, 60, 63);
+}
+
+/* 별로 안이쁜 듯 */
+/* .sidenav-trigger {
+  margin: .8rem !important;
+  background-image: url('../../assets/images/icon.png');
+  background-size: 40px;
+  background-repeat: no-repeat;
+  width: 40px
+} */

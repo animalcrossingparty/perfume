@@ -62,7 +62,7 @@ return (
     </Row>
 
     <Row className="my-4 m-0 header-d-f-reverse header-center">
-      <div className="homegrid-header header-right-text mb-12 mr-5">
+      <div className="homegrid-header header-right-text mb-12">
         <h1 className="home-story-sub1-c">Jo Malone</h1>
         <h4  className="home-story-sub2">로즈 잉글리쉬 페어 앤 프리지아 코롱</h4>
         <div className="homegrid-content">
