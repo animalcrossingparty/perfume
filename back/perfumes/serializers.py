@@ -137,6 +137,9 @@ class ReviewSerializers(serializers.Serializer):
         return Review.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
+        instance.content = validated_data.get('content', instance.content)
+        instance.rate = validated_data.get('rate', instance.rate)
+        instance.save()
         return instance
 
     def get_images(self, instance):
@@ -156,11 +159,15 @@ class PerfumeDetailSerializers(PerfumeSerializers):
         return ReviewSerializers(ordered, many=True).data
 
     def get_recommended(self, instance):
+        if not instance.recommended:
+            return []
         recom = map(int, instance.recommended[1:-1].split(', '))
         recom_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in recom]
         return PerfumeBriefSerializers(recom_p, many=True).data
 
     def get_similar(self, instance):
+        if not instance.similar:
+            return []
         sim = map(int, instance.similar[1:-1].split(', '))
         sim_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in sim]
         return PerfumeBriefSerializers(sim_p, many=True).data
