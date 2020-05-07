@@ -69,6 +69,9 @@ class ExpSurveyPage extends Component<ExpSurveyPageProps> {
       if( a.indexOf(b) < 0 ) a.push(b) ;
       return a ;
     }, [])
+    single = single.sort(function(){
+      return Math.random() - Math.random()
+    })
     this.setState({ result: single.slice(1,11) });
     this.setState({ isSubmitted: true });
   };
