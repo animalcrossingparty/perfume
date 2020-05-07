@@ -76,11 +76,19 @@
   margin-bottom: 1rem;
 }
 
+.home_survey > img {
+  cursor: pointer;
+}
+
+.home_survey > img:hover {
+  opacity: 0.5;
+}
+
 .home_survey_btn {
   font-size: 21px;
   border-radius: 15px;
   /* background-color: #2f95b9; */
-  background-color: #b13a1a;
+  background-color: #443e3c;
   height: 50px;
   padding: 0 2rem;
   font-family: 'S-CoreDream-3Light';
