@@ -9,7 +9,7 @@ import '../css/SurveyPage.css'
 
 function SurveyPage () {
 return (
-<div style={{ height: '100%', backgroundColor: 'white' }}>
+<div className="bg_no_scroll" style={{ height: '100%', backgroundColor: 'white' }}>
   <Header />
   <div className="survey_chatbot_title">
     <div className="chatbot_start">
@@ -32,7 +32,7 @@ return (
     </div> */}
     <div className="row_cate">
     <div className="cate_you">
-      ABOUT YOU
+      About You
     </div>
       <div className="cate_other"></div>
       <div className="cate_other"></div>
