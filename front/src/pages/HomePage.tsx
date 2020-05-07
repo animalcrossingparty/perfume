@@ -3,9 +3,9 @@ import { Header, Slider, FooterContent } from "../components";
 import {RandomPick} from '../containers/RandomPick'
 import "../css/HomePage.css";
 import { Footer, Icon, Row, Col, Button } from "react-materialize";
-import a from "assets/images/homegrid/a.png";
-import c from "assets/images/homegrid/c.png";
-import d from "assets/images/homegrid/d.png";
+import a from "assets/images/homegrid/a.webp";
+import c from "assets/images/homegrid/c.webp";
+import d from "assets/images/homegrid/d.webp";
 import { faGithub, faInstagram, faGitlab, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -126,7 +126,7 @@ return (
 
   <Footer copyrights="2020 SSAFY DJ02-08" links={ <ul className="fontaweseom_row">
     <li>
-      <a href="#!" className="fontaweseom_footer">
+      <a href="https://github.com/animalcrossingparty/perfume" className="fontaweseom_footer">
         <FontAwesomeIcon icon={faGithub} /></a>
     </li>
     <li>
