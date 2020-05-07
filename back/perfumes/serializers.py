@@ -1,10 +1,13 @@
+from time import time
 from rest_framework import serializers
 from .models import *
 from accounts.models import Survey
 from accounts.serializers import UserSerializers
 from perfumes.utils.exchange_rate import korean_won
 
-rate = korean_won()
+EXCHANGE_RATE = 0; EXCHANGE_RATE_EXP = 0
+print(f'환율 가져오기 전. 환율: {EXCHANGE_RATE}, 만료시간: {EXCHANGE_RATE_EXP}, 현재: {time()}')
+
 
 class NoteSerializers(serializers.ModelSerializer):
     class Meta:
@@ -56,12 +59,13 @@ class PerfumeSerializers(serializers.ModelSerializer):
     price = serializers.SerializerMethodField(read_only=True)
     thumbnail = serializers.SerializerMethodField(read_only=True)
     categories = CategorySerializers(many=True)
+    similar = serializers.SerializerMethodField()
+    recommended = serializers.SerializerMethodField()
 
     class Meta:
         model = Perfume
         fields = '__all__'
         include = ['avg_rate', 'total_review']
-        exclude = ['recommended']
 
     def get_avg_rate(self, instance):
         try:
@@ -71,36 +75,42 @@ class PerfumeSerializers(serializers.ModelSerializer):
         return result
 
     def get_price(self, instance):
+        global EXCHANGE_RATE, EXCHANGE_RATE_EXP
+        now = time()
+        if EXCHANGE_RATE_EXP < now:
+            EXCHANGE_RATE = korean_won()
+            EXCHANGE_RATE_EXP = now + 24 * 3600
+            print(f'환율 가져온 후. 환율: {EXCHANGE_RATE}, 만료시간: {EXCHANGE_RATE_EXP}, 현재: {now}')
         try:
-            return instance.price * rate
+            return instance.price * EXCHANGE_RATE
         except:
             return 0
-
 
     def get_thumbnail(self, instance):
         return f'http://i02b208.p.ssafy.io:8000/staticfiles/images/{instance.pk}.jpg'
 
 
-
     def get_similar(self, instance):
         if instance.similar:
             return instance.similar
-        sim_p = Perfume.objects.exclude(similar='')[instance.id % 2694]
-        # try:
-        #     sim_p = sim_p.filter(categories__in=instance.categories.all())
-        # finally:
-        #     sim_p = sim_p[0]
-        return sim_p.similar
+        sim_p = Perfume.objects.exclude(similar='')
+        if instance.categories.exists():
+            sim_p = sim_p.filter(categories__in=instance.categories.all())[:10]\
+                .values_list('id', flat=True)
+            return str(list(sim_p))
+        return sim_p[instance.id % 2694].similar
+
 
     def get_recommended(self, instance):
         if instance.recommended:
             return instance.recommended
-        rec_p = Perfume.objects.exclude(recommended='')[instance.id % 2694]
-        # try:
-        #     rec_p = rec_p.filter(categories__in=instance.categories.all())
-        # finally:
-        #     rec_p = rec_p[0]
-        return rec_p.recommended
+        rec_p = Perfume.objects.exclude(recommended='')
+        if instance.categories.exists():
+            rec_p = rec_p.filter(categories__in=instance.categories.all())[:10]\
+                .values_list('id', flat=True)
+            return str(list(rec_p))
+        return rec_p[instance.id % 2550].recommended
+
 
 class PerfumeSurveySerializers(serializers.ModelSerializer):
     top_notes = NoteSerializers(read_only=True, many=True)
@@ -123,7 +133,7 @@ class SurveySerializers(serializers.ModelSerializer):
         model = Survey
         fields = '__all__'
         include = ['age', 'gender']
-        exclude = ['user']
+
 
 class ReviewSerializers(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -139,6 +149,9 @@ class ReviewSerializers(serializers.Serializer):
         return Review.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
+        instance.content = validated_data.get('content', instance.content)
+        instance.rate = validated_data.get('rate', instance.rate)
+        instance.save()
         return instance
 
     def get_images(self, instance):
@@ -158,14 +171,31 @@ class PerfumeDetailSerializers(PerfumeSerializers):
         return ReviewSerializers(ordered, many=True).data
 
     def get_recommended(self, instance):
-        recom = map(int, instance.recommended[1:-1].split(', '))
+        recommended = instance.recommended
+        if not recommended:
+            recommended = Perfume.objects.exclude(recommended='')
+            if instance.categories.exists():
+                recom_p = recommended.filter(categories__in=instance.categories.all())[:10]
+                return PerfumeBriefSerializers(recom_p, many=True).data
+            else:
+                recommended = recommended[instance.id % 2550].recommended
+        recom = map(int, recommended[1:-1].split(', '))
         recom_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in recom]
         return PerfumeBriefSerializers(recom_p, many=True).data
 
     def get_similar(self, instance):
-        sim = map(int, instance.similar[1:-1].split(', '))
+        similar = instance.similar
+        if not similar:
+            similar = Perfume.objects.exclude(similar='')
+            if instance.categories.exists():
+                sim_p = similar.filter(categories__in=instance.categories.all())[:10]
+                return PerfumeBriefSerializers(sim_p, many=True).data
+            else:
+                similar = similar[instance.id % 2694].similar
+        sim = map(int, similar[1:-1].split(', '))
         sim_p = [Perfume.objects.get(pk=perfume_pk) for perfume_pk in sim]
         return PerfumeBriefSerializers(sim_p, many=True).data
+
 
 class SearchQuerySerializers(serializers.Serializer):
     keywords = serializers.CharField(required=True)

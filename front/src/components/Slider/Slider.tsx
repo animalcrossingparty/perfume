@@ -15,7 +15,7 @@ export default () => (
 			duration: 500,
 			height: window.outerHeight * 0.6,
 			indicators: true,
-			interval: 10000000
+			interval: 3000
 		}}>
 	<Slide image={<img alt="" src={s1} />}>
 	<Caption placement="right" className="s1-cap s-font">

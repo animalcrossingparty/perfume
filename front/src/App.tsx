@@ -10,7 +10,8 @@ import {
   UserRank,
   SurveyIntroPage,
   SurveyResultPage,
-  ExpSurveyPage
+  ExpSurveyPage,
+  InfoPage
 } from "./pages";
 import storage from "lib/storage";
 import { connect } from "react-redux";
@@ -51,6 +52,7 @@ class App extends Component<AppProps> {
         <Route exact path="/expsurvey" component={ExpSurveyPage} />
         <Route path="/survey" component={SurveyPage} />
         <Route path="/result" component={SurveyResultPage} />
+        <Route exact path="/info" component={InfoPage} />
         <Route exact path="/surveyintro" component={SurveyIntroPage} />
         <Route path="/rank" component={UserRank} />
       </div>
