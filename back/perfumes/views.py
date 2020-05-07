@@ -98,6 +98,8 @@ SEASONS_ID = {
 
 @api_view(['GET'])
 def famous_perfumes(request):
+    print('famous perfumes api 시작')
+    st = time()
     gender = request.GET.get('gender', 'all')
     sample = request.GET.get('sample', None)
     products = Perfume.objects.all().filter(availability=True)
@@ -131,8 +133,10 @@ def famous_perfumes(request):
             products = products.filter(id__in=all_perfumes)
 
     serializer = PerfumeSerializers(products, many=True)
-    return Response(serializer.data)
-
+    try:
+        return Response(serializer.data)
+    finally:
+        print(f'famous perfume api: {time() - st}s')
 
 @swagger_auto_schema(
     operation_summary="향수 검색",
