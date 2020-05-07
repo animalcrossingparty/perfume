@@ -13,6 +13,10 @@ import spicy from "assets/info/spicy.webp"
 import sweets from "assets/info/sweets.webp"
 import wood from "assets/info/wood.webp" 
 import aldehyde from "assets/info/aldehyde.webp"
+import balsam from "assets/info/balsam.webp"
+import beverage from "assets/info/beverage.webp"
+import fruity from "assets/info/fruity.webp"
+import wFlower from "assets/info/white-flower.webp"
 import { Link } from 'react-router-dom'
 import CloseIcon from '@material-ui/icons/Close';
 import icon_l from '../assets/images/icon.png'
@@ -257,7 +261,7 @@ class InfoPage extends Component<{}> {
                   <h3>1. 시트러스</h3>
                   <p>감귤류 특유의 시원함과 상큼함이 특징이며 향의 휘발성과 확산성이 뛰어나 탑노트에 주로 사용되거나 코롱계열의 향수에 주로 사용됩니다.</p>
                   <p>대표적인 향수로는 캘빈클라인의 Ck one이 있습니다.</p>
-                  <img src="" alt=""/>
+                  <img src={fruity} alt=""/>
                   <h3>2. 프루티</h3>
                   <p>시트러스계열을 제외한 나머지 과일향들을 표현한 향입니다.</p>
                   <p>복숭아, 딸기, 메론, 파인애플 등 과일을 이용한 향으로 상큼하고 달콤한 향을 느낄 수 있습니다.</p>
@@ -265,7 +269,7 @@ class InfoPage extends Component<{}> {
                   <img src={floral} alt=""/>
                   <h3>3. 플로럴</h3>
                   <p>가장 많이 사용되는 계열로 꽃이 발산하는 향이며 모든 향수에 포함됩니다</p>
-                  <img src="" alt=""/>
+                  <img src={wFlower} alt=""/>
                   <h3>4. 화이트 플로럴</h3>
                   <p>플로럴의 하위 계열이지만 화이트 플로럴은 특유의 고혹적이면서도 청초한 우아함을 지닌 향입니다.</p>
                   <img src={green} alt=""/>
@@ -282,7 +286,7 @@ class InfoPage extends Component<{}> {
                   <h3>8. 우디</h3>
                   <p>나무의 껍질이나 향목을 연상시키는 은은한 향이 특징입니다. 우디 계열이라는 향수는 적지만 대부분의 향수가 우디 향을 포함하고 있습니다. 안정적이고 중후한 느낌을 지녀 베이스 노트에 주로 사용됩니다.</p>
                   <p>대표적인 향수로는 조말론의 154가 있습니다.</p>
-                  <img src="" alt=""/>
+                  <img src={balsam} alt=""/>
                   <h3>9. 발삼</h3>
                   <p>발삼이라는 방향성 수지가 가지는 향입니다.</p>
                   <p>오리엔탈 계열의 기초가 되며 지속성이 좋고 자극적이며 개성이 강합니다.</p>
@@ -291,7 +295,7 @@ class InfoPage extends Component<{}> {
                   <p>사향노루의 생식선 분비물인 머스크 혹은 그와 유사한 향을 말합니다.</p>
                   <p>따뜻함, 달콤함, 분내음 등으로 표현되며 시트러스나 플로럴에 비해 묵직하며 포근하게 감싸는 느낌을 줍니다.</p>
                   <p>휘발성이 적어 베이스 노트에 주로 사용되며 여성스러움을 강조하는 향수에 많이 사용됩니다.</p>
-                  <img src="" alt=""/>
+                  <img src={beverage} alt=""/>
                   <h3>11. 음료</h3>
                   <p> 코카콜라, 커피 등 인기 있는 음료의 향기를 재현한 향입니다. 주어진 음료에 대한 레시피의 일부를 구성하는 성분을 활용하거나 합성분자를 이용합니다. 스위츠(구르망) 계열과 함께 블랜드 되어 식욕을 돋구기도 합니다.</p>
                   <p>대표적인 향수로는 키엘의 오리지널 머스크 블랜드 No.1 이 있습니다.</p>
