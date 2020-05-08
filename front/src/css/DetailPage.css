@@ -61,7 +61,7 @@
   font-size: 2vw;
 }
 .rate-inside-circle i {
-  color: #4f4f4f !important;
+  color: goldenrod !important;
   margin-right: 0.2vw
 }
 .detail-top-divide {
@@ -84,19 +84,13 @@
 }
 .recom-container {
   text-align: center;
-  border-left: 0;
-  border-right: 0;
   display: grid;
-  /* margin-top: 2rem; */
-  /* margin-bottom: 2rem; */
-  overflow-x: scroll;
-  width: 50%;
+  overflow-x: hidden;
   grid-template-rows: repeat(1, 6vw);
   padding: 1vw;
   grid-gap: 0.2vw;
   grid-template-columns: repeat(8, 1fr);
   /* background-color: rgb(31, 31, 31); */
-  border-left: 1px solid #f3f3f3;
 }
 .each-similar {
   background-position: center;
@@ -115,13 +109,14 @@
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   padding: 0 !important;
+  background-color: #f3f3f3 !important;
 }
 .season-row {
   padding: 1vw;
 }
 .season-row > .col {
   user-select: none;
-  height: 80px;
+  height: 5vw;
   background-position: center;
 }
 .perfume_brand {
@@ -149,6 +144,7 @@
 }
 .categories-row > span {
   margin-top: .5rem;
+  font-family: 'S-CoreDream-3Light';
   padding: 0.4vw 0.8vw;
   font-weight: 100;
   background-color: #4f4f4f;
@@ -227,23 +223,14 @@
 .plz-login > a {
   color: white;
 }
-/* .plz-login {
-  height: 100px;
-  width: 50%;
-  border-radius: 14px;
-  background-color: #9f9f9f;
-  font-size: 3vw;
-  text-align: center;
-  line-height: 100px;
-  color: #8f8f8f;
-  font-family: "Cafe24Oneprettynight";
-  text-align: center;
-} */
+
 .detail-thumbnail {
   background-size: cover;
-  width: 320px;
-  height: 320px;
-  margin: 24px auto;
+  background-position: center;
+  width: 100%;
+  height: 0px;
+  padding: 47.8% 0;
+  margin: 0 !important;
 }
 .review-header > div > ul {
   display: block;
@@ -297,7 +284,7 @@ textarea:focus {
 .tricol {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 70vh
+  grid-template-rows: auto;
 }
 .detailcont {
   width: 80%;
@@ -305,11 +292,8 @@ textarea:focus {
 }
 .wc-row {
   background-color: #f3f3f3;
-  /* height: 23vh; */
-  /* height: 35vh; */
+  margin-top: auto;
   display: grid;
-  /* padding: 2vw 2vw 5rem 2vw; */
-  padding-top: 10.2rem;
   margin-bottom: 5vw;
   grid-template-columns: 1fr 2fr;
 }
@@ -321,6 +305,7 @@ textarea:focus {
   padding-left: 0.5vw;
   font-size: 1.5vw;
   border-left: 6px solid #4f4f4f;
+  font-family: 'S-CoreDream-3Light';
 }
 .sub-title-col-b {
   margin-left: 1vw;
@@ -328,6 +313,7 @@ textarea:focus {
   font-size: 1.5vw;
   border-left: 6px solid #c9c7c7;
   color: white;
+  font-family: 'S-CoreDream-3Light';
 }
 .leftcol {
   display: grid;
@@ -341,21 +327,19 @@ textarea:focus {
 }
 
 .wc-row-wrap {
-  height: 300px;
   background-color: rgb(31, 31, 31);
 }
 
-
-
-.wc-box {
-  padding-top: 16px
+.wc-row-recc {
+  background-color: rgb(31,31,31);
+  color: white;
 }
+
 
 .centercol {
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
   flex-direction: column;
+  background-color: #e0e0e0;
 }
 
 .detail-thumbnail {

@@ -258,7 +258,7 @@ class Detail extends Component<DetailProps> {
               <h5 className="sub-title-col-b">평점</h5>
               <div className="rate-wrapper">
                 <div className="rate-inside-circle">
-                  <Icon className="mt-2">grade</Icon>
+                  <Icon className="mt-2" style={{color: 'gold'}}>grade</Icon>
                   <span>{detail.avg_rate.toFixed(2)}</span>
                 </div>
                 <Circle
@@ -299,8 +299,9 @@ class Detail extends Component<DetailProps> {
               </section>
             </div>
           </aside>
+
         </section>
-        <div className="bottom-perfuem-detail"></div>
+
         <section className="wc-row">
           <div className="wc-row-wrap">
             <MediaBox
@@ -317,8 +318,7 @@ class Detail extends Component<DetailProps> {
             >
               <img
                 src={`http://i02b208.p.ssafy.io:8000/staticfiles/wordcloud/${detail.id}-wc.webp`}
-                width="400px"
-                height="200px"
+                width="100%"
                 alt=""
               />
             </MediaBox>
@@ -350,9 +350,9 @@ class Detail extends Component<DetailProps> {
                   <div>추천 향수 데이터가 없습니다.</div>
                 )}
               </section>
-
-          </div>
+              </div>
         </section>
+
         <div className="bottom-perfuem-detail"></div>
         <section className="review-write-box">
           {this.props.user.get("logged") ? (
