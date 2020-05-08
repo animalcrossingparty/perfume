@@ -13,7 +13,8 @@ const initialState = Map({
   form: Map({
     content: '',
     rate: 0,
-  })
+  }),
+  review_id: 0
 
 });
 
@@ -25,6 +26,6 @@ export default handleActions({
     },
     ...pender({
         type: POST_REVIEW,
-        onSuccess: (state = initialState, action) => state.set('review_id', action.payload.review_id)
+        onSuccess: (state = initialState, action) => state.setIn(['form', 'review_id'], action.payload.review_id)
     }),
 }, initialState);

@@ -1,38 +1,19 @@
-/* .img-banner-laureRichis > img {
-  margin-top: 2.5rem;
-}
-
-.img-banner-laureRichis {
-  text-align: center;
-  background-color: #fff;
-} */
 
 .top-detail-head {
-  height: 80px;
+  height: 2.7vw;
   background-color: rgb(31, 31, 31);
-  margin-top: 5rem;
+  margin-top: 2vw;
   border-radius: 3px 3px 0 0;
+  border-bottom: 5px double white;
+  padding-bottom: 0.5vw;
   color: white;
-  display: flex;
-  align-items: center;
-  font-size: 60px;
-  font-style: italic;
+  text-align: center;
+  font-size: 1.9vw;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 1vw;
   font-weight: 100;
 }
 
-.middle-detail-control {
-  border-left: 1px solid;
-  border-right: 1px solid;
-  border-bottom: 10px solid;
-}
-
-.bottom-perfuem-detail {
-  height: 15px;
-  /* background-color: rgb(31, 31, 31); */
-  /* margin-top: 5rem; */
-  /* margin-bottom: 10rem; */
-  border-radius: 3px 3px 0 0;
-}
 
 .btn.waves-effect {
   background-color: rgb(63, 60, 60) !important;
@@ -70,13 +51,11 @@
   stroke: rgb(233, 231, 228);
 }
 .same-perfume-b {
-  border-left: 1px solid;
   /* z-index: 2; */
   padding: 2vw;
   /* background-color: #fff; */
 }
 .wc-row-recc {
-  border-bottom: 1px solid;
   background-color: 
   /* z-index: 1; */
   /* margin-bottom: 0 !important; */
