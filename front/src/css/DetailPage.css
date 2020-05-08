@@ -21,6 +21,7 @@
 .rate-wrapper {
   position: relative;
   height: 9.5vw;
+  color: white;;
 }
 
 .perfume-info-text p {
@@ -79,20 +80,23 @@
   padding: 1vw;
   grid-gap: 0.2vw;
   grid-template-columns: repeat(5, 1fr);
+  background-color: #fff;
 }
 .recom-container {
   text-align: center;
   border-left: 0;
   border-right: 0;
   display: grid;
-  margin-top: 1vw;
-  margin-bottom: 5%;
+  /* margin-top: 2rem; */
+  /* margin-bottom: 2rem; */
   overflow-x: scroll;
-  width: 100%;
+  width: 50%;
   grid-template-rows: repeat(1, 6vw);
   padding: 1vw;
   grid-gap: 0.2vw;
   grid-template-columns: repeat(8, 1fr);
+  /* background-color: rgb(31, 31, 31); */
+  border-left: 1px solid #f3f3f3;
 }
 .each-similar {
   background-position: center;
@@ -106,10 +110,11 @@
   width: 9.5vw;
   margin: 0 auto !important;
 }
+
 .rightcol {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
-  padding: 2vw
+  padding: 0 !important;
 }
 .season-row {
   padding: 1vw;
@@ -136,13 +141,14 @@
 }
 .categories-row {
   display: grid;
-  width: 80%;
-  grid-template-columns: repeat(3, 1fr);
+  width: 50%;
+  grid-template-columns: repeat(1, 1fr);
   grid-template-rows: auto;
-  grid-column-gap: 15px;
+  grid-column-gap: 20px;
   margin: 2vw auto !important;
 }
 .categories-row > span {
+  margin-top: .5rem;
   padding: 0.4vw 0.8vw;
   font-weight: 100;
   background-color: #4f4f4f;
@@ -151,7 +157,7 @@
   width: 100%;
   height: 2vw;
   color: white;
-  border-radius: 5px;
+  border-radius: 1.5px;
 }
 .detail_price {
   font-size: 2.2vw;
@@ -161,7 +167,7 @@
 }
 .review-write-box {
   margin: 1% 5%; 
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
 }
 /* Reviews */
 .review-list-container {
@@ -172,7 +178,7 @@
 }
 .review-list-header {
   margin: 0 5%;
-  padding: 0 10%;
+  padding: 0;
   font-size: 2vw;
   font-weight: 100;
 }
@@ -202,6 +208,28 @@
 }
 .plz-login {
   height: 100px;
+  width: 50%;
+  border-radius: 14px;
+  background-color: rgb(31, 31, 31);
+  font-size: 30px;
+  text-align: center;
+  line-height: 100px;
+  color: #8f8f8f;
+  font-family: "S-CoreDream-3Light";
+  text-align: center;
+  margin: auto;
+}
+.plz-login:hover {
+  background-color: #515258;
+  cursor: pointer;
+}
+
+.plz-login > a {
+  color: white;
+}
+/* .plz-login {
+  height: 100px;
+  width: 50%;
   border-radius: 14px;
   background-color: #9f9f9f;
   font-size: 3vw;
@@ -209,7 +237,8 @@
   line-height: 100px;
   color: #8f8f8f;
   font-family: "Cafe24Oneprettynight";
-}
+  text-align: center;
+} */
 .detail-thumbnail {
   background-size: cover;
   width: 320px;
@@ -276,10 +305,11 @@ textarea:focus {
 }
 .wc-row {
   background-color: #f3f3f3;
-  height: 23vh;
+  /* height: 23vh; */
+  /* height: 35vh; */
   display: grid;
-  padding: 2vw;
-  margin-top: 5vw;
+  /* padding: 2vw 2vw 5rem 2vw; */
+  padding-top: 10.2rem;
   margin-bottom: 5vw;
   grid-template-columns: 1fr 2fr;
 }
@@ -292,19 +322,27 @@ textarea:focus {
   font-size: 1.5vw;
   border-left: 6px solid #4f4f4f;
 }
+.sub-title-col-b {
+  margin-left: 1vw;
+  padding-left: 0.5vw;
+  font-size: 1.5vw;
+  border-left: 6px solid #c9c7c7;
+  color: white;
+}
 .leftcol {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  padding: 2vw;
+  /* padding: 0vw; */
   background-color: #f3f3f3;
 }
 .rightcol {
-  padding: 2vw;
+  padding: 0 !important;
   background-color: #f3f3f3;
 }
 
 .wc-row-wrap {
-  height: 200px;
+  height: 300px;
+  background-color: rgb(31, 31, 31);
 }
 
 
@@ -312,6 +350,15 @@ textarea:focus {
 .wc-box {
   padding-top: 16px
 }
-.centercol {
 
+.centercol {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-direction: column;
+}
+
+.detail-thumbnail {
+  margin-top: 5rem;
+  margin-bottom: 7rem;
 }
