@@ -18,6 +18,7 @@ import { ReviewTextBox } from "components/";
 import { withRouter } from "react-router";
 import BeautyStars from "beauty-stars";
 import "../../css/DetailPage.css";
+import "../../css/DetailCss.css";
 
 interface DetailProps {
   history: any;
@@ -87,10 +88,10 @@ class Detail extends Component<DetailProps> {
     const { detail } = this.props;
     return (
       <div className="detailcont">
+        <div className="top-detail-head">PERFUME DETAIL</div>
         <section className="tricol">
           <aside className="leftcol">
-            <div>
-    <div style={{display:'none'}}>{this.props.review.review_id}</div>
+            <div className="leftcon-p">
               <h5 className="sub-title-col">카테고리</h5>
               <div className="categories-row">
                 {detail.categories.map((cat) => (
@@ -98,9 +99,9 @@ class Detail extends Component<DetailProps> {
                 ))}
               </div>
             </div>
-            <div>
-              <h5 className="sub-title-col">노트</h5>
-              <div style={{ textAlign: "right" }}>
+            <div className="leftcont-black">
+              <h5 className="sub-title-col-b">노트</h5>
+              <div className="mini-note-color" style={{ textAlign: "right" }}>
                 <span className="pr-2">TOP NOTES</span>
                 <div className="note-tags">
                   {detail.top_notes.length > 0 ? (
@@ -156,6 +157,7 @@ class Detail extends Component<DetailProps> {
             </div>
           </aside>
           <aside className="centercol">
+            <div className="middle-detail-control">
             <div
               className="detail-thumbnail"
               style={{ backgroundImage: `url(${detail.thumbnail})` }}
@@ -198,9 +200,10 @@ class Detail extends Component<DetailProps> {
                 }
               ></Col>
             </Row>
+            </div>
           </aside>
           <aside className="rightcol">
-            <div>
+            <div className="right-p">
               <div className="detail-info-text-header">
                 <div className="detail-info-header-text">
                   <p
@@ -220,7 +223,9 @@ class Detail extends Component<DetailProps> {
                         textAlign: "center",
                         fontSize: "0.8vw",
                         padding: "4px 2px",
-                        marginLeft: 12,
+                        marginLeft: 8,
+                        paddingLeft: '.5rem',
+                        paddingRight: '.3rem'
                       }}
                     >
                       {detail.launch_date
@@ -249,8 +254,8 @@ class Detail extends Component<DetailProps> {
                 </div>
               </div>
             </div>
-            <div>
-              <h5 className="sub-title-col">평점</h5>
+            <div className="average-box">
+              <h5 className="sub-title-col-b">평점</h5>
               <div className="rate-wrapper">
                 <div className="rate-inside-circle">
                   <Icon className="mt-2">grade</Icon>
@@ -260,12 +265,12 @@ class Detail extends Component<DetailProps> {
                   className="rate-circle"
                   percent={this.state.progress}
                   strokeWidth={8}
-                  strokeColor={"#4f4f4f"}
+                  strokeColor={"rgb(220, 228, 228)"}
                   trailColor={"lightgray"}
                 />
               </div>
             </div>
-            <div>
+            <div className="same-perfume-b">
               <h5 className="sub-title-col">유사 향수 목록</h5>
               <section className="similar-container">
                 {detail.similar && detail.similar.length > 0 ? (
@@ -295,6 +300,7 @@ class Detail extends Component<DetailProps> {
             </div>
           </aside>
         </section>
+        <div className="bottom-perfuem-detail"></div>
         <section className="wc-row">
           <div className="wc-row-wrap">
             <MediaBox
@@ -347,25 +353,23 @@ class Detail extends Component<DetailProps> {
 
           </div>
         </section>
-
-        <div className="review-list-header pt-5">
-
-          {detail.reviews
-            ? `(${detail.reviews.length})`
-            : "여러분의 소중한 리뷰를 남겨주세요"}
-        </div>
-
+        <div className="bottom-perfuem-detail"></div>
         <section className="review-write-box">
           {this.props.user.get("logged") ? (
             <ReviewTextBox id={detail.id} />
           ) : (
             <div className="plz-login">
-              <Link to="/login" style={{ color: "#8e8e8e" }}>
+              <Link to="/auth/login">
                 로그인 하러가기
               </Link>
             </div>
           )}
         </section>
+        <div className="review-list-header pt-5">
+          {detail.reviews
+            ? `(${detail.reviews.length})`
+            : "여러분의 소중한 리뷰를 남겨주세요"}
+        </div>
         <section className="review-list-container">
           {detail.reviews ? (
             detail.reviews.map((review) => (
