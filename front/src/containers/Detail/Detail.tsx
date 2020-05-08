@@ -237,8 +237,6 @@ class Detail extends Component<DetailProps> {
                     style={{
                       lineHeight: "2.2vw",
                       fontSize: "2.2vw",
-                      height: "3vw",
-                      overflowY: "hidden",
                     }}
                     className="my-1"
                   >
