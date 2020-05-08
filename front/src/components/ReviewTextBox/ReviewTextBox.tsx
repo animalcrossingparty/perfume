@@ -44,6 +44,7 @@ class ReviewTextBox extends Component<ReviewTextBoxProps> {
     try {
       await ReviewActions.postReview(content, rate, id, token).then((r) => {
         alert("리뷰가 등록되었습니다");
+        this.forceUpdate();
       });
     } catch (e) {
       alert(e);

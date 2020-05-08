@@ -25,6 +25,7 @@ interface DetailProps {
   detail: any;
   user: any;
   location: any;
+  review: any
 }
 
 class Detail extends Component<DetailProps> {
@@ -89,6 +90,7 @@ class Detail extends Component<DetailProps> {
         <section className="tricol">
           <aside className="leftcol">
             <div>
+    <div style={{display:'none'}}>{this.props.review.review_id}</div>
               <h5 className="sub-title-col">카테고리</h5>
               <div className="categories-row">
                 {detail.categories.map((cat) => (
@@ -347,6 +349,7 @@ class Detail extends Component<DetailProps> {
         </section>
 
         <div className="review-list-header pt-5">
+
           {detail.reviews
             ? `(${detail.reviews.length})`
             : "여러분의 소중한 리뷰를 남겨주세요"}
@@ -425,6 +428,7 @@ export default withRouter(
     (state) => ({
       detail: state.detail.get("detail"),
       user: state.user,
+      review: state.review
     }),
     (dispatch) => ({
       DetailActions: bindActionCreators(detailActions, dispatch),
