@@ -91,7 +91,7 @@ class ExpSurveyPage extends Component<ExpSurveyPageProps> {
             >
               마음에 드는 향수를 모두 선택해주세요.
             </h1>
-            <div className="container" >
+            <div className="container" style={{height: '40vw'}}>
               <Tabs
                 className=""
                 options={{

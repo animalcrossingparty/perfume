@@ -76,11 +76,12 @@
   margin-bottom: 1rem;
 }
 
-.home_survey > img {
+.home_survey > a > img {
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
-.home_survey > img:hover {
+.home_survey > a > img:hover {
   opacity: 0.5;
 }
 
