@@ -127,8 +127,7 @@
   color: rgba(0, 0, 0, 0.6);
 }
 .detail-info-text-header {
-  display: grid;
-  grid-template-columns: 3fr 1fr
+
 }
 .disabled-season {
   filter: brightness(0.2);
