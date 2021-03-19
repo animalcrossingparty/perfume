@@ -27,7 +27,7 @@ django-cors-headers==3.2.1
 django-crontab==0.7.1
 django-heroku==0.3.1
 django-imagekit==4.0.2
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 dodgy==0.1.9
 drf-yasg==1.17.1
 drf-yasg-examples==0.1.1
