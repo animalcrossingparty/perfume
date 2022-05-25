@@ -71,7 +71,7 @@ protobuf==3.6.1
 pycodestyle==2.5.0
 pycparser==2.20
 Pygments==2.6.1
-PyJWT==1.7.1
+PyJWT==2.4.0
 pylint==2.4.4
 pyparsing==2.4.6
 pyrsistent==0.16.0
